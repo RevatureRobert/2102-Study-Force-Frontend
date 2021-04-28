@@ -2,6 +2,7 @@
   "recommendations": [
     "sonarsource.sonarlint-vscode",
     "angular.ng-template",
-    "johnpapa.angular-essentials"
+    "johnpapa.angular-essentials",
+    "johnpapa.angular2"
   ]
 }
