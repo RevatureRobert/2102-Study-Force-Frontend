@@ -1,0 +1,7 @@
+{
+  "recommendations": [
+    "sonarsource.sonarlint-vscode",
+    "angular.ng-template",
+    "johnpapa.angular-essentials"
+  ]
+}
