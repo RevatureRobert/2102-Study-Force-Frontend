@@ -1,3 +1,9 @@
-<div *ngFor='let stacktrace of stacktraces'>
-
-</div>
+<table>
+  <tr *ngFor="let stacktrace of stacktraces | slice: (page-1) * pageSize : page * pageSize">
+    <a href>{{stacktrace.title}}</a>
+  </tr>
+</table>
+<ngb-pagination
+  [(page)]="page"
+  [pageSize]="pageSize"
+  [collectionSize]="stacktraces.length"></ngb-pagination>

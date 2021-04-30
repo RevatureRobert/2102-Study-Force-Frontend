@@ -9,16 +9,20 @@ import { Stacktrace } from '../../models/stacktrace';
 })
 export class StacktraceHomeComponent implements OnInit {
   stacktraces: Stacktrace[] = [];
-  pageSize: number = 25;
-  pageNumber: number = 0;
+  pageSize: number = 10;
+  page: number = 1;
 
   constructor(private stacktraceService: StacktraceService) { }
 
   ngOnInit(): void {
-    this.getPageStacktrace(25, 0);
+    this.getPageStacktrace();
   }
 
-  getPageStacktrace(pageSize:number, pageNumber:number): void {
-    this.stacktraceService.getPageStacktrace(pageSize, pageNumber);
+  ngOnChanges(): void {
+    this.getPageStacktrace();
+  }
+
+  getPageStacktrace(): void {
+    this.stacktraceService.getPageStacktrace(this.pageSize, this.page);
   }
 }
