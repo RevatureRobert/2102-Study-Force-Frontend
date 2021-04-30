@@ -3,10 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { NewStacktraceComponent } from './stacktrace/components/new-stacktrace/new-stacktrace.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NewStacktraceComponent
   ],
   imports: [
     BrowserModule,
