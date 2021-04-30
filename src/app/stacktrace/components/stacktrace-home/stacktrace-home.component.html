@@ -1,6 +1,12 @@
 <table>
+  <caption>List of Stacktraces</caption>
+  <tr>
+    <th scope="col">Title</th>
+  </tr>
   <tr *ngFor="let stacktrace of stacktraces | slice: (page-1) * pageSize : page * pageSize">
-    <a href>{{stacktrace.title}}</a>
+    <td>
+      <a href>{{stacktrace.title}}</a>
+    </td>
   </tr>
 </table>
 <ngb-pagination
