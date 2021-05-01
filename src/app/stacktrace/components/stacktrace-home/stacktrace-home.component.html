@@ -3,7 +3,7 @@
   <tr>
     <th scope="col">Title</th>
   </tr>
-  <tr *ngFor="let stacktrace of stacktraces | slice: (page-1) * pageSize : page * pageSize">
+  <tr *ngFor="let stacktrace of stacktraces">
     <td>
       <a href>{{stacktrace.title}}</a>
     </td>
