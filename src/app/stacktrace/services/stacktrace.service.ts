@@ -21,12 +21,19 @@ export class StacktraceService {
         let r = this.http.post(`${this.apiServerUrl}/stacktrace/create`, stacktrace, { headers: this.httpHeaders });
         r.subscribe();
   }
+
   getStacktrace(id:number): Promise<Stacktrace> {
     return this.http.get<Stacktrace>(this.apiServerUrl.concat(`/stacktrace/${id}`), { headers: this.httpHeaders }).toPromise();
   }
-  getPageStacktrace(pageSize:number, pageNumber:number): Promise<Stacktrace[]> {
-    return this.http.get<Stacktrace[]>(this.apiServerUrl.concat(`/stacktrace/?offset=${pageSize}&page=${pageNumber}`), { headers: this.httpHeaders }).toPromise();
+
+  getAllStacktrace(): Promise<Stacktrace[]> {
+    return this.http.get<Stacktrace[]>(this.apiServerUrl.concat(`/stacktrace}`), { headers: this.httpHeaders }).toPromise();
   }
+
+  getPageStacktrace(pageSize:number, pageNumber:number): Promise<Stacktrace[]> {
+    return this.http.get<Stacktrace[]>(this.apiServerUrl.concat(`/stacktrace/page?offset=${pageSize}&page=${pageNumber}`), { headers: this.httpHeaders }).toPromise();
+  }
+
   editStacktrace(stacktrace: Stacktrace): void {
     let r = this.http.put(`${this.apiServerUrl}/stacktrace/update`, stacktrace, { headers: this.httpHeaders });
     r.subscribe();

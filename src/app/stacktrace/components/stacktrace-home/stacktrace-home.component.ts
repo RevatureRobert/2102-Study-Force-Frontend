@@ -18,11 +18,7 @@ export class StacktraceHomeComponent implements OnInit {
     this.getPageStacktrace();
   }
 
-  ngOnChanges(): void {
-    this.getPageStacktrace();
-  }
-
   getPageStacktrace(): void {
-    this.stacktraceService.getPageStacktrace(this.pageSize, this.page);
+    this.stacktraceService.getAllStacktrace();
   }
 }
