@@ -1,5 +1,6 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 //import { BASE_API_URL} from 'src/environments/environment';
 import { Stacktrace } from '../models/stacktrace';
 
@@ -13,7 +14,7 @@ export class StacktraceService {
     //"Authorization": 'Bearer '.concat(localStorage.getItem('swagjwt'))
   });
 
-  private apiServerUrl = "placeholderUrl"; //BASE_API_URL;
+  private apiServerUrl = "http://localhost:8080"; //BASE_API_URL;
 
   constructor(private http: HttpClient) { }
 
@@ -22,8 +23,8 @@ export class StacktraceService {
         r.subscribe();
   }
 
-  getStacktrace(id:number): Promise<Stacktrace> {
-    return this.http.get<Stacktrace>(this.apiServerUrl.concat(`/stacktrace/${id}`), { headers: this.httpHeaders }).toPromise();
+  getStacktrace(id:number): Observable<Stacktrace> {
+    return this.http.get<Stacktrace>(this.apiServerUrl.concat(`/stacktrace/${id}`), { headers: this.httpHeaders });
   }
 
   getAllStacktrace(): Promise<Stacktrace[]> {
