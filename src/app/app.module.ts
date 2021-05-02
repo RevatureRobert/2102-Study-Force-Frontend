@@ -7,13 +7,19 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ButtonComponent } from './global-components/button/button.component';
 import { TableComponent } from './global-components/table/table.component';
 import { NavbarComponent } from './global-components/navbar/navbar.component';
+import { FlashcardComponent } from './global-components/flashcard/flashcard.component';
+import { ReplyCardComponent } from './global-components/reply-card/reply-card.component';
+import { VoteComponent } from './global-components/vote/vote.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ButtonComponent,
     TableComponent,
-    NavbarComponent
+    NavbarComponent,
+    FlashcardComponent,
+    ReplyCardComponent,
+    VoteComponent
   ],
   imports: [
     BrowserModule,

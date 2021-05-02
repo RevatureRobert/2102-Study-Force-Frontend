@@ -2,7 +2,7 @@
   background: linear-gradient(0deg, rgba(184, 187, 193, 0.85) 0%, #FFFFFF 116.92%);
   backdrop-filter: blur(100px);
   /* Note: backdrop-filter has minimal browser support */
-  border-radius: 30px 30px 0px 0px;
+  /* border-radius: 30px 30px 0px 0px; */
 }
 
 /* change the text color */
