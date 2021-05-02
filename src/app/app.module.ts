@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { StacktraceModule } from './stacktrace/stacktrace.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { StacktraceModule } from './stacktrace/stacktrace.module';
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    StacktraceModule
+    StacktraceModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

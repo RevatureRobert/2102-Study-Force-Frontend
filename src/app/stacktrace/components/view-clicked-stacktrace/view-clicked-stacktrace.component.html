@@ -16,4 +16,8 @@
     <td>{{stacktrace.technology}}</td>
     <td>{{stacktrace.creationTime}}</td>
   </tr>
+
+  <!-- TODO: change ngif to check if the current user is the owner of the stacktrace -->
+  <!-- TODO: delete stacktrace by actual id, not hardcoded value -->
+  <button mat-raised-button color="warn" (click)='deleteStacktrace(3)' *ngIf='currentUser == undefined'>Delete</button>
 </table>

@@ -39,4 +39,8 @@ export class StacktraceService {
     let r = this.http.put(`${this.apiServerUrl}/stacktrace/update`, stacktrace, { headers: this.httpHeaders });
     r.subscribe();
   }
+
+  deleteStacktrace(id:number):Observable<Stacktrace> {
+    return this.http.delete<Stacktrace>(this.apiServerUrl.concat(`/stacktrace/${id}`), { headers: this.httpHeaders });
+  }
 }
