@@ -11,6 +11,9 @@ import { FlashcardAnswerComponent } from './components/ui/flashcard-answer/flash
   declarations: [FlashcardComponent, FlashcardPageComponent, FlashcardQuestionComponent, FlashcardAnswerComponent],
   imports: [
     CommonModule
+  ],
+  exports: [
+    FlashcardPageComponent
   ]
 })
 export class FlashcardModule { }

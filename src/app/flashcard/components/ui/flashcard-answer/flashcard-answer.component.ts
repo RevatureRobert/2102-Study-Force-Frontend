@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Answer } from 'src/app/flashcard/model/Answer';
+import { Answer } from 'src/app/flashcard/model/answer';
 import { Flashcard } from 'src/app/flashcard/model/flashcard';
 
 @Component({
