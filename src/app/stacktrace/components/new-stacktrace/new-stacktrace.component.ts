@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Stacktrace } from 'src/app/stacktrace/models/stacktrace';
 import { StacktraceService } from 'src/app/stacktrace/services/stacktrace.service';
@@ -27,7 +27,7 @@ export class NewStacktraceComponent implements OnInit {
 
   onCreate() {
     // create a Stacktrace and send to the backend using the service
-    let newStacktrace = {
+    let newStacktrace:Stacktrace = {
       stacktraceId: this.stacktraceId,
       title: this.title,
       body: this.body,
