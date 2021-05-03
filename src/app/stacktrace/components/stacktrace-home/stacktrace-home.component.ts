@@ -3,6 +3,7 @@ import { StacktraceService } from '../../services/stacktrace.service';
 import { Stacktrace } from '../../models/stacktrace';
 import { TechnologyService } from '../../services/technology.service';
 import { Technology } from '../../models/technology';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-stacktrace-home',
@@ -13,12 +14,14 @@ export class StacktraceHomeComponent implements OnInit {
   allStacktraces: Stacktrace[] = [];
   filteredStacktraces: Stacktrace[] = [];
   technologies: Technology[] = [];
+  currentTechnologyName: string = "All";
   pageSize: number = 10;
   page: number = 1;
 
   constructor(
     private stacktraceService: StacktraceService,
-    private technologyService: TechnologyService
+    private technologyService: TechnologyService,
+    private router: Router
     ) { }
 
   ngOnInit(): void {
@@ -28,10 +31,12 @@ export class StacktraceHomeComponent implements OnInit {
 
   filterStacktraces(technology?: Technology, searchParameter?: string): void {
     if(technology) {
+      this.currentTechnologyName = technology.technologyName;
       this.filteredStacktraces = this.allStacktraces.filter((stacktrace: Stacktrace) => {
         return stacktrace.technology.technologyId = technology.technologyId;
       })
     } else {
+      this.currentTechnologyName = "All";
       this.filteredStacktraces = this.allStacktraces;
     }
   }
@@ -49,5 +54,9 @@ export class StacktraceHomeComponent implements OnInit {
       .then((data) => {
         this.technologies = data;
       });
+  }
+
+  navigate(stacktrace: Stacktrace): void {
+    this.router.navigate([`/stacktrace/${stacktrace.stacktraceId}`]);
   }
 }

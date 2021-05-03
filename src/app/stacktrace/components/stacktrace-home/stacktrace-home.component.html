@@ -13,21 +13,27 @@
   <div class="col"></div>
   <div class="col"></div>
 </div>
+
 <table>
   <caption>List of Stacktraces</caption>
   <thead>
     <tr>
       <th scope="col">Title</th>
+      <th scope="col">Technology</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let stacktrace of filteredStacktraces | slice: (page-1) * pageSize : page * pageSize">
+      <td (click)='navigate(stacktrace)'>
+        {{stacktrace.title}}
+      </td>
       <td>
-        <a href>{{stacktrace.title}}</a>
+        {{stacktrace.technology.technologyName}}
       </td>
     </tr>
   </tbody>
 </table>
+
 <ngb-pagination
   [(page)]="page"
   [pageSize]="pageSize"
