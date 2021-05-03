@@ -15,6 +15,7 @@ import { FlashcardRoutingModule } from './flashcard-routing.module';
     CommonModule, FlashcardRoutingModule
   ],
   exports: [
+    FlashcardComponent,
     FlashcardPageComponent
   ]
 })

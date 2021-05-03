@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StacktraceHomeComponent } from './components/stacktrace-home/stacktrace-home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { StacktraceRoutingModule } from './stacktrace-routing.module';
 
 
 
@@ -9,7 +10,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   declarations: [StacktraceHomeComponent],
   imports: [
     CommonModule,
-    NgbModule
+    NgbModule,
+    StacktraceRoutingModule
   ]
 })
 export class StacktraceModule { }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { flashcardService } from './service/flashcard.service';
 
 @Component({
   selector: 'app-flashcard',
