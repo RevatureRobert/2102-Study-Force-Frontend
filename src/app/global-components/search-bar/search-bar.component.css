@@ -1,0 +1,26 @@
+#Search-Bar {
+  width: 957px;
+  border-radius: 30px;
+}
+
+#Search-Input {
+  border-radius: 30px;
+  box-shadow: none;
+  background: linear-gradient(
+    111.52deg,
+    rgba(255, 255, 255, 0.7) 0%,
+    rgba(255, 255, 255, 0.8) 100%
+  );
+  backdrop-filter: blur(100px);
+}
+
+#Search-Button {
+  position: absolute;
+  box-shadow: none;
+  width: 75px;
+  right: 0;
+  z-index: 3;
+
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
