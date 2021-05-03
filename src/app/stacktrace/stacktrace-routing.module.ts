@@ -1,12 +1,15 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { RouterModule, Routes } from '@angular/router';
+import { StacktraceHomeComponent } from './components/stacktrace-home/stacktrace-home.component';
 
-
+const routes: Routes = [
+  {
+    path: '', component: StacktraceHomeComponent
+  }
+];
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule
-  ]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
 })
 export class StacktraceRoutingModule { }
