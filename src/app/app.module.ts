@@ -6,12 +6,18 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ButtonComponent } from './global-components/button/button.component';
 import { GlassPaneComponent } from './global-components/glass-pane/glass-pane.component';
+import { GenericCardWideComponent } from './global-components/generic-card-wide/generic-card-wide.component';
+import { GenericCardComponent } from './global-components/generic-card/generic-card.component';
+import { SearchBarComponent } from './global-components/search-bar/search-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ButtonComponent,
-    GlassPaneComponent
+    GlassPaneComponent,
+    GenericCardWideComponent,
+    GenericCardComponent,
+    SearchBarComponent
   ],
   imports: [
     BrowserModule,
