@@ -12,6 +12,9 @@ import { StacktraceRoutingModule } from './stacktrace-routing.module';
     CommonModule,
     NgbModule,
     StacktraceRoutingModule
+  ],
+  exports: [
+    StacktraceHomeComponent
   ]
 })
 export class StacktraceModule { }
