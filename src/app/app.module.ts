@@ -10,6 +10,7 @@ import { NavbarComponent } from './global-components/navbar/navbar.component';
 import { FlashcardComponent } from './global-components/flashcard/flashcard.component';
 import { ReplyCardComponent } from './global-components/reply-card/reply-card.component';
 import { VoteComponent } from './global-components/vote/vote.component';
+import { SubmitContentCardComponent } from './global-components/submit-content-card/submit-content-card.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { VoteComponent } from './global-components/vote/vote.component';
     NavbarComponent,
     FlashcardComponent,
     ReplyCardComponent,
-    VoteComponent
+    VoteComponent,
+    SubmitContentCardComponent
   ],
   imports: [
     BrowserModule,
