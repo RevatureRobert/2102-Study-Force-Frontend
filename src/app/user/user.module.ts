@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { BatchComponent } from './models/batch/batch.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [BatchComponent],
   imports: [
     CommonModule
   ]
