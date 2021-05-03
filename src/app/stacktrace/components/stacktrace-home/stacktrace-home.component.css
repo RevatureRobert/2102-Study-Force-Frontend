@@ -1,67 +1,91 @@
-/* Dropdown Menu */
+.page-base {
+  position: absolute;
+  width: 1920px;
+  height: 1080px;
+  left: 0px;
+  top: 0px;
+
+  background: linear-gradient(252.44deg, #ED4C4C 0%, rgba(219, 199, 17, 0) 100%);
+}
+
+.center-wrapper {
+  width: 1200px;
+  margin: auto;
+  height: auto;
+}
+
+input {
+  margin:auto;
+  background: linear-gradient(111.52deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.8) 100%);
+  backdrop-filter: blur(100px);
+  /* Note: backdrop-filter has minimal browser support */
+  border: 2px solid;
+  border-image-source: linear-gradient(111.52deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0) 100%);
+  border-radius: 30px;
+}
+
 table {
-  position: absolute;
-  width: 1198px;
-  height: 696.23px;
-  left: 361px;
-  top: 235px;
-}
-
-tbody {
-  position: absolute;
-  left: 0%;
-  right: 0%;
-  top: 7.47%;
-  bottom: 0%;
-}
-
-tr {
-  position: absolute;
-  left: 0%;
-  right: -3.57%;
-  top: 0%;
-  bottom: 0%;
+  float: left;
+  width: 1200px;
+  margin-top: 200px;
+  background: #FFFFFF;
+  border-radius: 30px;
 }
 
 th {
-  position: absolute;
-  left: 0%;
-  right: 49.83%;
-  top: 0%;
-  bottom: 0%;
+  height: 50px;
+  padding-left:90px;
+  padding-right:90px;
+}
+
+td {
+  height: 90px;
+  padding-left:90px;
+  padding-right:90px;
+}
+
+ngb-pagination {
+  float: left;
 }
 
 .glass-base{
-  position: absolute;
+  position: relative;
   width: 258px;
   height: 211px;
   left: -55px;
-  top: -27px;
+  top: 27px;
+
+  float: right;
 
   background: linear-gradient(111.52deg, rgba(255, 255, 255, 0.48) 0%, rgba(255, 255, 255, 0.12) 100%);
   backdrop-filter: blur(100px);
   /* Note: backdrop-filter has minimal browser support */
+  border: 3px solid;
+
+  border-image-source: linear-gradient(111.52deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0) 100%);
 
   border-radius: 30px;
 }
+
 .dropdown-area {
-  position: absolute;
-  width: 149px;
+  margin: auto;
+  background: #FFFFFF;
   height: 157px;
-  left: 1691px;
-  top: 125px;
+  width: 149px;
+  border-radius: 0px;
 }
 
 .dropdown-selector {
-  position: absolute;
+  position: relative;
   left: 0%;
   right: 0%;
   top: 0%;
   bottom: 74.52%;
+  background: #FFFFFF;
 }
 
 .dropdown-options {
-  position: absolute;
+  position: relative;
   left: 0%;
   right: 0%;
   top: 25.48%;
