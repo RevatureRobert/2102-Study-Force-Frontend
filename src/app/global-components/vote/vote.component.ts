@@ -11,19 +11,21 @@ export class VoteComponent implements OnInit {
   downVoteSource = "../../../assets/down doot unclicked.svg"
   scoreColor = "color: var(--duskwood)"
 
+  hasVoted=false;
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
   upVote() {
-    this.upVoteSource = "../../../assets/selected up doot.svg"
-    this.scoreColor = "color: var(--red-orange-juice)"
+    this.upVoteSource = "../../../assets/selectedupvote.svg"
+    this.scoreColor = "color: var(--peachy-feeling)"
   }
 
   downVote() {
-    this.downVoteSource = "../../../assets/selected down doot.svg"
-    this.scoreColor = "color: var(--sapphire-splendor)"
+    this.downVoteSource = "../../../assets/selecteddownvote.svg"
+    this.scoreColor = "color: var(--wizard-blue)"
   }
 
 }
