@@ -16,7 +16,7 @@ import { HttpClientModule  } from '@angular/common/http'
     AppRoutingModule,
     NgbModule,
     FlashcardModule,
-    HttpClientModule 
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
