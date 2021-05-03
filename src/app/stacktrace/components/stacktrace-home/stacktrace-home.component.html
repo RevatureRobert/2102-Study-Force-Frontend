@@ -1,15 +1,34 @@
+<div class="row">
+  <div class="col">
+    <div ngbDropdown class="d-inline-block">
+      <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Toggle dropdown</button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <div *ngFor="let technology of technologies" >
+          <button ngbDropdownItem (click)="filterStacktraces(technology)">{{technology.technologyName}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col"></div>
+  <div class="col"></div>
+</div>
 <table>
   <caption>List of Stacktraces</caption>
-  <tr>
-    <th scope="col">Title</th>
-  </tr>
-  <tr *ngFor="let stacktrace of stacktraces | slice: (page-1) * pageSize : page * pageSize">
-    <td>
-      <a href>{{stacktrace.title}}</a>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th scope="col">Title</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let stacktrace of filteredStacktraces | slice: (page-1) * pageSize : page * pageSize">
+      <td>
+        <a href>{{stacktrace.title}}</a>
+      </td>
+    </tr>
+  </tbody>
 </table>
 <ngb-pagination
   [(page)]="page"
   [pageSize]="pageSize"
-  [collectionSize]="stacktraces.length"></ngb-pagination>
+  [collectionSize]="filteredStacktraces.length"></ngb-pagination>
