@@ -1,5 +1,8 @@
 <div>
-  <img class="scaled" src="../../../assets/up doot unclicked.svg"/>
-  <p class="score">3</p>
-  <img class="scaled" src="../../../assets/down doot unclicked.svg"/>
+  <img class="scaled" id= "upvote" src="{{upVoteSource}}" alt="Upvote icon"
+    (click)="upVote()"
+    />
+  <p class="score" [style.color]="scoreColor" [style]="scoreColor">3</p>
+  <img class="scaled" id = "downvote" src="{{downVoteSource}}" alt="Downvote icon"
+    (click)="downVote()"/>
 </div>
