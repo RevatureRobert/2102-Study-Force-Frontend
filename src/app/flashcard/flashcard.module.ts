@@ -7,12 +7,16 @@ import { FlashcardAnswerComponent } from './components/ui/flashcard-answer/flash
 import { FlashcardRoutingModule } from './flashcard-routing.module';
 import { CreateFlashcardPageComponent } from './components/pages/create-flashcard-page/create-flashcard-page.component'
 import { FormsModule } from '@angular/forms';
+import { FlipFlashcardComponent } from './components/util/flip-flashcard/flip-flashcard.component';
 
 
 
 
 @NgModule({
-  declarations: [FlashcardComponent, FlashcardPageComponent, FlashcardQuestionComponent, FlashcardAnswerComponent, CreateFlashcardPageComponent],
+  declarations: [FlashcardComponent, FlashcardPageComponent,
+    FlashcardQuestionComponent, FlashcardAnswerComponent,
+    CreateFlashcardPageComponent, FlipFlashcardComponent
+  ],
   imports: [
     CommonModule, FlashcardRoutingModule,
     FormsModule
@@ -20,7 +24,8 @@ import { FormsModule } from '@angular/forms';
   exports: [
     FlashcardComponent,
     FlashcardPageComponent,
-    CreateFlashcardPageComponent
+    CreateFlashcardPageComponent,
+    FlipFlashcardComponent
   ]
 })
 export class FlashcardModule {  }

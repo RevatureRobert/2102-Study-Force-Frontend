@@ -10,7 +10,9 @@ const baseUrl = 'http://localhost:8080/flashcards';
 })
 export class FlashcardService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+
+  }
 
 
   getAll(): Observable<Flashcard[]> {

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Flashcard } from 'src/app/flashcard/model/flashcard';
-import { FlashcardService } from '../../../service/flashcard.service'
+import { FlashcardService } from '../../../service/flashcard.service';
+//import { FlipFlashcardComponent } from '../../util/flip-flashcard/flip-flashcard.component';
+
 
 
 @Component({
@@ -12,6 +14,7 @@ export class FlashcardPageComponent implements OnInit {
 
   flashcard: Flashcard | null = null;
 
+
   constructor(flashcardService: FlashcardService) {
     console.log("CONSTRUCTOR");
 
@@ -22,5 +25,6 @@ export class FlashcardPageComponent implements OnInit {
     console.log("INIT");
 
   }
+
 
 }
