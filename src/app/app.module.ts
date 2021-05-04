@@ -9,6 +9,7 @@ import { GlassPaneComponent } from './global-components/glass-pane/glass-pane.co
 import { GenericCardWideComponent } from './global-components/generic-card-wide/generic-card-wide.component';
 import { GenericCardComponent } from './global-components/generic-card/generic-card.component';
 import { SearchBarComponent } from './global-components/search-bar/search-bar.component';
+import { DropdownComponent } from './global-components/dropdown/dropdown.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { SearchBarComponent } from './global-components/search-bar/search-bar.co
     GlassPaneComponent,
     GenericCardWideComponent,
     GenericCardComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    DropdownComponent
   ],
   imports: [
     BrowserModule,
