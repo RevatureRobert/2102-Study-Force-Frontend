@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FlipFlashcardComponent } from './flip-flashcard.component';
+import { FlashcardGridComponent } from './flashcard-grid.component';
 
-describe('FlipFlashcardComponent', () => {
-  let component: FlipFlashcardComponent;
-  let fixture: ComponentFixture<FlipFlashcardComponent>;
+describe('FlashcardGridComponent', () => {
+  let component: FlashcardGridComponent;
+  let fixture: ComponentFixture<FlashcardGridComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FlipFlashcardComponent ]
+      declarations: [ FlashcardGridComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FlipFlashcardComponent);
+    fixture = TestBed.createComponent(FlashcardGridComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

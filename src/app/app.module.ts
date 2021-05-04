@@ -11,9 +11,12 @@ import { FormsModule } from '@angular/forms';
 import { StacktraceModule } from './stacktrace/stacktrace.module';
 
 
+import { FlashcardGridComponent } from './flashcard-grid/flashcard-grid.component';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FlashcardGridComponent
   ],
   imports: [
     BrowserModule,
