@@ -1,23 +1,26 @@
-<div class="new-stacktrace-wrapper" fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center center">
-  <mat-card class="box">
-    <mat-card-header>
-      <mat-card-title>Create New Stacktrace</mat-card-title>
-    </mat-card-header>
-    <form class="example-form">
-      <mat-card-content>
-        <mat-form-field class="example-full-width">
-          <input matInput type="text" [(ngModel)]="title" name="title" placeholder="Title">
-        </mat-form-field>
-
-        <mat-form-field class="example-full-width">
-          <input matInput type="text" [(ngModel)]="body" name="body" placeholder="Write your description here.">
-        </mat-form-field>
-
-        <mat-form-field class="example-full-width">
-          <input matInput type="text" [(ngModel)]="technology" name="technology" placeholder="Enter technology category">
-        </mat-form-field>
-      </mat-card-content>
-      <button mat-raised-button color="primary" class="btn-block" (click)="onCreate()">Submit</button>
+<div class="card" fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center center">
+  <div class="card-body">
+    <h3 class="card-title">Create New Stacktrace</h3>
+    <form>
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" [(ngModel)]="title" id="title" placeholder="Enter your title here.">
+      </div>
+      <div class="form-group">
+        <label for="body">Body</label>
+        <input type="text" class="form-control" [(ngModel)]="body" id="body" placeholder="Enter a description of your problem here.">
+      </div>
+      <div class="form-group">
+        <label for="selectTechnology">Select Technology</label>
+        <select class="form-control" [(ngModel)]="technology" id="selectTechnology">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary" (click)="onCreate()">Submit</button>
     </form>
-  </mat-card>
+  </div>
 </div>
