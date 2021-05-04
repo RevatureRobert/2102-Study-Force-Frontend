@@ -1,0 +1,12 @@
+<p>flip-flashcard works!</p>
+<div class="view-flashcard">
+  <button (click)="onClickMe()">flip</button>
+  <div [hidden]="isShowDiv" class="question">
+    <p>flashcard question</p>
+    <app-flashcard-question [flashcard]="flashcard"></app-flashcard-question>
+  </div>
+  <div [hidden]="!isShowDiv" class="answer">
+    <p>flashcard answer</p>
+    <app-flashcard-answer [flashcard]="flashcard"></app-flashcard-answer>
+  </div>
+</div>
