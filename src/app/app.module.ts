@@ -9,6 +9,7 @@ import { GlassPaneComponent } from './global-components/glass-pane/glass-pane.co
 import { GenericCardWideComponent } from './global-components/generic-card-wide/generic-card-wide.component';
 import { GenericCardComponent } from './global-components/generic-card/generic-card.component';
 import { SearchBarComponent } from './global-components/search-bar/search-bar.component';
+import { UserModule } from './user/user.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { SearchBarComponent } from './global-components/search-bar/search-bar.co
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    UserModule
   ],
   providers: [],
   bootstrap: [AppComponent]
