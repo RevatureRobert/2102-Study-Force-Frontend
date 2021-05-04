@@ -4,16 +4,21 @@ import { FlashcardComponent } from './flashcard.component';
 import { FlashcardPageComponent } from './components/pages/flashcard-page/flashcard-page.component';
 import { FlashcardQuestionComponent } from './components/ui/flashcard-question/flashcard-question.component';
 import { FlashcardAnswerComponent } from './components/ui/flashcard-answer/flashcard-answer.component';
+import { CreateFlashcardPageComponent } from './components/pages/create-flashcard-page/create-flashcard-page.component'
+import { FormsModule } from '@angular/forms';
+
 
 
 
 @NgModule({
-  declarations: [FlashcardComponent, FlashcardPageComponent, FlashcardQuestionComponent, FlashcardAnswerComponent],
+  declarations: [FlashcardComponent, FlashcardPageComponent, FlashcardQuestionComponent, FlashcardAnswerComponent, CreateFlashcardPageComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   exports: [
-    FlashcardPageComponent
+    FlashcardPageComponent,
+    CreateFlashcardPageComponent
   ]
 })
 export class FlashcardModule { }

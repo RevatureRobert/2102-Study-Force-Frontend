@@ -1,0 +1,68 @@
+<form
+class="flashcard"
+name="flashcard"
+(ngSubmit) = "f.form.valid && onSubmit()"
+#f = "ngForm">
+
+
+    <div class="form-group">
+        <input class="text-1 roboto-light-gray-36px"
+          name="question"
+          [(ngModel)]="form.question"
+          #question="ngModel"
+          placeholder="Question"
+          type="text"
+          required />
+    </div>
+
+    <div class="form-group">
+      <select class="text-1 roboto-light-gray-36px"
+        name="topic"
+        [(ngModel)]="form.topic"
+        #topic="ngModel"
+        placeholder="Select topic"
+        type="text"
+        required>
+        <option selected="selected">None</option>
+        <option *ngFor="let topic of topics" [ngValue]=topic>{{topic.topicName}}</option>
+      </select>
+  </div>
+
+  <div class="form-group">
+    <select class="text-1 roboto-light-gray-36px"
+      name="difficulty"
+      [(ngModel)]="form.questionDifficultyTotal"
+      #questionDifficultyTotal="ngModel"
+      placeholder="Select difficulty"
+      type="text"
+      required>
+      <option value="easy" selected="selected">Easy</option>
+      <option value="medium">Medium</option>
+      <option value="hard">Hard</option>
+    </select>
+</div>
+
+<div class="form-group">
+  <input class="text-1 roboto-light-gray-36px"
+    id="anonymous"
+    name="anonymous"
+    [(ngModel)]="form.anonymous"
+    #anonymous="ngModel"
+    placeholder=""
+    type="checkbox" />
+  <label class="form-check-label" for="anonymous">Submit flashcard anonymously</label>
+</div>
+
+
+<div class="submit-button">
+  <button class="text-6 valign-text-middle roboto-normal-evening-sea-36px">
+    Submit
+  </button>
+</div>
+</form>
+
+
+
+
+
+

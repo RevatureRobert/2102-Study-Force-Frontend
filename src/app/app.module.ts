@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FlashcardModule } from './flashcard/flashcard.module';
 import { HttpClientModule  } from '@angular/common/http'
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -16,7 +18,8 @@ import { HttpClientModule  } from '@angular/common/http'
     AppRoutingModule,
     NgbModule,
     FlashcardModule,
-    HttpClientModule 
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
