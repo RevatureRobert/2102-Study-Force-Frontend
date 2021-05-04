@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { StacktraceModule } from './stacktrace/stacktrace.module';
 
 @NgModule({
   declarations: [
@@ -13,8 +12,7 @@ import { StacktraceModule } from './stacktrace/stacktrace.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule,
-    StacktraceModule
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
