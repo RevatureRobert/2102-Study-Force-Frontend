@@ -1,15 +1,37 @@
-.dayCard {
+.batchCard {
   position: absolute;
-  left: 0%;
-  right: 0%;
-  top: 0%;
-  bottom: 0%;
-
-  background: #FFFFFF;
-  opacity: 0.5;
-  border: 1px solid #E5E5E5;
-  box-sizing: border-box;
-  border-radius: 30px;
+  width: 405px;
+  height: 49px;
+  left: 757px;
+  top: 211px;
+  z-index: 2;
 }
 
+.dateCard{
+  position: absolute;
+  width: 148px;
+  height: 49px;
+  left: 374px;
+  top: 213px;
+  z-index: 2;
+}
 
+.instructors{
+  position: absolute;
+  left: 40.83%;
+  right: 40.81%;
+  top: 26.11%;
+  bottom: 55.46%;
+
+  opacity: 0.95;
+}
+
+.users{
+  position: absolute;
+  left: 33.54%;
+  right: 33.54%;
+  top: 48.43%;
+  bottom: 21.2%;
+
+  opacity: 0.95;
+}
