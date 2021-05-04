@@ -20,16 +20,16 @@ export class ViewClickedStacktraceComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
-    this.stacktraceService.getStacktrace(1)
-    .subscribe(
-      data =>
-      {
-        this.stacktrace = data;
-      }
-    )
+    // this.stacktraceService.getStacktrace(1)
+    // .subscribe(
+    //   data =>
+    //   {
+    //     this.stacktrace = data;
+    //   }
+    // )
   }
 
-  //  TODO: unsubscribe to getStacktrace() observable
+  //  TODO: unsubscribe
   ngOnDestroy(): void {
 
   }
