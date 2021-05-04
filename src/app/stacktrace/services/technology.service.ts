@@ -15,7 +15,7 @@ export class TechnologyService {
 
   constructor(private http: HttpClient) { }
 
-  private apiServerUrl = "placeholderUrl".concat("/stacktrace/technology"); //BASE_API_URL;
+  private apiServerUrl = "http://localhost:8080".concat("/stacktrace/technology"); //BASE_API_URL;
 
   getAllTechnology(): Promise<Technology[]> {
     return this.http.get<Technology[]>(this.apiServerUrl, { headers: this.httpHeaders }).toPromise();

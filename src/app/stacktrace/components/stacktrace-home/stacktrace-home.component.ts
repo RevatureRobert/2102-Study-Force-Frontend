@@ -26,17 +26,17 @@ export class StacktraceHomeComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.allStacktraces = MOCK_STACKTRACES;
-    this.filteredStacktraces = MOCK_STACKTRACES;
-    //this.getStacktrace();
-    //this.getTechnology();
+    // this.allStacktraces = MOCK_STACKTRACES;
+    // this.filteredStacktraces = MOCK_STACKTRACES;
+    this.getStacktrace();
+    this.getTechnology();
   }
 
   filterStacktraces(technology?: Technology, searchParameter?: string): void {
     if(technology) {
       this.currentTechnologyName = technology.technologyName;
       this.filteredStacktraces = this.allStacktraces.filter((stacktrace: Stacktrace) => {
-        return stacktrace.technology.technologyId = technology.technologyId;
+        return stacktrace.technologyId.technologyId = technology.technologyId;
       })
     } else {
       this.currentTechnologyName = "All";

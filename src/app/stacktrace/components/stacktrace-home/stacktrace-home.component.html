@@ -7,7 +7,7 @@
           <button ngbDropdownItem (click)="filterStacktraces()">All</button>
         </div>
         <div *ngFor="let technology of technologies">
-          <button ngbDropdownItem (click)="filterStacktraces(technology)">{{technology.technologyName}}</button>
+          <button ngbDropdownItem (click)="filterStacktraces(technologyId)">{{technology.technologyName}}</button>
         </div>
       </div>
     </div>
@@ -28,7 +28,7 @@
             {{stacktrace.title}}
           </td>
           <td>
-            {{stacktrace.technology.technologyName}}
+            {{stacktrace.technologyId.technologyName}}
           </td>
         </tr>
       </tbody>

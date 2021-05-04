@@ -13,7 +13,7 @@ export class StacktraceService {
     //"Authorization": 'Bearer '.concat(localStorage.getItem('swagjwt'))
   });
 
-  private apiServerUrl = "placeholderUrl"; //BASE_API_URL;
+  private apiServerUrl = "http://localhost:8080"; //BASE_API_URL;
 
   constructor(private http: HttpClient) { }
 
@@ -27,7 +27,7 @@ export class StacktraceService {
   }
 
   getAllStacktrace(): Promise<Stacktrace[]> {
-    return this.http.get<Stacktrace[]>(this.apiServerUrl.concat(`/stacktrace}`), { headers: this.httpHeaders }).toPromise();
+    return this.http.get<Stacktrace[]>(this.apiServerUrl.concat(`/stacktrace`), { headers: this.httpHeaders }).toPromise();
   }
 
   getPageStacktrace(pageSize:number, pageNumber:number): Promise<Stacktrace[]> {

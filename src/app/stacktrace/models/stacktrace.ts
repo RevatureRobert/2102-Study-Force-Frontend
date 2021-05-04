@@ -5,6 +5,6 @@ export interface Stacktrace {
   // creator: User;
   title: string;
   body: string;
-  technology: Technology;
+  technologyId: Technology;
   creationTime?: string;
 }
