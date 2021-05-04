@@ -18,7 +18,8 @@ import { StacktraceService } from './services/stacktrace.service'
     BrowserModule,
     HttpClientModule,
     CommonModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule
   ],
   exports:[
     StacktraceHomeComponent,
