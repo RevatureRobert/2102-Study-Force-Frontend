@@ -23,6 +23,11 @@ export class NotificationService {
     );
   }
 
+  // tslint:disable-next-line:typedef
+  deleteByNotificationId(id: number) {
+    return this.httpClient.delete(`${(this.baseUrl)}/${id}`);
+  }
+
 }
 
 interface GetResponseNotifications {
