@@ -7,6 +7,9 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { FlashcardModule } from './flashcard/flashcard.module';
+
+import { FormsModule } from '@angular/forms';
+
 import { StacktraceModule } from './stacktrace/stacktrace.module';
 
 
@@ -20,6 +23,7 @@ import { StacktraceModule } from './stacktrace/stacktrace.module';
     NgbModule,
     HttpClientModule,
     FlashcardModule,
+    FormsModule,
     StacktraceModule
   ],
   providers: [],
