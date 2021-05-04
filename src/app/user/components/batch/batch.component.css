@@ -1,0 +1,15 @@
+.dayCard {
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+
+  background: #FFFFFF;
+  opacity: 0.5;
+  border: 1px solid #E5E5E5;
+  box-sizing: border-box;
+  border-radius: 30px;
+}
+
+
