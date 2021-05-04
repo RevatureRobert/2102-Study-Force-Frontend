@@ -16,4 +16,4 @@ export const environment = {
 // import 'zone.js/dist/zone-error';  // Included with Angular CLI.
 
 //Base URL for Hosted UI for login and signup
-export const BASE_URL_LOGIN_REGISTRATION:string = 'https://studyforce.auth.us-east-1.amazoncognito.com/login?client_id=1v2vmtuo6oiaace3vckil4cfqf&response_type=token&scope=aws.cognito.signin.user.admin+email+openid&redirect_uri=http://localhost:4200/login/oauth2/code/cognito';
+export const BASE_URL_LOGIN_REGISTRATION:string = 'https://studyforce.auth.us-east-1.amazoncognito.com/login?client_id=1v2vmtuo6oiaace3vckil4cfqf&response_type=token&scope=aws.cognito.signin.user.admin&redirect_uri=http://localhost:4200/oauth2/';

@@ -10,6 +10,8 @@ import { GenericCardWideComponent } from './global-components/generic-card-wide/
 import { GenericCardComponent } from './global-components/generic-card/generic-card.component';
 import { SearchBarComponent } from './global-components/search-bar/search-bar.component';
 import { UserModule } from './user/user.module';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { UserModule } from './user/user.module';
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    UserModule
+    UserModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
