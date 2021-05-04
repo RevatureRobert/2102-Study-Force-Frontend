@@ -12,4 +12,9 @@ export class FlashcardComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  flip = false;
+
+  toggleView() {
+    this.flip = !this.flip;
+  }
 }
