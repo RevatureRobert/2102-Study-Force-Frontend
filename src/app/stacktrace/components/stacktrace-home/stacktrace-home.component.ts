@@ -4,6 +4,7 @@ import { Stacktrace } from '../../models/stacktrace';
 import { TechnologyService } from '../../services/technology.service';
 import { Technology } from '../../models/technology';
 import { Router } from '@angular/router';
+import { MOCK_STACKTRACES } from '../../models/mock-stacktrace';
 
 @Component({
   selector: 'app-stacktrace-home',
@@ -15,7 +16,7 @@ export class StacktraceHomeComponent implements OnInit {
   filteredStacktraces: Stacktrace[] = [];
   technologies: Technology[] = [];
   currentTechnologyName: string = "All";
-  pageSize: number = 10;
+  pageSize: number = 6;
   page: number = 1;
 
   constructor(
@@ -25,8 +26,10 @@ export class StacktraceHomeComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.getStacktrace();
-    this.getTechnology();
+    this.allStacktraces = MOCK_STACKTRACES;
+    this.filteredStacktraces = MOCK_STACKTRACES;
+    //this.getStacktrace();
+    //this.getTechnology();
   }
 
   filterStacktraces(technology?: Technology, searchParameter?: string): void {
