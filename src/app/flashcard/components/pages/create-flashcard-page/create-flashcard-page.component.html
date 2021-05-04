@@ -6,7 +6,7 @@ name="flashcard"
 
 
     <div class="form-group">
-        <input class="text-1 roboto-light-gray-36px"
+        <input
           name="question"
           [(ngModel)]="form.question"
           #question="ngModel"
@@ -16,23 +16,23 @@ name="flashcard"
     </div>
 
     <div class="form-group">
-      <select class="text-1 roboto-light-gray-36px"
+      <select
         name="topic"
-        [(ngModel)]="form.topic"
+        [(ngModel)]="form.topicId"
         #topic="ngModel"
         placeholder="Select topic"
         type="text"
         required>
         <option selected="selected">None</option>
-        <option *ngFor="let topic of topics" [ngValue]=topic>{{topic.topicName}}</option>
+        <option *ngFor="let topic of topics" value={{topic.id}}>{{topic.topicName}}</option>
       </select>
   </div>
 
   <div class="form-group">
-    <select class="text-1 roboto-light-gray-36px"
+    <select
       name="difficulty"
-      [(ngModel)]="form.questionDifficultyTotal"
-      #questionDifficultyTotal="ngModel"
+      [(ngModel)]="form.difficulty"
+      #difficulty="ngModel"
       placeholder="Select difficulty"
       type="text"
       required>
@@ -42,20 +42,8 @@ name="flashcard"
     </select>
 </div>
 
-<div class="form-group">
-  <input class="text-1 roboto-light-gray-36px"
-    id="anonymous"
-    name="anonymous"
-    [(ngModel)]="form.anonymous"
-    #anonymous="ngModel"
-    placeholder=""
-    type="checkbox" />
-  <label class="form-check-label" for="anonymous">Submit flashcard anonymously</label>
-</div>
-
-
-<div class="submit-button">
-  <button class="text-6 valign-text-middle roboto-normal-evening-sea-36px">
+<div>
+  <button>
     Submit
   </button>
 </div>

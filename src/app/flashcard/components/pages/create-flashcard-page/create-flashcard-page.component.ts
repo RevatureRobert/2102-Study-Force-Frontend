@@ -16,10 +16,10 @@ export class CreateFlashcardPageComponent implements OnInit {
   anonymous: boolean = false;
 
   form: any = {
-    creator: null,
-    topic: {},
+    userId: null,
+    topicId: {},
     question: null,
-    questionDifficultyTotal: null
+    difficulty: null
   }
 
   constructor(private flashcardService: FlashcardService, private topicService: TopicService) {
@@ -33,23 +33,22 @@ export class CreateFlashcardPageComponent implements OnInit {
 
   onSubmit(): void {
 
-    if (this.anonymous) {
-      this.form.creator = null;
-    } else {
-      // this.form.creator =
-    }
+    // TODO: set creator to current user
+    this.form.userId = 1;
 
-    switch(this.form.questionDifficultyTotal) {
+    switch(this.form.difficulty) {
       case "easy":
-        this.form.questionDifficultyTotal = 1;
+        this.form.difficulty = 1;
         break;
       case "medium":
-        this.form.questionDifficultyTotal = 2;
+        this.form.difficulty = 2;
         break;
       case "hard":
-        this.form.questionDifficultyTotal = 3;
+        this.form.difficulty = 3;
         break;
     }
+
+    console.log(this.form);
 
     this.subscription = this.flashcardService.create(this.form).subscribe(
       data => {
@@ -62,3 +61,10 @@ export class CreateFlashcardPageComponent implements OnInit {
     this.subscription.unsubscribe();
   }
 }
+
+
+
+
+
+
+

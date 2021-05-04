@@ -14,7 +14,7 @@ export class FlashcardService {
 
 
   getAll(): Observable<Flashcard[]> {
-    return this.http.get<Flashcard[]>(`${baseUrl}/all`);
+    return this.http.get<Flashcard[]>(baseUrl);
   }
 
   getAllByDifficulty(difficulty: number): Observable<Flashcard[]> {
@@ -30,7 +30,7 @@ export class FlashcardService {
   }
 
   get(id: any): Observable<Flashcard> {
-    return this.http.get<Flashcard>(`${baseUrl}/id/${id}`);
+    return this.http.get<Flashcard>(`${baseUrl}/${id}`);
   }
 
   create(data: any): Observable<any> {
