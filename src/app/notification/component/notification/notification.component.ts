@@ -28,4 +28,13 @@ export class NotificationComponent implements OnInit {
       }
     );
   }
+
+  // tslint:disable-next-line:typedef
+  deleteNotification(notification: Notification) {
+    this.notificationService.deleteByNotificationId(notification.notificationId).subscribe(
+      response => {
+        console.log(response);
+      }
+    );
+  }
 }
