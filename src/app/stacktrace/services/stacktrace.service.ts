@@ -28,7 +28,7 @@ export class StacktraceService {
   }
 
   getAllStacktrace(): Promise<Stacktrace[]> {
-    return this.http.get<Stacktrace[]>(this.apiServerUrl.concat(`/stacktrace}`), { headers: this.httpHeaders }).toPromise();
+    return this.http.get<Stacktrace[]>(this.apiServerUrl.concat(`/stacktrace`), { headers: this.httpHeaders }).toPromise();
   }
 
   getPageStacktrace(pageSize:number, pageNumber:number): Promise<Stacktrace[]> {
