@@ -15,8 +15,8 @@ export class FlashcardService {
   constructor(private http: HttpClient) { }
 
 
-  getAll(): Promise<any> {
-    return this.http.get(`${this.apiServerUrl}/flashcards/all`).toPromise();
+  getAll(): Observable<Flashcard[]> {
+    return this.http.get<Flashcard[]>(`${this.apiServerUrl}/flashcards`);
   }
 
   getAllByDifficulty(difficulty: number): Observable<Flashcard[]> {
