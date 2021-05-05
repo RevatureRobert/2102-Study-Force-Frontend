@@ -1,4 +1,4 @@
-export interface User{
+export interface StacktraceUser{
   userId: number;
   firstName: string;
   lastName: string;
