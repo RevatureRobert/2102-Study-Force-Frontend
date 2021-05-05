@@ -20,7 +20,7 @@ export class VoteComponent implements OnInit {
 
   upVote() {
     this.upVoteSource = "../../../assets/selectedupvote.svg"
-    this.scoreColor = "color: var(--peachy-feeling)"
+    this.scoreColor = "color: var(--red-orange-juice)"
   }
 
   downVote() {
