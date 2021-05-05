@@ -14,33 +14,30 @@ export class StacktraceService {
     //"Authorization": 'Bearer '.concat(localStorage.getItem('swagjwt'))
   });
 
-  private apiServerUrl = "http://localhost:8080"; //BASE_API_URL;
+  apiServerUrl = "http://localhost:8080"; //BASE_API_URL;
 
   constructor(private http: HttpClient) { }
 
   addStacktrace(stacktrace: Stacktrace): void {
-        let r = this.http.post(`${this.apiServerUrl}/stacktrace/create`, stacktrace, { headers: this.httpHeaders });
+        let r = this.http.post(`${this.apiServerUrl}/stacktrace`, stacktrace, { headers: this.httpHeaders });
         r.subscribe();
   }
 
   getStacktrace(id:number): Observable<Stacktrace> {
-    return this.http.get<Stacktrace>(this.apiServerUrl.concat(`/stacktrace/${id}`), { headers: this.httpHeaders });
+    return this.http.get<Stacktrace>(`${this.apiServerUrl}/stacktrace/${id}`, { headers: this.httpHeaders });
   }
 
   getAllStacktrace(): Promise<Stacktrace[]> {
-    return this.http.get<Stacktrace[]>(this.apiServerUrl.concat(`/stacktrace`), { headers: this.httpHeaders }).toPromise();
+    return this.http.get<Stacktrace[]>(`${this.apiServerUrl}/stacktrace`, { headers: this.httpHeaders }).toPromise();
   }
 
-  getPageStacktrace(pageSize:number, pageNumber:number): Promise<Stacktrace[]> {
-    return this.http.get<Stacktrace[]>(this.apiServerUrl.concat(`/stacktrace/page?offset=${pageSize}&page=${pageNumber}`), { headers: this.httpHeaders }).toPromise();
-  }
-
+  //Backend PUT mapping isn't created yet
   editStacktrace(stacktrace: Stacktrace): void {
-    let r = this.http.put(`${this.apiServerUrl}/stacktrace/update`, stacktrace, { headers: this.httpHeaders });
+    let r = this.http.put(`${this.apiServerUrl}/stacktrace`, stacktrace, { headers: this.httpHeaders });
     r.subscribe();
   }
 
   deleteStacktrace(id:number):Observable<Stacktrace> {
-    return this.http.delete<Stacktrace>(this.apiServerUrl.concat(`/stacktrace/${id}`), { headers: this.httpHeaders });
+    return this.http.delete<Stacktrace>(`${this.apiServerUrl}/stacktrace/${id}`, { headers: this.httpHeaders });
   }
 }
