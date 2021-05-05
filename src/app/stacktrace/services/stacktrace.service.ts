@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-//import { BASE_API_URL} from 'src/environments/environment';
+import { environment } from 'src/environments/environment';
 import { Stacktrace } from '../models/stacktrace';
 
 @Injectable({
@@ -14,7 +14,7 @@ export class StacktraceService {
     //"Authorization": 'Bearer '.concat(localStorage.getItem('swagjwt'))
   });
 
-  apiServerUrl = "http://localhost:8080"; //BASE_API_URL;
+  apiServerUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
 

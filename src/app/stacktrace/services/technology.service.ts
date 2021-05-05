@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-//import { BASE_API_URL} from 'src/environments/environment';
+import { environment } from 'src/environments/environment';
 import { Technology } from '../models/technology';
 
 @Injectable({
@@ -15,7 +15,7 @@ export class TechnologyService {
 
   constructor(private http: HttpClient) { }
 
-  private apiServerUrl = "placeholderUrl".concat("/stacktrace/technology"); //BASE_API_URL;
+  private apiServerUrl = environment.apiUrl.concat("/stacktrace/technology");
 
   getAllTechnology(): Promise<Technology[]> {
     return this.http.get<Technology[]>(this.apiServerUrl, { headers: this.httpHeaders }).toPromise();
