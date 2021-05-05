@@ -15,7 +15,7 @@ h3 {
   top: 0;
   transform: translateY(-60%);
 
-font-family: Roboto;
+font-family: Roboto, Arial, Helvetica, sans-serif;
 font-style: normal;
 font-weight: 500;
 font-size: 30px;
@@ -30,7 +30,7 @@ border-radius: 10px;
 color: white;
 text-align: center;
 letter-spacing: 1px;
-font-family: Roboto;
+font-family: Roboto, Arial, Helvetica, sans-serif;
 font-style: normal;
 font-weight: 300;
 font-size: 20px;
@@ -51,7 +51,7 @@ position: absolute;
 backdrop-filter: blur(100px);
 /* Note: backdrop-filter has minimal browser support */
 border-radius: 10px;
-font-family: Roboto;
+font-family: Roboto, Arial, Helvetica, sans-serif;
 font-style: normal;
 font-weight: 300;
 font-size: 20px;
