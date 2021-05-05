@@ -19,7 +19,7 @@ export class CreateFlashcardComponent implements OnInit {
     questionDifficultyAverage: null,
     createdTime: null,
     resolutionTime: null
-  }
+  };
 
   constructor(private flascardService: FlashcardService) {
     this.subscription = this.flascardService.create(this.form).subscribe();
@@ -35,7 +35,7 @@ export class CreateFlashcardComponent implements OnInit {
       data => {
         console.log(data);
       }
-    )
+    );
   }
 
   onDestroy(): void {

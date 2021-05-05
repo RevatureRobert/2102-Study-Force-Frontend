@@ -1,5 +1,5 @@
-<div class="view-flashcard">
-  <app-flashcard></app-flashcard>
-</div>
+<h2>flashcard page</h2>
 
-<!-- <app-flip-flashcard></app-flip-flashcard> -->
+<div class="view-flashcard" *ngFor="let flashcard of flashcards">
+    <div>{{flashcard.question}}</div>
+</div>

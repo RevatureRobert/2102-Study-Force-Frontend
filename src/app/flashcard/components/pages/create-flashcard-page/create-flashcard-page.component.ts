@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Observable, of, Subscriber, Subscription } from 'rxjs';
 import { Topic } from 'src/app/flashcard/model/topic';
 import { TopicService } from 'src/app/flashcard/service/topic.service';
-import { FlashcardService } from '../../../service/flashcard.service'
+import { FlashcardService } from '../../../service/flashcard.service';
 
 @Component({
   selector: 'app-create-flashcard-page',
@@ -13,14 +13,14 @@ export class CreateFlashcardPageComponent implements OnInit {
 
   topics: Topic[] = [];
   subscription: Subscription;
-  anonymous: boolean = false;
+  anonymous = false;
 
   form: any = {
     userId: null,
     topicId: {},
     question: null,
     difficulty: null
-  }
+  };
 
   constructor(private flashcardService: FlashcardService, private topicService: TopicService) {
     this.subscription = new Observable<any>().subscribe();
@@ -36,14 +36,14 @@ export class CreateFlashcardPageComponent implements OnInit {
     // TODO: set creator to current user
     this.form.userId = 1;
 
-    switch(this.form.difficulty) {
-      case "easy":
+    switch (this.form.difficulty) {
+      case 'easy':
         this.form.difficulty = 1;
         break;
-      case "medium":
+      case 'medium':
         this.form.difficulty = 2;
         break;
-      case "hard":
+      case 'hard':
         this.form.difficulty = 3;
         break;
     }
@@ -54,7 +54,7 @@ export class CreateFlashcardPageComponent implements OnInit {
       data => {
         console.log(data);
       }
-    )
+    );
   }
 
   onDestroy(): void {

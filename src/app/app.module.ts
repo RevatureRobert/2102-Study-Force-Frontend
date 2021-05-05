@@ -10,8 +10,7 @@ import { FlashcardModule } from './flashcard/flashcard.module';
 import { FormsModule } from '@angular/forms';
 import { StacktraceModule } from './stacktrace/stacktrace.module';
 
-
-import { FlashcardGridComponent } from './flashcard-grid/flashcard-grid.component';
+import { FlashcardGridComponent } from './flashcard/components/pages/flashcard-page/flashcard-grid/flashcard-grid.component';
 
 @NgModule({
   declarations: [

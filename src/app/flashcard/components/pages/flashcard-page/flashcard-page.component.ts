@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Flashcard } from 'src/app/flashcard/model/flashcard';
 import { FlashcardService } from '../../../service/flashcard.service';
-//import { FlipFlashcardComponent } from '../../util/flip-flashcard/flip-flashcard.component';
-
+import { FlashcardComponent } from '../../ui/flashcard/flashcard.component';
+import {HttpErrorResponse} from "@angular/common/http";
 
 
 @Component({
@@ -12,17 +12,28 @@ import { FlashcardService } from '../../../service/flashcard.service';
 })
 export class FlashcardPageComponent implements OnInit {
 
-  flashcard: Flashcard | null = null;
+  public flashcards!: Flashcard[];
 
 
-  constructor(flashcardService: FlashcardService) {
-    console.log("CONSTRUCTOR");
-
-    flashcardService.get(1).toPromise().then(res => this.flashcard = res);
+  constructor(private flashcardService: FlashcardService) {
+    console.log('CONSTRUCTOR');
+    this.getAllFlashcards();
   }
 
+  getAllFlashcards(): void {
+    this.flashcardService.getAll().then(
+      (response) => {
+        this.flashcards = response.content;
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
+
   ngOnInit(): void {
-    console.log("INIT");
+    console.log('INIT');
 
   }
 

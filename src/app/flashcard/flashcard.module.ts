@@ -1,21 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FlashcardComponent } from './flashcard.component';
+import { FlashcardComponent } from './components/ui/flashcard/flashcard.component';
 import { FlashcardPageComponent } from './components/pages/flashcard-page/flashcard-page.component';
-import { FlashcardQuestionComponent } from './components/ui/flashcard-question/flashcard-question.component';
-import { FlashcardAnswerComponent } from './components/ui/flashcard-answer/flashcard-answer.component';
+import { FlashcardQuestionComponent } from './components/ui/flashcard/flashcard-question/flashcard-question.component';
+import { FlashcardAnswerComponent } from './components/ui/flashcard/flashcard-answer/flashcard-answer.component';
 import { FlashcardRoutingModule } from './flashcard-routing.module';
-import { CreateFlashcardPageComponent } from './components/pages/create-flashcard-page/create-flashcard-page.component'
+import { CreateFlashcardPageComponent } from './components/pages/create-flashcard-page/create-flashcard-page.component';
 import { FormsModule } from '@angular/forms';
-import { FlipFlashcardComponent } from './components/util/flip-flashcard/flip-flashcard.component';
+import {FlashcardService} from './service/flashcard.service';
+import {CreateFlashcardComponent} from './components/util/flashcard-util/create-flashcard.component';
 
 
 
 
 @NgModule({
-  declarations: [FlashcardComponent, FlashcardPageComponent,
+  declarations: [FlashcardComponent, CreateFlashcardComponent,
     FlashcardQuestionComponent, FlashcardAnswerComponent,
-    CreateFlashcardPageComponent, FlipFlashcardComponent
+    CreateFlashcardPageComponent, FlashcardPageComponent
   ],
   imports: [
     CommonModule, FlashcardRoutingModule,
@@ -24,8 +25,8 @@ import { FlipFlashcardComponent } from './components/util/flip-flashcard/flip-fl
   exports: [
     FlashcardComponent,
     FlashcardPageComponent,
-    CreateFlashcardPageComponent,
-    FlipFlashcardComponent
-  ]
+    CreateFlashcardPageComponent
+  ],
+  providers: [FlashcardService]
 })
 export class FlashcardModule {  }

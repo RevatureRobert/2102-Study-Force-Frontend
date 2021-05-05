@@ -1,5 +1,5 @@
 <div (click)="toggleView()" [hidden]="flip" class="question">
-  <app-flashcard-question>question</app-flashcard-question>
+  <app-flashcard-question [question]="question" ></app-flashcard-question>
 </div>
 <div (click)="toggleView()" [hidden]="!flip">
   <app-flashcard-answer>answer</app-flashcard-answer>
