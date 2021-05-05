@@ -48,7 +48,7 @@ export class StacktraceHomeComponent implements OnInit {
     this.stacktraceService.getAllStacktrace()
       .then((data) => {
         this.allStacktraces = data;
-        // Any Stacktraces without an assigned technology will display thier technology as 'Other'
+        // Any Stacktraces without an assigned technology will display their technology as 'Other'
         this.allStacktraces.forEach((stacktrace: Stacktrace) => {
           if(!stacktrace.technology){
             stacktrace.technology = {technologyName: 'Other'};
