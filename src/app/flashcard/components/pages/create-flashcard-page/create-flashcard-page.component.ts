@@ -17,7 +17,7 @@ export class CreateFlashcardPageComponent implements OnInit {
 
   form: any = {
     userId: null,
-    topicId: {},
+    topicID: {},
     question: null,
     difficulty: null
   };

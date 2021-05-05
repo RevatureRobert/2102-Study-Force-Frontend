@@ -21,13 +21,23 @@ export class FlashcardPageComponent implements OnInit {
 
   getAllFlashcards(): void {
     this.flashcardService.getAll().subscribe(
-      (response: Flashcard[]) => {
-        this.flashcards = response;
+      (response: any) => {
+        console.log(response.entries);
+        this.flashcards = response.content;
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
       }
     );
+
+    // this.flashcardService.getAllByDifficulty(1).subscribe(
+    //   (response: any) => {
+    //     console.log(response)
+    //   },
+    //   (error: HttpErrorResponse) => {
+    //     alert(error.message);
+    //   }
+    // );
   }
 
 
