@@ -12,6 +12,7 @@
   );
   backdrop-filter: blur(100px);
   border-radius: 30px;
+  border: none;
 }
 
 #Card-Header {
