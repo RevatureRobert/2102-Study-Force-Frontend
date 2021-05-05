@@ -40,8 +40,6 @@ describe('StacktraceService', () => {
       expect(value).toEqual(dummyStacktraces);
     });
 
-
-    let apiServerUrl = "http://localhost:8080"; //BASE_API_URL;
     const req = httpMock.expectOne(`${service.apiServerUrl}/stacktrace`);
     expect(req.request.method).toBe("GET");
     req.flush(dummyStacktraces);

@@ -14,7 +14,7 @@ export class StacktraceService {
     //"Authorization": 'Bearer '.concat(localStorage.getItem('swagjwt'))
   });
 
-  private apiServerUrl = "http://localhost:8080"; //BASE_API_URL;
+  apiServerUrl = "http://localhost:8080"; //BASE_API_URL;
 
   constructor(private http: HttpClient) { }
 
