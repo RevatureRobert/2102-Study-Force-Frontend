@@ -1,0 +1,38 @@
+<div class="container">
+    <div id="glass-pane">
+        <div class="row">
+            <div class="col text-center mt-5">
+                <button class="btn btn-primary" type="button" id="Upload-CSV-Button">
+                    Upload CSV
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col text-center mt-5">
+
+
+                <form [formGroup] = "myForm">
+
+                    <div formArrayName="emails">
+                
+                        <div *ngFor="let email of emailForms.controls; let i = index" [formGroupName]="i">
+                
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="email" formControlName="email">
+                            </div>
+                
+                            <button class="btn-danger" (click)="deleteEmail()">Delete</button>
+                
+                        </div>
+                
+                        <button class="btn btn-primary" (click)="addEmail()">Add Email</button>
+                
+                
+                    </div>
+                
+                
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
