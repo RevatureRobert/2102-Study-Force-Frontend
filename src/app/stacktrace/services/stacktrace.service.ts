@@ -24,11 +24,11 @@ export class StacktraceService {
   }
 
   getStacktrace(id:number): Observable<Stacktrace> {
-    return this.http.get<Stacktrace>(`${this.apiServerUrl}/stacktrace/${id}`), { headers: this.httpHeaders });
+    return this.http.get<Stacktrace>(`${this.apiServerUrl}/stacktrace/${id}`, { headers: this.httpHeaders });
   }
 
   getAllStacktrace(): Promise<Stacktrace[]> {
-    return this.http.get<Stacktrace[]>(`${this.apiServerUrl}/stacktrace`), { headers: this.httpHeaders }).toPromise();
+    return this.http.get<Stacktrace[]>(`${this.apiServerUrl}/stacktrace`, { headers: this.httpHeaders }).toPromise();
   }
 
   //Backend PUT mapping isn't created yet
@@ -38,6 +38,6 @@ export class StacktraceService {
   }
 
   deleteStacktrace(id:number):Observable<Stacktrace> {
-    return this.http.delete<Stacktrace>(this.apiServerUrl.concat(`/stacktrace/${id}`), { headers: this.httpHeaders });
+    return this.http.delete<Stacktrace>(`${this.apiServerUrl}/stacktrace/${id}`, { headers: this.httpHeaders });
   }
 }
