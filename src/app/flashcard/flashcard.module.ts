@@ -8,13 +8,11 @@ import { FlashcardRoutingModule } from './flashcard-routing.module';
 import { CreateFlashcardPageComponent } from './components/pages/create-flashcard-page/create-flashcard-page.component';
 import { FormsModule } from '@angular/forms';
 import {FlashcardService} from './service/flashcard.service';
-import {CreateFlashcardComponent} from './components/util/flashcard-util/create-flashcard.component';
-
 
 
 
 @NgModule({
-  declarations: [FlashcardComponent, CreateFlashcardComponent,
+  declarations: [FlashcardComponent,
     FlashcardQuestionComponent, FlashcardAnswerComponent,
     CreateFlashcardPageComponent, FlashcardPageComponent
   ],
@@ -25,7 +23,8 @@ import {CreateFlashcardComponent} from './components/util/flashcard-util/create-
   exports: [
     FlashcardComponent,
     FlashcardPageComponent,
-    CreateFlashcardPageComponent
+    CreateFlashcardPageComponent,
+    FlashcardQuestionComponent
   ],
   providers: [FlashcardService]
 })
