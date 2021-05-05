@@ -1,0 +1,114 @@
+.card {
+  background: linear-gradient(111.52deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.48) 100%);
+backdrop-filter: blur(100px);
+/* Note: backdrop-filter has minimal browser support */
+border-radius: 30px;
+min-height: 350px;
+
+}
+
+.flashcard-difficulty {
+  background: linear-gradient(227.79deg, rgba(250, 255, 0, 0.8) 0%, rgba(255, 255, 255, 0.6) 100.22%);
+border-radius: 30px 0px;
+width: 50%;
+margin-top: -20px;
+margin-left: -20px;
+padding-left: 1.5em;
+padding-top: 0.5em;
+padding-bottom: 0.5em;
+
+font-family: Roboto, Arial, Helvetica, sans-serif;
+font-style: normal;
+font-weight: 300;
+font-size: 20px;
+line-height: 105%;
+}
+
+.subscription {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  height: 5em;
+}
+
+.card-text {
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+font-style: normal;
+font-weight: 300;
+font-size: 20px;
+line-height: 105%;
+margin-top: 2em;
+margin-bottom: 0.75em;
+}
+
+.rating-section {
+  width: 80%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.form-label {
+  display: block;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+font-style: normal;
+font-weight: 300;
+font-size: 12px;
+line-height: 201%;
+margin-bottom: 0%;
+}
+
+#rating-slider {
+  width: 100%;
+  padding-bottom: 0%;
+  border-radius: 30px;
+}
+
+.range-labels {
+  list-style: none;
+  margin-top: 0%;
+
+}
+
+.range-labels li {
+  position: relative;
+  text-align: center;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 10px;
+  line-height: 210%;
+  border: none;
+  padding: 0;
+  background: transparent;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+	width: 80%;
+	height: 100%;
+  line-height: 1;
+  cursor: pointer;
+	background: linear-gradient(111.52deg, #DADDE5 0%, rgba(182, 191, 214, 0.8) 100%);
+  backdrop-filter: blur(100px);
+  border-radius: 30px;
+}
+
+/*Styling for Opera/Chrome*/
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 1em;
+  width: 1em;
+  border-radius: 100%;
+  background: #ffffff;
+  cursor: pointer;
+  margin: 0; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+}
+
+/* All the same stuff for Firefox */
+input[type=range]::-moz-range-thumb {
+  height: 1em;
+  width: 1em;
+  border-radius: 100%;
+  background: #ffffff;
+  cursor: pointer;
+}
