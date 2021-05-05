@@ -12,6 +12,7 @@ import { SearchBarComponent } from './global-components/search-bar/search-bar.co
 import { DropdownComponent } from './global-components/dropdown/dropdown.component';
 import { PaginationComponent } from './global-components/pagination/pagination.component';
 import { DiologueCardComponent } from './global-components/diologue-card/diologue-card.component';
+import { HomeComponent } from './home-component/home/home.component';
 
 @NgModule({
   declarations: [
@@ -23,14 +24,11 @@ import { DiologueCardComponent } from './global-components/diologue-card/diologu
     SearchBarComponent,
     DropdownComponent,
     PaginationComponent,
-    DiologueCardComponent
+    DiologueCardComponent,
+    HomeComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    NgbModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, NgbModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
