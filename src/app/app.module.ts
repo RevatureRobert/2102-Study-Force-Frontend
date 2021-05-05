@@ -12,6 +12,7 @@ import { SearchBarComponent } from './global-components/search-bar/search-bar.co
 import { UserModule } from './user/user.module';
 import { HttpClientModule } from '@angular/common/http';
 
+import { DropdownComponent } from './global-components/dropdown/dropdown.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
     GlassPaneComponent,
     GenericCardWideComponent,
     GenericCardComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    DropdownComponent
   ],
   imports: [
     BrowserModule,
