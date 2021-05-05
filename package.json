@@ -11,7 +11,11 @@
   },
   "private": true,
   "dependencies": {
+<<<<<<< HEAD
     "-": "0.0.1",
+=======
+    "@angular-slider/ngx-slider": "^2.0.3",
+>>>>>>> ab820b2812461f067e489dd5f30826b854315b8a
     "@angular/animations": "~11.1.1",
     "@angular/common": "~11.1.1",
     "@angular/compiler": "~11.1.1",

@@ -1,0 +1,62 @@
+.card {
+  top: 2em;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.54) 100%);
+backdrop-filter: blur(100px);
+border-radius: 10px;
+min-width: 590px;
+}
+
+.card-body {
+  position: relative;
+}
+
+h3 {
+  position: absolute;
+  top: 0;
+  transform: translateY(-60%);
+
+font-family: Roboto;
+font-style: normal;
+font-weight: 500;
+font-size: 30px;
+line-height: 70%;
+}
+
+.custom-button {
+  background: linear-gradient(99.35deg, rgba(34, 51, 201, 0.63) 21.34%, rgba(48, 190, 105, 0.7) 99.96%);
+backdrop-filter: blur(50px);
+/* Note: backdrop-filter has minimal browser support */
+border-radius: 10px;
+color: white;
+text-align: center;
+letter-spacing: 1px;
+font-family: Roboto;
+font-style: normal;
+font-weight: 300;
+font-size: 20px;
+line-height: 105%;
+position: absolute;
+;
+}
+
+.wrapper {
+  position: absolute;
+  right: 9em;
+  bottom:3em;
+  transform: translateY(60%);
+}
+
+.input-styling {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.54) 100%);
+backdrop-filter: blur(100px);
+/* Note: backdrop-filter has minimal browser support */
+border-radius: 10px;
+font-family: Roboto;
+font-style: normal;
+font-weight: 300;
+font-size: 20px;
+line-height: 105%;
+letter-spacing: 1px;
+
+color: rgba(0, 0, 0, 0.5);
+}
