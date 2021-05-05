@@ -13,6 +13,7 @@ import { DropdownComponent } from './global-components/dropdown/dropdown.compone
 import { PaginationComponent } from './global-components/pagination/pagination.component';
 import { DiologueCardComponent } from './global-components/diologue-card/diologue-card.component';
 import { HomeComponent } from './home-component/home/home.component';
+import { ListComponent } from './global-components/list/list.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { HomeComponent } from './home-component/home/home.component';
     PaginationComponent,
     DiologueCardComponent,
     HomeComponent,
+    ListComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, NgbModule],
   providers: [],
