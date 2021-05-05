@@ -9,8 +9,8 @@ import { Batch } from '../models/batch';
 })
 export class BatchService {
 
-  dev:string = 'http://localhost:8080/batch';
-  byBatchId:string = 'batch'
+  dev:string = 'http://localhost:9090';
+  byBatchId:string = 'batches'
 
   constructor(
     private http:HttpClient
