@@ -10,6 +10,7 @@ import { GenericCardWideComponent } from './global-components/generic-card-wide/
 import { GenericCardComponent } from './global-components/generic-card/generic-card.component';
 import { SearchBarComponent } from './global-components/search-bar/search-bar.component';
 import { DropdownComponent } from './global-components/dropdown/dropdown.component';
+import { PaginationComponent } from './global-components/pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { DropdownComponent } from './global-components/dropdown/dropdown.compone
     GenericCardWideComponent,
     GenericCardComponent,
     SearchBarComponent,
-    DropdownComponent
+    DropdownComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,
