@@ -9,6 +9,14 @@ describe('StacktraceService', () => {
   let injector: TestBed;
   let service: StacktraceService;
   let httpMock: HttpTestingController;
+  const dummyStacktraces: Stacktrace[] = [
+    { stacktraceId: 1,
+      title: 'John',
+      body: 'Fron' },
+    { stacktraceId: 2,
+      title: 'Doe',
+      body: 'Joe'}
+  ];
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -29,18 +37,22 @@ describe('StacktraceService', () => {
   });
 
   it('getAllStacktrace should return value from a promise', () => {
-    const dummyStacktraces: Stacktrace[] = [
-      { title: 'John',
-        body: 'Fron' },
-      { title: 'Doe',
-        body: 'Joe'}
-    ];
-
     service.getAllStacktrace().then(value => {
+      expect(value.length).toBe(2);
       expect(value).toEqual(dummyStacktraces);
     });
 
     const req = httpMock.expectOne(`${service.apiServerUrl}/stacktrace`);
+    expect(req.request.method).toBe("GET");
+    req.flush(dummyStacktraces);
+  });
+
+  it('getStacktrace(1) should return stacktrace with stacktraceId == 1 from a promise', () => {
+    service.getStacktrace(1).subscribe(stacktrace => {
+      expect(stacktrace).toEqual(dummyStacktraces[0]);
+    });
+
+    const req = httpMock.expectOne(`${service.apiServerUrl}/stacktrace/1`);
     expect(req.request.method).toBe("GET");
     req.flush(dummyStacktraces);
   });
