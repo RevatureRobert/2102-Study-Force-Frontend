@@ -8,6 +8,19 @@
   border-radius: 30px;
 }
 
+#View-More-Button {
+  color: #153c53;
+  position: relative;
+  background: linear-gradient(
+    99.35deg,
+    rgba(255, 255, 255, 0.7) 0%,
+    rgba(255, 255, 255, 0.35) 99.96%
+  );
+  border: none;
+  backdrop-filter: blur(50px);
+  border-radius: 10px;
+}
+
 #Submit-Button {
   opacity: 0.75;
   position: relative;

@@ -11,6 +11,7 @@ import { GenericCardComponent } from './global-components/generic-card/generic-c
 import { SearchBarComponent } from './global-components/search-bar/search-bar.component';
 import { DropdownComponent } from './global-components/dropdown/dropdown.component';
 import { PaginationComponent } from './global-components/pagination/pagination.component';
+import { DiologueCardComponent } from './global-components/diologue-card/diologue-card.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { PaginationComponent } from './global-components/pagination/pagination.c
     GenericCardComponent,
     SearchBarComponent,
     DropdownComponent,
-    PaginationComponent
+    PaginationComponent,
+    DiologueCardComponent
   ],
   imports: [
     BrowserModule,
