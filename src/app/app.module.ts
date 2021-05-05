@@ -22,7 +22,7 @@ import { SubmitContentCardComponent } from './global-components/submit-content-c
     ReplyCardComponent,
     VoteComponent,
     SubmitContentCardComponent
-  ],
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -26,8 +26,9 @@ line-height: 105%;
 
 .subscription {
   position: absolute;
-  top: 15 px;
+  top: 10px;
   right: 20px;
+  height: 5em;
 }
 
 .card-text {
