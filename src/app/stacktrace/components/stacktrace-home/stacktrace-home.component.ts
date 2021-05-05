@@ -33,7 +33,10 @@ export class StacktraceHomeComponent implements OnInit {
     if(technology) {
       this.currentTechnologyName = technology.technologyName;
       this.filteredStacktraces = this.allStacktraces.filter((stacktrace: Stacktrace) => {
-        return stacktrace.technology.technologyId = technology.technologyId;
+        if(stacktrace.technology)
+          return stacktrace.technology.technologyId == technology.technologyId;
+        else
+          return false;
       })
     } else {
       this.currentTechnologyName = "All";
