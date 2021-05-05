@@ -2,6 +2,7 @@ import { TestBed, getTestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 import { StacktraceService } from './stacktrace.service';
+import { Stacktrace } from '../models/stacktrace';
 
 describe('StacktraceService', () => {
   let injector: TestBed;
@@ -27,6 +28,13 @@ describe('StacktraceService', () => {
   });
 
   it('getAllStacktrace should return value from a promise',
+    const dummyStacktraces: Stacktrace[] = [
+      { title: 'John',
+        body: 'Fron' },
+      { title: 'Doe',
+         }
+    ];
+
     (done: DoneFn) => {
     service.getAllStacktrace().then(value => {
       expect(value).toBe('promise value');
