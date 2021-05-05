@@ -20,7 +20,14 @@ export class FlashcardPageComponent implements OnInit {
   }
 
   getAllFlashcards(): void {
-    this.flashcardService.getAll().subscribe();
+    this.flashcardService.getAll().subscribe(
+      (response: Flashcard[]) => {
+        this.flashcards = response;
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
   }
 
 

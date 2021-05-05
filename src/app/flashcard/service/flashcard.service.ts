@@ -10,9 +10,18 @@ import { environment } from 'src/environments/environment';
 })
 export class FlashcardService {
 
+  private headerInfo = {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+    //'Access-Control-Allow-Headers': 'Content-Type',
+    //'Authorization': 'Bearer '.concat(JWT.currentJWT)
+  };
+
   private apiServerUrl = environment.apiUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
+
 
 
   getAll(): Observable<Flashcard[]> {
