@@ -10,6 +10,8 @@ import { FormsModule } from '@angular/forms';
 import { FlashcardService } from './service/flashcard.service';
 import { FlashcardGridComponent } from './components/pages/flashcard-page/flashcard-grid/flashcard-grid.component';
 import { FlashcardDeleteComponent } from './components/ui/flashcard/flashcard-delete/flashcard-delete.component';
+import { SubmitAnswerPageComponent } from './components/pages/submit-answer-page/submit-answer-page.component';
+import { ViewFlashcardThreadComponent } from './components/pages/view-flashcard-thread/view-flashcard-thread.component';
 
 
 
@@ -21,7 +23,9 @@ import { FlashcardDeleteComponent } from './components/ui/flashcard/flashcard-de
     CreateFlashcardPageComponent,
     FlashcardPageComponent,
     FlashcardGridComponent,
-    FlashcardDeleteComponent
+    FlashcardDeleteComponent,
+    SubmitAnswerPageComponent,
+    ViewFlashcardThreadComponent
   ],
   imports: [
     CommonModule,
@@ -35,7 +39,9 @@ import { FlashcardDeleteComponent } from './components/ui/flashcard/flashcard-de
     FlashcardQuestionComponent,
     FlashcardAnswerComponent,
     FlashcardGridComponent,
-    FlashcardDeleteComponent
+    FlashcardDeleteComponent,
+    SubmitAnswerPageComponent,
+    ViewFlashcardThreadComponent
   ],
   providers: [FlashcardService]
 })
