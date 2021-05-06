@@ -1,6 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Answer } from 'src/app/flashcard/model/answer';
-import { Flashcard } from 'src/app/flashcard/model/flashcard';
+import { Component, OnInit } from '@angular/core';
+import { FlashcardRoutingModule } from 'src/app/flashcard/flashcard-routing.module';
+import { Location } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
+import { AppRoutingModule } from 'src/app/app-routing.module';
 
 @Component({
   selector: 'app-flashcard-answer',
@@ -8,12 +10,26 @@ import { Flashcard } from 'src/app/flashcard/model/flashcard';
   styleUrls: ['./flashcard-answer.component.css']
 })
 export class FlashcardAnswerComponent implements OnInit {
-  @Input() flashcard!: Flashcard;
-  @Input() answer!: Answer;
 
-  constructor() { }
+  subscribed = false;
+
+  newAnswerIcon = "../../../assets/add new answer.png"
+
+  // A flashcard router will need to be passed into this component
+  constructor(
+    private router : AppRoutingModule,
+    private activatedRoute : ActivatedRoute,
+    private location : Location) { }
 
   ngOnInit(): void {
   }
 
+  goBack(): void {
+    this.location.back();
+  }
+
+  // On new answer, the router should route the user to a create an answer page.
+  newAnswer() {
+    this.router.navigate(['/flashcard/answer'],{relativeTo:this.activatedRoute})
+  }
 }

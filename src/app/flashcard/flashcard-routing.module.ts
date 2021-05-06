@@ -15,8 +15,12 @@ const routes: Routes = [
 
 @NgModule({
 
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 
 })
-export class FlashcardRoutingModule { }
+export class FlashcardRoutingModule {
+   navigate(arg0: string[], arg1: { relativeTo: import("@angular/router").ActivatedRoute; }) {
+     throw new Error('Method not implemented.');
+   }
+}

@@ -18,4 +18,8 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+  navigate(arg0: string[], arg1: { relativeTo: import("@angular/router").ActivatedRoute; }) {
+    throw new Error('Method not implemented.');
+  }
+}
