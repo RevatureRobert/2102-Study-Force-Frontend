@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Flashcard } from '../model/flashcard';
 import { FlashcardPage } from "src/app/flashcard/model/flashcardPage";
@@ -11,11 +11,6 @@ import { environment } from 'src/environments/environment';
 })
 export class FlashcardService {
 
-  private headerInfo = {
-    'Content-Type': 'application/json',
-    'Accept': 'application/json'
-  };
-
   private apiServerUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) {
@@ -26,15 +21,15 @@ export class FlashcardService {
   }
 
   getAllByDifficulty(page: number, difficulty: number): Observable<FlashcardPage> {
-    return this.http.get<FlashcardPage>(`http://localhost:8080/flashcards/difficulty?page=${page}&difficulty=${difficulty}`);
+    return this.http.get<FlashcardPage>(`http://${this.apiServerUrl}/flashcards/difficulty?page=${page}&difficulty=${difficulty}`);
   }
 
   getAllByTopic(page: number, topic: string): Observable<FlashcardPage> {
-    return this.http.get<FlashcardPage>(`http://localhost:8080/flashcards/topics?page=${page}&topicName=${topic}`);
+    return this.http.get<FlashcardPage>(`http://${this.apiServerUrl}/flashcards/topics?page=${page}&topicName=${topic}`);
   }
 
   getAllByResolved(page:number, resolved: boolean): Observable<FlashcardPage> {
-    return this.http.get<FlashcardPage>(`http://localhost:8080/flashcards/resolved?page=${page}&resolved=${resolved}`);
+    return this.http.get<FlashcardPage>(`http://${this.apiServerUrl}/flashcards/resolved?page=${page}&resolved=${resolved}`);
   }
 
   get(id: any): Observable<Flashcard> {
