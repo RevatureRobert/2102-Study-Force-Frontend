@@ -20,6 +20,7 @@ import { PaginationComponent } from './global-components/pagination/pagination.c
 import { DiologueCardComponent } from './global-components/diologue-card/diologue-card.component';
 import { HomeComponent } from './home-component/home/home.component';
 import { ListComponent } from './global-components/list/list.component';
+import { BasePageComponent } from './global-components/base-page/base-page.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { ListComponent } from './global-components/list/list.component';
     DiologueCardComponent,
     HomeComponent,
     ListComponent,
+    BasePageComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, NgbModule],
   providers: [],
