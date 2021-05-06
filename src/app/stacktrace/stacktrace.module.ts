@@ -1,12 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { StacktraceRoutingModule } from './stacktrace-routing.module';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [/**components go here*/],
   imports: [
-    CommonModule
+    CommonModule,
+    StacktraceRoutingModule
+  ],
+  exports: [
+    /* main Component goes here */
   ]
 })
 export class StacktraceModule { }
