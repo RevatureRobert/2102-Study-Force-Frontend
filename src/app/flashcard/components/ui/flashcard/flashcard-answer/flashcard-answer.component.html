@@ -5,16 +5,16 @@
       <img src={{newAnswerIcon}} alt="create new answer" height="30em" (click)="newAnswer($event)">
     </div>
 
-    <div (click)="toggleView($event)" [hidden]="flip" class="answers">
-      <p class="card-text" *ngIf=isAnswer>{{answers[0].answerText}}</p>
-      <p class="card-text" *ngIf=!isAnswer>(No answers)</p>
-      <button class="btn custom-button" (click)="toggleView($event)" >
+    <p class="card-text" *ngIf=!isAnswer>(No answers)</p>
+    <div [hidden]="flip" class="answers" *ngIf=isAnswer>
+      <p class="card-text">{{answers[0].answerText}}</p>
+      <button class="btn custom-button" (click)="toggleView($event)" *ngIf="answers.length > 0">
           View More
       </button>
     </div>
 
-    <div (click)="toggleView($event)" [hidden]="!flip" class="answers">
-      <p *ngFor="let answer of answers">{{answer.answerText}}</p>
+    <div [hidden]="!flip" class="answers">
+      <p *ngFor="let answer of answers">{{answer.answerText}}<br></p>
       <button class="btn custom-button" (click)="toggleView($event)">
         View Less
       </button>
@@ -28,14 +28,3 @@
     <!-- <app-vote class="vote-positioning"></app-vote> -->
   </div>
 </div>
-
-
-
-
-<!--
-<div class="flashcard-content" *ngIf=isAnswer>
-  <h2>{{answer.answerText}}</h2>
-</div>
-<div class="flashcard-content" *ngIf=!isAnswer>
-  <h2>(No answers)</h2>
-</div> -->
