@@ -24,7 +24,8 @@ import {FlashcardService} from './service/flashcard.service';
     FlashcardComponent,
     FlashcardPageComponent,
     CreateFlashcardPageComponent,
-    FlashcardQuestionComponent
+    FlashcardQuestionComponent,
+    FlashcardAnswerComponent
   ],
   providers: [FlashcardService]
 })

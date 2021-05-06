@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Flashcard } from 'src/app/flashcard/model/flashcard';
 import { FlashcardService } from '../../../service/flashcard.service';
-import { FlashcardComponent } from '../../ui/flashcard/flashcard.component';
 import {HttpErrorResponse} from '@angular/common/http';
 
 
@@ -30,14 +29,7 @@ export class FlashcardPageComponent implements OnInit {
       }
     );
 
-    // this.flashcardService.getAllByDifficulty(1).subscribe(
-    //   (response: any) => {
-    //     console.log(response)
-    //   },
-    //   (error: HttpErrorResponse) => {
-    //     alert(error.message);
-    //   }
-    // );
+
   }
 
 
@@ -45,6 +37,7 @@ export class FlashcardPageComponent implements OnInit {
     console.log('INIT');
 
   }
+
 
 
 }
