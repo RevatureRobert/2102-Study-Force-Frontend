@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FlashcardRoutingModule } from 'src/app/flashcard/flashcard-routing.module';
 import { Location } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { Route, ActivatedRoute } from '@angular/router';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 
 @Component({
@@ -17,7 +17,6 @@ export class FlashcardAnswerComponent implements OnInit {
 
   // A flashcard router will need to be passed into this component
   constructor(
-    private router : AppRoutingModule,
     private activatedRoute : ActivatedRoute,
     private location : Location) { }
 
@@ -26,10 +25,5 @@ export class FlashcardAnswerComponent implements OnInit {
 
   goBack(): void {
     this.location.back();
-  }
-
-  // On new answer, the router should route the user to a create an answer page.
-  newAnswer() {
-    this.router.navigate(['/flashcard/answer'],{relativeTo:this.activatedRoute})
   }
 }

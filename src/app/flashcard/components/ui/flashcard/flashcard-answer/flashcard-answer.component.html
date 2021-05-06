@@ -2,12 +2,14 @@
   <div class="card-body">
     <div class="header">Mikayla Pickett</div>
     <div class="new-answer">
-      <img src={{newAnswerIcon alt="create new answer" height="30em" (click)="newAnswer()">
+      <a routerLink='answer'>
+        <img src={{newAnswerIcon}} alt="create new answer" height="30em" >
+      </a>
     </div>
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. </p>
   </div>
   <div>
-    <button class="btn custom-button">
+    <button class="btn custom-button" routerLink=''>
       View More
     </button>
     <button class="btn custom-button" (click)="goBack()">
