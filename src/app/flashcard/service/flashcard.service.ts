@@ -17,13 +17,26 @@ export class FlashcardService {
 
   private apiServerUrl = environment.apiUrl;
 
+  public selectedFlascardForThread?: Flashcard;
+
   constructor(private http: HttpClient) {
   }
 
+  setSelectedFlashcard(flascard: Flashcard): void {
+    this.selectedFlascardForThread = flascard;
+  }
 
 
   getAll(): Observable<any> {
     return this.http.get(`http://${this.apiServerUrl}/flashcards`);
+  }
+
+  getFlashcardById(flashcardId: number): Promise<any> {
+    return this.http.get(`http://${this.apiServerUrl}/flashcards/${flashcardId}`).toPromise();
+  }
+
+  getAnswers(flashcardId: number): Observable<any> {
+    return this.http.get(`http://${this.apiServerUrl}/flashcards/answers/flashcard-id/${flashcardId}`);
   }
 
   getAllByDifficulty(difficulty: number): Observable<any> {
