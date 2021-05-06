@@ -9,11 +9,12 @@ import { CreateFlashcardPageComponent } from './components/pages/create-flashcar
 import { FormsModule } from '@angular/forms';
 import {FlashcardService} from './service/flashcard.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FlashcardTopicComponent } from './components/ui/flashcard/flashcard-topic/flashcard-topic.component';
 
 @NgModule({
   declarations: [FlashcardComponent,
     FlashcardQuestionComponent, FlashcardAnswerComponent,
-    CreateFlashcardPageComponent, FlashcardPageComponent
+    CreateFlashcardPageComponent, FlashcardPageComponent, FlashcardTopicComponent
   ],
   imports: [
     CommonModule, FlashcardRoutingModule,
