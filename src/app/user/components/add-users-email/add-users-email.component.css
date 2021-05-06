@@ -55,8 +55,8 @@ table {
 }
 
 .Add-Button {
-    opacity: 0.75;
-    position: relative;
+    position: absolute;
+    right: 0;
     width: 148px;
     background: #00d600;
     border: 1px solid #80b366;
@@ -86,4 +86,10 @@ table {
     position: relative;
     overflow: hidden;
     display: inline-block;
+}
+
+caption {
+    background: #ffffff;
+    box-shadow: 0px -1px 0px #eceeef;
+    border-radius: 0px 0px 30px 30px;
 }
