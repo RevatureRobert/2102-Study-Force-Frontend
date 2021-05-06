@@ -1,9 +1,4 @@
 .batchCard {
-  position: absolute;
-left: 0%;
-right: 0%;
-top: 0%;
-bottom: 0%;
 
 background: #FFFFFF;
 opacity: 0.5;
@@ -11,34 +6,41 @@ border: 1px solid #E5E5E5;
 box-sizing: border-box;
 border-radius: 30px;
 
-position: absolute;
-width: 148px;
-height: 49px;
-left: 374px;
-top: 213px;
+position: relative;
+width: 405px;
+height: 57px;
+left: 757px;
+top: 203px;
 }
 
 .dateCard{
-  position: absolute;
+
+  background: #FFFFFF;
+  opacity: 0.5;
+  border: 1px solid #E5E5E5;
+  box-sizing: border-box;
+  border-radius: 30px;
+
+  position: relative;
   width: 148px;
   height: 49px;
   left: 374px;
   top: 213px;
-  z-index: 2;
+
 }
 
 .instructors{
-  position: absolute;
+  position: relative;
   left: 40.83%;
   right: 40.81%;
   top: 26.11%;
   bottom: 55.46%;
-
   opacity: 0.95;
+
 }
 
 .users{
-  position: absolute;
+  position: relative;
   left: 33.54%;
   right: 33.54%;
   top: 48.43%;
@@ -68,4 +70,59 @@ top: 213px;
   backdrop-filter: blur(100px);
   border-radius: 10px;
   min-width: 590px;
+}
+
+#Generic-List {
+  position: relative;
+  top: -2px !important;
+  background: none;
+  width: 300px;
+  position: relative;
+  box-sizing: border-box;
+  border: none;
+  padding: 0px;
+  box-sizing: border-box;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+#Generic-List li:nth-child(2n-1) {
+  background: linear-gradient(
+    90.34deg,
+    rgba(255, 255, 255, 0.81) 0%,
+    rgba(255, 255, 255, 0.72) 100%
+  );
+  mix-blend-mode: normal;
+  backdrop-filter: blur(100px);
+}
+
+#Generic-List li:nth-child(2n) {
+  background: linear-gradient(
+    90.34deg,
+    rgba(255, 255, 255, 0.56) 0%,
+    rgba(255, 255, 255, 0.42) 100%
+  );
+  mix-blend-mode: normal;
+  backdrop-filter: blur(100px);
+}
+
+#Card-Header {
+  height: 35px;
+  background: #ffffff;
+  opacity: 0.9;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+
+#Card-Footer {
+  height: 35px;
+  background: #ffffff;
+  opacity: 0.9;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+#batchName{
+  position: relative;
+  right: 0;
 }

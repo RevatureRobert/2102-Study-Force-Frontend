@@ -1,22 +1,40 @@
 <div class="glass-pane">
   <div>
-    <div class="card" >
-        <div class="batchCard">{{creationTime}}</div>
+    <div >
+        <div class="dateCard">
+          <p style="text-align: center; position: relative; top: 10px">{{creationTime}}</p>
+        </div>
     </div>
-    <div>
-        <span class="batchCard">{{name}}</span>
+    <div id="batchName" >
+        <div class="batchCard">
+          <label style="position: relative; top: -12px;">Batch Name</label>
+          <p style="text-align: center; position: relative; top: -18px;">{{name}}</p>
+        </div>
     </div>
   </div>
 
-  <div>
-    <ul class="instructors" *ngFor="let instructor of instructors">
-      <li>{{instructor.name}}</li>
+
+  <div class="instructors">
+    <ul class="list-group" id="Generic-List" >
+      <div class="card-header" id="Card-Header">
+        <h6>Instructors</h6>
+      </div>
+        <li class="list-group-item" *ngFor="let instructor of instructors">
+          {{instructor.name}}
+        </li>
+      <div class="card-footer" id="Card-Footer"></div>
     </ul>
   </div>
 
   <div class="users">
-    <ul  *ngFor="let user of users">
-      <li>{{user.name}}   {{user.email}}</li>
+    <ul class="list-group" id="Generic-List" >
+      <div class="card-header" id="Card-Header">
+        <h6>Enrolled Employees</h6>
+      </div>
+        <li class="list-group-item" *ngFor="let user of users">
+          {{user.name}} {{user.email}}
+        </li>
+      <div class="card-footer" id="Card-Footer"></div>
     </ul>
   </div>
 

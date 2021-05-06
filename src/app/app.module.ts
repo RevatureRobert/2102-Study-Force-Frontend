@@ -39,7 +39,6 @@ import { HomeComponent } from './home-component/home/home.component';
     SearchBarComponent,
     DropdownComponent,
     PaginationComponent,
-<<<<<<< HEAD
     DiologueCardComponent
   ],
   imports: [
@@ -49,12 +48,6 @@ import { HomeComponent } from './home-component/home/home.component';
     UserModule,
     HttpClientModule
   ],
-=======
-    DiologueCardComponent,
-    HomeComponent,
-    ],
-  imports: [BrowserModule, AppRoutingModule, NgbModule],
->>>>>>> origin/globalStylingDev
   providers: [],
   bootstrap: [AppComponent],
 })

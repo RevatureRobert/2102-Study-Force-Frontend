@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { User } from '../../models/user';
 import { BatchService } from '../../services/batch.service';
 
@@ -13,6 +13,7 @@ export class BatchComponent implements OnInit {
   creationTime: string = '';
   name: string = '';
   loaded:boolean = false;
+  @Input() id!: string;
 
 
   constructor(
@@ -28,8 +29,8 @@ export class BatchComponent implements OnInit {
     .subscribe(batch => {
       this.instructors = batch.instructors;
       this.users = batch.users;
-      this.creationTime = batch.creationTime;
-      this.creationTime = batch.creationTime;
+      var date = new Date(batch.creationTime);
+      this.creationTime = ((date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear());
       this.name = batch.name;
       this.loaded = true;
     })
