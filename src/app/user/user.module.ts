@@ -4,7 +4,7 @@ import { LoginComponent } from './components/login/login.component';
 import { UserRoutingModule } from './user-routing.module';
 import { RedirectGuardService } from './services/redirect-guard.service';
 import { PostLoginComponent } from './components/login/post-login/post-login.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddUsersEmailComponent } from './components/add-users-email/add-users-email.component';
 
 @NgModule({
@@ -17,7 +17,8 @@ import { AddUsersEmailComponent } from './components/add-users-email/add-users-e
   imports: [
     CommonModule,
     UserRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
 
   providers: [RedirectGuardService]

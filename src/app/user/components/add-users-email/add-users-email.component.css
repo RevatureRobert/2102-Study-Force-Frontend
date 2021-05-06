@@ -21,3 +21,69 @@
     box-sizing: border-box;
     border-radius: 30px;
 }
+
+th {
+    background: white;
+}
+
+.table-striped > tbody > tr:nth-child(2n+1) {
+    background: linear-gradient(90.34deg, rgba(255, 255, 255, 0.81) 0%, rgba(255, 255, 255, 0.72) 100%);
+    mix-blend-mode: normal;
+    backdrop-filter: blur(100px);
+}
+
+
+.table-striped > tbody > tr:nth-child(2n){
+    background: linear-gradient(90.34deg, rgba(255, 255, 255, 0.56) 0%, rgba(255, 255, 255, 0.42) 100%);
+    mix-blend-mode: normal;
+    backdrop-filter: blur(100px);
+}
+
+table {
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+.Remove-Button {
+    opacity: 0.75;
+    position: relative;
+    width: 103px;
+    background: #ff0101;
+    border: 1px solid #ff0000;
+    box-sizing: border-box;
+    border-radius: 30px;
+}
+
+.Add-Button {
+    opacity: 0.75;
+    position: relative;
+    width: 148px;
+    background: #00d600;
+    border: 1px solid #80b366;
+    box-sizing: border-box;
+    border-radius: 30px;
+}
+
+#Submit-Button {
+    opacity: 0.75;
+    position: relative;
+    width: 86px;
+    background: #0275d8;
+    border: 1px solid #0275d8;
+    box-sizing: border-box;
+    border-radius: 30px;
+}
+
+.upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+
+.upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
