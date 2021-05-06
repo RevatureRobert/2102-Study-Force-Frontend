@@ -1,6 +1,11 @@
 <h2>Flashcard Page</h2>
 <br>
 
+<div class="view-flashcard" *ngFor="let flashcard of flashcards">
+    <div>
+      <app-flashcard [flashcard]=flashcard></app-flashcard>
+    </div>
+</div>
 
 
-<app-flashcard-grid></app-flashcard-grid>
+<!-- <app-flashcard-grid></app-flashcard-grid> -->

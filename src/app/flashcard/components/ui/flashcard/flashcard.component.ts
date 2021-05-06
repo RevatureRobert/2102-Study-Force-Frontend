@@ -1,7 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import {FlashcardQuestionComponent} from './flashcard-question/flashcard-question.component';
 import {FlashcardAnswerComponent} from './flashcard-answer/flashcard-answer.component';
-import { Flashcard } from 'src/app/flashcard/model/flashcard';
+import { Flashcard } from "../../../model/flashcard";
+import * as EventEmitter from 'events';
 import { Answer } from 'src/app/flashcard/model/answer';
 
 @Component({
@@ -10,12 +11,15 @@ import { Answer } from 'src/app/flashcard/model/answer';
   styleUrls: ['./flashcard.component.css']
 })
 export class FlashcardComponent implements OnInit {
-  @Input() flashcard?: Flashcard;
+  @Input() flashcard!: Flashcard;
+  @Output() click = new EventEmitter();
+  answer?: string;
+  subscribed = false;
+  bellStyle = "../../../assets/bell.svg";
 
   public deleteId?: number;
 
   public question: string = 'question body';
-  answer?: string; //placeholder answer
 
 
   public realAnswer?: Answer;
@@ -27,11 +31,26 @@ export class FlashcardComponent implements OnInit {
   ngOnInit(): void {
     if(this.flashcard){
       this.question = this.flashcard.question;
-      this.deleteId = this.flashcard.id;
+      this.deleteId = this.flashcard.flashcardId;
     }
+
   }
 
   toggleView(): void {
     this.flip = !this.flip;
+  }
+
+  subscribe(event: Event) {
+    this.subscribed = !this.subscribed
+
+    if(this.subscribed) {
+      this.bellStyle="../../../assets/bell fill.svg";
+    }
+    else {
+      this.bellStyle="../../../assets/bell.svg";
+    }
+
+    event.stopPropagation();
+
   }
 }

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Flashcard } from 'src/app/flashcard/model/flashcard';
+import { FlashcardPageable } from 'src/app/flashcard/model/flashcard-pageable';
 import { FlashcardService } from '../../../service/flashcard.service';
+import { FlashcardComponent } from '../../ui/flashcard/flashcard.component';
+import { FlashcardQuestionComponent } from '../../ui/flashcard/flashcard-question/flashcard-question.component';
 import {HttpErrorResponse} from '@angular/common/http';
 
 
@@ -15,25 +18,33 @@ export class FlashcardPageComponent implements OnInit {
   public flashcards!: Flashcard[];
 
   constructor(private flashcardService: FlashcardService) {
-    console.log('CONSTRUCTOR');
-    //this.getAllFlashcards();
+    this.getAllFlashcards();
+
   }
 
-  // getAllFlashcards(): void {
-  //   this.flashcardService.getAll().subscribe(
-  //     (response: any) => {
-  //       console.log(response.entries);
-  //       this.flashcards = response.content;
-  //     },
-  //     (error: HttpErrorResponse) => {
-  //       alert(error.message);
-  //     }
-  //   );
-  // }
+  getAllFlashcards(): void {
+    this.flashcardService.getAll().subscribe(
+      (response: FlashcardPageable) => {
+
+        this.flashcards = response.content;
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+
+    // this.flashcardService.getAllByDifficulty(1).subscribe(
+    //   (response: any) => {
+    //     console.log(response)
+    //   },
+    //   (error: HttpErrorResponse) => {
+    //     alert(error.message);
+    //   }
+    // );
+  }
 
 
   ngOnInit(): void {
-    console.log('INIT');
 
   }
 

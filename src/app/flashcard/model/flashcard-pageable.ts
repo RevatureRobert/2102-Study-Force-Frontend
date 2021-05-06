@@ -1,5 +1,5 @@
 import { Flashcard } from "./flashcard";
 
-export interface FlashcardPagable {
+export interface FlashcardPageable {
   content: Flashcard[];
 }

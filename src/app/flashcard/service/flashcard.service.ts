@@ -36,7 +36,7 @@ export class FlashcardService {
   }
 
   getAnswers(flashcardId: number): Observable<any> {
-    return this.http.get(`http://${this.apiServerUrl}/flashcards/answers/flashcard-id/${flashcardId}`);
+    return this.http.get(`http://${this.apiServerUrl}/answers/${flashcardId}`);
   }
 
   getAllByDifficulty(difficulty: number): Observable<any> {

@@ -4,7 +4,7 @@
     <div class="new-answer" >
       <img src={{newAnswerIcon}} alt="create new answer" height="30em" (click)="newAnswer()">
     </div>
-    <p class="card-text" *ngIf=isAnswer>{{answer.answerText}}</p>
+    <p class="card-text" *ngIf=isAnswer>{{answers[0].answerText}}</p>
     <p class="card-text" *ngIf=!isAnswer>(No answers)</p>
     <button class="btn custom-button">
       View More
