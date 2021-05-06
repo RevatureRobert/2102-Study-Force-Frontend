@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule  } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +22,11 @@ import { DiologueCardComponent } from './global-components/diologue-card/diologu
 import { HomeComponent } from './home-component/home/home.component';
 import { ListComponent } from './global-components/list/list.component';
 
+import { FlashcardModule } from './flashcard/flashcard.module';
+import { FormsModule } from '@angular/forms';
+import { StacktraceModule } from './stacktrace/stacktrace.module';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,8 +46,19 @@ import { ListComponent } from './global-components/list/list.component';
     DiologueCardComponent,
     HomeComponent,
     ListComponent,
+    AppComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, NgbModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    NgbModule,
+    HttpClientModule,
+    FlashcardModule,
+    FormsModule,
+    StacktraceModule,
+    BrowserModule,
+    AppRoutingModule,
+    NgbModule],
   providers: [],
   bootstrap: [AppComponent],
 })
