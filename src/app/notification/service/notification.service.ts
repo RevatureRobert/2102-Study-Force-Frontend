@@ -1,9 +1,8 @@
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Notification} from '../model/notification';
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
-
 
 
 @Injectable({
@@ -11,27 +10,32 @@ import {Observable} from 'rxjs';
 })
 export class NotificationService {
 
+  private headerInfo = {
+    'Content-Type': 'application/json',
+    Accept: 'application/json'
+  };
+
+  notifications!: Notification[];
   private baseUrl = 'http://localhost:8080/notifications';
 
   constructor(private httpClient: HttpClient) {
   }
 
-  // tslint:disable-next-line:typedef
-  getNotifications(): Observable<Notification[]> {
-      return this.httpClient.get<GetResponseNotifications>(this.baseUrl).pipe(
-        map(response => response._embedded.notifications)
-    );
+  getAllNotifications(): Observable<any> {
+    return this.httpClient.get(this.baseUrl);
   }
 
   // tslint:disable-next-line:typedef
-  deleteByNotificationId(id: number) {
+  deleteByNotificationId(id: number): Observable<any> {
     return this.httpClient.delete(`${(this.baseUrl)}/${id}`);
   }
 
+  // tslint:disable-next-line:typedef
+  deleteAllNotificationsByUserId(id: number): Observable<any> {
+    return this.httpClient.delete(`${(this.baseUrl)}/${id}`);
+  }
 }
 
 interface GetResponseNotifications {
-  _embedded: {
-    notifications: Notification[];
-  };
+  notifications: Notification[];
 }

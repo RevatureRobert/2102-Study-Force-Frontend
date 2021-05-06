@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Notification} from '../../model/notification';
 import {NotificationService} from '../../service/notification.service';
+import {User} from "../../../user/User";
 
 
 @Component({
@@ -16,25 +17,31 @@ export class NotificationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.listNotifications();
+    this.getAllNotifications();
   }
 
-
   // tslint:disable-next-line:typedef
-  listNotifications() {
-    this.notificationService.getNotifications().subscribe(
-      data => {
-        this.notifications = data;
-      }
-    );
+  getAllNotifications(): void {
+    this.notificationService.getAllNotifications().subscribe(
+      (response: any) => {
+        this.notifications = response.content;
+      });
   }
 
   // tslint:disable-next-line:typedef
   deleteNotification(notification: Notification) {
-    this.notificationService.deleteByNotificationId(notification.notificationId).subscribe(
-      response => {
-        console.log(response);
+    this.notificationService.deleteById(notification.id).subscribe(
+      (response: any) => {
+        this.notifications = response.content;
+      });
+  }
+
+  deleteAllNotifications(user: User): void {
+    this.notificationService.deleteAllNotificationsByUserId(user.id).subscribe(
+      (response: any) => {
+        this.notifications = response.content;
       }
     );
   }
+
 }
