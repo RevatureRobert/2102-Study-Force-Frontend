@@ -8,8 +8,7 @@ import { FlashcardRoutingModule } from './flashcard-routing.module';
 import { CreateFlashcardPageComponent } from './components/pages/create-flashcard-page/create-flashcard-page.component';
 import { FormsModule } from '@angular/forms';
 import {FlashcardService} from './service/flashcard.service';
-
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [FlashcardComponent,
@@ -18,7 +17,7 @@ import {FlashcardService} from './service/flashcard.service';
   ],
   imports: [
     CommonModule, FlashcardRoutingModule,
-    FormsModule
+    FormsModule, NgbModule
   ],
   exports: [
     FlashcardComponent,

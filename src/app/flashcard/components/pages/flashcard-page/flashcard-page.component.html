@@ -12,4 +12,18 @@
 
 </div>
 
+<div class="row col">
+  <div ngbDropdown class="d-inline-block">
+    <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Filter By:</button>
+    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+      <button ngbDropdownItem (click)="setModeToNone()">None</button>
+      <button ngbDropdownItem (click)="setModeToTopic()">Topic</button>
+      <button ngbDropdownItem (click)="setModeToDifficulty()">Difficulty</button>
+      <button ngbDropdownItem (click)="setModeToResolved()">Resolved</button>
+    </div>
+  </div>
+</div>
 
+<div *ngIf="modeChoices.length > 0">
+      <button *ngFor="let mode of modeChoices">{{mode.displayString}}</button>
+</div>

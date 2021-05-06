@@ -13,7 +13,7 @@ export class TopicService {
   constructor(private http: HttpClient) { }
 
 
-  getAll(): Observable<any[]> {
+  getAll(): Observable<Topic[]> {
     return this.http.get<Topic[]>(baseUrl);
   }
 

@@ -25,16 +25,16 @@ export class FlashcardService {
     return this.http.get<FlashcardPage>(`http://${this.apiServerUrl}/flashcards?page=${page}`);
   }
 
-  getAllByDifficulty(difficulty: number): Observable<any> {
-    return this.http.get(`http://${this.apiServerUrl}/difficulty?difficulty=${difficulty}`);
+  getAllByDifficulty(page: number, difficulty: number): Observable<FlashcardPage> {
+    return this.http.get<FlashcardPage>(`http://localhost:8080/flashcards/difficulty?page=${page}&difficulty=${difficulty}`);
   }
 
-  getAllByTopic(topic: string): Observable<any> {
-    return this.http.get(`http://${this.apiServerUrl}/topic?topic=${topic}`);
+  getAllByTopic(page: number, topic: string): Observable<FlashcardPage> {
+    return this.http.get<FlashcardPage>(`http://localhost:8080/flashcards/topics?page=${page}&topicName=${topic}`);
   }
 
-  getAllByResolved(resolved: boolean): Observable<any> {
-    return this.http.get(`http://${this.apiServerUrl}/resolved?resolved=${resolved}`);
+  getAllByResolved(page:number, resolved: boolean): Observable<FlashcardPage> {
+    return this.http.get<FlashcardPage>(`http://localhost:8080/flashcards/resolved?page=${page}&resolved=${resolved}`);
   }
 
   get(id: any): Observable<Flashcard> {
