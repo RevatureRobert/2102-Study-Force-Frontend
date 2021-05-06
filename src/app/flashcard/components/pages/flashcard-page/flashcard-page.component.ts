@@ -4,6 +4,7 @@ import { FlashcardService } from '../../../service/flashcard.service';
 import {HttpErrorResponse} from '@angular/common/http';
 
 
+
 @Component({
   selector: 'app-flashcard-page',
   templateUrl: './flashcard-page.component.html',
@@ -15,22 +16,20 @@ export class FlashcardPageComponent implements OnInit {
 
   constructor(private flashcardService: FlashcardService) {
     console.log('CONSTRUCTOR');
-    this.getAllFlashcards();
+    //this.getAllFlashcards();
   }
 
-  getAllFlashcards(): void {
-    this.flashcardService.getAll().subscribe(
-      (response: any) => {
-        console.log(response.entries);
-        this.flashcards = response.content;
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
-    );
-
-
-  }
+  // getAllFlashcards(): void {
+  //   this.flashcardService.getAll().subscribe(
+  //     (response: any) => {
+  //       console.log(response.entries);
+  //       this.flashcards = response.content;
+  //     },
+  //     (error: HttpErrorResponse) => {
+  //       alert(error.message);
+  //     }
+  //   );
+  // }
 
 
   ngOnInit(): void {

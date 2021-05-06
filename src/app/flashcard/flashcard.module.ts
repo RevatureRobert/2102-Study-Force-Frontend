@@ -7,17 +7,25 @@ import { FlashcardAnswerComponent } from './components/ui/flashcard/flashcard-an
 import { FlashcardRoutingModule } from './flashcard-routing.module';
 import { CreateFlashcardPageComponent } from './components/pages/create-flashcard-page/create-flashcard-page.component';
 import { FormsModule } from '@angular/forms';
-import {FlashcardService} from './service/flashcard.service';
+import { FlashcardService } from './service/flashcard.service';
+import { FlashcardGridComponent } from './components/pages/flashcard-page/flashcard-grid/flashcard-grid.component';
+import { FlashcardDeleteComponent } from './components/ui/flashcard/flashcard-delete/flashcard-delete.component';
 
 
 
 @NgModule({
-  declarations: [FlashcardComponent,
-    FlashcardQuestionComponent, FlashcardAnswerComponent,
-    CreateFlashcardPageComponent, FlashcardPageComponent
+  declarations: [
+    FlashcardComponent,
+    FlashcardQuestionComponent,
+    FlashcardAnswerComponent,
+    CreateFlashcardPageComponent,
+    FlashcardPageComponent,
+    FlashcardGridComponent,
+    FlashcardDeleteComponent
   ],
   imports: [
-    CommonModule, FlashcardRoutingModule,
+    CommonModule,
+    FlashcardRoutingModule,
     FormsModule
   ],
   exports: [
@@ -25,7 +33,9 @@ import {FlashcardService} from './service/flashcard.service';
     FlashcardPageComponent,
     CreateFlashcardPageComponent,
     FlashcardQuestionComponent,
-    FlashcardAnswerComponent
+    FlashcardAnswerComponent,
+    FlashcardGridComponent,
+    FlashcardDeleteComponent
   ],
   providers: [FlashcardService]
 })
