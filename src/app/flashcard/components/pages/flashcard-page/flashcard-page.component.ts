@@ -38,4 +38,5 @@ export class FlashcardPageComponent implements OnInit {
       });
   }
 
+
 }
