@@ -1,9 +1,11 @@
 {
-  "name": "study-force-front-end",
+  "name": "StudyForce",
   "version": "0.0.0",
+  "description": "Revature Flashcard Study Force",
   "main": "main.js",
   "scripts": {
     "electron": "ng build --base-href ./ && electron .",
+    "help": "electron-builder --help",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
@@ -11,7 +13,20 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
+  "repository": "https://github.com/RevatureRobert/2102-Study-Force-Frontend",
+  "homepage": "https://github.com/RevatureRobert/2102-Study-Force-Frontend",
+  "author": "Revature",
   "private": true,
+  "build": {
+    "appId": "net.revature.studyforce",
+    "copyright": "Copyright Revature",
+    "win": {
+      "target": "zip"
+    },
+    "linux": {
+      "category": "Education"
+    }
+  },
   "dependencies": {
     "@angular/animations": "~11.1.1",
     "@angular/common": "~11.1.1",
@@ -36,10 +51,11 @@
     "@types/node": "^12.11.1",
     "codelyzer": "^6.0.0",
     "electron": "^12.0.6",
+    "electron-builder": "^22.11.1",
     "electron-packager": "^15.2.0",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
-    "karma": "~5.2.0",
+    "karma": "^6.3.2",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",

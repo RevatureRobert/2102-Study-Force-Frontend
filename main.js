@@ -2,25 +2,32 @@ const { app, BrowserWindow } = require("electron");
 const path = require("path");
 const url = require("url");
 
-let win;
+let mainWindow;
+
 function createWindow() {
-  win = new BrowserWindow({ width: 1600, height: 1600 });
+
+  mainWindow = new BrowserWindow({
+    width: 1600, height: 1000,
+    minWidth:350, minHeight: 300,
+    webPreferences: {
+      nodeIntegration: true,
+      webSecurity: false
+    }
+  })
+
   // load the dist folder from Angular
-  win.loadURL(
-    url.format({
-      pathname: path.join(__dirname, '/dist/index.html'), // compiled verion of our app
-      protocol: "file:",
-      slashes: true
-    })
-  );
-  // The following is optional and will open the DevTools:
+  mainWindow.loadURL(path.join(__dirname, '/dist/index.html'));
+
+
   // win.webContents.openDevTools()
-  win.on("closed", () => {
-    win = null;
+  mainWindow.on("closed", () => {
+    mainWindow = null;
   });
 }
+
 app.on("ready", createWindow);
 // on macOS, closing the window doesn't quit the app
+
 app.on("window-all-closed", () => {
   if (process.platform !== "darwin") {
     app.quit();
