@@ -1,8 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Answer } from 'src/app/flashcard/model/answer';
 import { AnswerPageable } from 'src/app/flashcard/model/answer-pageable';
 import { Flashcard } from 'src/app/flashcard/model/flashcard';
+import * as EventEmitter from 'events';
 import { FlashcardService } from 'src/app/flashcard/service/flashcard.service';
 
 @Component({
@@ -12,10 +13,12 @@ import { FlashcardService } from 'src/app/flashcard/service/flashcard.service';
 })
 export class FlashcardAnswerComponent implements OnInit {
   @Input() flashcardId!: number;
+  @Output() click = new EventEmitter();
   answers!: Answer[];
   isAnswer = !!this.answers;
 
   subscribed = false;
+  flip = false;
 
   newAnswerIcon = "../../../assets/add new answer.png"
 
@@ -36,7 +39,12 @@ export class FlashcardAnswerComponent implements OnInit {
   }
 
   // On new answer, the router should route the user to a create an answer page.
-  newAnswer() {
+  newAnswer(event: Event) {
+    event.stopPropagation();
+  }
 
+  toggleView(event: Event): void {
+    this.flip = !this.flip;
+    event.stopPropagation();
   }
 }
