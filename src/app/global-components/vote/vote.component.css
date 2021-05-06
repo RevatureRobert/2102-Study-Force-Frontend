@@ -10,7 +10,11 @@ img {
   display: inline-block;
   font-style:normal;
   font-size: 50px;
-  font-weight: 200;
-  margin-left: 1em;
-  margin-right: 1em;
+  font-weight: 400;
+  margin-left: .75em;
+  margin-right: .75em;
+}
+
+.parent {
+  transform: scale(0.5);
 }

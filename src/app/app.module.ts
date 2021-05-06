@@ -46,6 +46,6 @@ import { FlashcardAnswerComponent } from './global-components/flashcard-answer/f
     HttpClientModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
