@@ -1,4 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
+import * as EventEmitter from 'events';
+// const EventEmitter = require('events');
+import { FlashcardComponent } from '../flashcard.component';
+
 
 
 @Component({
@@ -8,10 +12,45 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class FlashcardQuestionComponent implements OnInit {
 
-  @Input() question?: string;
+  @Input() question!: string;
+  @Input() difficulty!: number | string;
+  @Output() click = new EventEmitter;
+  subscribed = false;
+  bellStyle = "../../../assets/bell.svg"
 
-  constructor() {}
+  constructor() { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    switch (this.difficulty) {
+      case 1:
+          this.difficulty = "Easy";
+        break;
+      case 2:
+          this.difficulty = "Medium";
+        break;
+      case 3:
+          this.difficulty = "Hard";
+        break;
+      default:
+        break;
+    }
+  }
+
+  subscribe(event: Event) {
+    this.subscribed = !this.subscribed
+
+    if(this.subscribed) {
+      this.bellStyle="../../../assets/bell fill.svg"
+    }
+    else {
+      this.bellStyle="../../../assets/bell.svg"
+    }
+
+    event.stopPropagation();
+  }
+
+  stopPropogation(event: Event) {
+    event.stopPropagation();
+  }
 
 }
