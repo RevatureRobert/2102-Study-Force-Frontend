@@ -1,5 +1,15 @@
 <h2>flashcard page</h2>
 
-<div class="view-flashcard" *ngFor="let flashcard of flashcards">
-    <div>{{flashcard.question}}</div>
+<div class="card-group" *ngIf="flashcardPage !== undefined">
+  <div class="card" *ngFor="let flashcard of flashcardPage.content">
+    <app-flashcard-question [flashcard]="flashcard"></app-flashcard-question>
+  </div>
+
+  <button (click)="prevPage()" *ngIf="flashcardPage.number > 0">prev</button>
+  <button (click)="nextPage()" *ngIf="flashcardPage.number < flashcardPage.totalPages - 1">next</button>
 </div>
+
+
+
+
+

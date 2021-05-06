@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Flashcard } from 'src/app/flashcard/model/flashcard';
 
 @Component({
   selector: 'app-flashcard-question',
@@ -7,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class FlashcardQuestionComponent implements OnInit {
 
-  @Input() question!: string;
+  @Input() flashcard?: Flashcard
 
   constructor() {}
 

@@ -1,3 +1,9 @@
-<div class="flashcard-content">
-  <h2>[question]</h2>
+<div *ngIf="flashcard !== undefined">
+  <div class="card-body">
+    <div class="card-title">Question: {{flashcard.question}}</div>
+    <div class="card-text">Topic: {{flashcard.topicName}}</div>
+    <div class="card-text">Difficulty: {{flashcard.difficulty}}</div>
+
+  </div>
+
 </div>

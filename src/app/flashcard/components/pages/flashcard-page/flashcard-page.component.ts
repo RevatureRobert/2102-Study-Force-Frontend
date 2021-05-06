@@ -4,6 +4,8 @@ import { FlashcardService } from '../../../service/flashcard.service';
 import { FlashcardComponent } from '../../ui/flashcard/flashcard.component';
 import {HttpErrorResponse} from '@angular/common/http';
 
+import { FlashcardPage } from "src/app/flashcard/model/flashcardPage";
+
 
 @Component({
   selector: 'app-flashcard-page',
@@ -12,39 +14,28 @@ import {HttpErrorResponse} from '@angular/common/http';
 })
 export class FlashcardPageComponent implements OnInit {
 
-  public flashcards!: Flashcard[];
+  flashcardPage?: FlashcardPage;
 
-  constructor(private flashcardService: FlashcardService) {
-    console.log('CONSTRUCTOR');
-    this.getAllFlashcards();
-  }
-
-  getAllFlashcards(): void {
-    this.flashcardService.getAll().subscribe(
-      (response: any) => {
-        console.log(response.entries);
-        this.flashcards = response.content;
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
-    );
-
-    // this.flashcardService.getAllByDifficulty(1).subscribe(
-    //   (response: any) => {
-    //     console.log(response)
-    //   },
-    //   (error: HttpErrorResponse) => {
-    //     alert(error.message);
-    //   }
-    // );
-  }
-
+  constructor(private flashcardService: FlashcardService) { }
 
   ngOnInit(): void {
-    console.log('INIT');
-
+    this.flashcardService.getAllByPage(0).subscribe({
+      next: result => this.flashcardPage = result
+    });
   }
 
+  prevPage(): void {
+    if(this.flashcardPage)
+      this.flashcardService.getAllByPage(this.flashcardPage.number - 1).subscribe({
+        next: result => this.flashcardPage = result
+      });
+  }
+
+  nextPage(): void {
+    if(this.flashcardPage)
+      this.flashcardService.getAllByPage(this.flashcardPage.number + 1).subscribe({
+        next: result => this.flashcardPage = result
+      });
+  }
 
 }

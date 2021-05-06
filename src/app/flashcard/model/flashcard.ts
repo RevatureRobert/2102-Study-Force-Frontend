@@ -1,10 +1,8 @@
 export interface Flashcard {
-  id?: number;
-  creator?: number;
-  topic?: number;
+  flashcardId: number;
+  creatorId: number;
+  topicName: string;
   question: string;
-  questionDifficultyTotal?: number;
-  questionDifficultyAverage?: number;
-  createdTime?: string;
-  resolutionTime?: string;
+  difficulty: number;
+  resolved: number;
 }
