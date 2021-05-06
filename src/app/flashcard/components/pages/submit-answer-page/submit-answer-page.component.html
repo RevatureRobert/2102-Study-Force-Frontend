@@ -1,1 +1,16 @@
-<textarea > </textarea> 
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h3 class="card-title test">Submit your answer</h3>
+    <form #form="ngForm" (submit)="onSubmit(form)">
+      <div class="form-group">
+        <label for = "submitCardContentType" id="submitContent" >
+        </label>
+        <textarea class="form-control input-styling" id="submitContent" rows="5" placeholder="Write your [X] here..." [value]="text" ></textarea>
+      </div>
+    </form>
+    <div class="wrapper">
+      <button type="button" class="btn custom-button">Submit
+      </button>
+    </div>
+  </div>
+</div>
