@@ -1,7 +1,10 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Answer } from 'src/app/flashcard/model/answer';
 import { Flashcard } from 'src/app/flashcard/model/flashcard';
 import { FlashcardService } from 'src/app/flashcard/service/flashcard.service';
+
+
 
 @Component({
   selector: 'app-view-flashcard-thread',
@@ -10,10 +13,10 @@ import { FlashcardService } from 'src/app/flashcard/service/flashcard.service';
 })
 export class ViewFlashcardThreadComponent implements OnInit {
 
-  // private flashcardId: number;
-  // private flashcard!: Flashcard;
+  public flashcardId: number = 10;
+  public flashcard?: Flashcard;
 
-  // private answers: Answer[];
+  public answers!: Answer[];
 
   constructor(private flashcardService: FlashcardService) {
 
@@ -22,8 +25,31 @@ export class ViewFlashcardThreadComponent implements OnInit {
 
 
   ngOnInit(): void {
-    // this.flashcardService.getFlashcardById(this.flashcard.id!)
-    // this.answers = this.flashcardService.getAnswers(this.flashcard?.id!);
+    this.getSelectedFlashcard();
+    this.getAllAnswers();
+  }
+
+  getSelectedFlashcard(): void {
+    this.flashcardService.getFlashcardById(this.flashcardId).then(
+      (result: any) => {
+        this.flashcard = result;
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
+  getAllAnswers(): void {
+    this.flashcardService.getAnswers(this.flashcardId).subscribe(
+      (response: any) => {
+        console.log(response.entries);
+        this.answers = response.content;
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
   }
 
 
