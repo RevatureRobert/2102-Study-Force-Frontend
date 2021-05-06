@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule  } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,9 +23,9 @@ import { HomeComponent } from './home-component/home/home.component';
 import { ListComponent } from './global-components/list/list.component';
 import { BasePageComponent } from './global-components/base-page/base-page.component';
 
-import { FlashcardModule } from './flashcard/flashcard.module';
+// import { FlashcardModule } from './flashcard/flashcard.module';
 import { FormsModule } from '@angular/forms';
-import { StacktraceModule } from './stacktrace/stacktrace.module';
+// import { StacktraceModule } from './stacktrace/stacktrace.module';
 
 @NgModule({
   declarations: [
@@ -53,9 +53,9 @@ import { StacktraceModule } from './stacktrace/stacktrace.module';
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
-    FlashcardModule,
+    // FlashcardModule,
     FormsModule,
-    StacktraceModule,
+    // StacktraceModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
