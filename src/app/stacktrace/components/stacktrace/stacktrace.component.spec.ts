@@ -4,20 +4,20 @@ import { DebugElement } from '@angular/core';
 import { HttpClientTestingModule } from '@angular/common/http/testing'
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ViewClickedStacktraceComponent } from './view-clicked-stacktrace.component';
+import { StacktraceComponent } from './stacktrace.component';
 import { By } from '@angular/platform-browser';
 import { StacktraceService } from '../../services/stacktrace.service';
 import { StacktraceModule } from '../../stacktrace.module';
 import { Stacktrace } from '../../models/stacktrace'
 
 // Test suite
-fdescribe('ViewClickedStacktraceComponent', () => {
-  let component: ViewClickedStacktraceComponent;
+fdescribe('StacktraceComponent', () => {
+  let component: StacktraceComponent;
 
   //Test environment for the component.
   //  1: Provides access to the component
   //  2: Provides access to debug element, which is the rendered html
-  let fixture: ComponentFixture<ViewClickedStacktraceComponent>;
+  let fixture: ComponentFixture<StacktraceComponent>;
 
   // used to test rendered elements
   let de: DebugElement;
@@ -44,7 +44,7 @@ fdescribe('ViewClickedStacktraceComponent', () => {
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ViewClickedStacktraceComponent);
+    fixture = TestBed.createComponent(StacktraceComponent);
     component = fixture.componentInstance;
 
     // add this
