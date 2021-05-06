@@ -10,10 +10,10 @@ import { FlashcardService } from 'src/app/flashcard/service/flashcard.service';
 })
 export class ViewFlashcardThreadComponent implements OnInit {
 
-  private flashcardId: number;
-  private flashcard!: Flashcard;
+  // private flashcardId: number;
+  // private flashcard!: Flashcard;
 
-  private answers: Answer[];
+  // private answers: Answer[];
 
   constructor(private flashcardService: FlashcardService) {
 
@@ -22,8 +22,8 @@ export class ViewFlashcardThreadComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.flashcardService.getFlashcardById(this.flashcard.id!)
-    this.flashcardService.getAnswers(this.flashcard?.id!);
+    // this.flashcardService.getFlashcardById(this.flashcard.id!)
+    // this.answers = this.flashcardService.getAnswers(this.flashcard?.id!);
   }
 
 
