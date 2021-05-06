@@ -1,95 +1,108 @@
 #glass-pane {
-    position: absolute;
-    width: 75%;
-    height: 75%;
-    left: 50%;
-    top: 100px;
-    transform: translateX(-50%);
-    box-shadow: 0 8px 15px 0 rgba(31, 38, 135, 0.37);
-    background: rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(100px);
-    -webkit-backdrop-filter: blur(100px);
-    border-radius: 30px;
+  position: absolute;
+  width: 75%;
+  height: 75%;
+  left: 50%;
+  top: 100px;
+  transform: translateX(-50%);
+  box-shadow: 0 8px 15px 0 rgba(31, 38, 135, 0.37);
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(100px);
+  -webkit-backdrop-filter: blur(100px);
+  border-radius: 30px;
 }
 
 #Upload-CSV-Button {
-    opacity: 0.75;
-    position: relative;
-    width: 148px;
-    background: #0275d8;
-    border: 1px solid #0275d8;
-    box-sizing: border-box;
-    border-radius: 30px;
+  opacity: 0.75;
+  position: relative;
+  width: 148px;
+  background: #0275d8;
+  border: 1px solid #0275d8;
+  box-sizing: border-box;
+  border-radius: 30px;
 }
 
 th {
-    background: white;
+  background: white;
 }
 
-.table-striped > tbody > tr:nth-child(2n+1) {
-    background: linear-gradient(90.34deg, rgba(255, 255, 255, 0.81) 0%, rgba(255, 255, 255, 0.72) 100%);
-    mix-blend-mode: normal;
-    backdrop-filter: blur(100px);
+.table-striped > tbody > tr:nth-child(2n + 1) {
+  background: linear-gradient(
+    90.34deg,
+    rgba(255, 255, 255, 0.81) 0%,
+    rgba(255, 255, 255, 0.72) 100%
+  );
+  mix-blend-mode: normal;
+  backdrop-filter: blur(100px);
 }
 
-
-.table-striped > tbody > tr:nth-child(2n){
-    background: linear-gradient(90.34deg, rgba(255, 255, 255, 0.56) 0%, rgba(255, 255, 255, 0.42) 100%);
-    mix-blend-mode: normal;
-    backdrop-filter: blur(100px);
+.table-striped > tbody > tr:nth-child(2n) {
+  background: linear-gradient(
+    90.34deg,
+    rgba(255, 255, 255, 0.56) 0%,
+    rgba(255, 255, 255, 0.42) 100%
+  );
+  mix-blend-mode: normal;
+  backdrop-filter: blur(100px);
 }
 
 table {
-    border-radius: 30px;
-    overflow: hidden;
+  border-radius: 30px;
+  overflow: hidden;
 }
 
 .Remove-Button {
-    opacity: 0.75;
-    position: relative;
-    width: 103px;
-    background: #ff0101;
-    border: 1px solid #ff0000;
-    box-sizing: border-box;
-    border-radius: 30px;
+  opacity: 0.75;
+  position: relative;
+  width: 103px;
+  background: #ff0101;
+  border: 1px solid #ff0000;
+  box-sizing: border-box;
+  border-radius: 30px;
 }
 
-.Add-Button {
-    position: absolute;
-    right: 0;
-    width: 148px;
-    background: #00d600;
-    border: 1px solid #80b366;
-    box-sizing: border-box;
-    border-radius: 30px;
+#Add-Button {
+  position: relative;
+  width: 20%;
+  left: 20px;
+  background: #00d600;
+  border: 1px solid #80b366;
+  box-sizing: border-box;
+  border-radius: 30px;
+}
+#Email-Input {
+  position: relative;
+  left: 1%;
+  width: 75%;
+  border-radius: 30px;
 }
 
 #Submit-Button {
-    opacity: 0.75;
-    position: relative;
-    width: 86px;
-    background: #0275d8;
-    border: 1px solid #0275d8;
-    box-sizing: border-box;
-    border-radius: 30px;
+  opacity: 0.75;
+  position: relative;
+  width: 86px;
+  background: #0275d8;
+  border: 1px solid #0275d8;
+  box-sizing: border-box;
+  border-radius: 30px;
 }
 
-.upload-btn-wrapper input[type=file] {
-    font-size: 100px;
-    position: absolute;
-    left: 0;
-    top: 0;
-    opacity: 0;
+.upload-btn-wrapper input[type="file"] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
 }
 
 .upload-btn-wrapper {
-    position: relative;
-    overflow: hidden;
-    display: inline-block;
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
 }
 
 caption {
-    background: #ffffff;
-    box-shadow: 0px -1px 0px #eceeef;
-    border-radius: 0px 0px 30px 30px;
+  background: #ffffff;
+  box-shadow: 0px -1px 0px #eceeef;
+  border-radius: 0px 0px 30px 30px;
 }
