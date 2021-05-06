@@ -19,7 +19,8 @@ export class FlashcardPageComponent implements OnInit {
   flashcardPage?: FlashcardPage;
   mode: Mode = Mode.NONE;
   modeChoices:DisplayData[] = [];
-  topics: Topic[] = []
+  topics: Topic[] = [];
+  input: any = null;
 
   constructor(private flashcardService: FlashcardService, private topicService: TopicService) { }
 
@@ -35,70 +36,77 @@ export class FlashcardPageComponent implements OnInit {
 
   prevPage(): void {
     if(this.flashcardPage)
-      this.flashcardService.getAllByPage(this.flashcardPage.number - 1).subscribe({
-        next: result => this.flashcardPage = result
-      });
+      this.loadPage(this.flashcardPage.number - 1);
   }
 
   nextPage(): void {
     if(this.flashcardPage)
-      this.flashcardService.getAllByPage(this.flashcardPage.number + 1).subscribe({
-        next: result => this.flashcardPage = result
-      });
+      this.loadPage(this.flashcardPage.number + 1);
   }
 
   setModeToNone(): void {
     this.mode = Mode.NONE;
     this.modeChoices = []
-
-    this.loadPage(0, 0);
+    this.input = null;
+    this.loadPage(0);
   }
 
   setModeToDifficulty(): void {
     this.mode = Mode.DIFFICULTY;
     this.modeChoices = [
-      {itemId: 1, displayString: "Easy"},
-      {itemId: 2, displayString: "Medium"},
-      {itemId: 3, displayString: "Hard"}];
+      {input: 1, displayString: "Easy"},
+      {input: 2, displayString: "Medium"},
+      {input: 3, displayString: "Hard"}];
 
-      this.loadPage(0, 1);
+      this.input = 1;
+      this.loadPage(0);
     }
 
   setModeToResolved(): void {
     this.mode = Mode.RESOLVED;
     this.modeChoices = [
-      {itemId: 1, displayString: "Resolved"},
-      {itemId: 2, displayString: "Not Resolved"}];
+      {input: true, displayString: "Resolved"},
+      {input: false, displayString: "Not Resolved"}];
 
-      this.loadPage(0, 1);
+      this.input = true;
+      this.loadPage(0);
   }
 
   setModeToTopic(): void {
     this.mode = Mode.TOPIC;
-    console.log(this.topics);
     this.modeChoices = this.topics.map((topic: Topic)=> {
-      return {itemId: topic.id, displayString: topic.topicName};
+      return {input: topic.topicName, displayString: topic.topicName};
     });
-
-    this.loadPage(0, this.modeChoices[0].itemId);
+    this.input = this.modeChoices[0].input;
+    this.loadPage(0);
   }
 
-  loadPage(page: number, itemId: number) {
+  setInput(input: any) {
+    this.input = input;
+    this.loadPage(0);
+  }
+
+  loadPage(page: number) {
     switch (this.mode) {
       case Mode.NONE:
-        console.log("none");
-        this.flashcardService.getAllByPage(0).subscribe({
+        this.flashcardService.getAllByPage(page).subscribe({
           next: result => this.flashcardPage = result
         });
         break;
       case Mode.TOPIC:
-        console.log("topic");
+        this.flashcardService.getAllByTopic(page, this.input).subscribe({
+          next: result => this.flashcardPage = result
+        });
         break;
       case Mode.DIFFICULTY:
-        console.log("diff");
+        this.flashcardService.getAllByDifficulty(page, this.input).subscribe({
+          next: result => this.flashcardPage = result
+        });
         break;
       case Mode.RESOLVED:
-        console.log("res");
+        this.flashcardService.getAllByResolved(page, this.input).subscribe({
+          next: result => this.flashcardPage = result
+        });
         break;
       default:
         break;
@@ -108,7 +116,7 @@ export class FlashcardPageComponent implements OnInit {
 }
 
 interface DisplayData {
-  itemId: number;
+  input: any;
   displayString: string;
 }
 

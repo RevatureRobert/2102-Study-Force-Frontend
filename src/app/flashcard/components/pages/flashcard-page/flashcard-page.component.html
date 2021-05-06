@@ -25,5 +25,5 @@
 </div>
 
 <div *ngIf="modeChoices.length > 0">
-      <button *ngFor="let mode of modeChoices">{{mode.displayString}}</button>
+      <button *ngFor="let mode of modeChoices" (click)="setInput(mode.input)">{{mode.displayString}}</button>
 </div>
