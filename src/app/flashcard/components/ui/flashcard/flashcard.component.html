@@ -1,0 +1,16 @@
+
+<ul class="list-group list-group-horizontal">
+  <li class="list-group-item" [hidden]="flip">
+    <div (click)="toggleView()" [hidden]="flip" class="question">
+      <app-flashcard-question [question]="question" ></app-flashcard-question>
+    </div>
+  </li>
+  <li class="list-group-item" [hidden]="!flip">
+    <div (click)="toggleView()" [hidden]="!flip">
+      <app-flashcard-answer>answer</app-flashcard-answer>
+    </div>
+  </li>
+  <li class="list-group-item">
+    <app-flashcard-delete [flashcardId]="deleteId" ></app-flashcard-delete>
+  </li>
+</ul>
