@@ -26,6 +26,14 @@ export class FlashcardService {
     return this.http.get(`http://${this.apiServerUrl}/flashcards`);
   }
 
+  getFlashcardById(flashcardId: number): Promise<any> {
+    return this.http.get(`http://${this.apiServerUrl}/flashcards/${flashcardId}`).toPromise();
+  }
+
+  getAnswers(flashcardId: number): Observable<any> {
+    return this.http.get(`http://${this.apiServerUrl}/flashcards/answers/`)
+  }
+
   getAllByDifficulty(difficulty: number): Observable<any> {
     return this.http.get(`http://${this.apiServerUrl}/difficulty?difficulty=${difficulty}`);
   }
