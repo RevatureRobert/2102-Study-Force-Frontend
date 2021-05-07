@@ -3,6 +3,8 @@ import * as EventEmitter from 'events';
 import { Flashcard } from 'src/app/flashcard/model/flashcard';
 // const EventEmitter = require('events');
 import { FlashcardComponent } from '../flashcard.component';
+import { CommonModule } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
 
 
 
@@ -18,6 +20,9 @@ export class FlashcardQuestionComponent implements OnInit {
   @Input() answerId!: number;
   @Input() flashcard!: Flashcard;
   @Output() click = new EventEmitter;
+
+  isSliderActive: boolean = false;
+
   subscribed = false;
   bellStyle = "../../../assets/bell.svg"
 
@@ -25,13 +30,13 @@ export class FlashcardQuestionComponent implements OnInit {
 
   ngOnInit(): void {
     switch (this.difficulty) {
-      case 1:
+      case 0:
           this.difficulty = "Easy";
         break;
-      case 2:
+      case 1:
           this.difficulty = "Medium";
         break;
-      case 3:
+      case 2:
           this.difficulty = "Hard";
         break;
       default:
@@ -54,6 +59,14 @@ export class FlashcardQuestionComponent implements OnInit {
 
   stopPropogation(event: Event) {
     event.stopPropagation();
+  }
+
+  activateSlider() {
+    this.isSliderActive = true;
+    if (this.isSliderActive) {
+      console.log("ACTIVE");
+
+    }
   }
 
 }
