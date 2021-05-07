@@ -30,7 +30,7 @@ export class StacktraceHomeComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.getStacktrace();
+    // this.getStacktrace();
     this.getTechnology();
   }
 
@@ -39,37 +39,37 @@ export class StacktraceHomeComponent implements OnInit {
    * @param technology The Technology to filter the stacktraced by
    * @param searchParameter The search parameter to filter the stacktraced by, this is typed in a search bar at the top of the componenet
    */
-  filterStacktraces(technology?: Technology, searchParameter?: string): void {
-    if(technology) {
-      this.currentTechnologyName = technology.technologyName;
-      this.filteredStacktraces = this.allStacktraces.filter((stacktrace: Stacktrace) => {
-        if(stacktrace.technology)
-          return stacktrace.technology!.technologyId == technology.technologyId;
-        else
-          return false;
-      })
-    } else {
-      this.currentTechnologyName = "All";
-      this.filteredStacktraces = this.allStacktraces;
-    }
-  }
+  // filterStacktraces(technology?: Technology, searchParameter?: string): void {
+  //   if(technology) {
+  //     this.currentTechnologyName = technology.technologyName;
+  //     this.filteredStacktraces = this.allStacktraces.filter((stacktrace: Stacktrace) => {
+  //       if(stacktrace.technology)
+  //         return stacktrace.technology!.technologyId == technology.technologyId;
+  //       else
+  //         return false;
+  //     })
+  //   } else {
+  //     this.currentTechnologyName = "All";
+  //     this.filteredStacktraces = this.allStacktraces;
+  //   }
+  // }
 
   /**
    * retrieve Stacktraces from the backend through stacktrace.service
    */
-  getStacktrace(): void {
-    this.stacktraceService.getAllStacktrace()
-      .then((data) => {
-        this.allStacktraces = data;
-        // Any Stacktraces without an assigned technology will display their technology as 'Other'
-        this.allStacktraces.forEach((stacktrace: Stacktrace) => {
-          if(!stacktrace.technology){
-            stacktrace.technology = {technologyName: 'Other'};
-          }
-        })
-        this.filterStacktraces();
-      });
-  }
+  // getStacktrace(): void {
+  //   this.stacktraceService.getAllStacktrace()
+  //     .then((data) => {
+  //       this.allStacktraces = data;
+  //       // Any Stacktraces without an assigned technology will display their technology as 'Other'
+  //       this.allStacktraces.forEach((stacktrace: Stacktrace) => {
+  //         if(!stacktrace.technology){
+  //           stacktrace.technology = {technologyName: 'Other'};
+  //         }
+  //       })
+  //       this.filterStacktraces();
+  //     });
+  // }
 
   /**
    * retrieve Technologies from the backend through technology.service

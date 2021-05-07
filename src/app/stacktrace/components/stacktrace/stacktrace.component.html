@@ -1,19 +1,25 @@
 <p>stacktrace works!</p>
-<h2 class = "dknkndf">Get StackTrace</h2>
+<h2>Get StackTrace</h2>
 <table *ngIf = 'stacktrace != undefined' >
   <caption>StackTrace Info</caption>
   <tr>
     <th scope="col">id</th>
+    <th scope="col">user id</th>
+    <th scope="col">username</th>
     <th scope="col">title</th>
     <th scope="col">body</th>
-    <th scope="col">technology</th>
+    <th scope="col">technology id</th>
+    <th scope="col">technology name</th>
     <th scope="col">creation time</th>
   </tr>
   <tr>
     <td>{{stacktrace.stacktraceId}}</td>
+    <td>{{stacktrace.userId}}</td>
+    <td>{{stacktrace.userName}}</td>
     <td>{{stacktrace.title}}</td>
     <td>{{stacktrace.body}}</td>
-    <td>{{stacktrace.technology}}</td>
+    <td>{{stacktrace.technologyId}}</td>
+    <td>{{stacktrace.technologyName}}</td>
     <td>{{stacktrace.creationTime}}</td>
   </tr>
 

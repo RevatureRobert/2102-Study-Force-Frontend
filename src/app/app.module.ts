@@ -18,7 +18,7 @@ import { UserModule } from './user/user.module'
     AppRoutingModule,
     NgbModule,
     FlashcardModule,
-    StacktraceModule
+    StacktraceModule,
     UserModule
   ],
   providers: [],
