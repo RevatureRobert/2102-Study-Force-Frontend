@@ -6,6 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { StacktraceComponent } from './components/stacktrace/stacktrace.component';
 import { StacktraceRoutingModule } from './stacktrace-routing.module';
+import { SharedModule } from '../global-components/shared.module';
 
 import { StacktraceService } from './services/stacktrace.service'
 
@@ -16,6 +17,7 @@ import { StacktraceService } from './services/stacktrace.service'
     StacktraceComponent
   ],
   imports: [
+    SharedModule,
     BrowserModule,
     HttpClientModule,
     CommonModule,

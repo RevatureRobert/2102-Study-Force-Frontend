@@ -1,6 +1,11 @@
-.navbar-custom {
-  background: linear-gradient(0deg, rgba(184, 187, 193, 0.85) 0%, #FFFFFF 116.92%);
+#NavBar {
+  background: linear-gradient(
+    0deg,
+    rgba(218, 221, 229, 0.85) 0%,
+    #ffffff 116.92%
+  );
   backdrop-filter: blur(100px);
+  height: 50px;
   /* Note: backdrop-filter has minimal browser support */
   /* border-radius: 30px 30px 0px 0px; */
 }
@@ -16,7 +21,7 @@
 
 /* change the link color */
 .navbar-custom .navbar-nav .nav-link {
-  color: #153C53;
+  color: #153c53;
   margin-right: 1.5em;
   margin-left: 1.5em;
 }
@@ -30,9 +35,21 @@
 #studyforce_logo {
   margin-left: 0.5em;
   margin-right: 0.5em;
-  max-width: 8em;
-  max-height: 6em;
+  /* max-width: 8em;
+  max-height: 6em; */
+  max-width: 4em;
+  max-height: 2em;
   width: auto;
   height: auto;
 }
 
+#Remove-Button {
+  opacity: 0.75;
+  position: absolute;
+  width: 103px;
+  background: #ff0101;
+  border: 1px solid #ff0000;
+  box-sizing: border-box;
+  border-radius: 30px;
+  right: 10px;
+}
