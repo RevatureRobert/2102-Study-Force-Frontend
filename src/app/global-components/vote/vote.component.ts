@@ -9,8 +9,9 @@ import { VoteService } from "../../flashcard/service/vote.service";
 })
 export class VoteComponent implements OnInit {
 
-  @Input() answerId!: number;
-  @Input() answerScore!: number;
+  //TODO: Change this back from any >:(
+  @Input() answerId!: any;
+  @Input() answerScore!: any;
   @Input() userId!: number;
 
   upVoteSource = "../../../assets/up doot unclicked.svg"
