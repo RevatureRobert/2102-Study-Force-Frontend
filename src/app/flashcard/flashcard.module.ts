@@ -12,6 +12,7 @@ import { FlashcardGridComponent } from './components/pages/flashcard-page/flashc
 import { FlashcardDeleteComponent } from './components/ui/flashcard/flashcard-delete/flashcard-delete.component';
 import { SubmitAnswerPageComponent } from './components/pages/submit-answer-page/submit-answer-page.component';
 import { ViewFlashcardThreadComponent } from './components/pages/view-flashcard-thread/view-flashcard-thread.component';
+import { SharedModule } from '../shared.module';
 
 
 
@@ -25,12 +26,13 @@ import { ViewFlashcardThreadComponent } from './components/pages/view-flashcard-
     FlashcardGridComponent,
     FlashcardDeleteComponent,
     SubmitAnswerPageComponent,
-    ViewFlashcardThreadComponent
+    ViewFlashcardThreadComponent,
   ],
   imports: [
     CommonModule,
     FlashcardRoutingModule,
-    FormsModule
+    FormsModule,
+    SharedModule
   ],
   exports: [
     FlashcardComponent,

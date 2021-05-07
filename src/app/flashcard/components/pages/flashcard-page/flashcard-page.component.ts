@@ -5,7 +5,7 @@ import { FlashcardService } from '../../../service/flashcard.service';
 import { FlashcardComponent } from '../../ui/flashcard/flashcard.component';
 import { FlashcardQuestionComponent } from '../../ui/flashcard/flashcard-question/flashcard-question.component';
 import {HttpErrorResponse} from '@angular/common/http';
-
+import { BasePageComponent } from "../../../../global-components/base-page/base-page.component";
 
 
 @Component({

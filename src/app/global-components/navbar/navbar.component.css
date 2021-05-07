@@ -1,7 +1,7 @@
 #NavBar {
   background: linear-gradient(
     0deg,
-    rgba(184, 187, 193, 0.85) 0%,
+    rgba(218, 221, 229, 0.85) 0%,
     #ffffff 116.92%
   );
   backdrop-filter: blur(100px);
@@ -41,4 +41,15 @@
   max-height: 2em;
   width: auto;
   height: auto;
+}
+
+#Remove-Button {
+  opacity: 0.75;
+  position: absolute;
+  width: 103px;
+  background: #ff0101;
+  border: 1px solid #ff0000;
+  box-sizing: border-box;
+  border-radius: 30px;
+  right: 10px;
 }
