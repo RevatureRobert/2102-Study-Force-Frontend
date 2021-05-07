@@ -11,11 +11,14 @@ import { FormsModule } from '@angular/forms';
 import { StacktraceModule } from './stacktrace/stacktrace.module';
 import { UserModule } from './user/user.module';
 
-
-
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ButtonComponent,
+    GlassPaneComponent,
+    GenericCardWideComponent,
+    GenericCardComponent,
+    SearchBarComponent
   ],
   imports: [
     BrowserModule,
