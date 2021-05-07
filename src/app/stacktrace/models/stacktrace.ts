@@ -1,11 +1,11 @@
 import { Technology } from "./technology";
 import { StacktraceUser } from "./user";
 
-export interface Stacktrace {
+export class Stacktrace {
   stacktraceId?: number;
-  creator: StacktraceUser;
-  title: string;
-  body: string;
-  technology?: Technology;
+  creator?: number;
+  title?: string;
+  body?: string;
+  technology?: number;
   creationTime?: string;
 }

@@ -26,10 +26,13 @@
     "bootstrap": "^5.0.0-beta3",
     "bootstrap-icons": "^1.4.1",
     "jquery": "^3.6.0",
+    "ngx-pagination": "^5.0.0",
     "popper.js": "^1.16.1",
     "rxjs": "~6.6.0",
     "save": "^2.4.0",
     "tslib": "^2.0.0",
+    "uuid": "^8.1.0",
+    "uuidv4": "^6.2.7",
     "zone.js": "~0.11.3"
   },
   "devDependencies": {

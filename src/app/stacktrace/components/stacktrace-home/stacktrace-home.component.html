@@ -1,23 +1,40 @@
 <div class="page-base">
   <div class="glass-base">
     <div ngbDropdown class="dropdown-menu">
-      <button class="dropdown-selector" id="dropdownTech" ngbDropdownToggle>Technology: {{currentTechnologyName}}</button>
       <div class="dropdown-options" ngbDropdownMenu aria-labelledby="dropdownTech">
-        <div>
-          <button ngbDropdownItem (click)="filterStacktraces()">All</button>
-        </div>
-        <div *ngFor="let technology of technologies">
-          <button ngbDropdownItem (click)="filterStacktraces(technology)">{{technology.technologyName}}</button>
-        </div>
+
       </div>
     </div>
   </div>
 
+
+      <div class="col-md-12">
+        <pagination-controls
+          previousLabel="Prev"
+          nextLabel="Next"
+          [responsive]="true"
+          (pageChange)="handlePageChange($event)"
+        ></pagination-controls>
+      </div>
+
   <div class="center-wrapper">
     <form mdbWavesEffect>
-      <div>
-        <input type="text" placeholder="Search">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search by title"
+        [(ngModel)]="title"
+      />
+      <div class="input-group-append">
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          (click)="retrieveStacktraces()"
+        >
+          Search
+        </button>
       </div>
+
     </form>
     <table>
       <caption>List of Stacktraces</caption>
@@ -28,21 +45,31 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let stacktrace of filteredStacktraces | slice: (page-1) * pageSize : page * pageSize">
-          <td (click)='navigate(stacktrace)'>
-            {{stacktrace.title}}
-          </td>
-          <td>
-            {{stacktrace.technology!.technologyName}}
-          </td>
+        <tr class="list-group-item"
+        *ngFor="
+          let stacktrace of stacktraces | paginate : {
+                  itemsPerPage: pageSize,
+                  currentPage: page,
+                  totalItems: count
+                };
+          let i = index
+        "
+        [class.active]="i == currentIndex"
+        (click)="setActiveStacktrace(stacktrace, i)"
+      >
+        {{ stacktrace.title }}
+
         </tr>
       </tbody>
+      <div class="mt-3">
+        Items per Page:
+        <select (change)="handlePageSizeChange($event)">
+          <option *ngFor="let size of pageSizes" [ngValue]="size">
+            {{ size }}
+          </option>
+        </select>
+      </div>
     </table>
-    <ngb-pagination
-      class="pagination"
-      [(page)]="page"
-      [pageSize]="pageSize"
-      [collectionSize]="filteredStacktraces.length"
-      ></ngb-pagination>
   </div>
+
 </div>
