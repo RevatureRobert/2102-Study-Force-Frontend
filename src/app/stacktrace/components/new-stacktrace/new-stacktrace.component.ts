@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Stacktrace } from 'src/app/stacktrace/models/stacktrace';
 import { StacktraceService } from 'src/app/stacktrace/services/stacktrace.service';
 import { Technology } from 'src/app/stacktrace/models/technology';
@@ -9,33 +9,26 @@ import { Technology } from 'src/app/stacktrace/models/technology';
   templateUrl: './new-stacktrace.component.html',
   styleUrls: ['./new-stacktrace.component.css']
 })
-export class NewStacktraceComponent implements OnInit {
-  stacktraceId!: number;
-  // are we tracking User (creator)? Not sure...
-  title!: string;
-  body!: string;
-  technology!: Technology;
-  creationTime!: string;
+export class NewStacktraceComponent {
 
-  constructor(
-    private stacktraceService: StacktraceService,
-    private router: Router
-  ) { }
 
-  ngOnInit(): void {
+  stacktrace : Stacktrace = {
+    title:"",
+    body:""
+  };
+
+  constructor(private route :ActivatedRoute,private stacktraceService: StacktraceService,private router: Router) {
+    this.stacktrace = new Stacktrace();
+   }
+
+
+
+   onSubmit() {
+    this.stacktraceService.save(this.stacktrace).subscribe(result => this.gotoStacktraceList());
   }
 
-  onCreate() {
-    // create a Stacktrace and send to the backend using the service
-    let newStacktrace:Stacktrace = {
-      stacktraceId: this.stacktraceId,
-      title: this.title,
-      body: this.body,
-      technology: this.technology,
-      creationTime: this.creationTime
-    }
-
-    this.stacktraceService.addStacktrace(newStacktrace);
+  gotoStacktraceList() {
+    this.router.navigate(['/stacktrace']);
   }
 
 }

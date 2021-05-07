@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { StacktraceService } from '../../services/stacktrace.service'
 import { Stacktrace } from '../../models/stacktrace'
-import { User } from '../../models/user'
+
 
 @Component({
   selector: 'app-view-clicked-stacktrace',
