@@ -17,12 +17,6 @@ export class AddUsersEmailComponent implements OnInit {
     email: ""
   }
 
-  // userEmployee:UserEmail = {
-  //   email;l: ""
-  // }
-
-  userAdminArray: Array<UserEmail> = [];
-
   userEmployeeArray: Array<UserEmail> = [];
 
   constructor(private userService: UserService) { }
@@ -30,24 +24,11 @@ export class AddUsersEmailComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSubmitAdmin(formAdmin: NgForm) {
-    this.user = {
-      email: formAdmin.value.email
-    }
-    this.userAdminArray.push(this.user)
-  }
-
-
   onSubmitEmployee(formEmp: NgForm) {
-    this.user = {
+    const user = this.user = {
       email: formEmp.value.email
     }
-    this.userEmployeeArray.push(this.user)
-  }
-
-  onDeleteAdmin() {
-    //  TODO: Need to refactor to remove from specific batch when batch service is implemented
-    this.userAdminArray.pop();
+    this.userEmployeeArray.push(user)
   }
 
   onDeleteEmployee() {
@@ -67,31 +48,46 @@ export class AddUsersEmailComponent implements OnInit {
       reader.readAsText(file || new Blob());
       reader.onload = (e) => {
         let csv: string = reader.result as string;
-        var csvSplitArray: Array<string>;
-        // csvSplitArray = csv.split(",\r\n");
         this.addInformationIntoArray(csv.split(",\r\n"));
         }
       }
   }
 
   addInformationIntoArray(arrayString: Array<string>) {
-    let index = 0;
     for (let i of arrayString) {
       let newUser = new UserEmail();
       newUser.email = i;
       this.userEmployeeArray.push(newUser);
     }
-
   }
 
-  finalSubmit() {
+  submitAll() {
     try {
-      this.userService.massCreateUsers(this.userAdminArray, this.userEmployeeArray);
-
+      this.userService.massCreateUsers(this.userEmployeeArray);
     } catch (Exception) {
-      console.log("There was a problem with your submission");
+      console.log("Something is wrong with your stuff!")
     }
+  }
 
+  //  For Dropdown menu
+  yes: boolean = false;
+
+  changeFocus() {
+    let parent = document.getElementById('Dropdown-Button');
+
+    if (this.yes === false) {
+      this.yes = true;
+      parent!.style.setProperty('border-bottom-right-radius', '0px');
+      parent!.style.setProperty('border-bottom-left-radius', '0px');
+    } else {
+      this.yes = false;
+      parent!.style.setProperty('border-bottom-right-radius', '10px');
+      parent!.style.setProperty('border-bottom-left-radius', '10px');
+    }
+  }
+
+  setFalse() {
+    this.yes = false;
   }
 
 }

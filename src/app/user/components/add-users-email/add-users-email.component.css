@@ -61,7 +61,7 @@ table {
   border-radius: 30px;
 }
 
-#Add-Button {
+.Add-Button {
   position: relative;
   width: 20%;
   left: 20px;
@@ -106,3 +106,61 @@ caption {
   box-shadow: 0px -1px 0px #eceeef;
   border-radius: 0px 0px 30px 30px;
 }
+  #Dropdown-Button {
+    width: 175px;
+    color: rgba(21, 60, 83, 1);
+    background: #ffffff;
+    box-shadow: 0px -1px 0px #eceeef;
+    position: relative;
+    box-sizing: border-box;
+    border-radius: 10px;
+    border: none;
+  }
+  
+  #Dropdown-Button:not(:focus) {
+    border-radius: 10px !important;
+  }
+  
+  #Dropdown-List {
+    position: absolute;
+    top: -2px !important;
+    background: none;
+    width: 175px;
+    box-sizing: border-box;
+    border: none;
+    padding: 0px;
+    box-sizing: border-box;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+  
+  #Dropdown-List li:nth-child(2n-1) {
+    background: linear-gradient(
+      90.34deg,
+      rgba(255, 255, 255, 0.81) 0%,
+      rgba(255, 255, 255, 0.72) 100%
+    );
+    mix-blend-mode: normal;
+    backdrop-filter: blur(100px);
+  }
+  
+  #Dropdown-List li:nth-child(2n) {
+    background: linear-gradient(
+      90.34deg,
+      rgba(255, 255, 255, 0.56) 0%,
+      rgba(255, 255, 255, 0.42) 100%
+    );
+    mix-blend-mode: normal;
+    backdrop-filter: blur(100px);
+  }
+  #Dropdown-List li:last-child {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+  
+  #Dropdown:hover li:last-child a {
+    box-sizing: border-box;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+  

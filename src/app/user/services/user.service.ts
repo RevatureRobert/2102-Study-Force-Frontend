@@ -26,7 +26,7 @@ export class UserService {
   }
 
 
-  massCreateUsers(userAdminArray: UserEmail[], userEmployeeArray: UserEmail[]) {
+  massCreateUsers(userArray: UserEmail[]) {
 
     const headerInfo = {
       'Content-Type': 'application/json',
@@ -38,11 +38,25 @@ export class UserService {
       headers: new HttpHeaders(headerInfo)
     };
 
-    let createAdmins = this.http.post<any>(BASE_API_URL.concat(`/user/massCreate`), userAdminArray, requestOptions);
-    createAdmins.subscribe();
-    let createEmployees = this.http.post<any>(BASE_API_URL.concat(`/user/massCreate`), userEmployeeArray, requestOptions);
-    createEmployees.subscribe();
+    let createUsers = this.http.post<any>(BASE_API_URL.concat(`/user/massCreate`), userArray, requestOptions);
+    createUsers.subscribe();
 
+  }
+
+  createOneUser(user: UserEmail) {
+
+    const headerInfo = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': 'Bearer '.concat(localStorage.getItem('access_token') || "")
+    }
+
+    const requestOptions = {
+      headers: new HttpHeaders(headerInfo)
+    };
+
+    let createUsers = this.http.post<any>(BASE_API_URL.concat(`/user/create`), user, requestOptions);
+    createUsers.subscribe();
   }
 
 
