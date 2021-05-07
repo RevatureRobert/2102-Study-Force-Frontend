@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   /*{
-    path: '/stacktrace', component: StacktraceHomeComponent
+    path: '', component: StacktraceHomeComponent
   }
   {
     path: '/new-stacktrace', component: NewStacktraceComponent
