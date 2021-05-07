@@ -25,9 +25,9 @@ export class PostLoginComponent implements OnInit {
    */
   constructor(private route: ActivatedRoute, private router: Router, private userService: UserService) {
     const fragment = route.snapshot.fragment;
-    const [a, b, c] = fragment.split("&");
+    const [a] = fragment.split("&");
     const [key, value] = a.split("=");
-    localStorage.setItem("access_token", value);
+    localStorage.setItem(key, value);
   }
 
   /**
