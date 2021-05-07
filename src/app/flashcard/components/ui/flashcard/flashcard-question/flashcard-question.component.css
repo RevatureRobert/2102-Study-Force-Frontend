@@ -4,7 +4,6 @@ backdrop-filter: blur(100px);
 /* Note: backdrop-filter has minimal browser support */
 border-radius: 30px;
 min-height: 350px;
-
 }
 
 .flashcard-difficulty {
