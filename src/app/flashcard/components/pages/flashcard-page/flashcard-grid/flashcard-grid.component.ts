@@ -11,12 +11,15 @@ import { FlashcardService } from '../../../../service/flashcard.service';
 })
 export class FlashcardGridComponent implements OnInit {
 
+  index!:number;
+
   public flashcards!: Flashcard[];
 
   constructor(private flashcardService: FlashcardService) { }
 
   ngOnInit(): void {
     this.getAllFlashcards();
+    this.index = this.flashcards.length;
   }
 
 

@@ -1,8 +1,8 @@
 <div class="card" style="width: 18rem;">
   <div class="card-body">
     <div class="header">Mikayla Pickett</div>
-    <div class="new-answer" >
-      <img src={{newAnswerIcon}} alt="create new answer" height="30em" (click)="newAnswer($event)">
+    <div class="new-answer">
+      <img src={{newAnswerIcon}} alt="create new answer" height="30em"  routerLink='/submit-answer'>
     </div>
 
     <p class="card-text" *ngIf=!isAnswer>(No answers)</p>
@@ -24,7 +24,6 @@
 
 
   <div class="answer-lower-half">
-    LOW
-    <!-- <app-vote class="vote-positioning"></app-vote> -->
+    <app-vote class="vote-positioning" (click)="vote($event)"></app-vote>
   </div>
 </div>

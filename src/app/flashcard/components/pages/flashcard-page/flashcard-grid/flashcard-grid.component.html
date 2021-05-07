@@ -1,5 +1,15 @@
-<h3>Grid Component</h3>
-
-<div class="view-flashcard" *ngFor="let flashcard of flashcards">
-  <app-flashcard [flashcard]="flashcard" ></app-flashcard>
+<!-- <div class="view-flashcard" *ngFor="let flashcard of flashcards">
+ <app-flashcard [flashcard]="flashcard" ></app-flashcard>
 </div>
+ -->
+
+ <!-- <div class="row">
+  <div ng-repeat="flashcard in flashcards">
+      <div class="clearfix" ng-if="$index % 3 == 0"></div>
+      <div class="col-sm-4">
+        <app-flashcard [flashcard]="flashcard" ></app-flashcard>
+      </div>
+  </div>
+</div> -->
+
+<app-flashcard [flashcard]="flashcards[0]"></app-flashcard>

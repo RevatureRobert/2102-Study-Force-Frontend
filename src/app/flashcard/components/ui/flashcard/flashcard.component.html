@@ -1,15 +1,11 @@
-<div class="card">
-  <div class="card-body">
-    <div (click)="toggleView()" [hidden]="flip" class="question">
+ <div (click)="toggleView()" [hidden]="flip" class="question">
       <app-flashcard-question [question]="flashcard.question" [difficulty]="flashcard.difficulty" ></app-flashcard-question>
     </div>
     <div (click)="toggleView()" [hidden]="!flip">
       <app-flashcard-answer [flashcardId]="flashcard.flashcardId"></app-flashcard-answer>
     </div>
-    </div>
-</div>
 
-<ul class="list-group list-group-horizontal">
+<!-- <ul class="list-group list-group-horizontal">
   <li class="list-group-item" [hidden]="flip">
     <div (click)="toggleView()" [hidden]="flip" class="question">
       <app-flashcard-question [question]="question" ></app-flashcard-question>
@@ -23,4 +19,4 @@
   <li class="list-group-item">
     <app-flashcard-delete [flashcardId]="deleteId" ></app-flashcard-delete>
   </li>
-</ul>
+</ul> -->

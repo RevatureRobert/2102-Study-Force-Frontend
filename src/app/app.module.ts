@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { SharedModule } from '../app/shared.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -8,7 +9,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TableComponent } from './global-components/table/table.component';
 import { FlashcardQuestionComponent } from './global-components/flashcard-question/flashcard-question.component';
 import { ReplyCardComponent } from './global-components/reply-card/reply-card.component';
-import { VoteComponent } from './global-components/vote/vote.component';
 import { SubmitContentCardComponent } from './global-components/submit-content-card/submit-content-card.component';
 import { FlashcardAnswerComponent } from './global-components/flashcard-answer/flashcard-answer.component';
 import { GlassPaneComponent } from './global-components/glass-pane/glass-pane.component';
@@ -19,11 +19,10 @@ import { PaginationComponent } from './global-components/pagination/pagination.c
 import { DiologueCardComponent } from './global-components/diologue-card/diologue-card.component';
 import { HomeComponent } from './home-component/home/home.component';
 import { ListComponent } from './global-components/list/list.component';
-
-
 import {FlashcardModule } from './flashcard/flashcard.module';
 import { FormsModule } from '@angular/forms';
 import { StacktraceModule } from './stacktrace/stacktrace.module';
+
 
 
 @NgModule({
@@ -32,7 +31,6 @@ import { StacktraceModule } from './stacktrace/stacktrace.module';
     TableComponent,
     FlashcardQuestionComponent,
     ReplyCardComponent,
-    VoteComponent,
     SubmitContentCardComponent,
     FlashcardAnswerComponent,
     GlassPaneComponent,
@@ -43,7 +41,7 @@ import { StacktraceModule } from './stacktrace/stacktrace.module';
     DiologueCardComponent,
     HomeComponent,
     ListComponent,
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +50,9 @@ import { StacktraceModule } from './stacktrace/stacktrace.module';
     FlashcardModule,
     StacktraceModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    SharedModule
+
   ],
   providers: [],
   bootstrap: [AppComponent],

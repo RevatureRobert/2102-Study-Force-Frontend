@@ -47,4 +47,8 @@ export class FlashcardAnswerComponent implements OnInit {
     this.flip = !this.flip;
     event.stopPropagation();
   }
+
+  vote(event: Event) {
+    event.stopPropagation();
+  }
 }

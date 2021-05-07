@@ -7,10 +7,11 @@ import { ViewFlashcardThreadComponent } from './components/pages/view-flashcard-
 
 
 const routes: Routes = [
-  { path: '', component: FlashcardPageComponent },
-  { path: 'create', component: CreateFlashcardPageComponent },
-  { path: 'answer', component: SubmitAnswerPageComponent },
-  { path: 'thread', component: ViewFlashcardThreadComponent}
+  { path: '', redirectTo:'/view-flashcards',pathMatch:'full'},
+  { path: 'create-question', component: CreateFlashcardPageComponent },
+  { path: 'submit-answer', component: SubmitAnswerPageComponent },
+  { path: 'view-thread', component: ViewFlashcardThreadComponent},
+  { path: 'view-flashcards', component: FlashcardPageComponent}
 ];
 
 @NgModule({
