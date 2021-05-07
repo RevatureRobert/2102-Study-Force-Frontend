@@ -4,7 +4,7 @@ import { StacktraceHomeComponent } from './components/stacktrace-home/stacktrace
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { ViewClickedStacktraceComponent } from './components/view-clicked-stacktrace/view-clicked-stacktrace.component';
+import { StacktraceComponent } from './components/stacktrace/stacktrace.component';
 
 import { StacktraceService } from './services/stacktrace.service'
 
@@ -12,7 +12,7 @@ import { StacktraceService } from './services/stacktrace.service'
 @NgModule({
   declarations: [
     StacktraceHomeComponent,
-    ViewClickedStacktraceComponent
+    StacktraceComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +23,7 @@ import { StacktraceService } from './services/stacktrace.service'
   ],
   exports:[
     StacktraceHomeComponent,
-    ViewClickedStacktraceComponent
+    StacktraceComponent
   ],
   providers:[
     StacktraceService
