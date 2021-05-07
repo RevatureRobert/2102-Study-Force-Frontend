@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Flashcard } from 'src/app/flashcard/model/flashcard';
 import { AnswerService } from 'src/app/flashcard/service/answer.service';
+import { FlashcardService } from 'src/app/flashcard/service/flashcard.service';
 
 @Component({
   selector: 'app-submit-answer-page',
@@ -15,8 +16,13 @@ export class SubmitAnswerPageComponent implements OnInit {
   private userId:number = 1;
   flashcard!:Flashcard;
 
-  constructor(private answerService: AnswerService) {
-    this.flashcard = answerService.getCurrentFlashcardId();
+  constructor(private answerService: AnswerService, private flashcardService: FlashcardService) {
+    let flashcardId = answerService.getCurrentFlashcardId();
+    flashcardService.getFlashcardById(flashcardId).then(response =>{
+      this.flashcard = response.content;
+    }).catch(exception =>{
+      console.log(exception);
+    })
   }
 
   ngOnInit(): void {

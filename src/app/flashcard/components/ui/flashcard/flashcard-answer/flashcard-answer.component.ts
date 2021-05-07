@@ -5,6 +5,7 @@ import { AnswerPageable } from 'src/app/flashcard/model/answer-pageable';
 import { Flashcard } from 'src/app/flashcard/model/flashcard';
 import * as EventEmitter from 'events';
 import { FlashcardService } from 'src/app/flashcard/service/flashcard.service';
+import { AnswerService } from 'src/app/flashcard/service/answer.service';
 
 @Component({
   selector: 'app-flashcard-answer',
@@ -24,7 +25,7 @@ export class FlashcardAnswerComponent implements OnInit {
 
   newAnswerIcon = "../../../assets/add new answer.png"
 
-  constructor(private flashcardService: FlashcardService, private router: Router) {
+  constructor(private flashcardService: FlashcardService, private answerService: AnswerService, private router: Router) {
 
   }
 
@@ -57,7 +58,9 @@ export class FlashcardAnswerComponent implements OnInit {
 
   // On new answer, the router should route the user to a create an answer page.
   newAnswer(event: Event) {
+    this.answerService.setCurrentFlashcardId(this.flashcardId);
     event.stopPropagation();
+    this.router.navigate(["/submit-answer"]);
   }
 
   toggleView(event: Event): void {

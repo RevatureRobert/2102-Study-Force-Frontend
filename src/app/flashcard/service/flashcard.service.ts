@@ -31,8 +31,8 @@ export class FlashcardService {
     return this.http.get(`http://${this.apiServerUrl}/flashcards`);
   }
 
-  getFlashcardById(flashcardId: number): Promise<any> {
-    return this.http.get(`http://${this.apiServerUrl}/flashcards/${flashcardId}`).toPromise();
+  async getFlashcardById(flashcardId: number): Promise<any> {
+    return await this.http.get(`http://${this.apiServerUrl}/flashcards/${flashcardId}`).toPromise();
   }
 
   getAnswers(flashcardId: number): Observable<any> {
