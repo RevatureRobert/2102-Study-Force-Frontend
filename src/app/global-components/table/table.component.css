@@ -1,0 +1,54 @@
+/*
+
+                                   ,,
+`7MM"""Mq.                       `7MM      `7MMM.     ,MMF'
+  MM   `MM.                        MM        MMMb    dPMM
+  MM   ,M9  .gP"Ya   ,6"Yb.   ,M""bMM        M YM   ,M MM  .gP"Ya
+  MMmmdM9  ,M'   Yb 8)   MM ,AP    MM        M  Mb  M' MM ,M'   Yb
+  MM  YM.  8M""""""  ,pm9MM 8MI    MM        M  YM.P'  MM 8M""""""
+  MM   `Mb.YM.    , 8M   MM `Mb    MM        M  `YM'   MM YM.    ,
+.JMML. .JMM.`Mbmmd' `Moo9^Yo.`Wbmd"MML.    .JML. `'  .JMML.`Mbmmd'
+
+
+
+>   Do not use <th scope="row"> </th>
+
+
+*/
+
+th {
+  background: white;
+}
+
+.table-striped > tbody > tr:nth-child(2n + 1) {
+  background: linear-gradient(
+    90.34deg,
+    rgba(255, 255, 255, 0.81) 0%,
+    rgba(255, 255, 255, 0.72) 100%
+  );
+  mix-blend-mode: normal;
+  backdrop-filter: blur(100px);
+}
+
+.table-striped > tbody > tr:nth-child(2n) {
+  background: linear-gradient(
+    90.34deg,
+    rgba(255, 255, 255, 0.56) 0%,
+    rgba(255, 255, 255, 0.42) 100%
+  );
+  mix-blend-mode: normal;
+  backdrop-filter: blur(100px);
+}
+
+table {
+  border-radius: 30px;
+  overflow: hidden;
+  background: none;
+}
+
+caption {
+  background: #ffffff;
+  opacity: 0.5;
+  box-shadow: 0px -1px 0px #eceeef;
+  border-radius: 0px 0px 30px 30px;
+}

@@ -1,17 +1,15 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { SharedModule } from './global-components/shared.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ButtonComponent } from './global-components/button/button.component';
-import { GlassPaneComponent } from './global-components/glass-pane/glass-pane.component';
-import { GenericCardWideComponent } from './global-components/generic-card-wide/generic-card-wide.component';
-import { GenericCardComponent } from './global-components/generic-card/generic-card.component';
-import { SearchBarComponent } from './global-components/search-bar/search-bar.component';
+import {FlashcardModule } from './flashcard/flashcard.module';
+import { FormsModule } from '@angular/forms';
+import { StacktraceModule } from './stacktrace/stacktrace.module';
 import { UserModule } from './user/user.module';
-import { HttpClientModule } from '@angular/common/http';
-
 
 @NgModule({
   declarations: [
@@ -25,11 +23,15 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
     NgbModule,
-    UserModule,
-    HttpClientModule
+    SharedModule,
+    FlashcardModule,
+    StacktraceModule,
+    UserModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

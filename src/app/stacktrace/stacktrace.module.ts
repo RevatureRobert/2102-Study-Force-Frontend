@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { StacktraceRoutingModule } from './stacktrace-routing.module';
+import { SharedModule } from '../global-components/shared.module';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [/**components go here*/],
   imports: [
-    CommonModule
+    SharedModule,
+    StacktraceRoutingModule
   ]
 })
 export class StacktraceModule { }
