@@ -54,3 +54,22 @@
 
   </div>
 </app-base-page>
+
+
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h3 class="card-title test">Submit your answer</h3>
+    <form #f="ngForm" (submit)="onSubmit()">
+      <div class="form-group">
+        <label for = "submitCardContentType" id="submitContent" >
+        </label>
+        <textarea class="form-control input-styling" id="submitContent" name="answer" rows="5"
+        placeholder="Write your answer here..." [(ngModel)]="form.answer" #answer="ngModel" ngModel></textarea>
+      </div>
+      <div class="wrapper">
+        <input type="submit" class="btn custom-button" value="Submit">
+
+      </div>
+    </form>
+  </div>
+</div>
