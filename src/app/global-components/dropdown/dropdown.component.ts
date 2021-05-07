@@ -10,8 +10,10 @@ export class DropdownComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  //This checks if the dropdown is in focus
   yes: boolean = false;
 
+  //If the dropdown button is clicked this will provide functionallity to style the button based on the button click.
   changeFocus() {
     let parent = document.getElementById('Dropdown-Button');
 
@@ -26,6 +28,7 @@ export class DropdownComponent implements OnInit {
     }
   }
 
+  //If the dropdown loses focus, set the boolean to false.
   setFalse() {
     this.yes = false;
   }
