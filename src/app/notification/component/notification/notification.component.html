@@ -17,8 +17,10 @@
       </button>
       <div ngbDropdownMenu >
         <button (click)="deleteNotification(notification)" *ngFor="let notification of notifications" ngbDropdownItem><a
-          routerLink="/">{{notification.message}}</a></button>
+          routerLink="/">User ID: {{notification.userId}} {{notification.message}}</a></button>
       </div>
+<!--      <button (click)="loadMoreNotifications(1)">Load More Notifications</button>-->
+      <button (click)="deleteAllNotifications(1)">Clear all Notifications</button>
     </div>
   </div>
 </div>

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Notification} from '../../model/notification';
 import {NotificationService} from '../../service/notification.service';
-import {User} from "../../../user/User";
+import {User} from '../../../user/User';
 
 
 @Component({
@@ -30,18 +30,11 @@ export class NotificationComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   deleteNotification(notification: Notification) {
-    this.notificationService.deleteById(notification.id).subscribe(
-      (response: any) => {
-        this.notifications = response.content;
-      });
+    this.notificationService.deleteByNotificationId(notification.id).subscribe();
   }
 
-  deleteAllNotifications(user: User): void {
-    this.notificationService.deleteAllNotificationsByUserId(user.id).subscribe(
-      (response: any) => {
-        this.notifications = response.content;
-      }
-    );
+  deleteAllNotifications(id: number): void {
+    this.notificationService.deleteAllNotificationsByUserId(id).subscribe();
   }
 
 }

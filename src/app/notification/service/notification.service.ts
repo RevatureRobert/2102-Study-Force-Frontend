@@ -11,9 +11,7 @@ import {Observable} from 'rxjs';
 export class NotificationService {
 
   private headerInfo = {
-    'Content-Type': 'application/json',
-    Accept: 'application/json'
-  };
+    'Content-Type': 'application/json'};
 
   notifications!: Notification[];
   private baseUrl = 'http://localhost:8080/notifications';
@@ -22,20 +20,14 @@ export class NotificationService {
   }
 
   getAllNotifications(): Observable<any> {
-    return this.httpClient.get(this.baseUrl);
+    return this.httpClient.get(`${(this.baseUrl)}/users/${2}`);
   }
 
-  // tslint:disable-next-line:typedef
   deleteByNotificationId(id: number): Observable<any> {
     return this.httpClient.delete(`${(this.baseUrl)}/${id}`);
   }
 
-  // tslint:disable-next-line:typedef
   deleteAllNotificationsByUserId(id: number): Observable<any> {
-    return this.httpClient.delete(`${(this.baseUrl)}/${id}`);
+    return this.httpClient.delete(`${(this.baseUrl)}/users/${id}`);
   }
-}
-
-interface GetResponseNotifications {
-  notifications: Notification[];
 }
