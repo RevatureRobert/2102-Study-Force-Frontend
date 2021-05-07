@@ -20,6 +20,9 @@ export class FlashcardQuestionComponent implements OnInit {
   @Input() answerId!: number;
   @Input() flashcard!: Flashcard;
   @Output() click = new EventEmitter;
+
+  isSliderActive: boolean = false;
+
   subscribed = false;
   bellStyle = "../../../assets/bell.svg"
 
@@ -56,6 +59,14 @@ export class FlashcardQuestionComponent implements OnInit {
 
   stopPropogation(event: Event) {
     event.stopPropagation();
+  }
+
+  activateSlider() {
+    this.isSliderActive = true;
+    if (this.isSliderActive) {
+      console.log("ACTIVE");
+
+    }
   }
 
 }
