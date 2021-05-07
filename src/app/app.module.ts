@@ -10,16 +10,19 @@ import { FlashcardModule } from './flashcard/flashcard.module';
 import { FormsModule } from '@angular/forms';
 import { StacktraceModule } from './stacktrace/stacktrace.module';
 import { UserModule } from './user/user.module';
+import {NotificationService} from './notification/service/notification.service';
+import {NotificationComponent} from './notification/component/notification/notification.component';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NotificationComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    HttpClientModule,
     FormsModule,
     NgbModule,
     SharedModule,
