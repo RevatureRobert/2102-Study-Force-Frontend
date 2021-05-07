@@ -12,6 +12,14 @@ import { SearchBarComponent } from './global-components/search-bar/search-bar.co
 import { UserModule } from './user/user.module';
 import { HttpClientModule } from '@angular/common/http';
 
+import { DropdownComponent } from './global-components/dropdown/dropdown.component';
+import { TableComponent } from './global-components/table/table.component';
+import { NavbarComponent } from './global-components/navbar/navbar.component';
+import { FlashcardQuestionComponent } from './global-components/flashcard-question/flashcard-question.component';
+import { ReplyCardComponent } from './global-components/reply-card/reply-card.component';
+import { VoteComponent } from './global-components/vote/vote.component';
+import { SubmitContentCardComponent } from './global-components/submit-content-card/submit-content-card.component';
+import { FlashcardAnswerComponent } from './global-components/flashcard-answer/flashcard-answer.component';
 
 @NgModule({
   declarations: [
@@ -20,8 +28,16 @@ import { HttpClientModule } from '@angular/common/http';
     GlassPaneComponent,
     GenericCardWideComponent,
     GenericCardComponent,
-    SearchBarComponent
-  ],
+    SearchBarComponent,
+    DropdownComponent,
+    TableComponent,
+    NavbarComponent,
+    FlashcardQuestionComponent,
+    ReplyCardComponent,
+    VoteComponent,
+    SubmitContentCardComponent,
+    FlashcardAnswerComponent
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -30,6 +46,6 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
