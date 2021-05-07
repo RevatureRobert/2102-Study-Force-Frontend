@@ -1,14 +1,12 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FlashcardComponent } from './flashcard.component';
+import { SharedModule } from '../global-components/shared.module';
 import { FlashcardRoutingModule } from './flashcard-routing.module';
 
 
-
 @NgModule({
-  declarations: [FlashcardComponent],
+  declarations: [/**main */],
   imports: [
-    CommonModule,
+    SharedModule,
     FlashcardRoutingModule
   ]
 })
