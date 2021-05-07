@@ -2,3 +2,45 @@
   width: fit-content;
   display: inline-block;
 }
+
+.filter-box {
+  position:absolute;
+  top: 3em;
+  right: -1.3em;
+  padding: 1em;
+}
+
+.filter-button {
+  width: 7em;
+  height: 3.5em;
+  margin: .5em;
+  border-radius: 20px;
+  background: rgba(255, 165, 0, 20%);
+  border-width: .5px;
+}
+.filter-button:hover {
+  background: rgb(255, 165, 0);
+}
+
+.filter-small-box {
+  border-radius: 10px;
+  background: rgb(235, 189, 64);
+}
+
+.filter-input:hover {
+  background: rgb(255, 165, 0);
+  color: white;
+}
+
+.page-button {
+  height: 4em;
+  border-radius: 15px;
+  width: 8em;
+  font-size: 1em;
+  padding: 1em;
+}
+
+.page-button:hover {
+  color: white;
+  background: orange;
+}
