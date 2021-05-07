@@ -191,3 +191,35 @@ td{
   font-family: Roboto; font-style: normal;
   line-height: 41px;
 }
+
+#Deactivate-Batch-Button {
+  opacity: 0.75;
+  position: relative;
+  width: 175px;
+  background: #ff0101;
+  border: 1px solid #ff0000;
+  box-sizing: border-box;
+  border-radius: 30px;
+}
+
+#Remove-Button {
+  opacity: 0.75;
+  position: absolute;
+  width: 103px;
+  background: #ff0101;
+  border: 1px solid #ff0000;
+  box-sizing: border-box;
+  border-radius: 30px;
+  padding: 2;
+  right: 15px;
+
+}
+
+.deactivate {
+  position: absolute;
+width: 175px;
+height: 34px;
+left: 41.5%;
+bottom: 15px;
+
+}

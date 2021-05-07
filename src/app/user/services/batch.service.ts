@@ -16,9 +16,8 @@ export class BatchService {
     private http:HttpClient
   ) { }
 
-  getBatchById(): Observable<Batch> {
-    // let id = localStorage.getItem("")
-    let id = 3;
+  getBatchById(id: string): Observable<Batch> {
+
     const url = `${this.dev}/${this.byBatchId}/${id}`;
     return this.http.get<Batch>(url);
   }

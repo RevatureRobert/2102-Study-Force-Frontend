@@ -54,11 +54,19 @@
           <tr *ngFor="let user of users">
             <td>{{ user.name }}</td>
             <td>{{ user.email }}</td>
-            <td></td>
+            <td>
+              <button class="btn btn-danger" type="button" id="Remove-Button">Remove</button>
+            </td>
           </tr>
         </tbody>
       </table>
     </div>
+  </div>
+
+  <div class="deactivate">
+    <button class="btn btn-danger" type="button" id="Deactivate-Batch-Button">
+      Deactivate Batch
+    </button>
   </div>
 
 </div>
