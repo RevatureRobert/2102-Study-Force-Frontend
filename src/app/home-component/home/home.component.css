@@ -1,0 +1,67 @@
+#glass-pane {
+  position: absolute;
+  width: 75%;
+  height: 75%;
+  left: 50%;
+  top: 100px;
+  transform: translateX(-50%);
+  box-shadow: 0 8px 15px 0 rgba(31, 38, 135, 0.37);
+
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(100px);
+  -webkit-backdrop-filter: blur(100px);
+  border-radius: 30px;
+  overflow: hidden;
+}
+#Splash-Image {
+  position: absolute;
+  left: 40%;
+  width: 60%;
+  height: 110%;
+  background: url("../Splash_Page.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+h1 {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+img {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 30%;
+}
+
+h1 {
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  position: absolute;
+  top: 50%;
+  color: #153c53;
+}
+
+p {
+  position: absolute;
+  top: 60%;
+  left: 10px;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 300px;
+  font-size: 20px;
+  line-height: 16px;
+  color: #153c53;
+}
+
+#Login-Signup-Button {
+  position: absolute;
+  bottom: 40px;
+  left: 25px;
+  width: 150px;
+  background: #0275d8;
+  border: 1px solid #0275d8;
+  box-sizing: border-box;
+  border-radius: 30px;
+}

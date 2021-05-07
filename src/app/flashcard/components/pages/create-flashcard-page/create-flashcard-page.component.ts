@@ -17,10 +17,11 @@ export class CreateFlashcardPageComponent implements OnInit {
 
   form: any = {
     userId: null,
-    topicID: {},
+    topicId: {},
     question: null,
     difficulty: null
   };
+
 
   constructor(private flashcardService: FlashcardService, private topicService: TopicService) {
     this.subscription = new Observable<any>().subscribe();

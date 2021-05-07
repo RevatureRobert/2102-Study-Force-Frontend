@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Flashcard } from 'src/app/flashcard/model/flashcard';
+import { FlashcardPageable } from 'src/app/flashcard/model/flashcard-pageable';
 import { FlashcardService } from '../../../service/flashcard.service';
 import { FlashcardComponent } from '../../ui/flashcard/flashcard.component';
+import { FlashcardQuestionComponent } from '../../ui/flashcard/flashcard-question/flashcard-question.component';
 import {HttpErrorResponse} from '@angular/common/http';
+import { BasePageComponent } from "../../../../global-components/base-page/base-page.component";
 
 import { FlashcardPage } from "src/app/flashcard/model/flashcardPage";
 import { Topic } from 'src/app/flashcard/model/topic';
@@ -21,8 +24,11 @@ export class FlashcardPageComponent implements OnInit {
   modeChoices:DisplayData[] = [];
   topics: Topic[] = [];
   input: any = null;
+  flashcards: Flashcard[] = [];
 
-  constructor(private flashcardService: FlashcardService, private topicService: TopicService) { }
+  constructor(private flashcardService: FlashcardService, private topicService: TopicService) {
+    this.getAllFlashcards();
+   }
 
   ngOnInit(): void {
     this.flashcardService.getAllByPage(0).subscribe({
@@ -37,6 +43,18 @@ export class FlashcardPageComponent implements OnInit {
   prevPage(): void {
     if(this.flashcardPage)
       this.loadPage(this.flashcardPage.number - 1);
+  }
+
+  getAllFlashcards(): void {
+    this.flashcardService.getAll().subscribe(
+      (response: FlashcardPageable) => {
+
+        this.flashcards = response.content;
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
   }
 
   nextPage(): void {
@@ -67,10 +85,7 @@ export class FlashcardPageComponent implements OnInit {
     this.modeChoices = [
       {input: true, displayString: "Resolved"},
       {input: false, displayString: "Not Resolved"}];
-
-      this.input = true;
-      this.loadPage(0);
-  }
+    }
 
   setModeToTopic(): void {
     this.mode = Mode.TOPIC;
@@ -99,7 +114,7 @@ export class FlashcardPageComponent implements OnInit {
         });
         break;
       case Mode.DIFFICULTY:
-        this.flashcardService.getAllByDifficulty(page, this.input).subscribe({
+        this.flashcardService.getAllByDifficultyPage(page, this.input).subscribe({
           next: result => this.flashcardPage = result
         });
         break;

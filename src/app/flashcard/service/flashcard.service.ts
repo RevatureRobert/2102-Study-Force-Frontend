@@ -13,6 +13,8 @@ export class FlashcardService {
 
   private apiServerUrl = environment.apiUrl;
 
+  public selectedFlascardForThread?: Flashcard;
+
   constructor(private http: HttpClient) {
   }
 
@@ -20,8 +22,25 @@ export class FlashcardService {
     return this.http.get<FlashcardPage>(`http://${this.apiServerUrl}/flashcards?page=${page}`);
   }
 
-  getAllByDifficulty(page: number, difficulty: number): Observable<FlashcardPage> {
+  getAllByDifficultyPage(page: number, difficulty: number): Observable<FlashcardPage> {
     return this.http.get<FlashcardPage>(`http://${this.apiServerUrl}/flashcards/difficulty?page=${page}&difficulty=${difficulty}`);
+  }
+
+
+  getAll(): Observable<any> {
+    return this.http.get(`http://${this.apiServerUrl}/flashcards`);
+  }
+
+  getFlashcardById(flashcardId: number): Promise<any> {
+    return this.http.get(`http://${this.apiServerUrl}/flashcards/${flashcardId}`).toPromise();
+  }
+
+  getAnswers(flashcardId: number): Observable<any> {
+    return this.http.get(`http://${this.apiServerUrl}/answers/${flashcardId}`);
+  }
+
+  getAllByDifficulty(difficulty: number): Observable<any> {
+    return this.http.get(`http://${this.apiServerUrl}/difficulty?difficulty=${difficulty}`);
   }
 
   getAllByTopic(page: number, topic: string): Observable<FlashcardPage> {
@@ -46,6 +65,10 @@ export class FlashcardService {
 
   delete(data: any): Observable<any> {
     return this.http.delete(`http://${this.apiServerUrl}`, data);
+  }
+
+  setSelectedFlashcard(flascard: Flashcard): void {
+    this.selectedFlascardForThread = flascard;
   }
 
 }

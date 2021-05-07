@@ -18,7 +18,7 @@ name="flashcard"
     <div class="form-group">
       <select
         name="topic"
-        [(ngModel)]="form.topicID"
+        [(ngModel)]="form.topicId"
         #topic="ngModel"
         placeholder="Select topic"
         type="text"
@@ -34,7 +34,7 @@ name="flashcard"
       [(ngModel)]="form.difficulty"
       #difficulty="ngModel"
       placeholder="Select difficulty"
-      type="text"
+      type="difficulty"
       required>
       <option value="easy" selected="selected">Easy</option>
       <option value="medium">Medium</option>

@@ -1,4 +1,8 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Flashcard } from 'src/app/flashcard/model/flashcard';
+import { FlashcardService } from '../../../../service/flashcard.service';
+
 
 @Component({
   selector: 'app-flashcard-grid',
@@ -7,9 +11,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FlashcardGridComponent implements OnInit {
 
-  constructor() { }
+  public flashcards!: Flashcard[];
+
+  constructor(private flashcardService: FlashcardService) { }
 
   ngOnInit(): void {
+    this.getAllFlashcards();
+  }
+
+
+  getAllFlashcards(): void {
+    this.flashcardService.getAll().subscribe(
+      (response: any) => {
+        console.log(response.entries);
+        this.flashcards = response.content;
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+
+
   }
 
 }

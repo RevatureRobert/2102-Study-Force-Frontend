@@ -1,4 +1,5 @@
-<h2>flashcard page</h2>
+<app-base-page></app-base-page>
+<br>
 
 <div *ngIf="flashcardPage !== undefined">
   <div class="card-group">
@@ -26,4 +27,10 @@
 
 <div *ngIf="modeChoices.length > 0">
       <button *ngFor="let mode of modeChoices" (click)="setInput(mode.input)">{{mode.displayString}}</button>
+<div class="view-flashcard" *ngFor="let flashcard of flashcards">
+    <div>
+      <app-flashcard [flashcard]=flashcard></app-flashcard>
+    </div>
 </div>
+
+<!-- <app-flashcard-grid></app-flashcard-grid> -->

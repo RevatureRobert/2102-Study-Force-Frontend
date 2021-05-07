@@ -1,5 +1,30 @@
-<div class="flashcard-content">
-  <h2>[answer body]</h2>
-  <!-- <h1>{{flashcard.questionDifficultyAverage}}</h1>
-  <h2 class="x-display-question">{{answer.answerText}}</h2> -->
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <div class="header">Mikayla Pickett</div>
+    <div class="new-answer" >
+      <img src={{newAnswerIcon}} alt="create new answer" height="30em" (click)="newAnswer($event)">
+    </div>
+
+    <p class="card-text" *ngIf=!isAnswer>(No answers)</p>
+    <div [hidden]="flip" class="answers" *ngIf=isAnswer>
+      <p class="card-text">{{answers[0].answerText}}</p>
+      <button class="btn custom-button" (click)="toggleView($event)" *ngIf="answers.length > 0">
+          View More
+      </button>
+    </div>
+
+    <div [hidden]="!flip" class="answers">
+      <p *ngFor="let answer of answers">{{answer.answerText}}<br></p>
+      <button class="btn custom-button" (click)="toggleView($event)">
+        View Less
+      </button>
+    </div>
+
+  </div>
+
+
+  <div class="answer-lower-half">
+    LOW
+    <!-- <app-vote class="vote-positioning"></app-vote> -->
+  </div>
 </div>

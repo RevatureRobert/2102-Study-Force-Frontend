@@ -1,10 +1,26 @@
-<!-- <div (click)="toggleView()" [hidden]="flip" class="question">
-  <app-flashcard-question [question]="question" ></app-flashcard-question>
+<div class="card">
+  <div class="card-body">
+    <div (click)="toggleView()" [hidden]="flip" class="question">
+      <app-flashcard-question [question]="flashcard.question" [difficulty]="flashcard.difficulty" ></app-flashcard-question>
+    </div>
+    <div (click)="toggleView()" [hidden]="!flip">
+      <app-flashcard-answer [flashcardId]="flashcard.flashcardId"></app-flashcard-answer>
+    </div>
+    </div>
 </div>
-<div (click)="toggleView()" [hidden]="!flip">
-  <app-flashcard-answer>answer</app-flashcard-answer>
-</div> -->
 
-
-
-<app-flashcard-page></app-flashcard-page>
+<ul class="list-group list-group-horizontal">
+  <li class="list-group-item" [hidden]="flip">
+    <div (click)="toggleView()" [hidden]="flip" class="question">
+      <app-flashcard-question [question]="question" ></app-flashcard-question>
+    </div>
+  </li>
+  <li class="list-group-item" [hidden]="!flip">
+    <div (click)="toggleView()" [hidden]="!flip">
+      <app-flashcard-answer>answer</app-flashcard-answer>
+    </div>
+  </li>
+  <li class="list-group-item">
+    <app-flashcard-delete [flashcardId]="deleteId" ></app-flashcard-delete>
+  </li>
+</ul>
