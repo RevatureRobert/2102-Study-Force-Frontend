@@ -1,7 +1,7 @@
 <!-- <div class="view-flashcard" *ngFor="let flashcard of flashcards">
  <app-flashcard [flashcard]="flashcard" ></app-flashcard>
-</div>
- -->
+</div> -->
+
 
  <!-- <div class="row">
   <div ng-repeat="flashcard in flashcards">
@@ -11,5 +11,9 @@
       </div>
   </div>
 </div> -->
+<!--
+<app-flashcard [flashcard]="flashcards[0]"></app-flashcard> -->
 
-<app-flashcard [flashcard]="flashcards[0]"></app-flashcard>
+<div class="card-deck view-flashcard" *ngFor="let flashcard of flashcards" >
+  <app-flashcard [flashcard]="flashcard"></app-flashcard>
+</div>

@@ -1,6 +1,8 @@
- <div (click)="toggleView()" [hidden]="flip" class="question">
-  <app-flashcard-question [question]="flashcard.question" [difficulty]="flashcard.difficulty" ></app-flashcard-question>
-</div>
-<div (click)="toggleView()" [hidden]="!flip">
-  <app-flashcard-answer [flashcardId]="flashcard.flashcardId"></app-flashcard-answer>
+<div class="container">
+  <div (click)="toggleView()" [hidden]="flip" class="question">
+    <app-flashcard-question [question]="flashcard.question" [difficulty]="flashcard.difficulty" ></app-flashcard-question>
+  </div>
+  <div (click)="toggleView()" [hidden]="!flip">
+    <app-flashcard-answer [flashcardId]="flashcard.flashcardId"></app-flashcard-answer>
+  </div>
 </div>

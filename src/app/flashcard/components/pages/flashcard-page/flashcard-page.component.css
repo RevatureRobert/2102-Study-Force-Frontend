@@ -11,6 +11,8 @@
   backdrop-filter: blur(100px);
   -webkit-backdrop-filter: blur(100px);
   border-radius: 30px;
+  padding: 3em;
+  overflow: auto;
 }
 
 .page {
