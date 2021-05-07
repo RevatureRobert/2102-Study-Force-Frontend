@@ -1,16 +1,6 @@
-.container {
-  position: relative;
-  width: 75%;
-  height: 75%;
-  left: 50%;
-  top: 100px;
-  transform: translateX(-50%);
-
-  background: transparent;
-  border-radius: 30px;
-  padding: 3em;
-  overflow: auto;
-  overflow-x: hidden;
+#submit-box {
+  width: fit-content;
+  margin-top: 3em;
 }
 
 .page {
@@ -82,13 +72,10 @@ color: rgba(0, 0, 0, 0.5);
 }
 
 #Diologue-Card {
-  /* position: absolute; */
+
   position: relative;
-  left: 50%;
-  top: 50%;
-  width: 1048px !important;
+  width: fit-content;
   min-height: 210px !important;
-  transform: translate(-50%, -50%);
   background: linear-gradient(
     111.52deg,
     rgba(255, 255, 255, 0.64) 0%,
@@ -97,6 +84,7 @@ color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(100px);
   border-radius: 30px;
   border: none;
+  margin-bottom: 1em;
 }
 
 #Card-Header {
