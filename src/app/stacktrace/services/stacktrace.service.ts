@@ -37,8 +37,8 @@ export class StacktraceService {
   /**
    * GETs a Stacktrace from the backend
    */
-  getStacktrace(id:number): Observable<Stacktrace> {
-    return this.http.get<Stacktrace>(`${this.apiServerUrl}/${id}`, { headers: this.httpHeaders });
+  getStacktrace(id:number): Promise<Stacktrace> {
+    return this.http.get<Stacktrace>(`http://${this.apiServerUrl}/${id}`, { headers: this.httpHeaders }).toPromise();
   }
 
   /**
