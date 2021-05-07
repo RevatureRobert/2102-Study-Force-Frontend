@@ -34,11 +34,6 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     AppComponent,
     ButtonComponent,
-    GlassPaneComponent,
-    GenericCardWideComponent,
-    GenericCardComponent,
-    SearchBarComponent,
-    DropdownComponent,
     TableComponent,
     NavbarComponent,
     FlashcardQuestionComponent,
@@ -63,7 +58,7 @@ import { FormsModule } from '@angular/forms';
     NgbModule,
     UserModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
     // FlashcardModule,
     // StacktraceModule,
   ],

@@ -18,7 +18,7 @@ import { AddUsersEmailComponent } from './components/add-users-email/add-users-e
     CommonModule,
     UserRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
   ],
 
   providers: [RedirectGuardService]

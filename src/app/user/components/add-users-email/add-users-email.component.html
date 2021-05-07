@@ -1,4 +1,6 @@
 <div class="container">
+    <!-- <app-base-page> -->
+
     <div id="glass-pane">
         <div class="row">
             <div class="col-4"></div>
@@ -19,16 +21,15 @@
                         (click)="this.changeFocus()"
                         (focus)="this.setFalse()"
                     >
-                        Dropdown button
+                        Choose Batch
                     </button>
                     <ul
                         class="dropdown-menu"
                         aria-labelledby="Dropdown-Button"
                         id="Dropdown-List"
+                        *ngFor='let b of batches'
                     >
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <li><a href="" (click)="onSelectBatch(b.id)">{{b.name}}</a></li>
                     </ul>
                 </div>
             </div>
@@ -48,14 +49,14 @@
                                     <td>{{ e.email }}</td>
                                     <td>
                                         <button class="btn btn-danger form-control Remove-Button"
-                                            (click)="onDeleteEmployee()">
+                                            (click)="onDeleteEmployee(e)">
                                             Remove
                                         </button>
                                     </td>
                                 </tr>
                             </tbody>
                             <caption>
-                                <form (submit)="onSubmitEmployee(formEmp)" #formEmp="ngForm">
+                                <form (submit)="onAddEmployee(formEmp)" #formEmp="ngForm">
                                     <input type="text" class="form-control d-inline" name="email" placeholder="email"
                                         [ngModel]="user?.email" #email="ngModel" id="Email-Input" />
                                     <button class="btn btn-primary Add-Button form-control d-inline" type="submit">
@@ -73,4 +74,5 @@
             </button>
         </div>
     </div>
+    <!-- </app-base-page> -->
 </div>
