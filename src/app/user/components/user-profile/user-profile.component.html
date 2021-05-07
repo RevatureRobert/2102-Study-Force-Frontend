@@ -1,30 +1,4 @@
 <div>
-  <div id="glass-pane" style="height: 44rem;">
-    <div class="card" style="width: 70%; height: 4rem; top: 6rem;" id="Card-Wide">
-      <label for="" style="position: relative; top: -13px; left: 22px;">Email</label>
-      <div class="card-body" id="Card-Body">
-        <p class="card-text" id="Card-Text">{{ user.email }}</p>
-      </div>
-    </div>
-    <div class="card" style="width: 70%; height: 4rem; top: 12rem;" id="Card-Wide">
-      <label for="" style="position: relative; top: -13px; left: 22px;">Name</label>
-      <div class="card-body" id="Card-Body">
-        <p class="card-text" id="Card-Text">{{ user.name }}</p>
-      </div>
-    </div>
-    <div class="card" style="width: 70%; height: 4rem; top: 18rem;" id="Card-Wide">
-      <label for="" style="position: relative; top: -13px; left: 22px;">Member Since</label>
-      <div class="card-body" id="Card-Body">
-        <p class="card-text" id="Card-Text">{{ registrationDate.getMonth() }}/{{ registrationDate.getDate() }}/{{ registrationDate.getFullYear() }}</p>
-      </div>
-    </div>
-    <ul class="list-group" id="Generic-List" style="overflow: hidden; overflow-y: auto; max-height: 257px; position: relative; margin-left: 55%; margin-right: auto; width: 30%; top: 22rem">
-      <div class="card-header" id="Card-Header" style="text-align: center;">Your Batches</div>
-      <li class="list-group-item">An item</li>
-      <li class="list-group-item">A second item</li>
-      <li class="list-group-item">A third item</li>
-      <li class="list-group-item">A third item</li>
-      <div class="card-footer" id="Card-Footer"></div>
-    </ul>
-  </div>
+    <!-- <app-user-profile-user-view [user]="user" [batches]="batches"></app-user-profile-user-view> -->
+    <app-user-profile-admin-view [user]="user" [batches]="batches"></app-user-profile-admin-view>
 </div>

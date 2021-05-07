@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Batch } from '../../models/batch';
 import { User } from '../../models/user';
 
 @Component({
@@ -14,15 +15,123 @@ export class UserProfileComponent implements OnInit {
     id:32,
     email:"jomama@hotmail.gov",
     name:"John Doe",
-    isActive:true,
-    isSubscribedFlashcard:true,
-    isSubscribedStacktrace:true,
+    active:true,
+    subscribedStacktrace:true,
+    subscribedFlashcard:true,
     authority:"USER",
-    registrationTime:1620310931740,
-    lastLogin:1620313931740
+    registrationTime:new Date(1620310931740),
+    lastLogin:new Date(1620310931740)
   }
 
-  registrationDate = new Date(this.user.registrationTime)
+  batches:Batch[] = [{
+    id: 3,
+    name: "2102 Enterprise",
+    instructors: [{
+      id:5,
+      email:"jomama@hotmail.gov",
+      name:"Instructor Ted",
+      active:true,
+      subscribedStacktrace:true,
+      subscribedFlashcard:true,
+      authority:"USER",
+      registrationTime:new Date(1620310931740),
+      lastLogin:new Date(1620310931740)
+    }],
+    users: [{
+      id:12,
+      email:"jomama@hotmail.gov",
+      name:"Member fffff",
+      active:true,
+      subscribedStacktrace:true,
+      subscribedFlashcard:true,
+      authority:"USER",
+      registrationTime:new Date(1620310931740),
+      lastLogin:new Date(1620310931740)
+    },{
+      id:32,
+      email:"jomama@hotmail.gov",
+      name:"John Doe",
+      active:true,
+      subscribedStacktrace:true,
+      subscribedFlashcard:true,
+      authority:"USER",
+      registrationTime:new Date(1620310931740),
+      lastLogin:new Date(1620310931740)
+    }],
+    creationTime:new Date(1620310931740)
+  },{
+    id: 3,
+    name: "2102 Enterprise",
+    instructors: [{
+      id:5,
+      email:"jomama@hotmail.gov",
+      name:"Instructor Ted",
+      active:true,
+      subscribedStacktrace:true,
+      subscribedFlashcard:true,
+      authority:"USER",
+      registrationTime:new Date(1620310931740),
+      lastLogin:new Date(1620310931740)
+    }],
+    users: [{
+      id:12,
+      email:"jomama@hotmail.gov",
+      name:"Member fffff",
+      active:true,
+      subscribedStacktrace:true,
+      subscribedFlashcard:true,
+      authority:"USER",
+      registrationTime:new Date(1620310931740),
+      lastLogin:new Date(1620310931740)
+    },{
+      id:32,
+      email:"jomama@hotmail.gov",
+      name:"John Doe",
+      active:true,
+      subscribedStacktrace:true,
+      subscribedFlashcard:true,
+      authority:"USER",
+      registrationTime:new Date(1620310931740),
+      lastLogin:new Date(1620310931740)
+    }],
+    creationTime:new Date(1620310931740)
+  },{
+    id: 3,
+    name: "2102 Enterprise",
+    instructors: [{
+      id:5,
+      email:"jomama@hotmail.gov",
+      name:"Instructor Ted",
+      active:true,
+      subscribedStacktrace:true,
+      subscribedFlashcard:true,
+      authority:"USER",
+      registrationTime:new Date(1620310931740),
+      lastLogin:new Date(1620310931740)
+    }],
+    users: [{
+      id:12,
+      email:"jomama@hotmail.gov",
+      name:"Member fffff",
+      active:true,
+      subscribedStacktrace:true,
+      subscribedFlashcard:true,
+      authority:"USER",
+      registrationTime:new Date(1620310931740),
+      lastLogin:new Date(1620310931740)
+    },{
+      id:32,
+      email:"jomama@hotmail.gov",
+      name:"John Doe",
+      active:true,
+      subscribedStacktrace:true,
+      subscribedFlashcard:true,
+      authority:"USER",
+      registrationTime:new Date(1620310931740),
+      lastLogin:new Date(1620310931740)
+    }],
+    creationTime:new Date(1620310931740)
+  }]
 
   constructor() { }
 
