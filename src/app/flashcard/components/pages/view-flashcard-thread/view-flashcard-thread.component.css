@@ -1,94 +1,70 @@
-.page-base {
+#Diologue-Card {
   position: absolute;
-  width: 1920px;
-  height: 1080px;
-  left: 0px;
-  top: 0px;
-
-  background: linear-gradient(252.44deg, #ED4C4C 0%, rgba(219, 199, 17, 0) 100%);
-}
-
-.center-wrapper {
-  width: 1200px;
-  margin: auto;
-  height: auto;
-}
-
-input {
-  margin:auto;
-  background: linear-gradient(111.52deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.8) 100%);
+  left: 50%;
+  top: 50%;
+  width: 1048px !important;
+  min-height: 210px !important;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(
+    111.52deg,
+    rgba(255, 255, 255, 0.64) 0%,
+    rgba(255, 255, 255, 0.48) 100%
+  );
   backdrop-filter: blur(100px);
-  /* Note: backdrop-filter has minimal browser support */
-  border: 2px solid;
-  border-image-source: linear-gradient(111.52deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0) 100%);
   border-radius: 30px;
+  border: none;
 }
 
-table {
-  float: left;
-  width: 1200px;
-  margin-top: 200px;
-  background: #FFFFFF;
-  border-radius: 30px;
-}
-
-th {
-  height: 50px;
-  padding-left:90px;
-  padding-right:90px;
-}
-
-td {
-  height: 90px;
-  padding-left:90px;
-  padding-right:90px;
-}
-
-.pagination {
-  float: left;
-}
-
-.glass-base{
+#Card-Header {
   position: relative;
-  width: 258px;
-  height: 211px;
-  left: -55px;
-  top: 27px;
-
-  float: right;
-
-  background: linear-gradient(111.52deg, rgba(255, 255, 255, 0.48) 0%, rgba(255, 255, 255, 0.12) 100%);
-  backdrop-filter: blur(100px);
-  /* Note: backdrop-filter has minimal browser support */
-  border: 3px solid;
-
-  border-image-source: linear-gradient(111.52deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0) 100%);
-
-  border-radius: 30px;
+  top: -20px;
+  left: 35px;
+  height: 21px;
+  background: none;
+  border: none;
 }
 
-.dropdown-area {
-  margin: auto;
-  background: #FFFFFF;
-  height: 157px;
-  width: 149px;
-  border-radius: 0px;
+#Card-Header p {
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 21px;
+  color: #153c53;
 }
 
-.dropdown-selector {
+#Card-Body {
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+
+#Name {
+  position: absolute;
+  right: 40px;
+  top: 5px;
+  font-weight: 300;
+  font-size: 25px;
+  line-height: 21px;
+  color: #153c53;
+}
+
+#Card-Text {
+  font-weight: 300;
+  margin-left: 75px;
+  margin-right: 75px;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 21px;
+
+  color: #000000;
+}
+
+#Card-Footer {
+  height: 36px;
+  background: #ffffff;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+#Card-Footer svg {
   position: relative;
-  left: 0%;
-  right: 0%;
-  top: 0%;
-  bottom: 74.52%;
-  background: #FFFFFF;
-}
-
-.dropdown-options {
-  position: relative;
-  left: 0%;
-  right: 0%;
-  top: 25.48%;
-  bottom: 0%;
-  overflow: scroll;
+  top: -5px;
 }
