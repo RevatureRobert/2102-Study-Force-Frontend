@@ -17,15 +17,17 @@ export class SubmitAnswerPageComponent implements OnInit {
   flashcard!:Flashcard;
 
   constructor(private answerService: AnswerService, private flashcardService: FlashcardService) {
-    let flashcardId = answerService.getCurrentFlashcardId();
-    flashcardService.getFlashcardById(flashcardId).then(response =>{
-      this.flashcard = response.content;
-    }).catch(exception =>{
-      console.log(exception);
-    })
+
   }
 
   ngOnInit(): void {
+    let flashcardId = this.answerService.getCurrentFlashcardId();
+    this.flashcardService.getFlashcardById(flashcardId).then(response =>{
+      console.log(response);
+      this.flashcard = response;
+    }).catch(exception =>{
+      console.log(exception);
+    })
   }
 
   onSubmit(){
