@@ -27,15 +27,15 @@ export class NewStacktraceComponent implements OnInit {
 
   onCreate() {
     // create a Stacktrace and send to the backend using the service
-    let newStacktrace:Stacktrace = {
-      stacktraceId: this.stacktraceId,
-      title: this.title,
-      body: this.body,
-      technology: this.technology,
-      creationTime: this.creationTime
-    }
+    // let newStacktrace:Stacktrace = {
+    //   stacktraceId: this.stacktraceId,
+    //   title: this.title,
+    //   body: this.body,
+    //   technology: this.technology,
+    //   creationTime: this.creationTime
+    // }
 
-    this.stacktraceService.addStacktrace(newStacktrace);
+    // this.stacktraceService.addStacktrace(newStacktrace);
   }
 
 }

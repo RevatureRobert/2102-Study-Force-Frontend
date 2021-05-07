@@ -19,14 +19,9 @@ export class StacktraceComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-
-    // this.stacktraceService.getStacktrace(1)
-    // .subscribe(
-    //   data =>
-    //   {
-    //     this.stacktrace = data;
-    //   }
-    // )
+    this.getStacktrace(1);
+    //This will eventually be
+    //this.getStacktrace(this.route.snapshot.paramMap.get('stacktraceId'))
   }
 
   //  TODO: unsubscribe
@@ -34,13 +29,17 @@ export class StacktraceComponent implements OnInit, OnDestroy {
 
   }
 
+  getStacktrace(stacktraceId:number): void{
+    this.stacktraceService.getStacktrace(stacktraceId)
+    .then(stacktrace => this.stacktrace = stacktrace);
+  }
+
+  /**
+   * TODO: Figure this out
+   * @param id
+   */
   deleteStacktrace(id:number): void{
     this.stacktraceService.deleteStacktrace(id)
-      .subscribe(
-        data =>
-        {
-
-        }
-      );
+      .subscribe(data => {  } );
   }
 }

@@ -43,10 +43,10 @@ export class StacktraceHomeComponent implements OnInit {
     if(technology) {
       this.currentTechnologyName = technology.technologyName;
       this.filteredStacktraces = this.allStacktraces.filter((stacktrace: Stacktrace) => {
-        if(stacktrace.technology)
-          return stacktrace.technology!.technologyId == technology.technologyId;
-        else
-          return false;
+        // if(stacktrace.technology)
+        //   return stacktrace.technology!.technologyId == technology.technologyId;
+        // else
+        //   return false;
       })
     } else {
       this.currentTechnologyName = "All";
@@ -63,9 +63,9 @@ export class StacktraceHomeComponent implements OnInit {
         this.allStacktraces = data;
         // Any Stacktraces without an assigned technology will display their technology as 'Other'
         this.allStacktraces.forEach((stacktrace: Stacktrace) => {
-          if(!stacktrace.technology){
-            stacktrace.technology = {technologyName: 'Other'};
-          }
+          // if(!stacktrace.technology){
+          //   stacktrace.technology = {technologyName: 'Other'};
+          // }
         })
         this.filterStacktraces();
       });
