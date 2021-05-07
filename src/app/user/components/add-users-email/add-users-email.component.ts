@@ -164,13 +164,4 @@ export class AddUsersEmailComponent implements OnInit {
     }
   }
 
-  /**
-   * To grab all of the batches from the batchService
-   */
-  getAllBatches() {
-    // logic to get all of the batches
-    // Need to wait for merge with anakins, or whoever created the batch service
-    // batches = batchService.getAllBatches();
-  }
-
 }
