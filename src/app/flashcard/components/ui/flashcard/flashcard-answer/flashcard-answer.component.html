@@ -1,29 +1,44 @@
 <div class="card" style="width: 18rem;">
   <div class="card-body">
-    <div class="header">Mikayla Pickett</div>
+    <div class="flashcard-difficulty-easy" *ngIf="difficulty == 'Easy'">{{difficulty}}</div>
+    <div class="flashcard-difficulty-medium" *ngIf="difficulty == 'Medium'">{{difficulty}}</div>
+    <div class="flashcard-difficulty-hard" *ngIf="difficulty == 'Hard'">{{difficulty}}</div>
     <div class="new-answer">
       <img src={{newAnswerIcon}} alt="create new answer" height="30em"  routerLink='/submit-answer'>
     </div>
 
-    <p class="card-text" *ngIf=!isAnswer>(No answers)</p>
+    <div *ngIf=!isAnswer>
+      <p class="card-text">(No answers)</p>
+      <br>
+      <br>
+      <br>
+      <br>
+      <!-- <button class="btn delete-button" (click)="deleteFlashcard($event)">
+        DELETE
+    </button> -->
+    <app-flashcard-delete></app-flashcard-delete>
+    </div>
+
     <div [hidden]="flip" class="answers" *ngIf=isAnswer>
-      <p class="card-text">{{answers[0].answerText}}</p>
+      <div class="card-text">
+        {{answers[0].answerText}}
+        <app-vote (click)="vote($event)" [answerScore]=answers[0].answerScore></app-vote>
+      </div>
       <button class="btn custom-button" (click)="toggleView($event)" *ngIf="answers.length > 0">
           View More
       </button>
     </div>
 
     <div [hidden]="!flip" class="answers">
-      <p *ngFor="let answer of answers">{{answer.answerText}}<br></p>
+      <div class="card-text" *ngFor="let answer of answers">
+        {{answer.answerText}}
+        <app-vote (click)="vote($event)" [answerScore]=answer.answerScore [answerId]=answer.answerId [userId]=userId></app-vote>
+        <br>
+      </div>
       <button class="btn custom-button" (click)="toggleView($event)">
         View Less
       </button>
     </div>
 
-  </div>
-
-
-  <div class="answer-lower-half">
-    <app-vote class="vote-positioning" (click)="vote($event)"></app-vote>
   </div>
 </div>

@@ -14,6 +14,7 @@ import { SubmitAnswerPageComponent } from './components/pages/submit-answer-page
 import { ViewFlashcardThreadComponent } from './components/pages/view-flashcard-thread/view-flashcard-thread.component';
 import { SharedModule } from '../shared.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { VoteService } from './service/vote.service';
 
 
 
@@ -47,6 +48,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     SubmitAnswerPageComponent,
     ViewFlashcardThreadComponent
   ],
-  providers: [FlashcardService]
+  providers: [
+    FlashcardService,
+    VoteService
+  ]
 })
 export class FlashcardModule {  }
