@@ -24,9 +24,12 @@
     "@popperjs/core": "^2.9.2",
     "bootstrap": "^4.5.0",
     "bootstrap-icons": "^1.4.1",
+<<<<<<< HEAD
     "jasmine": "^2.8.0",
     "jquery": "^3.6.0",
     "popper.js": "^1.16.1",
+=======
+>>>>>>> origin/dev
     "rxjs": "~6.6.0",
     "save": "^2.4.0",
     "tslib": "^2.0.0",

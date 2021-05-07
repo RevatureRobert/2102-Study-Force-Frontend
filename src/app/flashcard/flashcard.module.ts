@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { FlashcardComponent } from './components/ui/flashcard/flashcard.component';
 import { FlashcardPageComponent } from './components/pages/flashcard-page/flashcard-page.component';
 import { FlashcardQuestionComponent } from './components/ui/flashcard/flashcard-question/flashcard-question.component';
@@ -29,7 +28,6 @@ import { SharedModule } from '../shared.module';
     ViewFlashcardThreadComponent,
   ],
   imports: [
-    CommonModule,
     FlashcardRoutingModule,
     FormsModule,
     SharedModule
