@@ -1,11 +1,5 @@
-import { Component, Injectable, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 import { AnswerService } from 'src/app/flashcard/service/answer.service';
-
-
-@Injectable({
-  providedIn: 'root'
-})
 
 @Component({
   selector: 'app-submit-answer-page',
@@ -14,23 +8,31 @@ import { AnswerService } from 'src/app/flashcard/service/answer.service';
 })
 export class SubmitAnswerPageComponent implements OnInit {
 
-  public text!:string;
+  form: any = {
+    answer: null
+  };
+  private userId:number = 1;
+  private flashcardId:number = 1;
 
-  constructor(private form:NgForm, private answerService: AnswerService) { }
+  constructor(private answerService: AnswerService) { }
 
   ngOnInit(): void {
   }
 
 
 
-  onSubmit(f:NgForm){
-    if(f.invalid){
+  onSubmit(){
+    if(this.form.answer===null || this.form.answer===""){
       alert("Please fill your answer");
       return
     }
 
-    alert(this.text);
-    //this.answerService.postAnswer()
+    console.log(this.form.answer);
+    this.answerService.postAnswer(this.flashcardId,this.userId,this.form.answer).then(res =>{
+      console.log(res.content);
+    }).catch(error => {
+      console.log(error);
+    })
 
   }
 }
