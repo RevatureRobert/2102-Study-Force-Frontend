@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { NotificationService } from './notification.service';
+import { RedirectGuardService } from './redirect-guard.service';
 
-describe('NotificationService', () => {
-  let service: NotificationService;
+describe('RedirectGuardService', () => {
+  let service: RedirectGuardService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(NotificationService);
+    service = TestBed.inject(RedirectGuardService);
   });
 
   it('should be created', () => {

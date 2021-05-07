@@ -1,1 +1,34 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,300,700,500");
+
+html {
+  --daddy5: #DADDE5;
+  --duskwood: #153C53;
+  --greenblack: #373A3C;
+  --cheery: #F18A8A;
+  --gold-tips: #dcb322;
+  --blue-blue: #2233c9;
+  --cool-green: #30be69;
+  --sapphire-splendor: #2a30c7;
+  --red-orange-juice: #FF4E4E;
+  --sinoper-red: #BA130F;
+  --platinum-granite: #7E7E7E;
+  --spanish-grey: #979797;
+  --angry-flamingo: #ED4C4C;
+  --zingiber: #DCBF15;
+  --wizard-blue: #0275D8;
+  --xenon-blue: #B6BFD6;
+  --cerebral-grey: #CCCCCC;
+  --cold-morning: #E5E5E5;
+  --basalt-grey: #999999;
+  --rainbows-outer-rim: #FF0101;
+  --pickled-lemon: #DBC711;
+  --forest-main: #5CB85C;
+  --drying-grass-green: #80B366;
+  --capocollo: #D9534F;
+  --daredevil: #A94442;
+  --petite-pink: #EBCCCC;
+  --diminutive-pink: #F2DEDE;
+  --berry-brown: #544E4E;
+  --greenalicious: #00D600;
+  --peachy-feeling: #ee8563;
+}
