@@ -16,7 +16,7 @@ export class FlashcardQuestionStyleComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  subscribe() {
+  subscribe(): void {
     this.subscribed = !this.subscribed;
 
     if (this.subscribed) {
