@@ -1,5 +1,5 @@
 #Diologue-Card {
-  position: absolute;
+  position: top;
   left: 50%;
   top: 50%;
   width: 1048px !important;
@@ -68,3 +68,32 @@
   position: relative;
   top: -5px;
 }
+
+/*
+#Card-Wide {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 378px !important;
+  height: 367px !important;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(
+    111.52deg,
+    rgba(255, 255, 255, 0.64) 0%,
+    rgba(255, 255, 255, 0.48) 100%
+  );
+  backdrop-filter: blur(100px);
+  border-radius: 30px;
+}
+
+#Card-Header {
+  height: 62px;
+  background: #ffffff;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+
+#Card-Body {
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+} */
