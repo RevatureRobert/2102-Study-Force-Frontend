@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+git import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
