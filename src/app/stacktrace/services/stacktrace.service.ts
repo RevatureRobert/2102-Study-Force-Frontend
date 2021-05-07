@@ -27,29 +27,30 @@ export class StacktraceService {
     return this.http.post<Stacktrace>(this.stacktraceURL, stacktrace);
   }
 
-  getStacktrace(id:number): Observable<Stacktrace> {
-    return this.http.get<Stacktrace>(`${this.apiServerUrl}/stacktrace/${id}`, { headers: this.httpHeaders });
+  getStacktrace(id:any): Observable<Stacktrace> {
+    return this.http.get(`${this.stacktraceURL}/${id}`);
   }
+
+
 
 //  getAllStacktrace(): Promise<Stacktrace[]> {
   //  return this.http.get<Stacktrace[]>(`${this.apiServerUrl}/stacktrace`, { headers: this.httpHeaders }).toPromise();
   //}
 
-  public findAll(): Observable<Stacktrace[]> {
-    return this.http.get<Stacktrace[]>(this.stacktraceURL);
+  public findAll(params :any): Observable<any> {
+    return this.http.get<any>(this.stacktraceURL, {params});
   }
 
   //Backend PUT mapping isn't created yet
-  editStacktrace(stacktrace: Stacktrace): void {
-    let r = this.http.put(`${this.apiServerUrl}/stacktrace`, stacktrace, { headers: this.httpHeaders });
-    r.subscribe();
+  editStacktrace( id:any , data : any): Observable<any> {
+    return this.http.put(`${this.stacktraceURL}/${id}`, data);
   }
 
-  deleteStacktrace(id:number):Observable<Stacktrace> {
-    return this.http.delete<Stacktrace>(`${this.apiServerUrl}/stacktrace/${id}`, { headers: this.httpHeaders });
+  deleteStacktrace(id:any):Observable<Stacktrace> {
+    return this.http.delete<Stacktrace>(`${this.stacktraceURL}/${id}`, { headers: this.httpHeaders });
   }
 
-  findByTitle(title:any): Observable<any> {
-    return this.http.get(`${this.stacktraceURL}?title=${title}`);
+  findByTitle(title:any): Observable<Stacktrace[]> {
+    return this.http.get<Stacktrace[]>(`${this.stacktraceURL}?title=${title}`);
   }
 }

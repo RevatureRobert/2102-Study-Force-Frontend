@@ -9,20 +9,58 @@ import {StacktraceService} from 'src/app/stacktrace/services/stacktrace.service'
   styleUrls: ['./stacktrace-list.component.css']
 })
 export class StacktraceListComponent implements OnInit {
-
-  stacktraces ?: Stacktrace[];
+  stacktraces : Stacktrace[] = [];
   currentStacktrace?: Stacktrace;
   currentIndex=-1;
-  title = "";
+  title = '';
+
+
+  page = 1;
+  count = 0;
+  pageSize = 3;
+  pageSizes = [3, 6, 9];
 
 
 
   constructor(private stacktraceService:StacktraceService) { }
 
   ngOnInit(): void {
-    this.stacktraceService.findAll().subscribe(data => {
-      this.stacktraces = data;
-    });
+    this.retrieveStacktraces();
+  }
+
+  getRequestParams(searchTitle: string, page: number, pageSize: number): any {
+    // tslint:disable-next-line:prefer-const
+    let params: any = {};
+
+    if (searchTitle) {
+      params[`title`] = searchTitle;
+    }
+
+    if (page) {
+      params[`page`] = page - 1;
+    }
+
+    if (pageSize) {
+      params[`size`] = pageSize;
+    }
+
+    return params;
+  }
+
+  retrieveStacktraces(): void {
+    const params = this.getRequestParams(this.title, this.page, this.pageSize);
+
+    this.stacktraceService.findAll(params)
+    .subscribe(
+      response => {
+        const { stacktraces, totalItems } = response;
+        this.stacktraces = stacktraces;
+        this.count = totalItems;
+        console.log(response);
+      },
+      error => {
+        console.log(error);
+      });
   }
 
   setActiveStacktrace( stacktrace:Stacktrace, index :number) : void{
@@ -43,4 +81,25 @@ export class StacktraceListComponent implements OnInit {
         });
   }
 
+
+
+
+
+  handlePageChange(event: number): void {
+    this.page = event;
+    this.retrieveStacktraces();
+  }
+
+  handlePageSizeChange(event: any): void {
+    this.pageSize = event.target.value;
+    this.page = 1;
+    this.retrieveStacktraces();
+  }
+
+
+  refreshList(): void {
+    this.retrieveStacktraces();
+    this.currentStacktrace = undefined;
+    this.currentIndex = -1;
+  }
 }

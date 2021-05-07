@@ -1,5 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { StacktraceService } from '../../services/stacktrace.service'
 import { Stacktrace } from '../../models/stacktrace'
 
@@ -9,38 +9,58 @@ import { Stacktrace } from '../../models/stacktrace'
   templateUrl: './view-clicked-stacktrace.component.html',
   styleUrls: ['./view-clicked-stacktrace.component.css']
 })
-export class ViewClickedStacktraceComponent implements OnInit, OnDestroy {
+export class ViewClickedStacktraceComponent implements OnInit {
 
-  stacktrace?: Stacktrace;
-  currentUser?: User; // TODO: need getUser endpoint to fill this user with the appropriate user
+  currentStacktrace: Stacktrace = {
+    title : '',
+    body : ''
+  };
+  message = '';
 
-  constructor(private stacktraceService: StacktraceService) {
+  constructor(private stacktraceService: StacktraceService, private route: ActivatedRoute,
+    private router: Router) {
 
   }
 
   ngOnInit(): void {
-
-    // this.stacktraceService.getStacktrace(1)
-    // .subscribe(
-    //   data =>
-    //   {
-    //     this.stacktrace = data;
-    //   }
-    // )
+    this.message = '';
+    this.getStacktrace(this.route.snapshot.params.stacktraceId);
   }
 
-  //  TODO: unsubscribe
-  ngOnDestroy(): void {
-
-  }
-
-  deleteStacktrace(id:number): void{
-    this.stacktraceService.deleteStacktrace(id)
+  getStacktrace(id: string): void {
+    this.stacktraceService.getStacktrace(id)
       .subscribe(
-        data =>
-        {
+        data => {
+          this.currentStacktrace = data;
+          console.log(data);
+        },
+        error => {
+          console.log(error);
+        });
+  }
 
-        }
-      );
+  updateStacktrace(): void {
+    this.stacktraceService.editStacktrace(this.currentStacktrace.stacktraceId, this.currentStacktrace)
+      .subscribe(
+        response => {
+          console.log(response);
+          this.message = response.message;
+        },
+        error => {
+          console.log(error);
+        });
+  }
+
+
+  deleteStacktrace(): void {
+    this.stacktraceService.deleteStacktrace(this.currentStacktrace.stacktraceId)
+      .subscribe(
+        response => {
+          console.log(response);
+          this.router.navigate(['/stacktrace']);
+        },
+        error => {
+          console.log(error);
+        });
   }
 }

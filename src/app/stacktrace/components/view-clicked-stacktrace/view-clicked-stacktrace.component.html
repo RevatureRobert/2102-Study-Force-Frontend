@@ -1,23 +1,47 @@
-<p>view-clicked-stacktrace works!</p>
-<h2 class = "dknkndf">Get StackTrace</h2>
-<table *ngIf = 'stacktrace != undefined' >
-  <caption>StackTrace Info</caption>
-  <tr>
-    <th scope="col">id</th>
-    <th scope="col">title</th>
-    <th scope="col">body</th>
-    <th scope="col">technology</th>
-    <th scope="col">creation time</th>
-  </tr>
-  <tr>
-    <td>{{stacktrace.stacktraceId}}</td>
-    <td>{{stacktrace.title}}</td>
-    <td>{{stacktrace.body}}</td>
-    <td>{{stacktrace.technology}}</td>
-    <td>{{stacktrace.creationTime}}</td>
-  </tr>
+<div>
+  <div *ngIf="currentStacktrace.stacktraceId" class="edit-form">
+    <h4>Stacktrace</h4>
+    <form>
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          [(ngModel)]="currentStacktrace.title"
+          name="title"
+        />
+      </div>
+      <div class="form-group">
+        <label for="body">Body</label>
+        <input
+          type="text"
+          class="form-control"
+          id="body"
+          [(ngModel)]="currentStacktrace.body"
+          name="body"
+        />
+      </div>
 
-  <!-- TODO: change ngif to check if the current user is the owner of the stacktrace -->
-  <!-- TODO: delete stacktrace by actual id, not hardcoded value -->
-  <button mat-raised-button color="warn" (click)='deleteStacktrace(3)' *ngIf='currentUser == undefined'>Delete</button>
-</table>
+
+    </form>
+
+    <button class="badge badge-danger mr-2" (click)="deleteStacktrace()">
+      Delete
+    </button>
+
+    <button
+      type="submit"
+      class="badge badge-success mb-2"
+      (click)="updateStacktrace()"
+    >
+      Update
+    </button>
+    <p>{{ message }}</p>
+  </div>
+
+  <div *ngIf="!currentStacktrace.stacktraceId">
+    <br />
+    <p>Cannot access this Stacktrace</p>
+  </div>
+</div>
