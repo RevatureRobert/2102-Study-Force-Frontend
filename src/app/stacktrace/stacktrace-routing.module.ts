@@ -3,13 +3,18 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   /*{
-    path: '', component: StacktraceMainComponent goes here
-    i.e. landingPage
+    path: '/stacktrace', component: StacktraceHomeComponent
+  }
+  {
+    path: '/new-stacktrace', component: NewStacktraceComponent
+  }
+  {
+    path: '/{id}', component: StacktraceComponent
   }*/
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class StacktraceRoutingModule { }
+export class StacktraceRoutingModule {}
