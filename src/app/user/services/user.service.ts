@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BASE_API_URL } from '../../../environments/environment';
+import { Batch } from '../models/batch';
 import { UserEmail } from '../models/user-email';
 
 @Injectable({
@@ -9,6 +10,22 @@ import { UserEmail } from '../models/user-email';
 export class UserService {
 
   constructor(private http: HttpClient) { }
+
+  getLoggedInUser() {
+
+    const headerInfo = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': 'Bearer '.concat(localStorage.getItem('access_token') || "")
+    }
+
+    const requestOptions = {
+      headers: new HttpHeaders(headerInfo)
+    };
+
+    return this.http.get<any>(BASE_API_URL.concat('/user/me'), requestOptions).toPromise();
+
+  }
 
   getUsers(pageSize:number = 25, pageNumber:number = 0) {
 
