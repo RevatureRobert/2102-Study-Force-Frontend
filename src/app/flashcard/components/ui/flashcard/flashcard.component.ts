@@ -17,6 +17,12 @@ export class FlashcardComponent implements OnInit {
   subscribed = false;
   bellStyle = "../../../assets/bell.svg";
 
+  //TODO: GET CURRENT USER FROM STORAGE
+  // userId: number = Number(localStorage("asocaite"));
+  userId: number = 1;
+
+
+
   public deleteId?: number;
 
   public question: string = 'question body';
@@ -29,6 +35,7 @@ export class FlashcardComponent implements OnInit {
   flip = false;
 
   ngOnInit(): void {
+
     if(this.flashcard){
       this.question = this.flashcard.question;
       this.deleteId = this.flashcard.flashcardId;

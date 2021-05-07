@@ -13,6 +13,8 @@ import { FlashcardService } from 'src/app/flashcard/service/flashcard.service';
 })
 export class FlashcardAnswerComponent implements OnInit {
   @Input() flashcardId: any;
+  @Input() difficulty: any;
+  @Input() userId!: number;
   @Output() click = new EventEmitter();
   answers!: Answer[];
   isAnswer = !!this.answers;
@@ -27,6 +29,21 @@ export class FlashcardAnswerComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    switch (this.difficulty) {
+      case 0:
+          this.difficulty = "Easy";
+        break;
+      case 1:
+          this.difficulty = "Medium";
+        break;
+      case 2:
+          this.difficulty = "Hard";
+        break;
+      default:
+        break;
+    }
+
     let temp = this.flashcardId;
 
     this.flashcardService.getAnswers(temp).subscribe(
@@ -49,6 +66,11 @@ export class FlashcardAnswerComponent implements OnInit {
   }
 
   vote(event: Event) {
+    event.stopPropagation();
+  }
+
+  deleteFlashcard(event: Event) {
+
     event.stopPropagation();
   }
 }

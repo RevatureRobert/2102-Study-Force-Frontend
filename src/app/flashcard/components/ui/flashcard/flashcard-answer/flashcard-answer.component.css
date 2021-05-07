@@ -7,6 +7,57 @@ min-height: 350px;
 
 }
 
+.flashcard-difficulty-easy {
+  background: linear-gradient(227.79deg, rgba(5, 255, 0, 0.8) 0.34%, rgba(255, 255, 255, 0.6) 100.22%);
+border-radius: 30px 0px;
+width: 50%;
+margin-top: -20px;
+margin-left: -20px;
+padding-left: 1.5em;
+padding-top: 0.5em;
+padding-bottom: 0.5em;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: 300;
+font-size: 20px;
+line-height: 105%;
+}
+
+.flashcard-difficulty-medium {
+  background: linear-gradient(227.79deg, rgba(250, 255, 0, 0.8) 0%, rgba(255, 255, 255, 0.6) 100.22%);
+border-radius: 30px 0px;
+width: 50%;
+margin-top: -20px;
+margin-left: -20px;
+padding-left: 1.5em;
+padding-top: 0.5em;
+padding-bottom: 0.5em;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: 300;
+font-size: 20px;
+line-height: 105%;
+}
+
+.flashcard-difficulty-hard {
+  background: linear-gradient(227.79deg, rgba(255, 0, 0, 0.48) 0%, rgba(255, 255, 255, 0.6) 100.22%);
+border-radius: 30px 0px;
+width: 50%;
+margin-top: -20px;
+margin-left: -20px;
+padding-left: 1.5em;
+padding-top: 0.5em;
+padding-bottom: 0.5em;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: 300;
+font-size: 20px;
+line-height: 105%;
+}
+
 .header{
   background: transparent;
 border-radius: 30px 0px;
@@ -48,6 +99,23 @@ text-align: left;
 
 .custom-button {
   background: linear-gradient(99.35deg, rgba(21, 60, 83, 0.7) 0%, rgba(21, 60, 83, 0.7) 98.91%);
+backdrop-filter: blur(50px);
+/* Note: backdrop-filter has minimal browser support */
+border-radius: 10px;
+font-family: Roboto, Arial, Helvetica, sans-serif;
+font-style: normal;
+font-weight: 300;
+font-size: 12px;
+line-height: 175%;
+text-align: center;
+letter-spacing: 1px;
+color: #FFFFFF;
+
+
+}
+
+.delete-button {
+  background: linear-gradient(99.35deg, rgba(100, 40, 53, 0.7) 0%, rgba(100, 40, 53, 0.7) 98.91%);
 backdrop-filter: blur(50px);
 /* Note: backdrop-filter has minimal browser support */
 border-radius: 10px;

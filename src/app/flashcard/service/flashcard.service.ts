@@ -63,8 +63,8 @@ export class FlashcardService {
     return this.http.put(`http://${this.apiServerUrl}`, data);
   }
 
-  delete(data: any): Observable<any> {
-    return this.http.delete(`http://${this.apiServerUrl}`, data);
+  delete(id: any): Observable<any> {
+    return this.http.delete(`http://${this.apiServerUrl}/flashcards/${id}`);
   }
 
   setSelectedFlashcard(flascard: Flashcard): void {

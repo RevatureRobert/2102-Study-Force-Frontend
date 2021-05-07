@@ -3,6 +3,8 @@ import * as EventEmitter from 'events';
 import { Flashcard } from 'src/app/flashcard/model/flashcard';
 // const EventEmitter = require('events');
 import { FlashcardComponent } from '../flashcard.component';
+import { CommonModule } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
 
 
 
@@ -25,13 +27,13 @@ export class FlashcardQuestionComponent implements OnInit {
 
   ngOnInit(): void {
     switch (this.difficulty) {
-      case 1:
+      case 0:
           this.difficulty = "Easy";
         break;
-      case 2:
+      case 1:
           this.difficulty = "Medium";
         break;
-      case 3:
+      case 2:
           this.difficulty = "Hard";
         break;
       default:

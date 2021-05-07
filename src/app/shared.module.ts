@@ -12,7 +12,7 @@ import { VoteComponent } from './global-components/vote/vote.component';
     BasePageComponent,
     NavbarComponent,
     SearchBarComponent,
-    VoteComponent
+    VoteComponent,
   ],
   imports: [
     CommonModule
@@ -21,7 +21,7 @@ import { VoteComponent } from './global-components/vote/vote.component';
     BasePageComponent,
     NavbarComponent,
     SearchBarComponent,
-    VoteComponent
+    VoteComponent,
   ]
 })
 export class SharedModule { }
