@@ -1,18 +1,14 @@
-// import { NgModule } from '@angular/core';
-// import { CommonModule } from '@angular/common';
-// import { StacktraceHomeComponent } from './components/stacktrace-home/stacktrace-home.component';
-// import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-// import { StacktraceRoutingModule } from './stacktrace-routing.module';
+import { NgModule } from '@angular/core';
+import { StacktraceRoutingModule } from './stacktrace-routing.module';
+import { SharedModule } from '../global-components/shared.module';
 
-// @NgModule({
-//   declarations: [StacktraceHomeComponent],
-//   imports: [
-//     CommonModule,
-//     NgbModule,
-//     StacktraceRoutingModule
-//   ],
-//   exports: [
-//     StacktraceHomeComponent
-//   ]
-// })
-// export class StacktraceModule { }
+
+
+@NgModule({
+  declarations: [/**components go here*/],
+  imports: [
+    SharedModule,
+    StacktraceRoutingModule
+  ]
+})
+export class StacktraceModule { }
