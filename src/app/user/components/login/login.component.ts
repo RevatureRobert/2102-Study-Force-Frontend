@@ -5,6 +5,10 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+/**
+ * Only used for the HTML to display before clicking login to be redirected to Cognito hosted UI for logging in
+ * @author Steven Ceglarek
+ */
 export class LoginComponent implements OnInit {
 
   constructor() { }

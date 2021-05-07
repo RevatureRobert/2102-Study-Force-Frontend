@@ -2,8 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { RedirectGuardService } from './services/redirect-guard.service';
-import { BASE_URL_LOGIN_REGISTRATION } from '../../environments/environment'
 import { UserProfileComponent } from './components/user-profile/user-profile.component'
+import { BASE_URL_LOGIN_REGISTRATION } from '../../environments/environment';
+import { PostLoginComponent } from './components/login/post-login/post-login.component';
+import { AddUsersEmailComponent } from './components/add-users-email/add-users-email.component';
 
 const userRoutes: Routes = [
     {path: "login", component: LoginComponent},
@@ -14,7 +16,9 @@ const userRoutes: Routes = [
             externalUrl: BASE_URL_LOGIN_REGISTRATION
         }
     },
-    {path: "profile", component: UserProfileComponent}
+    {path: "profile", component: UserProfileComponent},
+    {path: "oauth2", component: PostLoginComponent},
+    {path: "addUsers", component: AddUsersEmailComponent},
 ];
 
 @NgModule({
