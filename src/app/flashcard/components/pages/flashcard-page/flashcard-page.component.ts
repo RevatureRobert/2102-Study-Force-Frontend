@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Flashcard } from 'src/app/flashcard/model/flashcard';
-import { FlashcardService } from '../../../service/flashcard.service'
+import { FlashcardService } from '../../../service/flashcard.service';
+import { TopicService } from 'src/app/flashcard/service/topic.service';
 
 
 @Component({
@@ -10,17 +10,8 @@ import { FlashcardService } from '../../../service/flashcard.service'
 })
 export class FlashcardPageComponent implements OnInit {
 
-  flashcard: Flashcard | null = null;
-
-  constructor(flashcardService: FlashcardService) {
-    console.log("CONSTRUCTOR");
-
-    flashcardService.get(1).toPromise().then(res => this.flashcard = res);
-  }
+  constructor() { }
 
   ngOnInit(): void {
-    console.log("INIT");
-
   }
-
 }

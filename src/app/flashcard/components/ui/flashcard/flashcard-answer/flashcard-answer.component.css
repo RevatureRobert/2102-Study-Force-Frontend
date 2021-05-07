@@ -1,0 +1,211 @@
+.card {
+  background: linear-gradient(111.52deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.48) 100%);
+backdrop-filter: blur(100px);
+/* Note: backdrop-filter has minimal browser support */
+border-radius: 30px;
+min-height: 350px;
+
+}
+
+.flashcard-difficulty-easy {
+  background: linear-gradient(227.79deg, rgba(5, 255, 0, 0.8) 0.34%, rgba(255, 255, 255, 0.6) 100.22%);
+border-radius: 30px 0px;
+width: 50%;
+margin-top: -20px;
+margin-left: -20px;
+padding-left: 1.5em;
+padding-top: 0.5em;
+padding-bottom: 0.5em;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: 300;
+font-size: 20px;
+line-height: 105%;
+}
+
+.flashcard-difficulty-medium {
+  background: linear-gradient(227.79deg, rgba(250, 255, 0, 0.8) 0%, rgba(255, 255, 255, 0.6) 100.22%);
+border-radius: 30px 0px;
+width: 50%;
+margin-top: -20px;
+margin-left: -20px;
+padding-left: 1.5em;
+padding-top: 0.5em;
+padding-bottom: 0.5em;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: 300;
+font-size: 20px;
+line-height: 105%;
+}
+
+.flashcard-difficulty-hard {
+  background: linear-gradient(227.79deg, rgba(255, 0, 0, 0.48) 0%, rgba(255, 255, 255, 0.6) 100.22%);
+border-radius: 30px 0px;
+width: 50%;
+margin-top: -20px;
+margin-left: -20px;
+padding-left: 1.5em;
+padding-top: 0.5em;
+padding-bottom: 0.5em;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: 300;
+font-size: 20px;
+line-height: 105%;
+}
+
+.header{
+  background: transparent;
+border-radius: 30px 0px;
+width: 50%;
+margin-top: -20px;
+margin-left: -20px;
+padding-left: 1.5em;
+padding-top: 0.5em;
+padding-bottom: 0.5em;
+
+font-family: Roboto, Arial, Helvetica, sans-serif;
+font-style: normal;
+font-weight: 300;
+font-size: 20px;
+line-height: 105%;
+
+text-align: left;
+}
+
+.new-answer {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  height: 5em;
+}
+
+.card-text {
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+font-style: normal;
+font-weight: 300;
+font-size: 20px;
+line-height: 105%;
+margin-top: 2em;
+margin-bottom: 0.75em;
+text-align: left;
+}
+
+
+
+.custom-button {
+  background: linear-gradient(99.35deg, rgba(21, 60, 83, 0.7) 0%, rgba(21, 60, 83, 0.7) 98.91%);
+backdrop-filter: blur(50px);
+/* Note: backdrop-filter has minimal browser support */
+border-radius: 10px;
+font-family: Roboto, Arial, Helvetica, sans-serif;
+font-style: normal;
+font-weight: 300;
+font-size: 12px;
+line-height: 175%;
+text-align: center;
+letter-spacing: 1px;
+color: #FFFFFF;
+
+
+}
+
+.delete-button {
+  background: linear-gradient(99.35deg, rgba(100, 40, 53, 0.7) 0%, rgba(100, 40, 53, 0.7) 98.91%);
+backdrop-filter: blur(50px);
+/* Note: backdrop-filter has minimal browser support */
+border-radius: 10px;
+font-family: Roboto, Arial, Helvetica, sans-serif;
+font-style: normal;
+font-weight: 300;
+font-size: 12px;
+line-height: 175%;
+text-align: center;
+letter-spacing: 1px;
+color: #FFFFFF;
+
+
+}
+
+.answer-lower-half {
+  width: 80%;
+  text-align: center;
+  margin: 0 auto;
+  position: relative;
+}
+
+.vote-positioning{
+  bottom: 0;
+  right: 0;
+  position: fixed;
+}
+
+.form-label {
+  display: block;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+font-style: normal;
+font-weight: 300;
+font-size: 12px;
+line-height: 201%;
+margin-bottom: 0%;
+}
+
+#rating-slider {
+  width: 100%;
+  padding-bottom: 0%;
+  border-radius: 30px;
+}
+
+.range-labels {
+  list-style: none;
+  margin-top: 0%;
+
+}
+
+.range-labels li {
+  position: relative;
+  text-align: center;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 10px;
+  line-height: 210%;
+  border: none;
+  padding: 0;
+  background: transparent;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+	width: 80%;
+	height: 100%;
+  line-height: 1;
+  cursor: pointer;
+	background: linear-gradient(111.52deg, #DADDE5 0%, rgba(182, 191, 214, 0.8) 100%);
+  backdrop-filter: blur(100px);
+  border-radius: 30px;
+}
+
+/*Styling for Opera/Chrome*/
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 1em;
+  width: 1em;
+  border-radius: 100%;
+  background: #ffffff;
+  cursor: pointer;
+  margin: 0; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+}
+
+/* All the same stuff for Firefox */
+input[type=range]::-moz-range-thumb {
+  height: 1em;
+  width: 1em;
+  border-radius: 100%;
+  background: #ffffff;
+  cursor: pointer;
+}

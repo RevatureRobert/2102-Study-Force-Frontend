@@ -1,48 +1,74 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Flashcard } from '../model/flashcard';
+import { FlashcardPage } from "src/app/flashcard/model/flashcardPage";
+import { environment } from 'src/environments/environment';
 
-const baseUrl = 'http://localhost:8080/flashcards';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FlashcardService {
 
-  constructor(private http: HttpClient) { }
+  private apiServerUrl = environment.apiUrl;
 
+  public selectedFlascardForThread?: Flashcard;
 
-  getAll(): Observable<Flashcard[]> {
-    return this.http.get<Flashcard[]>(`${baseUrl}/all`);
+  constructor(private http: HttpClient) {
   }
 
-  getAllByDifficulty(difficulty: number): Observable<Flashcard[]> {
-    return this.http.get<Flashcard[]>(`${baseUrl}/difficulty?difficulty=${difficulty}`);
+  getAllByPage(page: number): Observable<FlashcardPage> {
+    return this.http.get<FlashcardPage>(`http://${this.apiServerUrl}/flashcards?page=${page}`);
   }
 
-  getAllByTopic(topic: string): Observable<Flashcard[]> {
-    return this.http.get<Flashcard[]>(`${baseUrl}/topic?topic=${topic}`);
+  getAllByDifficultyPage(page: number, difficulty: number): Observable<FlashcardPage> {
+    return this.http.get<FlashcardPage>(`http://${this.apiServerUrl}/flashcards/difficulty?page=${page}&difficulty=${difficulty}`);
   }
 
-  getAllByResolved(resolved: boolean): Observable<Flashcard[]> {
-    return this.http.get<Flashcard[]>(`${baseUrl}/resolved?resolved=${resolved}`);
+
+  getAll(): Observable<any> {
+    return this.http.get(`http://${this.apiServerUrl}/flashcards`);
+  }
+
+  getFlashcardById(flashcardId: number): Promise<any> {
+    return this.http.get(`http://${this.apiServerUrl}/flashcards/${flashcardId}`).toPromise();
+  }
+
+  getAnswers(flashcardId: number): Observable<any> {
+    return this.http.get(`http://${this.apiServerUrl}/answers/${flashcardId}`);
+  }
+
+  getAllByDifficulty(difficulty: number): Observable<any> {
+    return this.http.get(`http://${this.apiServerUrl}/difficulty?difficulty=${difficulty}`);
+  }
+
+  getAllByTopic(page: number, topic: string): Observable<FlashcardPage> {
+    return this.http.get<FlashcardPage>(`http://${this.apiServerUrl}/flashcards/topics?page=${page}&topicName=${topic}`);
+  }
+
+  getAllByResolved(page:number, resolved: boolean): Observable<FlashcardPage> {
+    return this.http.get<FlashcardPage>(`http://${this.apiServerUrl}/flashcards/resolved?page=${page}&resolved=${resolved}`);
   }
 
   get(id: any): Observable<Flashcard> {
-    return this.http.get<Flashcard>(`${baseUrl}/id/${id}`);
+    return this.http.get<Flashcard>(`http://${this.apiServerUrl}/${id}`);
   }
 
   create(data: any): Observable<any> {
-    return this.http.post(baseUrl, data);
+    return this.http.post(`http://${this.apiServerUrl}/flashcards`, data);
   }
 
   update(data: any): Observable<any> {
-    return this.http.put(baseUrl, data);
+    return this.http.put(`http://${this.apiServerUrl}`, data);
   }
 
-  delete(data: any): Observable<any> {
-    return this.http.delete(baseUrl, data);
+  delete(id: any): Observable<any> {
+    return this.http.delete(`http://${this.apiServerUrl}/flashcards/${id}`);
+  }
+
+  setSelectedFlashcard(flascard: Flashcard): void {
+    this.selectedFlascardForThread = flascard;
   }
 
 }

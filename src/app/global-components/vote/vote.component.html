@@ -1,0 +1,28 @@
+<div class="parent">
+  <img class="scaled" id= "upvote" src="{{upVoteSource}}" alt="Upvote icon" role="img"
+    (click)="upVote()" *ngIf="!hasVoted"
+    />
+  <p class="score" [style.color]="scoreColor" [style]="scoreColor">{{answerScore}}</p>
+  <img class="scaled" id = "downvote" src="{{downVoteSource}}" alt="Downvote icon" role="img"
+    (click)="downVote()" *ngIf="!hasVoted"
+    />
+</div>
+
+<!--
+
+                                   ,,
+`7MM"""Mq.                       `7MM      `7MMM.     ,MMF'
+  MM   `MM.                        MM        MMMb    dPMM
+  MM   ,M9  .gP"Ya   ,6"Yb.   ,M""bMM        M YM   ,M MM  .gP"Ya
+  MMmmdM9  ,M'   Yb 8)   MM ,AP    MM        M  Mb  M' MM ,M'   Yb
+  MM  YM.  8M""""""  ,pm9MM 8MI    MM        M  YM.P'  MM 8M""""""
+  MM   `Mb.YM.    , 8M   MM `Mb    MM        M  `YM'   MM YM.    ,
+.JMML. .JMM.`Mbmmd' `Moo9^Yo.`Wbmd"MML.    .JML. `'  .JMML.`Mbmmd'
+
+
+
+>   Currently, there's nothing disabling whether or not the user has voted.
+>   There's a hasVoted in the typescript, so there will need to be additional logic to pull that relevant info.
+
+
+-->
