@@ -1,20 +1,14 @@
-.container{
-  position: absolute;
-  width: 75%;
-  height: 75%;
-  left: 50%;
-  top: 15%;
-  transform: translateX(-50%);
-  /* box-shadow: 0 8px 15px 0 rgba(31, 38, 135, 0.37); */
-
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(100px);
-  -webkit-backdrop-filter: blur(100px);
-  border-radius: 30px;
-  padding: 3em;
-  overflow: auto;
+.create-flashcard-button {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 100px;
+  height: 100px;
+  background: orange;
+  border-radius: 90px 0 0 0;
+  z-index: 20;
 }
 
-.page {
-  display: block;
+app-page-base {
+  z-index: 0;
 }

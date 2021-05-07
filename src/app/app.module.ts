@@ -52,7 +52,6 @@ import { StacktraceModule } from './stacktrace/stacktrace.module';
     FormsModule,
     NgbModule,
     SharedModule
-
   ],
   providers: [],
   bootstrap: [AppComponent],

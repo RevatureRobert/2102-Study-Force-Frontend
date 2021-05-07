@@ -1,15 +1,8 @@
-<!-- <div class="page">
-  <app-base-page></app-base-page>
-<br>
-  <div class="container">
-    <app-flashcard-grid></app-flashcard-grid>
-  </div>
-
-</div> -->
-
-<app-base-page>
+<app-base-page class="bottom-layer">
   <app-flashcard-grid class="selected-content"></app-flashcard-grid>
 </app-base-page>
+
+<div class="create-flashcard-button" routerLink='/create-question'></div>
 
 <!-- <div *ngIf="flashcardPage !== undefined">
   <div class="card-group">
