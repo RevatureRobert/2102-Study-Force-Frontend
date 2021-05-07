@@ -1,16 +1,23 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BASE_API_URL } from '../../../environments/environment';
-import { Batch } from '../models/batch';
 import { UserEmail } from '../models/user-email';
 
 @Injectable({
   providedIn: 'root'
 })
+/**
+ * Service used for all CRUD operations related to users
+ * @author Steven Ceglarek
+ */
 export class UserService {
 
   constructor(private http: HttpClient) { }
 
+  /**
+   * Calls to a /user/me route to grab the users info who is currently logged in
+   * @returns the user who is logged in
+   */
   getLoggedInUser() {
 
     const headerInfo = {
@@ -27,6 +34,12 @@ export class UserService {
 
   }
 
+  /**
+   * Used to grab all Users currently in database
+   * @param pageSize the page size for pagination
+   * @param pageNumber the page for pagination
+   * @returns all users from database
+   */
   getUsers(pageSize:number = 25, pageNumber:number = 0) {
 
     const headerInfo = {
@@ -42,7 +55,10 @@ export class UserService {
     return this.http.get<any>(BASE_API_URL.concat(`/user/all?offset=${pageSize}&page=${pageNumber}`), requestOptions).toPromise();
   }
 
-
+  /**
+   * To create many users at one time
+   * @param userArray an array of Users that will be created
+   */
   massCreateUsers(userArray: UserEmail[]) {
 
     const headerInfo = {
@@ -60,6 +76,10 @@ export class UserService {
 
   }
 
+  /**
+   * To create one user
+   * @param user the user being created
+   */
   createOneUser(user: UserEmail) {
 
     const headerInfo = {
