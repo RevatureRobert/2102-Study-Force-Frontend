@@ -6,19 +6,14 @@ import { SharedModule } from './global-components/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import {FlashcardModule } from './flashcard/flashcard.module';
+import { FlashcardModule } from './flashcard/flashcard.module';
 import { FormsModule } from '@angular/forms';
 import { StacktraceModule } from './stacktrace/stacktrace.module';
 import { UserModule } from './user/user.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ButtonComponent,
-    GlassPaneComponent,
-    GenericCardWideComponent,
-    GenericCardComponent,
-    SearchBarComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
