@@ -12,7 +12,7 @@ export class SubmitAnswerPageComponent implements OnInit {
     answer: null
   };
   private userId:number = 1;
-  private flashcardId:number = 1;
+  private flashcardId:number = 67;
 
   constructor(private answerService: AnswerService) { }
 
@@ -29,7 +29,7 @@ export class SubmitAnswerPageComponent implements OnInit {
 
     console.log(this.form.answer);
     this.answerService.postAnswer(this.flashcardId,this.userId,this.form.answer).then(res =>{
-      console.log(res.content);
+      console.log(res);
     }).catch(error => {
       console.log(error);
     })
