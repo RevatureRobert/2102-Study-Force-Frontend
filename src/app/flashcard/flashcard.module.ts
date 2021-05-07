@@ -13,6 +13,7 @@ import { FlashcardDeleteComponent } from './components/ui/flashcard/flashcard-de
 import { SubmitAnswerPageComponent } from './components/pages/submit-answer-page/submit-answer-page.component';
 import { ViewFlashcardThreadComponent } from './components/pages/view-flashcard-thread/view-flashcard-thread.component';
 import { SharedModule } from '../shared.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -32,7 +33,8 @@ import { SharedModule } from '../shared.module';
     CommonModule,
     FlashcardRoutingModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    NgbModule
   ],
   exports: [
     FlashcardComponent,
