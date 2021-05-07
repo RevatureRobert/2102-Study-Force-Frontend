@@ -101,7 +101,7 @@ export class FlashcardGridComponent implements OnInit {
         this.filterDisplay = "Resolved";
         break;
       case false:
-        this.filterDisplay = "Resolved";
+        this.filterDisplay = "Not Resolved";
         break;
       case 1:
         this.filterDisplay = "Easy";

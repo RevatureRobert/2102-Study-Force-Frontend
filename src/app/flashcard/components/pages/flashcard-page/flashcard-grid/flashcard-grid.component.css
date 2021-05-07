@@ -11,7 +11,7 @@
 }
 
 .filter-button {
-  width: 7em;
+  width: 7.2em;
   height: 3.5em;
   margin: .5em;
   border-radius: 20px;
@@ -38,6 +38,9 @@
   width: 8em;
   font-size: 1em;
   padding: 1em;
+  color: black;
+  font-weight: bold;
+  background: rgb(255, 198, 123);
 }
 
 .page-button:hover {
