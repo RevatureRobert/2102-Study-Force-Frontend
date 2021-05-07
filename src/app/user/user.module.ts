@@ -6,6 +6,7 @@ import { RedirectGuardService } from './services/redirect-guard.service';
 import { PostLoginComponent } from './components/login/post-login/post-login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddUsersEmailComponent } from './components/add-users-email/add-users-email.component';
+import { SharedModule } from '../global-components/shared.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { AddUsersEmailComponent } from './components/add-users-email/add-users-e
     UserRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+    SharedModule,
   ],
 
   providers: [RedirectGuardService]

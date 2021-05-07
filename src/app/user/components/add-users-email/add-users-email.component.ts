@@ -33,7 +33,6 @@ export class AddUsersEmailComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    this.getAllBatches();
   }
 
   /**
@@ -162,15 +161,6 @@ export class AddUsersEmailComponent implements OnInit {
     for (let u of this.userEmployeeArray) {
       u.batchId = batchId;
     }
-  }
-
-  /**
-   * To grab all of the batches from the batchService
-   */
-  getAllBatches() {
-    // logic to get all of the batches
-    // Need to wait for merge with anakins, or whoever created the batch service
-    // batches = batchService.getAllBatches();
   }
 
 }
