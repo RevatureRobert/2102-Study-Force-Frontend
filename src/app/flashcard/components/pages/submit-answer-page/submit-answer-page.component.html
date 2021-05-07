@@ -1,6 +1,6 @@
 <app-base-page>
   <div class="selected-content">
-    <div class="container" style="margin-bottom: 50px;">
+    <div class="container" style="margin-bottom: 50px; padding-right: 10%; padding-left: 10%;">
       <div class="row">
         <div class="col-2">
 
@@ -8,12 +8,12 @@
         <div class="col-8">
           <div class="card" style="width: 18rem" id="Diologue-Card">
                 <div class="card-header" id="Card-Header">
-                  <p>Card Title</p>
+                  <p>{{flashcard.topicName}}</p>
                 </div>
                 <div class="card-body" id="Card-Body">
-                  <p class="card-text" id="Name">Card Difficulty</p>
+                  <p class="card-text" id="Name">{{flashcard.difficulty}}</p>
                   <p class="card-text" id="Card-Text">
-                    Question Text Body
+                    {{flashcard.question}}
                   </p>
                 </div>
                 <div class="card-footer" id="Card-Footer">

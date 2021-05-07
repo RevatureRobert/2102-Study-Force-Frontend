@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Flashcard } from 'src/app/flashcard/model/flashcard';
 import { AnswerService } from 'src/app/flashcard/service/answer.service';
 
 @Component({
@@ -12,14 +13,14 @@ export class SubmitAnswerPageComponent implements OnInit {
     answer: null
   };
   private userId:number = 1;
-  private flashcardId:number = 67;
+  flashcard!:Flashcard;
 
-  constructor(private answerService: AnswerService) { }
+  constructor(private answerService: AnswerService) {
+    this.flashcard = answerService.getCurrentFlashcardId();
+  }
 
   ngOnInit(): void {
   }
-
-
 
   onSubmit(){
     if(this.form.answer===null || this.form.answer===""){
@@ -28,7 +29,7 @@ export class SubmitAnswerPageComponent implements OnInit {
     }
 
     console.log(this.form.answer);
-    this.answerService.postAnswer(this.flashcardId,this.userId,this.form.answer).then(res =>{
+    this.answerService.postAnswer(this.flashcard.flashcardId,this.userId,this.form.answer).then(res =>{
       console.log(res);
     }).catch(error => {
       console.log(error);
