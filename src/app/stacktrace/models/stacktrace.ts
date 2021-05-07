@@ -3,9 +3,9 @@ import { StacktraceUser } from "./user";
 
 export class Stacktrace {
   stacktraceId?: number;
-  creator?: number;
+  userId?: number;
   title?: string;
   body?: string;
-  technology?: number;
+  technologyId?: number;
   creationTime?: string;
 }

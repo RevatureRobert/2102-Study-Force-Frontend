@@ -54,3 +54,5 @@ export class StacktraceService {
     return this.http.get<Stacktrace[]>(`${this.stacktraceURL}?title=${title}`);
   }
 }
+
+

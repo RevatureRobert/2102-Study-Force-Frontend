@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Stacktrace } from 'src/app/stacktrace/models/stacktrace';
 import { StacktraceService } from 'src/app/stacktrace/services/stacktrace.service';
@@ -10,6 +10,7 @@ import { Technology } from 'src/app/stacktrace/models/technology';
   styleUrls: ['./new-stacktrace.component.css']
 })
 export class NewStacktraceComponent implements OnInit {
+
 
   stacktrace : Stacktrace = {
     title:"",
@@ -26,7 +27,7 @@ export class NewStacktraceComponent implements OnInit {
 
 
    onSubmit() {
-    this.stacktraceService.addStacktrace(this.stacktrace).subscribe(result => this.gotoStacktraceList());
+    this.stacktraceService.save(this.stacktrace).subscribe(result => this.gotoStacktraceList());
   }
 
   gotoStacktraceList() {

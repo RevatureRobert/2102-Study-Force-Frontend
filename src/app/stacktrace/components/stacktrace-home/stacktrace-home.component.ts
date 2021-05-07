@@ -18,7 +18,7 @@ export class StacktraceHomeComponent implements OnInit {
   currentStacktrace?: Stacktrace;
   currentIndex=-1;
   title = '';
-
+  technologyId = null;
 
   page = 1;
   count = 0;
