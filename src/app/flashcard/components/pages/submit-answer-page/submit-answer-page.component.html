@@ -8,12 +8,12 @@
         <div class="col-8">
           <!-- <div class="card" style="width: 18rem" id="Diologue-Card">
                 <div class="card-header" id="Card-Header">
-                  <p>{{flashcard.topicName}}</p>
+                  <p>{{flashcard?.topicName}}</p>
                 </div>
                 <div class="card-body" id="Card-Body">
-                  <p class="card-text" id="Name">{{flashcard.difficulty}}</p>
-                  <p class="card-text" id="Card-Text">
-                    {{flashcard.question}}
+                  <p class="card-text" id="Name">{{flashcardDifficulty}}</p>
+                  <p class="card-text" id="Card-Text" >
+                    {{flashcard?.question}}
                   </p>
                 </div>
                 <div class="card-footer" id="Card-Footer">
@@ -43,10 +43,6 @@
 
         </div>
       </div>
-
-
-
-
     </div>
   </div>
 </app-base-page>

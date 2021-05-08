@@ -1,6 +1,14 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
 import * as EventEmitter from 'events';
+
+import { Flashcard } from 'src/app/flashcard/model/flashcard';
+// const EventEmitter = require('events');
+import { FlashcardComponent } from '../flashcard.component';
+import { CommonModule } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
+
 import { RateService } from '../../../../service/rate.service'
+
 
 
 /**
@@ -62,6 +70,7 @@ export class FlashcardQuestionComponent implements OnInit {
     event.stopPropagation();
   }
 
+
   // Activated when user clicks on the rating slider.
   // Only stores 1 rating per user.
   activateSlider(value: number) {
@@ -82,7 +91,6 @@ export class FlashcardQuestionComponent implements OnInit {
       })
 
     }
-
 
   }
 

@@ -52,6 +52,7 @@ export class FlashcardService {
     return this.http.get(`http://${this.apiServerUrl}/flashcards`);
   }
 
+
   /**
    * Gets the Flashcard with the given id
    * @param flashcardId - id of the Flashcard to return
@@ -59,6 +60,7 @@ export class FlashcardService {
    */
   getFlashcardById(flashcardId: number): Promise<any> {
     return this.http.get(`http://${this.apiServerUrl}/flashcards/${flashcardId}`).toPromise();
+
   }
 
   /**
@@ -125,6 +127,7 @@ export class FlashcardService {
   update(data: any): Observable<any> {
     return this.http.put(`http://${this.apiServerUrl}`, data);
   }
+
 
   /**
    * Deletes an existing Flashcard

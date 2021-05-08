@@ -9,7 +9,7 @@ import { Flashcard } from '../model/flashcard';
 })
 export class AnswerService {
 
-  private flashcard!:Flashcard;
+  private flashcardId!:number;
 
   constructor(private http: HttpClient) { }
 
@@ -20,12 +20,12 @@ export class AnswerService {
     //'Authorization': 'Bearer '.concat(JWT.currentJWT)
   };
 
-  setCurrentFlashcardId(flashcard:Flashcard):void{
-    this.flashcard=flashcard;
+  setCurrentFlashcardId(flashcardId:number):void{
+    this.flashcardId=flashcardId;
   }
 
-  getCurrentFlashcardId():Flashcard{
-    return this.flashcard;
+  getCurrentFlashcardId():number{
+    return this.flashcardId;
   }
 
   async postAnswer(flashcardId: number, userId: number, answer: string ): Promise<any>{
