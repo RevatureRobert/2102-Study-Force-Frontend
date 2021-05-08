@@ -16,20 +16,33 @@ import { Router } from '@angular/router';
 export class StacktraceHomeComponent implements OnInit {
   stacktraces : Stacktrace[] = [];
   currentStacktrace?: Stacktrace;
+  technology: Technology[] = [];
+  technologyId=1;
   currentIndex=-1;
   title = '';
 
-  page = 1;
+  page = 0;
   count = 0;
   pageSize = 3;
   pageSizes = [3, 6, 9];
 
 
 
-  constructor(private stacktraceService:StacktraceService) { }
+  constructor(private stacktraceService:StacktraceService, 
+    private technologyService: TechnologyService) { }
 
   ngOnInit(): void {
     this.retrieveStacktraces();
+    this.getAllTechnology();
+  }
+
+  getAllTechnology(){
+    this.technologyService.getAllTechnology().then(
+      data =>{
+        this.technology = data;
+        console.log(this.technology);
+      }
+    )
   }
 
   getRequestParams(searchTitle: string, page: number, pageSize: number): any {
@@ -53,8 +66,10 @@ export class StacktraceHomeComponent implements OnInit {
 
   retrieveStacktraces(): void {
     const params = this.getRequestParams(this.title, this.page, this.pageSize);
-
-    this.stacktraceService.findAll(params)
+    console.log(this.technologyId);
+    console.log(this.title);
+    console.log(this.page);
+    this.stacktraceService.findByTitleAndTechnology(this.title, this.technologyId, this.page)
     .subscribe(
       response => {
         const { stacktraces, totalItems } = response;
