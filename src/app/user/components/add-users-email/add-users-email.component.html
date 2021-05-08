@@ -26,10 +26,22 @@
                         class="dropdown-menu"
                         aria-labelledby="Dropdown-Button"
                         id="Dropdown-List"
-                        *ngFor='let b of batches'
                     >
-                        <li><a href="" (click)="onSelectBatch(b.id)">{{b.name}}</a></li>
+                        <div *ngFor='let b of batches'>
+                            <li><a class="dropdown-item" href="" (click)="onSelectBatch(b.id)">{{b.name}}</a></li>
+                        </div>
+                            <li><button class="dropdown-item btn btn-success" style="background-color: #00d600; color: white;" (click)="createNewBatch()"> Create new Batch</button></li>
                     </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4 mx-auto">
+                <div *ngIf='newBatch'>
+                    <input class="form-control Batch-Name-Input d-inline" type="text" placeholder="Batch name" name="batchName">
+                    <button class="btn btn-primary Add-Button form-control d-inline" type="submit">
+                        Add
+                </button>
                 </div>
             </div>
         </div>
@@ -56,7 +68,7 @@
                             </tbody>
                             <caption>
                                 <form (submit)="onAddEmployee(formEmp)" #formEmp="ngForm">
-                                    <input type="text" class="form-control d-inline" name="email" placeholder="email"
+                                    <input type="text" class="form-control d-inline Email-Input" name="email" placeholder="Email"
                                         [ngModel]="user?.email" #email="ngModel" id="Email-Input" />
                                     <button class="btn btn-primary Add-Button form-control d-inline" type="submit">
                                         Add

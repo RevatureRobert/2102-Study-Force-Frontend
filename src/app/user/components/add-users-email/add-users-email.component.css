@@ -70,12 +70,17 @@ table {
   box-sizing: border-box;
   border-radius: 30px;
 }
-#Email-Input {
+.Email-Input {
   position: relative;
   left: 1%;
   width: 75%;
   border-radius: 30px;
 }
+.Batch-Name-Input {
+    position: relative;
+    width: 75%;
+    border-radius: 30px;
+  }
 
 #Submit-Button {
   opacity: 0.75;

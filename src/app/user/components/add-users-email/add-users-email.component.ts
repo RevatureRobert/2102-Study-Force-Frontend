@@ -24,6 +24,8 @@ export class AddUsersEmailComponent implements OnInit {
   //  For Dropdown menu
   yes: boolean = false;
 
+  newBatch: boolean = false;
+
   userEmployeeArray: Array<UserEmail> = [];
 
   batches?: Batch[];
@@ -128,6 +130,7 @@ export class AddUsersEmailComponent implements OnInit {
 
   submitAll() {
     try {
+      console.log()
       this.userService.massCreateUsers(this.userEmployeeArray);
     } catch (Exception) {
       console.log("Something is wrong with your stuff!")
@@ -159,8 +162,24 @@ export class AddUsersEmailComponent implements OnInit {
 
   onSelectBatch(batchId:number) {
     for (let u of this.userEmployeeArray) {
-      u.batchId = batchId;
+      if(this.newBatch) {
+        u.batchId = 0;
+      } else {
+        u.batchId = batchId;
+      }
     }
+  }
+
+  /**
+   * To open up a new form to enter in a new batch name
+   */
+
+  createNewBatch() {
+    this.newBatch = !this.newBatch;
+  }
+
+  onAddBatch(form: NgForm) {
+
   }
 
 }
