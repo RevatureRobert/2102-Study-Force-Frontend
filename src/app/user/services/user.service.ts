@@ -108,7 +108,7 @@ export class UserService {
   /**
    * Updates a user's active status by calling backend API
    * @param active The user's new active status
-   * @param user The user whose information is being updated
+   * @param userId The user whose information is being updated
    * @returns A promise of type any containing the json representation of the updated user
    */
   updateUserActive(active:boolean, userId:number):Promise<any>{
@@ -119,7 +119,7 @@ export class UserService {
   /**
    * Updates a user's name by calling backend API
    * @param name The user's new name
-   * @param user The user whose information is being updated
+   * @param userId The id of the user whose information is being updated
    * @returns A promise of type any containing the json representation of the updated user
    */
   updateUserName(name:string, userId:number):Promise<any>{
@@ -128,9 +128,21 @@ export class UserService {
   }
 
   /**
+   * Updates a user's subscription status by calling backend API
+   * @param userId The id of the user whose information is being updated
+   * @param subscribedFlashcard Boolean indicating weather or not this user is subscribed to flashcards
+   * @param subscribedStacktrace Boolean indicating weather or not this user is subscribed to stacktraces
+   * @returns A promise of type any containing the json representation of the updated user
+   */
+  updateUserSubscriptions(userId:number, subscribedFlashcard:boolean, subscribedStacktrace:boolean):Promise<any>{
+    const body:string = `{ "userId": ${userId}, "subscribedFlashcard": ${subscribedFlashcard}, "subscribedStacktrace": ${subscribedStacktrace} }`;
+    return this.http.put<any>(BASE_API_URL.concat('/users/subscription'), body).toPromise();
+  }
+
+  /**
    * Updates a user's authority by calling backend API
    * @param authority The user's new authority
-   * @param user The user whose information is being updated
+   * @param userId The id of the user whose information is being updated
    * @returns A promise of type any containing the json representation of the updated user
    */
   updateUserAuthority(authority:string, userId:number):Promise<any>{
