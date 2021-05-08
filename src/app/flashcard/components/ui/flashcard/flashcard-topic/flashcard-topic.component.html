@@ -13,8 +13,8 @@
         </tr>
 
         <tr>
-          <td class="topic-element" contenteditable #newTopicInput></td>
-          <td class="topic-element"><button id="topic-add-button" (click)="addTopic(newTopicInput.innerText) ">Add</button></td>
+          <td class="topic-element"><input placeholder="Add topic here" type="text" #newTopicInput style="width: 100%;"/></td>
+          <td class="topic-element"><button id="topic-add-button" (click)="addTopic(newTopicInput.value) ">Add</button></td>
         </tr>
       </table>
     </div>
