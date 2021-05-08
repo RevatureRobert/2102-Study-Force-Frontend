@@ -2,25 +2,13 @@ version: 0.2
 phases:
   install:
     commands:
-      - echo installing nodejs...
-      - curl -sL https://deb.nodesource.com/setup_12.x | bash -
-      - apt-get install -y nodejs
-      - echo installing yarn...
-      - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-      - echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
-      - apt install --no-install-recommends yarn
+      - apt-get update
   pre_build:
     commands:
-      - echo installing dependencies...
-      - npm i -g @angular/cli
       - npm install
   build:
     commands:
-      # - echo testing...
-      # - echo building...
-      - ng build --prod
-artifacts:
-  files:
-    - '**/*'
-  base-directory: 'dist*'
-  discard-paths: yes
+      - ng build
+  post_build:
+    commands:
+      - aws s3 sync ./dist/Study-Force-FrontEnd s3://2102-study-force-frontend-dev --acl 'public-read' --delete
