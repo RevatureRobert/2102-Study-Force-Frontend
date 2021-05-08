@@ -14,7 +14,7 @@ import { environment } from 'src/environments/environment';
 })
 export class VoteService {
 
-  private apiServerUrl = environment.apiUrl;
+  private apiServerUrl = environment.apiUrl; // Base API URL
 
   constructor(private http: HttpClient) {
   }

@@ -12,7 +12,7 @@ import { environment } from 'src/environments/environment';
 })
 export class RateService {
 
-  private apiServerUrl = environment.apiUrl;
+  private apiServerUrl = environment.apiUrl; // Base API URL
 
   constructor(private http: HttpClient) {
   }

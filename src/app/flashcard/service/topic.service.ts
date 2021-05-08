@@ -14,7 +14,7 @@ const baseUrl = 'http://localhost:8080/topics';
 })
 export class TopicService {
 
-  private apiServerUrl = environment.apiUrl;
+  private apiServerUrl = environment.apiUrl; // Base API URL
 
   constructor(private http: HttpClient) { }
 
