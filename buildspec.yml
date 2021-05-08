@@ -11,4 +11,4 @@ phases:
       - ng build
   post_build:
     commands:
-      - aws s3 sync ./dist/Study-Force-FrontEnd s3://2102-study-force-frontend-dev --acl 'public-read' --delete
+      - aws s3 sync dist/Study-Force-FrontEnd/ s3://2102-study-force-frontend-dev --acl 'public-read' --delete
