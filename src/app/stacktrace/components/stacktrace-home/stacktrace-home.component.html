@@ -1,4 +1,6 @@
+
 <div id="glass-pane">
+  <div class="selected-content">
   <nav class="navbar navbar-expand-lg navbar-custom" id="NavBar">
     <a class="navbar-brand" href="#">
       <img
@@ -91,7 +93,7 @@
           <label><strong>Stacktrace ID:</strong></label> {{ currentStacktrace.stacktraceId }}
         </div>
         <div>
-          <label><strong>Creator ID:</strong></label> {{ currentStacktrace.userId}}
+          <label><strong>Creator ID:</strong></label> {{ currentStacktrace.userName}}
         </div>
         <div>
           <label><strong>Title:</strong></label> {{ currentStacktrace.title }}
@@ -102,7 +104,7 @@
         </div>
         <div>
           <label><strong>TechnologyId:</strong></label>
-          {{ currentStacktrace.technologyId }}
+          {{ currentStacktrace.technologyName }}
         </div>
         <div>
           <label><strong>Creation Time:</strong></label>
@@ -129,18 +131,29 @@
           </option>
         </select>
       </div>
-      <div class="card-body">
-        <h2 class="card-title text-center text-white py-3">{{ title }}</h2>
-        <ul class="text-center list-inline py-3">
-          <li class="list-inline-item">
-            <a routerLink="/stacktrace" class="btn btn-info">List Stacktraces</a>
-              </li>
-          <li class="list-inline-item">
-            <a routerLink="/addstacktrace" class="btn btn-info">Add Stacktrace</a>
-              </li>
-        </ul>
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="card ">
+
+                <h2 class="card">{{ title }}</h2>
+                <ul>
+                  <li class="list-inline-item">
+                    <a routerLink="/stacktrace" class="btn btn-info">List Stacktrace</a>
+                      </li>
+                  <li class="list-inline-item">
+                    <a routerLink="/addstacktrace" class="btn btn-info">Add Stacktrace</a>
+                      </li>
+                </ul>
+
+            </div>
+            <router-outlet></router-outlet>
+          </div>
+        </div>
       </div>
     </table>
+
   </div>
+
 </div>
 </div>
