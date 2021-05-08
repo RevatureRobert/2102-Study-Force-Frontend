@@ -4,7 +4,6 @@ backdrop-filter: blur(100px);
 /* Note: backdrop-filter has minimal browser support */
 border-radius: 30px;
 min-height: 350px;
-
 }
 
 .flashcard-difficulty-easy {
@@ -56,6 +55,11 @@ font-style: normal;
 font-weight: 300;
 font-size: 20px;
 line-height: 105%;
+}
+
+.inactive-slider {
+  background: white;
+  mix-blend-mode: saturation;
 }
 
 .subscription {

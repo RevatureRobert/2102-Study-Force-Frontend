@@ -1,19 +1,27 @@
-<!-- <div class="view-flashcard" *ngFor="let flashcard of flashcards">
- <app-flashcard [flashcard]="flashcard" ></app-flashcard>
-</div> -->
+<div *ngIf="flashcardPage !== undefined">
 
+  <div ngbDropdown class="filter-element">
+    <button class="dropdown-button" ngbDropdownToggle>Filter By:</button>
+    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+      <button ngbDropdownItem (click)="setModeToNone()">None</button>
+      <button ngbDropdownItem (click)="setModeToTopic()">Topic</button>
+      <button ngbDropdownItem (click)="setModeToDifficulty()">Difficulty</button>
+      <button ngbDropdownItem (click)="setModeToResolved()">Resolved</button>
+    </div>
 
- <!-- <div class="row">
-  <div ng-repeat="flashcard in flashcards">
-      <div class="clearfix" ng-if="$index % 3 == 0"></div>
-      <div class="col-sm-4">
-        <app-flashcard [flashcard]="flashcard" ></app-flashcard>
+    <div ngbDropdown *ngIf="modeChoices.length > 0" class="filter-element">
+      <button class="dropdown-button" ngbDropdownToggle>{{mode}}</button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <button ngbDropdownItem *ngFor="let mode of modeChoices" (click)="setInput(mode.input)">{{mode.displayString}}</button>
       </div>
-  </div>
-</div> -->
-<!--
-<app-flashcard [flashcard]="flashcards[0]"></app-flashcard> -->
+    </div>
 
-<div class="card-deck view-flashcard" *ngFor="let flashcard of flashcards" >
-  <app-flashcard [flashcard]="flashcard"></app-flashcard>
+  <div class="card-deck view-flashcard" *ngFor="let flashcard of flashcardPage.content">
+    <app-flashcard [flashcard]="flashcard"></app-flashcard>
+  </div>
+
+  <button (click)="prevPage()" *ngIf="flashcardPage.number > 0">prev</button>
+  <button (click)="nextPage()" *ngIf="flashcardPage.number < flashcardPage.totalPages - 1">next</button>
+
 </div>
+

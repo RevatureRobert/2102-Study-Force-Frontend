@@ -7,15 +7,13 @@
       <img src={{newAnswerIcon}} alt="create new answer" height="30em"  (click)="newAnswer($event)">
     </div>
 
+
     <div *ngIf=!isAnswer>
       <p class="card-text">(No answers)</p>
       <br>
       <br>
       <br>
       <br>
-      <!-- <button class="btn delete-button" (click)="deleteFlashcard($event)">
-        DELETE
-    </button> -->
     <app-flashcard-delete></app-flashcard-delete>
     </div>
 

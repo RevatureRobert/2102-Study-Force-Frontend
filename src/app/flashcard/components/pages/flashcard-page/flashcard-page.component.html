@@ -1,45 +1,7 @@
-<!-- <div class="page">
-  <app-base-page></app-base-page>
-<br>
-  <div class="container">
-    <app-flashcard-grid></app-flashcard-grid>
-  </div>
-
-</div> -->
-
-<app-base-page>
+<app-base-page class="bottom-layer">
   <app-flashcard-grid class="selected-content"></app-flashcard-grid>
 </app-base-page>
 
-<!-- <div *ngIf="flashcardPage !== undefined">
-  <div class="card-group">
-    <div class="card" *ngFor="let flashcard of flashcardPage.content">
-      <app-flashcard-question [flashcard]="flashcard"></app-flashcard-question>
-    </div>
-  </div>
-
-  <button (click)="prevPage()" *ngIf="flashcardPage.number > 0">prev</button>
-  <button (click)="nextPage()" *ngIf="flashcardPage.number < flashcardPage.totalPages - 1">next</button>
-
+<div class="create-flashcard-button" routerLink='/create-question'>
+  <img src="../../../../../assets/new-question-blue.svg" id="newquestionicon" alt="Create New Question">
 </div>
-
-<div class="row col">
-  <div ngbDropdown class="d-inline-block">
-    <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Filter By:</button>
-    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-      <button ngbDropdownItem (click)="setModeToNone()">None</button>
-      <button ngbDropdownItem (click)="setModeToTopic()">Topic</button>
-      <button ngbDropdownItem (click)="setModeToDifficulty()">Difficulty</button>
-      <button ngbDropdownItem (click)="setModeToResolved()">Resolved</button>
-    </div>
-  </div>
-</div>
-
-<div *ngIf="modeChoices.length > 0">
-      <button *ngFor="let mode of modeChoices" (click)="setInput(mode.input)">{{mode.displayString}}</button>
-<div class="view-flashcard" *ngFor="let flashcard of flashcards">
-    <div>
-      <app-flashcard [flashcard]=flashcard></app-flashcard>
-    </div>
-</div> -->
-

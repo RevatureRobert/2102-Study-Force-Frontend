@@ -54,3 +54,15 @@ export class ViewFlashcardThreadComponent implements OnInit {
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
