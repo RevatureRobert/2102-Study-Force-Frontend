@@ -8,23 +8,19 @@
     </div>
 
 
-    <div *ngIf=!isAnswer>
+    <div *ngIf="!isAnswer">
       <p class="card-text">(No answers)</p>
-      <br>
-      <br>
-      <br>
-      <br>
-    <app-flashcard-delete></app-flashcard-delete>
     </div>
 
-    <div [hidden]="flip" class="answers" *ngIf=isAnswer>
-      <div class="card-text">
+
+    <div [hidden]="flip" class="answers" >
+      <div class="card-text" *ngIf=isAnswer>
         {{answers[0].answerText}}
         <app-vote (click)="vote($event)" [answerScore]=answers[0].answerScore></app-vote>
       </div>
-      <button class="btn custom-button" (click)="toggleView($event)" *ngIf="answers.length > 0">
-          View More
-      </button>
+        <button class="btn custom-button" (click)="toggleView($event)" *ngIf="answers.length > 0">
+            View More
+        </button>
     </div>
 
     <div [hidden]="!flip" class="answers">
