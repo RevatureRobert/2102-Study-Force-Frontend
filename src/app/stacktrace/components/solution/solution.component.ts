@@ -10,7 +10,7 @@ export class SolutionComponent implements OnInit {
 
   solution?: Solution;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
   }
