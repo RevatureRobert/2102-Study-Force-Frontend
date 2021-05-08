@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiUrl: 'localhost:8080'
 };
 
 /*
@@ -14,3 +15,10 @@ export const environment = {
  * on performance if an error is thrown.
  */
 // import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+
+//Base URL for Hosted UI for login and signup
+export const BASE_URL_LOGIN_REGISTRATION:string = 'https://studyforce.auth.us-east-1.amazoncognito.com/login?client_id=1v2vmtuo6oiaace3vckil4cfqf&response_type=token&scope=aws.cognito.signin.user.admin&redirect_uri=http://localhost:4200/oauth2/';
+
+//todo change base url to aws once backend is deployed
+//Base url for api
+export const BASE_API_URL:string = 'URL_REDACTED';

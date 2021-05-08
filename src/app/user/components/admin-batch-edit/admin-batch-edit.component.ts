@@ -4,11 +4,11 @@ import { User } from '../../models/user';
 import { BatchService } from '../../services/batch.service';
 
 @Component({
-  selector: 'app-admin-batch',
-  templateUrl: './admin-batch.component.html',
-  styleUrls: ['./admin-batch.component.css']
+  selector: 'app-admin-batch-edit',
+  templateUrl: './admin-batch-edit.component.html',
+  styleUrls: ['./admin-batch-edit.component.css']
 })
-export class AdminBatchComponent implements OnInit {
+export class AdminBatchEditComponent implements OnInit {
 
   users: User[] = [];  //Users array that holds all the users in the batch.
   instructors: User[] = [];  //Users array that holds all the instructors in the batch.
@@ -16,7 +16,6 @@ export class AdminBatchComponent implements OnInit {
   name: string = '';  //Name of the batch.
   loaded:boolean = false;  //To confirm view did load.
   id: string = "";  //ID of the batch to be used for batch service method.
-  // link: string = "";
 
 
   /**
@@ -51,12 +50,8 @@ export class AdminBatchComponent implements OnInit {
       var date = new Date(batch.creationTime);
       this.creationTime = ((date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear());
       this.name = batch.name;
-      // this.link = `adminBatchEditDetails/${this.id}`;
       this.loaded = true;
     })
   }
 
-  editButtonClicked(): void {
-    this.router.navigateByUrl(`adminBatchEditDetails/${this.id}`) ;
-  }
 }

@@ -69,15 +69,22 @@ label {
   max-height: 200px;
   max-width: 35%;
   min-width: 28%;
+  overflow: auto;
 }
 
 .users {
-  position: absolute;
+  position: relative;
   left: 50%;
   transform: translateX(-50%);
   top: 348px;
   opacity: 0.95;
   width: 50%;
+  max-height: 400px;
+
+}
+#wrapper {
+  overflow:auto;
+  height:400px;
 }
 
 .glass-pane {
@@ -177,6 +184,7 @@ backdrop-filter: blur(100px);
 table {
   border-radius: 30px;
   overflow: hidden;
+
   table-layout: fixed;
 }
 

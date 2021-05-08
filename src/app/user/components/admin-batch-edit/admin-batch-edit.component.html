@@ -43,22 +43,30 @@
   <div class="users" id="wrapper">
     <div class="table-responsive">
         <table class="table table-striped table-borderless">
-          <thead>
-            <tr>
-              <th scope="col" class="text">Enrolled Employees</th>
-              <th scope="col"></th>
-              <th scope="col"></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let user of users">
-              <td>{{ user.name }}</td>
-              <td>{{ user.email }}</td>
-              <td></td>
-            </tr>
-          </tbody>
-        </table>
+        <thead>
+          <tr>
+            <th scope="col">Enrolled Employees</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+            <td>
+              <!-- <button class="btn btn-danger" type="button" id="Remove-Button">Remove</button> -->
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+  </div>
+
+  <div class="deactivate">
+    <button class="btn btn-primary" type="button" id="Edit-Button" >
+      Edit
+    </button>
   </div>
 
 </div>
