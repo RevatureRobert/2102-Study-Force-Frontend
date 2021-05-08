@@ -5,22 +5,24 @@ import { RedirectGuardService } from './services/redirect-guard.service';
 import { BASE_URL_LOGIN_REGISTRATION } from '../../environments/environment';
 import { PostLoginComponent } from './components/login/post-login/post-login.component';
 import { AddUsersEmailComponent } from './components/add-users-email/add-users-email.component';
-
+import { UserSearchComponent } from './components/user-search/user-search.component';
 const userRoutes: Routes = [
-    {path: "login", component: LoginComponent},
-    {
-        path: "loginRoute", 
-        canActivate: [RedirectGuardService], component: RedirectGuardService, 
-        data: {
-            externalUrl: BASE_URL_LOGIN_REGISTRATION
-        }
+  { path: 'login', component: LoginComponent },
+  {
+    path: 'loginRoute',
+    canActivate: [RedirectGuardService],
+    component: RedirectGuardService,
+    data: {
+      externalUrl: BASE_URL_LOGIN_REGISTRATION,
     },
-    {path: "oauth2", component: PostLoginComponent},
-    {path: "addUsers", component: AddUsersEmailComponent},
+  },
+  { path: 'oauth2', component: PostLoginComponent },
+  { path: 'addUsers', component: AddUsersEmailComponent },
+  { path: 'user-search', component: UserSearchComponent },
 ];
 
 @NgModule({
-    imports: [RouterModule.forChild(userRoutes)],
-    exports: [RouterModule]
+  imports: [RouterModule.forChild(userRoutes)],
+  exports: [RouterModule],
 })
-export class UserRoutingModule { }
+export class UserRoutingModule {}
