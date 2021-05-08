@@ -26,17 +26,6 @@ import { UserModule } from './user/user.module';
   declarations: [
     AppComponent,
     ButtonComponent,
-    TableComponent,
-    NavbarComponent,
-    FlashcardQuestionComponent,
-    ReplyCardComponent,
-    VoteComponent,
-    SubmitContentCardComponent,
-    FlashcardAnswerComponent,
-    GlassPaneComponent,
-    GenericCardWideComponent,
-    GenericCardComponent,
-    SearchBarComponent
   ],
   imports: [
     BrowserModule,

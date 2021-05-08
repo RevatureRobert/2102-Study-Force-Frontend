@@ -1,47 +1,51 @@
 <div>
-  <div id="glass-pane" style="height: 44rem;">
-    <div class="card-header" id="Card-Header" style="text-align: center;"><p style="font-size: 18pt; top: -0.7rem;">User Profile</p></div>
-    <div class="card" style="width: 70%; height: 4rem; top: 6rem;" id="Card-Wide">
-      <label for="" style="position: relative; top: -13px; left: 22px;">Email</label>
+  <div id="glass-pane">
+    <div class="card-header" id="Card-Header2" style="text-align: center;"><p style="font-size: 18pt; top: -0.7rem;">User Profile</p></div>
+    <div class="card" style="top: 6rem;" id="Card-Wide">
+      <label for="">Email</label>
       <div class="card-body" id="Card-Body">
         <p class="card-text" id="Card-Text">{{ user?.email }}</p>
       </div>
     </div>
-    <div class="card" style="width: 70%; height: 4rem; top: 12rem;" id="Card-Wide">
-      <label for="" style="position: relative; top: -13px; left: 22px;">Name</label>
+    <div class="card" style="top: 12rem;" id="Card-Wide">
+      <label for="">Name</label>
       <div class="card-body" id="Card-Body">
         <p class="card-text" id="Card-Text">{{ user?.name }}</p>
       </div>
     </div>
-    <div class="card" style="width: 70%; height: 4rem; top: 18rem;" id="Card-Wide">
-      <label for="" style="position: relative; top: -13px; left: 22px;">Member Since</label>
+    <div class="card" style="top: 18rem;" id="Card-Wide">
+      <label for="">Member Since</label>
       <div class="card-body" id="Card-Body">
-        <p class="card-text" id="Card-Text">{{ user?.registrationTime.getMonth() }}/{{ user?.registrationTime.getDate() }}/{{ user?.registrationTime.getFullYear() }}</p>
+        <p class="card-text" id="Card-Text">{{ user?.registrationTime | date }}</p>
       </div>
     </div>
 
-    <ul class="list-group" id="Generic-List" style="overflow: hidden; overflow-y: auto; max-height: 257px; position: relative; margin-left: auto; margin-right: 55%; width: 30%; top: 19.8rem">
-      <div class="card-header" id="Card-Header" style="font-weight: bold; color: #153C53;">Your Batches</div>
+    <ul class="list-group" id="Generic-List">
+      <div class="card-header" id="Card-Header">Your Batches</div>
       <!-- TODO add link to batch details linking to that batch id -->
       <li *ngFor="let batch of batches" class="list-group-item">{{ batch.name }}</li>
       <div class="card-footer" id="Card-Footer"></div>
     </ul>
 
-    <ul class="list-group" id="Generic-List" style="max-height: 257px; position: absolute; margin-left: 55%; margin-right: auto; width: 30%; top: 22rem">
-      <div class="card-header" id="Card-Header" style="font-weight: bold; color: #153C53;">Notifications</div>
-      <li class="list-group-item">Flashcards <input type="checkbox" style="float: right; position: relative; top: 0.5rem;" [checked]="user?.subscribedFlashcard" disabled></li>
-      <li class="list-group-item">Stacktraces <input type="checkbox" style="float: right; position: relative; top: 0.5rem;" [checked]="user?.subscribedStacktrace" disabled></li>
+    <ul class="list-group" id="Generic-List2">
+      <div class="card-header" id="Card-Header">Notifications</div>
+      <li class="list-group-item long">Recieve Flashcard Notifications<input type="checkbox"  [checked]="user?.subscribedFlashcard" disabled></li>
+      <li class="list-group-item short">Flashcard Notifications<input type="checkbox" [checked]="user?.subscribedFlashcard" disabled></li>
+      <li class="list-group-item tiny">Flashcard<input type="checkbox" [checked]="user?.subscribedFlashcard" disabled></li>
+      <li class="list-group-item long">Recieve Stacktrace Notifications<input type="checkbox" [checked]="user?.subscribedStacktrace" disabled></li>
+      <li class="list-group-item short">Stacktrace Notifications<input type="checkbox" [checked]="user?.subscribedStacktrace" disabled></li>
+      <li class="list-group-item tiny">Stacktrace<input type="checkbox" [checked]="user?.subscribedStacktrace" disabled></li>
       <div class="card-footer" id="Card-Footer"></div>
     </ul>
 
     <div *ngIf="user?.active">
-      <button class="btn btn-danger" type="button" id="Remove-Button" style="position: relative; margin-left: 1%; top: -13rem;">Deactivate</button>
+      <button class="btn btn-danger" type="button" id="Remove-Button">Deactivate</button>
     </div>
     <div *ngIf="!user?.active">
-      <button class="btn btn-danger" type="button" id="Remove-Button" style="position: absolute; margin-left: 77.5%; top: 34rem;">Activate</button>
+      <button class="btn btn-danger" type="button" id="Remove-Button">Activate</button>
     </div>
 
-    <div class="dropdown" id="Dropdown" style="position: absolute; margin-left: 5%; top: 34rem;">
+    <div class="dropdown" id="Dropdown">
       <button class="btn btn-secondary dropdown-toggle" type="reset" id="Dropdown-Button" data-bs-toggle="dropdown" aria-expanded="false" (click)="this.changeFocus()" (focus)="this.setFalse()">{{ user?.authority }}</button>
       <ul class="dropdown-menu" aria-labelledby="Dropdown-Button" id="Dropdown-List">
         <!-- TODO populate this with permissions up to the admins permissions, but do not allow editing of permissions on people of equal or greater permissions -->

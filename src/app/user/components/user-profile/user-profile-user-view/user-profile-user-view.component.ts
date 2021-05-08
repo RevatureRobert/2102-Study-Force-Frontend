@@ -11,10 +11,14 @@ export class UserProfileUserViewComponent implements OnInit {
 
   @Input() user?:User;
   @Input() batches?:Batch[];
-
+  @Input() isMe?:boolean;
 
   constructor() { }
 
   ngOnInit(): void {
+    let u:User = JSON.parse(localStorage.getItem('loggedInUser')!);
+    if(u.userId == this.user?.userId){
+      this.isMe = true;
+    }
   }
 }

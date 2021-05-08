@@ -1,36 +1,40 @@
 <div>
-  <div id="glass-pane" style="height: 44rem;">
+  <div id="glass-pane">
     <div class="card-header" id="Card-Header" style="text-align: center;"><p style="font-size: 18pt; top: -0.7rem;">User Profile</p></div>
-    <div class="card" style="width: 70%; height: 4rem; top: 6rem;" id="Card-Wide">
-      <label for="" style="position: relative; top: -13px; left: 22px;">Email</label>
+    <div class="card" style="top: 6rem;" id="Card-Wide">
+      <label for="" id="email-label">Email</label>
       <div class="card-body" id="Card-Body">
         <p class="card-text" id="Card-Text">{{ user?.email }}</p>
       </div>
     </div>
-    <div class="card" style="width: 70%; height: 4rem; top: 12rem;" id="Card-Wide">
-      <label for="" style="position: relative; top: -13px; left: 22px;">Name</label>
+    <div class="card" style="top: 12rem;" id="Card-Wide">
+      <label for="" id="name-label">Name</label>
       <div class="card-body" id="Card-Body">
         <p class="card-text" id="Card-Text">{{ user?.name }}</p>
       </div>
     </div>
-    <div class="card" style="width: 70%; height: 4rem; top: 18rem;" id="Card-Wide">
-      <label for="" style="position: relative; top: -13px; left: 22px;">Member Since</label>
+    <div class="card" style="top: 18rem;" id="Card-Wide">
+      <label for="" id="registration-label">Member Since</label>
       <div class="card-body" id="Card-Body">
-        <p class="card-text" id="Card-Text">{{ user?.registrationTime.getMonth() }}/{{ user?.registrationTime.getDate() }}/{{ user?.registrationTime.getFullYear() }}</p>
+        <p class="card-text" id="Card-Text">{{ user?.registrationTime | date }}</p>
       </div>
     </div>
-    <ul class="list-group" id="Generic-List" style="overflow: hidden; overflow-y: auto; max-height: 257px; position: relative; margin-left: auto; margin-right: 55%; width: 30%; top: 19.8rem">
-      <div class="card-header" id="Card-Header" style="font-weight: bold; color: #153C53;">Your Batches</div>
+    <ul class="list-group" id="Generic-List">
+      <div class="card-header" id="Card-Header">Batches</div>
       <!-- TODO add link to batch details linking to that batch id -->
       <li *ngFor="let batch of batches" class="list-group-item">{{ batch.name }}</li>
       <div class="card-footer" id="Card-Footer"></div>
     </ul>
-    <ul class="list-group" id="Generic-List" style="max-height: 257px; position: absolute; margin-left: 55%; margin-right: auto; width: 30%; top: 22rem">
-      <div class="card-header" id="Card-Header" style="font-weight: bold; color: #153C53;">Notifications</div>
-      <li class="list-group-item">Flashcards <input type="checkbox" style="float: right; position: relative; top: 0.5rem;" [checked]="user?.subscribedFlashcard" disabled></li>
-      <li class="list-group-item">Stacktraces <input type="checkbox" style="float: right; position: relative; top: 0.5rem;" [checked]="user?.subscribedStacktrace" disabled></li>
+    <ul class="list-group notifications" id="Generic-List2">
+      <div class="card-header" id="Card-Header">Notifications</div>
+      <li class="list-group-item long">Recieve Flashcard Notifications<input type="checkbox"  [checked]="user?.subscribedFlashcard" disabled></li>
+      <li class="list-group-item short">Flashcard Notifications<input type="checkbox" [checked]="user?.subscribedFlashcard" disabled></li>
+      <li class="list-group-item tiny">Flashcard<input type="checkbox" [checked]="user?.subscribedFlashcard" disabled></li>
+      <li class="list-group-item long">Recieve Stacktrace Notifications<input type="checkbox" [checked]="user?.subscribedStacktrace" disabled></li>
+      <li class="list-group-item short">Stacktrace Notifications<input type="checkbox" [checked]="user?.subscribedStacktrace" disabled></li>
+      <li class="list-group-item tiny">Stacktrace<input type="checkbox" [checked]="user?.subscribedStacktrace" disabled></li>
       <div class="card-footer" id="Card-Footer"></div>
     </ul>
-    <button class="btn btn-primary" type="button" id="Edit-Button" style="position: absolute; margin-left: 55%; top: 34rem;">Edit My Details</button>
+    <button *ngIf="isMe" class="btn btn-primary" type="button" id="Edit-Button" routerLink="/profile/edit">Edit My Details</button>
   </div>
 </div>

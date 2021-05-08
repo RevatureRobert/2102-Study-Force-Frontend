@@ -6,6 +6,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { BASE_URL_LOGIN_REGISTRATION } from '../../environments/environment';
 import { PostLoginComponent } from './components/login/post-login/post-login.component';
 import { AddUsersEmailComponent } from './components/add-users-email/add-users-email.component';
+import { UserProfileEditComponent } from './components/user-profile/user-profile-edit/user-profile-edit.component';
 
 const userRoutes: Routes = [
     {path: "login", component: LoginComponent},
@@ -16,9 +17,10 @@ const userRoutes: Routes = [
             externalUrl: BASE_URL_LOGIN_REGISTRATION
         }
     },
-    {path: "profile", component: UserProfileComponent},
+    {path: "profile/:id", component: UserProfileComponent},
     {path: "oauth2", component: PostLoginComponent},
     {path: "addUsers", component: AddUsersEmailComponent},
+    {path: "profile/edit", component: UserProfileEditComponent},
 ];
 
 @NgModule({

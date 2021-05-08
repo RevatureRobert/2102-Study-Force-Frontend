@@ -11,16 +11,18 @@ export class UserProfileAdminViewComponent implements OnInit {
 
   @Input() user?:User;
   @Input() batches?:Batch[];
+  editMode:boolean = false;
 
   yes: boolean = false;
 
   constructor() { }
 
   ngOnInit(): void {
+    let u:User = JSON.parse(localStorage.getItem('loggedInUser')!);
   }
 
   setUserActive(active:boolean){
-    
+
   }
 
   changeFocus() {

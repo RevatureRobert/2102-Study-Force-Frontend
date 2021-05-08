@@ -33,7 +33,7 @@
 #glass-pane {
   position: absolute;
   width: 75%;
-  height: 75%;
+  height: 40rem;
   left: 50%;
   top: 100px;
   transform: translateX(-50%);
@@ -49,8 +49,8 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 378px;
-  height: 367px;
+  width: 70%;
+  height: 4rem;
   transform: translate(-50%, -50%);
   background: linear-gradient(
     111.52deg,
@@ -67,11 +67,15 @@
 }
 
 #Generic-List {
+  overflow: hidden;
+  overflow-y: auto;
+  max-height: 257px;
   position: relative;
-  top: -2px;
+  margin-left: auto;
+  margin-right: 55%;
+  width: 30%;
+  top: 19.8rem;
   background: none;
-  width: 300px;
-  position: relative;
   box-sizing: border-box;
   border: none;
   padding: 0px;
@@ -100,7 +104,55 @@
   backdrop-filter: blur(100px);
 }
 
+#Generic-List2 {
+  max-height: 257px;
+  position: absolute;
+  margin-left: 55%;
+  margin-right: auto;
+  width: 30%;
+  top: 22rem;
+  background: none;
+  box-sizing: border-box;
+  border: none;
+  padding: 0px;
+  box-sizing: border-box;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+#Generic-List2 li:nth-child(2n-1) {
+  background: linear-gradient(
+    90.34deg,
+    rgba(255, 255, 255, 0.81) 0%,
+    rgba(255, 255, 255, 0.72) 100%
+  );
+  mix-blend-mode: normal;
+  backdrop-filter: blur(100px);
+}
+
+#Generic-List2 li:nth-child(2n) {
+  background: linear-gradient(
+    90.34deg,
+    rgba(255, 255, 255, 0.56) 0%,
+    rgba(255, 255, 255, 0.42) 100%
+  );
+  mix-blend-mode: normal;
+  backdrop-filter: blur(100px);
+}
+
 #Card-Header {
+  font-weight: bold;
+  color: #153C53;
+  height: 35px;
+  background: #ffffff;
+  opacity: 0.9;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+
+#Card-Header2 {
+  font-weight: bold;
+  color: #153C53;
   height: 35px;
   background: #ffffff;
   opacity: 0.9;
@@ -123,8 +175,16 @@ p {
   white-space: nowrap;
 }
 
+label {
+  position: relative;
+  top: -13px;
+  left: 22px;
+}
+
 #Dropdown {
   position: absolute;
+  margin-left: 5%;
+  top: 34rem;
   left: 50%;
   bottom: 50%;
 }
@@ -188,13 +248,77 @@ p {
   border-bottom-right-radius: 10px;
 }
 
+li > input {
+  float: right;
+  position: relative;
+  top: 0.5rem;
+}
 
 #Remove-Button {
   opacity: 0.75;
   position: relative;
+  margin-left: 1%;
+  top: -15.5rem;
   width: 103px;
   background: #ff0101;
   border: 1px solid #ff0000;
   box-sizing: border-box;
   border-radius: 30px;
+}
+
+.short {
+  display: none;
+}
+
+.tiny {
+  display: none;
+}
+
+@media (max-width: 1300px) {
+  .short {
+    display: inline-block;
+  }
+  .long {
+    display: none;
+  }
+}
+
+@media (max-width: 1030px) {
+  .tiny {
+    display: inline-block;
+  }
+  .short {
+    display: none;
+  }
+  .long {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  #glass-pane {
+    width: 95%;
+  }
+
+  #Card-Wide {
+    width: 95%;
+  }
+
+  #Generic-List {
+    margin-right: 56%;
+    width: 40%;
+  }
+
+  #Generic-List2 {
+    margin-left: 56;
+    width: 40%;
+  }
+
+  #Remove-Button {
+    top: -18.8rem;
+  }
+
+  #Card-Header2 {
+    height: 50px;
+  }
 }
