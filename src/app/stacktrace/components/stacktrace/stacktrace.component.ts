@@ -1,45 +1,71 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { StacktraceService } from '../../services/stacktrace.service'
 import { Stacktrace } from '../../models/stacktrace'
-import { StacktraceUser } from '../../models/user'
 
 @Component({
   selector: 'app-stacktrace',
   templateUrl: './stacktrace.component.html',
   styleUrls: ['./stacktrace.component.css']
 })
-export class StacktraceComponent implements OnInit, OnDestroy {
+export class StacktraceComponent implements OnInit {
 
-  stacktrace?: Stacktrace;
-  currentUser?: StacktraceUser; // TODO: need getUser endpoint to fill this user with the appropriate user
+  currentStacktrace: Stacktrace = {
+    title : '',
+    body : '',
+    stacktraceId: 0,
+    userId : 0,
+    userName: "",
+    creationTime: "",
+    technologyId :0,
+    technologyName:"",
+  };
+  message = '';
 
-  constructor(private stacktraceService: StacktraceService) {
+  constructor(private stacktraceService: StacktraceService, private route: ActivatedRoute,
+    private router: Router) {
 
   }
 
   ngOnInit(): void {
-    this.getStacktrace(1);
-    //This will eventually be
-    //this.getStacktrace(this.route.snapshot.paramMap.get('stacktraceId'))
+    this.message = '';
+    this.getStacktrace(this.route.snapshot.params.stacktraceId);
   }
 
-  //  TODO: unsubscribe
-  ngOnDestroy(): void {
-
+  getStacktrace(id: string): void {
+    this.stacktraceService.getStacktrace(id)
+      .subscribe(
+        data => {
+          this.currentStacktrace = data;
+          console.log(data);
+        },
+        error => {
+          console.log(error);
+        });
   }
 
-  getStacktrace(stacktraceId:number): void{
-    this.stacktraceService.getStacktrace(stacktraceId)
-    .then(stacktrace => this.stacktrace = stacktrace);
+  updateStacktrace(): void {
+    this.stacktraceService.editStacktrace(this.currentStacktrace.stacktraceId, this.currentStacktrace)
+      .subscribe(
+        response => {
+          console.log(response);
+          this.message = response.message;
+        },
+        error => {
+          console.log(error);
+        });
   }
 
-  /**
-   * TODO: Figure this out
-   * @param id
-   */
-  deleteStacktrace(id:number): void{
-    this.stacktraceService.deleteStacktrace(id)
-      .subscribe(data => {  } );
+
+  deleteStacktrace(): void {
+    this.stacktraceService.deleteStacktrace(this.currentStacktrace.stacktraceId)
+      .subscribe(
+        response => {
+          console.log(response);
+          this.router.navigate(['/stacktrace']);
+        },
+        error => {
+          console.log(error);
+        });
   }
 }

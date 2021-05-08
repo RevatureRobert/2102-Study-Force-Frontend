@@ -1,61 +1,41 @@
-<p>stacktrace works!</p>
 <div id="glass-pane">
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <div *ngIf="currentStacktrace.stacktraceId" class="edit-form">
+      <h3 class="card-title test">Stacktrace</h3>
+      <form>
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input class="form-control input-styling" placeholder="Title"  type="text"  [(ngModel)]="currentStacktrace.title" />
+        </div>
+        <div class="form-group">
+          <label for="body">Body</label>
+          <input
+            type="text"
+            class="form-control input-styling"
+            [(ngModel)]="currentStacktrace.body"
+            name="body"
+          />
+        </div>
+      </form>
 
 
-  <div class="card" style="width: 18rem" id="Diologue-Card">
-    <div class="card-header" id="Card-Header">
-      <p>{{stacktrace.title}}</p>
+      <button (click)="deleteStacktrace()">
+        Delete
+      </button>
+
+      <button
+      type="submit"
+      (click)="updateStacktrace()"
+    >
+      Update
+    </button>
+    <p>{{ message }}</p>
     </div>
-    <div class="card-body" id="Card-Body">
-      <p class="card-text" id="Name">{{stacktrace.userName}}</p>
-      <p class="card-text" id="Card-Text">{{stacktrace.body}}</p>
-    </div>
-    <div class="card-footer" id="Card-Footer">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="25"
-        height="25"
-        fill="currentColor"
-        class="bi bi-trash"
-        viewBox="0 0 16 16"
-      >
-        <path
-          d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"
-        />
-        <path
-          fill-rule="evenodd"
-          d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"
-        />
-      </svg>
+    <div *ngIf="!currentStacktrace.stacktraceId">
+      <br />
+      <p>Cannot access this Stacktrace</p>
     </div>
   </div>
-
-
-  <!-- <h2>Get StackTrace</h2>
-<table *ngIf = 'stacktrace != undefined' >
-  <caption>StackTrace Info</caption>
-  <tr>
-    <th scope="col">id</th>
-    <th scope="col">user id</th>
-    <th scope="col">username</th>
-    <th scope="col">title</th>
-    <th scope="col">body</th>
-    <th scope="col">technology id</th>
-    <th scope="col">technology name</th>
-    <th scope="col">creation time</th>
-  </tr>
-  <tr>
-    <td>{{stacktrace.stacktraceId}}</td>
-    <td>{{stacktrace.userId}}</td>
-    <td>{{stacktrace.userName}}</td>
-    <td>{{stacktrace.title}}</td>
-    <td>{{stacktrace.body}}</td>
-    <td>{{stacktrace.technologyId}}</td>
-    <td>{{stacktrace.technologyName}}</td>
-    <td>{{stacktrace.creationTime}}</td>
-  </tr>
-
-  <button mat-raised-button color="warn" (click)='deleteStacktrace(3)' *ngIf='currentUser == undefined'>Delete</button>
-</table> -->
-
-</div>
+  </div>
+  </div>
