@@ -1,0 +1,21 @@
+<div class="row mx-5">
+  <div class="col"><h3>All Notifications</h3></div>
+  <div class="col col-md-12">
+    <div *ngIf="notifications.length !== 0">
+      <button class="btn btn-danger btn-lg btn-block my-3" (click)="deleteAllNotifications(2);  pageRefresh()">
+        Clear Notifications
+      </button>
+    </div>
+    <p *ngIf="notifications.length === 0">You currently have no notifications</p>
+  </div>
+  <div class="col col-md-12 my-1" *ngFor="let notification of notifications">
+    <button (click)="deleteNotification(notification); pageRefresh()"
+            class="btn btn-sm text-white bg-danger font-weight-bolder mr-3 my-2">X
+    </button>
+    <a [routerLink]="['/notifications']" class="text-dark font-weight-bolder">
+      <span>{{notification.id}}: {{notification.message}} {{notification.featureArea}}</span> -
+      <span *ngIf="notification.read === true">Read</span>
+      <span *ngIf="notification.read !== true">Unread</span>
+    </a>
+  </div>
+</div>

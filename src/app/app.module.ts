@@ -1,12 +1,18 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { SharedModule } from './global-components/shared.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {NotificationComponent} from './notification/component/notification/notification.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FlashcardModule } from './flashcard/flashcard.module';
+import { FormsModule } from '@angular/forms';
+import { StacktraceModule } from './stacktrace/stacktrace.module';
+import { UserModule } from './user/user.module';
 import {NotificationService} from './notification/service/notification.service';
-import { HttpClientModule } from '@angular/common/http';
+import {NotificationComponent} from './notification/component/notification/notification.component';
+
 
 @NgModule({
   declarations: [
@@ -17,11 +23,14 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    FormsModule,
     NgbModule,
+    SharedModule,
+    FlashcardModule,
+    StacktraceModule,
+    UserModule
   ],
-  providers: [
-    NotificationService
-  ],
-  bootstrap: [AppComponent]
+  providers: [],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

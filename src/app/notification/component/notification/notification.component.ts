@@ -17,12 +17,11 @@ export class NotificationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getAllNotifications();
+    this.getAllNotificationsInNavbar();
   }
 
-  // tslint:disable-next-line:typedef
-  getAllNotifications(): void {
-    this.notificationService.getAllNotifications().subscribe(
+  getAllNotificationsInNavbar(): void {
+    this.notificationService.getAllNotificationsInNavbar().subscribe(
       (response: any) => {
         this.notifications = response.content;
       });
@@ -33,8 +32,8 @@ export class NotificationComponent implements OnInit {
     this.notificationService.deleteByNotificationId(notification.id).subscribe();
   }
 
-  deleteAllNotifications(id: number): void {
-    this.notificationService.deleteAllNotificationsByUserId(id).subscribe();
+  pageRefresh(): void {
+    window.location.reload();
   }
 
 }
