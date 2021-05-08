@@ -2,7 +2,6 @@ import { Component,OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Stacktrace } from 'src/app/stacktrace/models/stacktrace';
 import { StacktraceService } from 'src/app/stacktrace/services/stacktrace.service';
-import { Technology } from 'src/app/stacktrace/models/technology';
 
 @Component({
   selector: 'app-new-stacktrace',
