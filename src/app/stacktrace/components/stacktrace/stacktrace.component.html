@@ -1,6 +1,6 @@
 <div id="glass-pane">
 
-
+  <ng-content select=".selected-content"></ng-content>
   <div class="card" style="width: 18rem" id="Diologue-Card" *ngIf="stacktrace != undefined">
     <div class="card-header" id="Card-Header">
       <p>{{stacktrace.title}}</p>
@@ -29,3 +29,5 @@
     </div>
   </div>
 </div>
+
+<app-solution></app-solution>

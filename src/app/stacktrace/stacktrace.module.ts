@@ -9,12 +9,14 @@ import { StacktraceRoutingModule } from './stacktrace-routing.module';
 import { SharedModule } from '../global-components/shared.module';
 
 import { StacktraceService } from './services/stacktrace.service'
+import { SolutionComponent } from './components/solution/solution.component';
 
 
 @NgModule({
   declarations: [
     StacktraceHomeComponent,
-    StacktraceComponent
+    StacktraceComponent,
+    SolutionComponent
   ],
   imports: [
     SharedModule,
