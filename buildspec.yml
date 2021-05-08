@@ -8,9 +8,9 @@ phases:
       - npm install
   build:
     commands:
-      - ng build
+      - npm run build:ci
 artifacts:
   files:
     - '**/**'
-  base-directory: 'dist'
+  base-directory: 'dist*'
   discard-paths: yes
