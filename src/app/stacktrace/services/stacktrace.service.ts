@@ -19,7 +19,7 @@ export class StacktraceService {
   apiServerUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) {
-    this.stacktraceURL = 'http://localhost:8080/stacktrace';
+    this.stacktraceURL = 'http://localhost:8080/stacktrace/';
    }
 
    public save(stacktrace: Stacktrace) {

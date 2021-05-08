@@ -58,7 +58,7 @@ export class StacktraceHomeComponent implements OnInit {
     .subscribe(
       response => {
         const { stacktraces, totalItems } = response;
-        this.stacktraces = stacktraces;
+        this.stacktraces = response.content;
         this.count = totalItems;
         console.log(response);
       },
