@@ -14,6 +14,7 @@ import { SubmitAnswerPageComponent } from './components/pages/submit-answer-page
 import { ViewFlashcardThreadComponent } from './components/pages/view-flashcard-thread/view-flashcard-thread.component';
 import { SharedModule } from '../shared.module';
 import { VoteService } from './service/vote.service';
+import { RateService } from './service/rate.service';
 
 
 
@@ -27,7 +28,7 @@ import { VoteService } from './service/vote.service';
     FlashcardGridComponent,
     FlashcardDeleteComponent,
     SubmitAnswerPageComponent,
-    ViewFlashcardThreadComponent,
+    ViewFlashcardThreadComponent
   ],
   imports: [
     CommonModule,
@@ -48,7 +49,8 @@ import { VoteService } from './service/vote.service';
   ],
   providers: [
     FlashcardService,
-    VoteService
+    VoteService,
+    RateService
   ]
 })
 export class FlashcardModule {  }

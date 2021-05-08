@@ -49,7 +49,6 @@ export class FlashcardAnswerComponent implements OnInit {
     this.flashcardService.getAnswers(temp).subscribe(
       (response: AnswerPageable) => {
       this.answers = response.content;
-      console.log("CONTENT: " + response.content[0]);
 
       this.isAnswer = !!this.answers[0];
     });
