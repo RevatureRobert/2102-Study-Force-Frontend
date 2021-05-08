@@ -5,6 +5,10 @@ import { Flashcard } from "../../../model/flashcard";
 import * as EventEmitter from 'events';
 import { Answer } from 'src/app/flashcard/model/answer';
 
+
+/**
+ * Main Flashcard display component. Flips between question side and answer side on click.
+ */
 @Component({
   selector: 'app-flashcard',
   templateUrl: './flashcard.component.html',
@@ -43,10 +47,12 @@ export class FlashcardComponent implements OnInit {
 
   }
 
+  // Flips between question and answer views
   toggleView(): void {
     this.flip = !this.flip;
   }
 
+  // Subscribes user to Flashcard
   subscribe(event: Event) {
     this.subscribed = !this.subscribed
 
