@@ -4,6 +4,7 @@ import { CreateFlashcardPageComponent } from './components/pages/create-flashcar
 import { FlashcardPageComponent } from './components/pages/flashcard-page/flashcard-page.component';
 import { SubmitAnswerPageComponent } from './components/pages/submit-answer-page/submit-answer-page.component';
 import { ViewFlashcardThreadComponent } from './components/pages/view-flashcard-thread/view-flashcard-thread.component';
+import { FlashcardTopicComponent } from './components/ui/flashcard/flashcard-topic/flashcard-topic.component';
 
 
 const routes: Routes = [
@@ -11,7 +12,8 @@ const routes: Routes = [
   { path: 'create-question', component: CreateFlashcardPageComponent },
   { path: 'submit-answer', component: SubmitAnswerPageComponent },
   { path: 'view-thread', component: ViewFlashcardThreadComponent},
-  { path: 'view-flashcards', component: FlashcardPageComponent}
+  { path: 'view-flashcards', component: FlashcardPageComponent},
+  { path: 'view-topics', component: FlashcardTopicComponent}
 ];
 
 @NgModule({

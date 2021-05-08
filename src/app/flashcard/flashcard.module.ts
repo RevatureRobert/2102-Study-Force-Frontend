@@ -14,6 +14,7 @@ import { SubmitAnswerPageComponent } from './components/pages/submit-answer-page
 import { ViewFlashcardThreadComponent } from './components/pages/view-flashcard-thread/view-flashcard-thread.component';
 import { SharedModule } from '../shared.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FlashcardTopicComponent } from './components/ui/flashcard/flashcard-topic/flashcard-topic.component';
 
 
 
@@ -28,6 +29,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FlashcardDeleteComponent,
     SubmitAnswerPageComponent,
     ViewFlashcardThreadComponent,
+    FlashcardTopicComponent
   ],
   imports: [
     CommonModule,
