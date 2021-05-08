@@ -5,20 +5,18 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
-
 import { StacktraceRoutingModule } from './stacktrace-routing.module';
-
 import { StacktraceService } from './services/stacktrace.service'
-import {StacktraceHomeComponent} from 'src/app/stacktrace/components/stacktrace-home/stacktrace-home.component';
-import {NewStacktraceComponent} from 'src/app/stacktrace/components/new-stacktrace/new-stacktrace.component';
-import {StacktraceComponent} from 'src/app/stacktrace/components/stacktrace/stacktrace.component';
-
+import { SolutionComponent } from './components/solution/solution.component';
+import { StacktraceHomeComponent } from 'src/app/stacktrace/components/stacktrace-home/stacktrace-home.component';
+import { NewStacktraceComponent } from 'src/app/stacktrace/components/new-stacktrace/new-stacktrace.component';
+import { StacktraceComponent } from 'src/app/stacktrace/components/stacktrace/stacktrace.component';
 
 @NgModule({
   declarations: [
+    StacktraceHomeComponent,
     StacktraceComponent,
-    NewStacktraceComponent,
-    StacktraceHomeComponent
+    SolutionComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +27,6 @@ import {StacktraceComponent} from 'src/app/stacktrace/components/stacktrace/stac
     StacktraceRoutingModule,
     FormsModule,
     NgxPaginationModule
-
   ],
   exports:[
 
