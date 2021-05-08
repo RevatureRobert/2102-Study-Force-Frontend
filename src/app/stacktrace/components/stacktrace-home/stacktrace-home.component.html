@@ -89,6 +89,12 @@
       <div *ngIf="currentStacktrace">
         <h4>Stacktrace</h4>
         <div>
+          <label><strong>Stacktrace ID:</strong></label> {{ currentStacktrace.stacktraceId }}
+        </div>
+        <div>
+          <label><strong>Creator ID:</strong></label> {{ currentStacktrace.userId}}
+        </div>
+        <div>
           <label><strong>Title:</strong></label> {{ currentStacktrace.title }}
         </div>
         <div>
