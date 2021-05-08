@@ -1,14 +1,11 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
 import * as EventEmitter from 'events';
-import { Flashcard } from 'src/app/flashcard/model/flashcard';
-// const EventEmitter = require('events');
-import { FlashcardComponent } from '../flashcard.component';
-import { CommonModule } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
 import { RateService } from '../../../../service/rate.service'
 
 
-
+/**
+ * This component displays when a Flashcard is flipped to the question side.
+ */
 @Component({
   selector: 'app-flashcard-question',
   templateUrl: './flashcard-question.component.html',
@@ -30,6 +27,7 @@ export class FlashcardQuestionComponent implements OnInit {
 
   constructor(private rateService: RateService) { }
 
+  // Converts numeric difficuulty to alphabetic difficulty
   ngOnInit(): void {
     switch (this.difficulty) {
       case 0:
@@ -46,6 +44,7 @@ export class FlashcardQuestionComponent implements OnInit {
     }
   }
 
+  // Allows users to subscribe to Flashcard
   subscribe(event: Event) {
     this.subscribed = !this.subscribed
 
@@ -63,6 +62,8 @@ export class FlashcardQuestionComponent implements OnInit {
     event.stopPropagation();
   }
 
+  // Activated when user clicks on the rating slider.
+  // Only stores 1 rating per user.
   activateSlider(value: number) {
     this.isSliderActive = true;
 
