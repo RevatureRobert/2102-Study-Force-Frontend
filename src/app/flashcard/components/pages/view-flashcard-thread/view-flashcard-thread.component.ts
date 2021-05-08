@@ -25,8 +25,10 @@ export class ViewFlashcardThreadComponent implements OnInit {
 
 
   ngOnInit(): void {
+    console.log(localStorage.getItem('loggedInUser'));
     this.getSelectedFlashcard();
     this.getAllAnswers();
+
   }
 
   getSelectedFlashcard(): void {
@@ -51,7 +53,6 @@ export class ViewFlashcardThreadComponent implements OnInit {
       }
     );
   }
-
 
 }
 
