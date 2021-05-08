@@ -6,10 +6,10 @@ import { BASE_URL_LOGIN_REGISTRATION } from '../../environments/environment';
 import { PostLoginComponent } from './components/login/post-login/post-login.component';
 
 const userRoutes: Routes = [
-    {path: "login", component: LoginComponent},
+    {path: 'login', component: LoginComponent},
     {
-        path: "loginRoute", 
-        canActivate: [RedirectGuardService], component: RedirectGuardService, 
+        path: 'loginRoute',
+        canActivate: [RedirectGuardService], component: RedirectGuardService,
         data: {
             externalUrl: BASE_URL_LOGIN_REGISTRATION
         }
