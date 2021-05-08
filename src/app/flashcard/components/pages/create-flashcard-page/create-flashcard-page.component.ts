@@ -4,6 +4,9 @@ import { Topic } from 'src/app/flashcard/model/topic';
 import { TopicService } from 'src/app/flashcard/service/topic.service';
 import { FlashcardService } from '../../../service/flashcard.service';
 
+/**
+ * class for a user to create a flashcard question
+ */
 @Component({
   selector: 'app-create-flashcard-page',
   templateUrl: './create-flashcard-page.component.html',
@@ -15,6 +18,9 @@ export class CreateFlashcardPageComponent implements OnInit {
   subscription: Subscription;
   anonymous = false;
 
+  /**
+   * holds various fields of a flashcard question
+   */
   form: any = {
     userId: null,
     topicId: {},
@@ -22,7 +28,10 @@ export class CreateFlashcardPageComponent implements OnInit {
     difficulty: null
   };
 
-
+  /**
+   * @param flashcardService Provides methods for passing Flashcard objects between the frontend and backend
+   * @param topicService Provides methods for passing Topic objects between the frontend and backend
+   */
   constructor(private flashcardService: FlashcardService, private topicService: TopicService) {
     this.subscription = new Observable<any>().subscribe();
     this.topicService.getAll().subscribe(res => this.topics = res);
@@ -37,6 +46,9 @@ export class CreateFlashcardPageComponent implements OnInit {
     // TODO: set creator to current user
     this.form.userId = 1;
 
+    /**
+     * uses string to set difficulty int value
+     */
     switch (this.form.difficulty) {
       case 'easy':
         this.form.difficulty = 1;

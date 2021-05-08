@@ -7,7 +7,9 @@ import { Topic } from 'src/app/flashcard/model/topic';
 import { TopicService } from 'src/app/flashcard/service/topic.service';
 import { FlashcardService } from '../../../../service/flashcard.service';
 
-
+/**
+ * displays and manipulates the grid of flashcards based on user preference
+ */
 @Component({
   selector: 'app-flashcard-grid',
   templateUrl: './flashcard-grid.component.html',
@@ -22,6 +24,11 @@ export class FlashcardGridComponent implements OnInit {
   input: any = null;
   flashcards: Flashcard[] = [];
 
+  /**
+   *
+   * @param flashcardService Provides methods for passing Flashcard objects between the frontend and backend
+   * @param topicService Provides methods for passing Topic objects between the frontend and backend
+   */
   constructor(private flashcardService: FlashcardService, private topicService: TopicService) { }
 
   ngOnInit(): void {
@@ -34,11 +41,17 @@ export class FlashcardGridComponent implements OnInit {
     });
   }
 
+  /**
+   * navigates to the previous page of flashcards
+   */
   prevPage(): void {
     if(this.flashcardPage)
       this.loadPage(this.flashcardPage.number - 1);
   }
 
+  /**
+   * displays all flashcards, displays error message if there is an HttpErrorResponse
+   */
   getAllFlashcards(): void {
     this.flashcardService.getAll().subscribe(
       (response: FlashcardPageable) => {
@@ -51,11 +64,17 @@ export class FlashcardGridComponent implements OnInit {
     );
   }
 
+  /**
+   * navigates to the next page of flashcards
+   */
   nextPage(): void {
     if(this.flashcardPage)
       this.loadPage(this.flashcardPage.number + 1);
   }
 
+  /**
+   * sets mode to default mode
+   */
   setModeToNone(): void {
     this.mode = Mode.NONE;
     this.modeChoices = []
@@ -63,6 +82,9 @@ export class FlashcardGridComponent implements OnInit {
     this.loadPage(0);
   }
 
+  /**
+   * sets mode to allow user to search by difficulty
+   */
   setModeToDifficulty(): void {
     this.mode = Mode.DIFFICULTY;
     this.modeChoices = [
@@ -74,6 +96,9 @@ export class FlashcardGridComponent implements OnInit {
       this.loadPage(0);
     }
 
+  /**
+   * sets mode to allow users to search by resolved flashcards
+   */
   setModeToResolved(): void {
     this.mode = Mode.RESOLVED;
     this.modeChoices = [
@@ -83,6 +108,9 @@ export class FlashcardGridComponent implements OnInit {
       this.loadPage(0);
   }
 
+  /**
+   * sets mode to allow users to search by topic
+   */
   setModeToTopic(): void {
     this.mode = Mode.TOPIC;
     this.modeChoices = this.topics.map((topic: Topic)=> {
@@ -92,6 +120,10 @@ export class FlashcardGridComponent implements OnInit {
     this.loadPage(0);
   }
 
+  /**
+   * sets the input
+   * @param input
+   */
   setInput(input: any) {
     this.input = input;
     this.loadPage(0);

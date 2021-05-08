@@ -4,6 +4,7 @@ import { Flashcard } from 'src/app/flashcard/model/flashcard';
 import { AnswerService } from 'src/app/flashcard/service/answer.service';
 import { FlashcardService } from 'src/app/flashcard/service/flashcard.service';
 
+
 @Component({
   selector: 'app-submit-answer-page',
   templateUrl: './submit-answer-page.component.html',
@@ -18,6 +19,10 @@ export class SubmitAnswerPageComponent implements OnInit {
   flashcard!:Flashcard;
   flashcardDifficulty?:string;
 
+  /**
+   * @param answerService Provides methods for passing Answer objects between the frontend and backend
+   * @param flashcardService Provides methods for passing Flashcard objects between the frontend and backend
+   */
   constructor(private answerService: AnswerService, private flashcardService: FlashcardService, private router: Router) {
 
   }
@@ -47,6 +52,10 @@ export class SubmitAnswerPageComponent implements OnInit {
     })
   }
 
+  /**
+   * called when the user clicks the submit button
+   * @returns method that submits the user's inputted answer if not null.
+   */
   onSubmit(){
     if(this.form.answer===null || this.form.answer===""){
       alert("Please fill your answer");
