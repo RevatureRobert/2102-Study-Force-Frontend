@@ -110,6 +110,10 @@ table {
   background: none;
 }
 
+th{
+  width:50%;
+}
+
 caption {
   background: #ffffff;
   opacity: 0.5;
