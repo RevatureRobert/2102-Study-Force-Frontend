@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { SharedModule } from './global-components/shared.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +9,7 @@ import { FlashcardModule } from './flashcard/flashcard.module';
 import { FormsModule } from '@angular/forms';
 import { StacktraceModule } from './stacktrace/stacktrace.module';
 import { UserModule } from './user/user.module';
+import { NotificationModule } from './notification/notification.module';
 import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
@@ -22,9 +22,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
     HttpClientModule,
     FormsModule,
     NgbModule,
-    SharedModule,
     FlashcardModule,
     StacktraceModule,
+    NotificationModule,
     UserModule,
     NgxPaginationModule
   ],

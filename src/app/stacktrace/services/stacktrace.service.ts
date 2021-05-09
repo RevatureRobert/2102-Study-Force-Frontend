@@ -9,39 +9,33 @@ import { Stacktrace } from '../models/stacktrace';
 })
 export class StacktraceService {
 
-  private stacktraceURL :string;
+  private stacktraceURL: string = 'http://localhost:8080/stacktrace'
 
   httpHeaders: HttpHeaders = new HttpHeaders({
     "Content-Type": 'application/json'//,
     //"Authorization": 'Bearer '.concat(localStorage.getItem('swagjwt'))
   });
 
-  apiServerUrl = environment.apiUrl;
-
   constructor(private http: HttpClient) {
-    this.stacktraceURL = 'http://localhost:8080/stacktrace/';
-   }
+  }
 
-   public save(stacktrace: Stacktrace) {
+   save(stacktrace: Stacktrace) {
     console.log(JSON.stringify(stacktrace))
     return this.http.post<Stacktrace>(this.stacktraceURL, stacktrace);
   }
 
+  /**
+   * GETs a Stacktrace from the backend
+   */
   getStacktrace(id:any): Observable<Stacktrace> {
     return this.http.get<Stacktrace>(`${this.stacktraceURL}/${id}`, { headers: this.httpHeaders });
   }
-
-
-
-//  getAllStacktrace(): Promise<Stacktrace[]> {
-  //  return this.http.get<Stacktrace[]>(`${this.apiServerUrl}/stacktrace`, { headers: this.httpHeaders }).toPromise();
-  //}
 
   public findAll(params :any): Observable<any> {
     return this.http.get<any>(this.stacktraceURL, {params});
   }
 
-  //Backend PUT mapping isn't created yet
+  // Backend PUT mapping isn't created yet
   editStacktrace( id:any , data : any): Observable<any> {
     return this.http.put(`${this.stacktraceURL}/${id}`, data);
   }
@@ -52,5 +46,9 @@ export class StacktraceService {
 
   findByTitle(title:any): Observable<Stacktrace[]> {
     return this.http.get<Stacktrace[]>(`${this.stacktraceURL}?title=${title}`);
+  }
+
+  findByTitleAndTechnology(title:any, technologyId: number, page: number): Observable<any> {
+    return this.http.get<Stacktrace[]>(`${this.stacktraceURL}/search?title=${title}&technologyId=${technologyId}&page=${page}`);
   }
 }

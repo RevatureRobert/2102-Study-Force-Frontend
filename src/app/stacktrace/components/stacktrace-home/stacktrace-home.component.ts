@@ -16,20 +16,23 @@ import { Router } from '@angular/router';
 export class StacktraceHomeComponent implements OnInit {
   stacktraces : Stacktrace[] = [];
   currentStacktrace?: Stacktrace;
+  technologyId: number = 1;
+  technology: Technology[] = [];
   currentIndex=-1;
   title = '';
 
-  page = 1;
+  page = 0;
   count = 0;
   pageSize = 3;
   pageSizes = [3, 6, 9];
 
 
 
-  constructor(private stacktraceService:StacktraceService) { }
+  constructor(private stacktraceService:StacktraceService, private technologyService: TechnologyService) { }
 
   ngOnInit(): void {
     this.retrieveStacktraces();
+    this.getAllTechnology();
   }
 
   getRequestParams(searchTitle: string, page: number, pageSize: number): any {
@@ -51,9 +54,35 @@ export class StacktraceHomeComponent implements OnInit {
     return params;
   }
 
+  getAllTechnology(){
+    this.technologyService.getAllTechnology().then(
+      data =>{
+        this.technology = data;
+        this.technologyId = this.technology[0].technologyId || 1;
+      }
+    )
+  }
+
+  retrieveStacktracesByTechnology(technologyId: number): void {
+    this.technologyId = technologyId;
+    const params = this.getRequestParams(this.title, this.page, this.pageSize);
+    console.log(this.technologyId)
+    console.log(this.title)
+    this.stacktraceService.findByTitleAndTechnology(this.title, this.technologyId, this.page)
+    .subscribe(
+      response => {
+        const { stacktraces, totalItems } = response;
+        this.stacktraces = response.content;
+        this.count = totalItems;
+        console.log(response);
+      },
+      error => {
+        console.log(error);
+      });
+  }
+
   retrieveStacktraces(): void {
     const params = this.getRequestParams(this.title, this.page, this.pageSize);
-
     this.stacktraceService.findAll(params)
     .subscribe(
       response => {
@@ -101,5 +130,27 @@ export class StacktraceHomeComponent implements OnInit {
     this.retrieveStacktraces();
     this.currentStacktrace = undefined;
     this.currentIndex = -1;
+  }
+
+  yes: boolean = false;
+
+  //If the dropdown button is clicked this will provide functionallity to style the button based on the button click.
+  changeFocus() {
+    let parent = document.getElementById('Dropdown-Button');
+
+    if (this.yes === false) {
+      this.yes = true;
+      parent!.style.setProperty('border-bottom-right-radius', '0px');
+      parent!.style.setProperty('border-bottom-left-radius', '0px');
+    } else {
+      this.yes = false;
+      parent!.style.setProperty('border-bottom-right-radius', '10px');
+      parent!.style.setProperty('border-bottom-left-radius', '10px');
+    }
+  }
+
+  //If the dropdown loses focus, set the boolean to false.
+  setFalse() {
+    this.yes = false;
   }
 }

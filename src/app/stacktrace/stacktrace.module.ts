@@ -5,16 +5,17 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
-
+import { SharedModule } from 'src/app/global-components/shared.module';
 import { StacktraceRoutingModule } from './stacktrace-routing.module';
 
 import { StacktraceService } from './services/stacktrace.service'
-import {StacktraceHomeComponent} from 'src/app/stacktrace/components/stacktrace-home/stacktrace-home.component';
-import {NewStacktraceComponent} from 'src/app/stacktrace/components/new-stacktrace/new-stacktrace.component';
-import {StacktraceComponent} from 'src/app/stacktrace/components/stacktrace/stacktrace.component';
+import { StacktraceHomeComponent } from 'src/app/stacktrace/components/stacktrace-home/stacktrace-home.component';
+import { NewStacktraceComponent } from 'src/app/stacktrace/components/new-stacktrace/new-stacktrace.component';
+import { StacktraceComponent } from 'src/app/stacktrace/components/stacktrace/stacktrace.component';
 import { NewTechnologyComponent } from './components/new-technology/new-technology.component';
 import { SolutionComponent } from './components/solution/solution.component';
 import { SharedModule } from 'src/app/global-components/shared.module';
+import { TechnologyService } from 'src/app/stacktrace/services/technology.service';
 
 
 @NgModule({
@@ -24,12 +25,14 @@ import { SharedModule } from 'src/app/global-components/shared.module';
     StacktraceHomeComponent,
     NewTechnologyComponent,
     SolutionComponent
+
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     CommonModule,
     NgbModule,
+    SharedModule,
     HttpClientModule,
     StacktraceRoutingModule,
     FormsModule,
@@ -37,10 +40,12 @@ import { SharedModule } from 'src/app/global-components/shared.module';
     SharedModule
   ],
   exports:[
-
+    StacktraceHomeComponent,
+    StacktraceComponent
   ],
   providers:[
-    StacktraceService
+    StacktraceService,
+    TechnologyService
   ]
 })
 export class StacktraceModule { }
