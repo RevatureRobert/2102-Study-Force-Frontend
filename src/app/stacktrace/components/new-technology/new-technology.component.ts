@@ -12,12 +12,12 @@ import { TechnologyService } from 'src/app/stacktrace/services/technology.servic
 export class NewTechnologyComponent implements OnInit {
 
   technology : Technology = {
-    technologyId !: 0,
-    technologyName !: "",
+    technologyId : 0,
+    technologyName : '',
   };
 
 
-  constructor(private route :ActivatedRoute,private technologyService : TechnologyService,private router: Router) {
+  constructor(private route :ActivatedRoute, private technologyService : TechnologyService,private router: Router) {
     this.technology =  new Technology();
    }
 
@@ -25,7 +25,7 @@ export class NewTechnologyComponent implements OnInit {
   }
 
   onSubmit() {
-    this.technologyService.addTechnology(this.technology).subscribe(result => this.gotoStacktraceList());;
+    this.technologyService.addTechnology(this.technology).subscribe(result => this.gotoStacktraceList());
   }
 
   gotoStacktraceList() {

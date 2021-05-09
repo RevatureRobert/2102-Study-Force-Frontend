@@ -12,7 +12,8 @@ import { StacktraceService } from './services/stacktrace.service'
 import {StacktraceHomeComponent} from 'src/app/stacktrace/components/stacktrace-home/stacktrace-home.component';
 import {NewStacktraceComponent} from 'src/app/stacktrace/components/new-stacktrace/new-stacktrace.component';
 import {StacktraceComponent} from 'src/app/stacktrace/components/stacktrace/stacktrace.component';
-import { NewTechnologyComponent } from './components/new-technology/new-technology.component';
+import {NewTechnologyComponent} from './components/new-technology/new-technology.component';
+import {TechnologyService} from 'src/app/stacktrace/services/technology.service';
 
 
 @NgModule({
@@ -20,7 +21,7 @@ import { NewTechnologyComponent } from './components/new-technology/new-technolo
     StacktraceComponent,
     NewStacktraceComponent,
     StacktraceHomeComponent,
-    NewTechnologyComponent
+    NewTechnologyComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +38,8 @@ import { NewTechnologyComponent } from './components/new-technology/new-technolo
 
   ],
   providers:[
-    StacktraceService
+    StacktraceService,
+    TechnologyService
   ]
 })
 export class StacktraceModule { }
