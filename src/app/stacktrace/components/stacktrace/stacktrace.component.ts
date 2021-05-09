@@ -34,4 +34,14 @@ export class StacktraceComponent implements OnInit {
           console.log(error);
         });
   }
+
+  deleteStacktrace(){
+    this.stacktraceService.deleteStacktrace(this.route.snapshot.params.stacktraceId).subscribe(result => {
+      this.gotoStacktraceList();
+    });
+  }
+
+  gotoStacktraceList() {
+    this.router.navigate(['/stacktraces']);
+  }
 }

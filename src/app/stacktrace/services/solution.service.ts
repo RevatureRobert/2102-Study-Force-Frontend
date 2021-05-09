@@ -27,7 +27,7 @@ export class SolutionService{
   }
 
   postSolution(solution: Solution): Promise<Solution>{
-    return this.http.post<Solution>(`${this.stacktraceUrl}`, solution, {headers: this.httpHeaders}).toPromise();
+    return this.http.post<Solution>(`${this.stacktraceUrl}/solution`, solution, {headers: this.httpHeaders}).toPromise();
   }
 
   addVote(vote: Vote, solution: Solution): Observable<Solution> {

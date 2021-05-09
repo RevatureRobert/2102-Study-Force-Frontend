@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Solution } from '../../models/solution';
+import { User } from '../../models/user';
 import { Vote } from '../../models/vote';
 import { SolutionService } from '../../services/solution.service';
 
@@ -9,27 +10,45 @@ import { SolutionService } from '../../services/solution.service';
   styleUrls: ['./solution-vote.component.css']
 })
 export class SolutionVoteComponent implements OnInit {
+  LoggedUser: any;
 
   @Input() solution!: Solution;
   vote: Vote = {
     solutionId: 0,
-    value: 0
+    value: 0,
+    userId: 0
   };
 
   upVoteSource = "../../../assets/up doot unclicked.svg"
   downVoteSource = "../../../assets/down doot unclicked.svg"
   scoreColor = "color: var(--duskwood)"
 
-  constructor(private solutionService: SolutionService) { }
+  constructor(private solutionService: SolutionService) {
+    let u:User = {
+      userId:1,
+        email:"jomama@hotmail.gov",
+        name:"John Doe",
+        active:false,
+        subscribedStacktrace:true,
+        subscribedFlashcard:true,
+        authority:"USER",
+        registrationTime:new Date(1620310931740),
+        lastLogin:new Date(1620310931740)
+      };
+    //TODO remove this placeholder user in local storage
+    localStorage.setItem('loggedInUser', JSON.stringify(u));
+   }
 
   ngOnInit(): void {
+    this.LoggedUser = JSON.parse(localStorage.getItem("loggedInUser") || "{}");
     this.initializeVote();
   }
 
   initializeVote() {
     this.vote = {
       solutionId: this.solution.solutionId,
-      value: 0
+      value: 0,
+      userId: this.LoggedUser.userId
     };
   }
 
