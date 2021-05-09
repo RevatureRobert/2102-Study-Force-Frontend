@@ -24,8 +24,6 @@ export class FlashcardGridComponent implements OnInit {
 
   filterDisplay:string = "";
 
-  filterDisplay:string = "";
-
   constructor(private flashcardService: FlashcardService, private topicService: TopicService) { }
 
   ngOnInit(): void {
@@ -90,14 +88,11 @@ export class FlashcardGridComponent implements OnInit {
       return {input: topic.topicName, displayString: topic.topicName};
     });
     this.setInput(this.modeChoices[0].input)
-<<<<<<< HEAD
-=======
   }
 
   setModeToOwned(): void{
     this.mode = Mode.OWNED;
     this.loadPage(0);
->>>>>>> 3fb2a0d9f5007b2b4818197e152df2acbfa3e7aa
   }
 
   setInput(input: any) {
@@ -168,5 +163,6 @@ enum Mode {
   NONE = "Filter By:",
   TOPIC = "Topic",
   DIFFICULTY = "Difficulty",
-  RESOLVED = "Resolved"
+  RESOLVED = "Resolved",
+  OWNED = "OWNED"
 }
