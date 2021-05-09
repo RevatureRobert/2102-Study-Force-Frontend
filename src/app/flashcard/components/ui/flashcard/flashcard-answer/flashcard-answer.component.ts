@@ -78,7 +78,4 @@ export class FlashcardAnswerComponent implements OnInit {
   vote(event: Event) {
     event.stopPropagation();
   }
-
-
-
 }

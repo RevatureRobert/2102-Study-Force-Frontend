@@ -3,6 +3,8 @@ import { HttpClient } from "@angular/common/http";
 import { AnswerDTO } from '../model/answer-dto';
 import { environment } from '../../../environments/environment'
 import { Flashcard } from '../model/flashcard';
+import { Observable } from 'rxjs';
+import { Answer } from '../model/answer';
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +38,10 @@ export class AnswerService {
     answerDTO.answer = answer;
 
     return await this.http.post('http://'+environment.apiUrl+"/answers/",answerDTO,{headers:this.headerInfo}).toPromise();
+  }
+
+  setAnswerAsSelected(id: number): Observable<Answer> {
+    return this.http.put<Answer>(`http://${environment.apiUrl}/answers/${id}`, null)
   }
 
 }

@@ -25,8 +25,12 @@
             </p>
           </div>
           <div class="card-footer" id="Card-Footer">
-            <div class="float-right">
-              <app-vote></app-vote>
+            <div class="d-flex justify-content-end">
+              <div *ngIf="answer.selectedAnswer || answer.trainerSelected">Marked as correct</div>
+              <button *ngIf="!answer.selectedAnswer || !answer.trainerSelected" (click)="setAnswerAsSelected($event, answer.answerId)">Mark as correct</button>
+              <div>
+                Rating: {{answer.answerScore}}
+              </div>
             </div>
 
           </div>

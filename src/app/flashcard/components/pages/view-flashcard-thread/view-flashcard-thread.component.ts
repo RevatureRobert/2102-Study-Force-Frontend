@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Answer } from 'src/app/flashcard/model/answer';
 import { Flashcard } from 'src/app/flashcard/model/flashcard';
+import { AnswerService } from 'src/app/flashcard/service/answer.service';
 import { FlashcardService } from 'src/app/flashcard/service/flashcard.service';
 
 
@@ -18,7 +19,7 @@ export class ViewFlashcardThreadComponent implements OnInit {
 
   public answers!: Answer[];
 
-  constructor(private flashcardService: FlashcardService) {
+  constructor(private flashcardService: FlashcardService, private answerService: AnswerService) {
 
   }
 
@@ -53,6 +54,20 @@ export class ViewFlashcardThreadComponent implements OnInit {
         alert(error.message);
       }
     );
+  }
+
+  setAnswerAsSelected(event: Event, answerId: number) {
+    event.stopPropagation();
+    this.answerService.setAnswerAsSelected(answerId).subscribe({
+      next: result => {
+        this.answers = this.answers.map( answer => {
+          if (answer.answerId == result.answerId) {
+            return result;
+          }
+          return answer;
+        });
+      }
+    })
   }
 
 }
