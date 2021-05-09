@@ -23,6 +23,14 @@ export class SolutionVoteComponent implements OnInit {
   constructor(private solutionService: SolutionService) { }
 
   ngOnInit(): void {
+    this.initializeVote();
+  }
+
+  initializeVote() {
+    this.vote = {
+      solutionId: this.solution.solutionId,
+      value: 0
+    };
   }
 
   upVote() {
