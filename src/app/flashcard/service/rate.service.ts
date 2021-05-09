@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Rating } from '../model/rating';
 
 
 /**
@@ -36,6 +37,25 @@ export class RateService {
   get(flashcardId: number, userId: number): Observable<any> {
     return this.http.get(`http://${this.apiServerUrl}/flashcards/ratings?flashcardId=${flashcardId}&userId=${userId}`);
   }
+
+  /**
+   * Gets all existing Rating objects for the given flashcard
+   * @param flashcardId - id of the Flashcard to find ratings for
+   * @returns - returns all Rating objects for the given answer
+   */
+   getAllRatings(flashcardId: number): Observable<Rating[]> {
+    return this.http.get<Rating[]>(`http://${this.apiServerUrl}/flashcards/ratings/all?flashcardId=${flashcardId}`);
+  }
+
+  // (may use in the future)
+  // /**
+  //  * Deletes an existing Rating
+  //  * @param id - the id of the Rating to delete
+  //  * @returns - returns deleted Rating
+  //  */
+  //  delete(id: any): Observable<any> {
+  //   return this.http.delete(`http://${this.apiServerUrl}/flashcards/ratings/${id}`);
+  // }
 
 
 }
