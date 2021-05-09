@@ -21,7 +21,7 @@ export class StacktraceHomeComponent implements OnInit {
   currentIndex=-1;
   title = '';
 
-  page = 1;
+  page = 0;
   count = 0;
   pageSize = 3;
   pageSizes = [3, 6, 9];
@@ -64,8 +64,6 @@ export class StacktraceHomeComponent implements OnInit {
 
   retrieveStacktraces(): void {
     const params = this.getRequestParams(this.title, this.page, this.pageSize);
-    console.log(this.technologyId)
-    console.log(this.title)
     this.stacktraceService.findAll(params)
     .subscribe(
       response => {
