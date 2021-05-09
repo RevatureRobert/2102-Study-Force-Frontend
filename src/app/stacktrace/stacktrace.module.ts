@@ -36,7 +36,8 @@ import {TechnologyService} from 'src/app/stacktrace/services/technology.service'
 
   ],
   exports:[
-
+    StacktraceHomeComponent,
+    StacktraceComponent
   ],
   providers:[
     StacktraceService,
