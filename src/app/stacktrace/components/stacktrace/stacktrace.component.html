@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="currentStacktrace!=undefined">
   <div class="card" style="width: 18rem" id="Diologue-Card">
     <div class="card-header" id="Card-Header">
       <p>{{currentStacktrace.title}}</p>
@@ -26,8 +26,5 @@
       </svg>
     </div>
   </div>
+  <app-solution></app-solution>
 </div>
-
-  <div id="glass-pane2">
-    <app-solution></app-solution>
-  </div>

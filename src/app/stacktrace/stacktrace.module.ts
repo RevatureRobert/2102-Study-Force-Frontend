@@ -14,6 +14,7 @@ import {NewStacktraceComponent} from 'src/app/stacktrace/components/new-stacktra
 import {StacktraceComponent} from 'src/app/stacktrace/components/stacktrace/stacktrace.component';
 import { NewTechnologyComponent } from './components/new-technology/new-technology.component';
 import { SolutionComponent } from './components/solution/solution.component';
+import { SharedModule } from 'src/app/global-components/shared.module';
 
 
 @NgModule({
@@ -32,8 +33,8 @@ import { SolutionComponent } from './components/solution/solution.component';
     HttpClientModule,
     StacktraceRoutingModule,
     FormsModule,
-    NgxPaginationModule
-
+    NgxPaginationModule,
+    SharedModule
   ],
   exports:[
 
