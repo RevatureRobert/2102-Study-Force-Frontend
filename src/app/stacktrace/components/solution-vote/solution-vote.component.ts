@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Solution } from '../../models/solution';
 import { User } from '../../models/user';
 import { Vote } from '../../models/vote';
@@ -13,6 +13,7 @@ export class SolutionVoteComponent implements OnInit {
   LoggedUser: any;
 
   @Input() solution!: Solution;
+  @Output() solutionChange = new EventEmitter<Solution>();
   vote: Vote = {
     solutionId: 0,
     value: 0,
@@ -44,6 +45,10 @@ export class SolutionVoteComponent implements OnInit {
     this.initializeVote();
   }
 
+  emitSolution() {
+    this.solutionChange.emit(this.solution);
+  }
+
   initializeVote() {
     this.vote = {
       solutionId: this.solution.solutionId,
@@ -56,13 +61,19 @@ export class SolutionVoteComponent implements OnInit {
     this.upVoteSource = "../../../assets/selectedupvote.svg"
     this.scoreColor = "color: var(--red-orange-juice)"
     this.vote!.value = 1;
-    this.solutionService.addVote(this.vote, this.solution);
+    this.solutionService.addVote(this.vote, this.solution).subscribe(solution => {
+      this.solution = solution;
+      this.emitSolution();
+    });
   }
 
   downVote() {
     this.downVoteSource = "../../../assets/selecteddownvote.svg"
     this.scoreColor = "color: var(--wizard-blue)"
     this.vote!.value = -1;
-    this.solutionService.addVote(this.vote, this.solution);
+    this.solutionService.addVote(this.vote, this.solution).subscribe(solution => {
+      this.solution = solution;
+      this.emitSolution();
+    });
   }
 }

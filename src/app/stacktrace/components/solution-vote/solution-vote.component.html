@@ -2,7 +2,7 @@
   <img class="scaled" id= "upvote" src="{{upVoteSource}}" alt="Upvote icon" role="img"
     (click)="upVote()"
     />
-  <p class="score" [style.color]="scoreColor" [style]="scoreColor">3</p>
+  <p class="score" [style.color]="scoreColor" [style]="scoreColor">{{solution.totalVote}}</p>
   <img class="scaled" id = "downvote" src="{{downVoteSource}}" alt="Downvote icon" role="img"
     (click)="downVote()"/>
 </div>
