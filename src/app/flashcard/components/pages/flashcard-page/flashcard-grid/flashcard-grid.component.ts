@@ -21,6 +21,7 @@ export class FlashcardGridComponent implements OnInit {
   topics: Topic[] = [];
   input: any = null;
   flashcards: Flashcard[] = [];
+  private userId = 1;
 
   constructor(private flashcardService: FlashcardService, private topicService: TopicService) { }
 
@@ -92,6 +93,11 @@ export class FlashcardGridComponent implements OnInit {
     this.loadPage(0);
   }
 
+  setModeToOwned(): void{
+    this.mode = Mode.OWNED;
+    this.loadPage(0);
+  }
+
   setInput(input: any) {
     this.input = input;
     this.loadPage(0);
@@ -119,6 +125,11 @@ export class FlashcardGridComponent implements OnInit {
           next: result => this.flashcardPage = result
         });
         break;
+        case Mode.OWNED:
+          this.flashcardService.getFlashcardsByUserId(this.userId).subscribe({
+            next: result => this.flashcardPage = result
+          });
+          break;
       default:
         break;
     }
@@ -135,5 +146,6 @@ enum Mode {
   NONE = "None",
   TOPIC = "Topic",
   DIFFICULTY = "Difficulty",
-  RESOLVED = "Resolved"
+  RESOLVED = "Resolved",
+  OWNED = "Owned"
 }
