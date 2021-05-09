@@ -7,6 +7,7 @@ import { LoginComponent } from './components/login/login.component';
 import { UserRoutingModule } from './user-routing.module';
 import { RedirectGuardService } from './services/redirect-guard.service';
 import { PostLoginComponent } from './components/login/post-login/post-login.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -22,7 +23,8 @@ import { PostLoginComponent } from './components/login/post-login/post-login.com
 
   imports: [
     CommonModule,
-    UserRoutingModule
+    UserRoutingModule,
+    FormsModule
   ],
 
   providers: [RedirectGuardService]

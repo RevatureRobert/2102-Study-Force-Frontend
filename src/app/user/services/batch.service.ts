@@ -13,7 +13,9 @@ import { Batch } from '../models/batch';
 export class BatchService {
 
   dev:string = 'http://localhost:9090';  // Base dev url to hit endpoint
-  byBatchId:string = 'batches' // Specfic endpoint to hit batches
+  batches:string = 'batches'; // Specfic endpoint to hit batches
+  deactivate:string ='deactivateBatch';
+  update:string ='update';
 
   /**
    *
@@ -30,8 +32,48 @@ export class BatchService {
    */
   getBatchById(id: string): Observable<Batch> {
 
-    const url = `${this.dev}/${this.byBatchId}/${id}`;
+    const url = `${this.dev}/${this.batches}/${id}`;
     return this.http.get<Batch>(url);
+  }
+
+  /**
+   * PUTs request to the backend.
+   * @param id The ID for the batch to be updated
+   * @param batch The Batch Object that is replacing the current one in the database
+   * @returns Promise Batch Object
+   */
+  updateBatch(id: string, batch: Batch): Promise<Batch> {
+    const body: string = `{
+      "batchId": ${id},
+      "name": ${batch.name},
+      "instructors": ${batch.instructors},
+      "users": ${batch.users},
+      "creationTime": ${batch.creationTime}}`;
+
+    const url =`${this.dev}/${this.batches}/${this.update}`
+    return this.http.put<Batch>(url,body).toPromise();
+  }
+
+  /**
+   * DELETEs request to the backend.
+   * @param id The ID for the batch to be deleted
+   * @returns Promise Batch Object
+   */
+  deleteBatch(id: string): Promise<Batch> {
+    const url = `${this.dev}/${this.batches}/${id}`;
+    return this.http.delete<Batch>(url).toPromise();
+  }
+
+  /**
+   * PUTs request to the backend.
+   * @param id The ID for the batch to be deactivated
+   * @returns Promise Batch Object
+   */
+  deactivateBatch(id: string): Promise<Batch> {
+    const body: string = `{
+      "batchId": ${id}}`;
+    const url = `${this.dev}/${this.batches}/${this.deactivate}`;
+    return this.http.put<Batch>(url,body).toPromise();
   }
 
 }
