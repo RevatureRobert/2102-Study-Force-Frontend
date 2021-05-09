@@ -25,11 +25,11 @@ import { StacktraceService } from './services/stacktrace.service'
     HttpClientModule,
     StacktraceRoutingModule
   ],
-  exports:[
+  exports: [
     StacktraceHomeComponent,
     StacktraceComponent
   ],
-  providers:[
+  providers: [
     StacktraceService
   ]
 })
