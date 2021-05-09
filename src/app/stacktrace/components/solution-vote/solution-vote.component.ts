@@ -12,7 +12,7 @@ export class SolutionVoteComponent implements OnInit {
 
   @Input() solution!: Solution;
   vote: Vote = {
-    solutionId: this.solution.solutionId,
+    solutionId: 0,
     value: 0
   };
 
