@@ -20,7 +20,7 @@ const userRoutes: Routes = [
     {path: "profile/:id", component: UserProfileComponent},
     {path: "oauth2", component: PostLoginComponent},
     {path: "addUsers", component: AddUsersEmailComponent},
-    {path: "profile/edit", component: UserProfileEditComponent},
+    {path: "edit/profile", component: UserProfileEditComponent},
 ];
 
 @NgModule({

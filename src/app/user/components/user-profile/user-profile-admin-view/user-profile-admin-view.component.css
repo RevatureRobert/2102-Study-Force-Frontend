@@ -258,12 +258,33 @@ li > input {
   opacity: 0.75;
   position: relative;
   margin-left: 1%;
-  top: -15.5rem;
+  top: -14.5rem;
   width: 103px;
   background: #ff0101;
   border: 1px solid #ff0000;
   box-sizing: border-box;
   border-radius: 30px;
+}
+
+#Remove-Button:disabled, #Remove-Button[disabled] {
+  background: #afafaf;
+  border: 1px solid #afafaf;
+}
+
+#Add-Button {
+  opacity: 0.75;
+  position: relative;
+  margin-left: 1%;
+  top: -14.5rem;
+  width: 103px;
+  background: #00d600;
+  border: 1px solid #80b366;
+  box-sizing: border-box;
+  border-radius: 30px;
+}
+
+#loading {
+  margin: auto;
 }
 
 .short {
@@ -295,7 +316,7 @@ li > input {
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 950px) {
   #glass-pane {
     width: 95%;
   }
