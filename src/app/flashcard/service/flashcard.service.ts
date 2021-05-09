@@ -64,6 +64,15 @@ export class FlashcardService {
   }
 
   /**
+   * Gets the Flashcards with the given user id
+   * @param userId - the id of the user to look for
+   * @returns - returns an observable of the Flashcards with the given user id
+   */
+  getFlashcardsByUserId(userId:number): Observable<any>{
+    return this.http.get(`http://${this.apiServerUrl}/flashcards/by-user/${userId}`);
+  }
+
+  /**
    * Gets the Flashcard with the given id
    * @param flashcardId - id of the Flashcard to find Answers for
    * @returns - returns Answers tied to the Flashcard with the given id
