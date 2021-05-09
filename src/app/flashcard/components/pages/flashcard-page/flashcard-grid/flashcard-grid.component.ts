@@ -7,7 +7,9 @@ import { Topic } from 'src/app/flashcard/model/topic';
 import { TopicService } from 'src/app/flashcard/service/topic.service';
 import { FlashcardService } from '../../../../service/flashcard.service';
 
-
+/**
+ * displays flashcards in a grid pattern and allows different modes for users to customize settings
+ */
 @Component({
   selector: 'app-flashcard-grid',
   templateUrl: './flashcard-grid.component.html',

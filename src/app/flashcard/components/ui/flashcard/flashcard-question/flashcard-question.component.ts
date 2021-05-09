@@ -11,7 +11,6 @@ import { RateService } from '../../../../service/rate.service'
 import { Vote } from 'src/app/flashcard/model/vote';
 
 
-
 /**
  * This component displays when a Flashcard is flipped to the question side.
  */
@@ -37,14 +36,15 @@ export class FlashcardQuestionComponent implements OnInit {
 
   // Whether or not user is subscribed
   subscribed = false;
+
   bellStyle = "../../../assets/bell.svg"
 
   constructor(private rateService: RateService) { }
 
-  // Converts numeric difficuulty to alphabetic difficulty
+  /**
+   * Converts numeric difficulty to alphabetic difficulty
+   */
   ngOnInit(): void {
-
-
 
     switch (this.difficulty) {
       case 0:

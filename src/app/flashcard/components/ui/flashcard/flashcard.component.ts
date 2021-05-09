@@ -25,18 +25,13 @@ export class FlashcardComponent implements OnInit {
   // userId: number = Number(localStorage("asocaite"));
   userId: number = 1;
 
-
-
   public deleteId?: number;
 
   public question: string = 'question body';
 
-
   public realAnswer?: Answer;
 
   constructor() {}
-
-  flip = false;
 
   ngOnInit(): void {
 
@@ -47,12 +42,18 @@ export class FlashcardComponent implements OnInit {
 
   }
 
-  // Flips between question and answer views
+  flip = false;
+
+  /**
+   * Flips between question and answer views
+   */
   toggleView(): void {
     this.flip = !this.flip;
   }
 
-  // Subscribes user to Flashcard
+  /**
+   * Subscribes user to Flashcard
+   */
   subscribe(event: Event) {
     this.subscribed = !this.subscribed
 

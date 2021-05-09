@@ -3,7 +3,9 @@ import { FlashcardService } from 'src/app/flashcard/service/flashcard.service';
 import { RateService } from 'src/app/flashcard/service/rate.service';
 import { FlashcardComponent } from '../flashcard.component';
 
-
+/**
+ * contains functionality to delete a flashcard
+ */
 @Component({
   selector: 'app-flashcard-delete',
   template: `
@@ -25,6 +27,10 @@ export class FlashcardDeleteComponent implements OnInit {
     this.flashcardId = this.parent.deleteId;
   }
 
+  /**
+   * method to delete flashcard and associated entities
+   * @param event click event
+   */
   deleteFlashcard(event: Event): void {
     if (this.flashcardId) {
       this.rateService.getAllRatings(88).toPromise().then(

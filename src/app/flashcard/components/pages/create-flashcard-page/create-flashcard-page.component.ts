@@ -4,6 +4,10 @@ import { Topic } from 'src/app/flashcard/model/topic';
 import { TopicService } from 'src/app/flashcard/service/topic.service';
 import { FlashcardService } from '../../../service/flashcard.service';
 
+/**
+ * contains functionality to create flashcards
+ * uses form to accept input to customize flashcards
+ */
 @Component({
   selector: 'app-create-flashcard-page',
   templateUrl: './create-flashcard-page.component.html',
@@ -15,6 +19,9 @@ export class CreateFlashcardPageComponent implements OnInit {
   subscription: Subscription;
   anonymous = false;
 
+  /**
+   * settings for flashcards
+   */
   form: any = {
     userId: null,
     topicId: {},
@@ -22,16 +29,18 @@ export class CreateFlashcardPageComponent implements OnInit {
     difficulty: null
   };
 
-
   constructor(private flashcardService: FlashcardService, private topicService: TopicService) {
     this.subscription = new Observable<any>().subscribe();
     this.topicService.getAll().subscribe(res => this.topics = res);
   }
 
-
   ngOnInit(): void {
   }
 
+  /**
+   * sends flashcard information to the flashcard service
+   * persists flashcard to database
+   */
   onSubmit(): void {
 
     // TODO: set creator to current user
