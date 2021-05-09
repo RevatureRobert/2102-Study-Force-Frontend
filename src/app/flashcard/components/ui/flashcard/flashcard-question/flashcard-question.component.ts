@@ -28,8 +28,10 @@ export class FlashcardQuestionComponent implements OnInit {
   @Input() flashcardId!: number;
   @Output() click = new EventEmitter;
 
+  // Whether or not slider has been clicked on
   isSliderActive: boolean = false;
 
+  // Whether or not user is subscribed
   subscribed = false;
   bellStyle = "../../../assets/bell.svg"
 
