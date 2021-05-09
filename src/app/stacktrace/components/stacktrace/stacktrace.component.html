@@ -1,4 +1,5 @@
-<div id="glass-pane">
+<!-- <app-base-page>
+  <div class="selected-content">
   <div class="card" style="width: 18rem;">
     <div class="card-body">
       <div *ngIf="currentStacktrace.stacktraceId" class="edit-form">
@@ -33,4 +34,70 @@
     </div>
   </div>
   </div>
+
+</div>
+</app-base-page> -->
+
+
+
+ <!-- <div class="card" style="width: 18rem;">
+      <div class="card-body">
+	      <div *ngIf="currentStacktrace.stacktraceId" class="">
+          <h3 class="card-title test">Stacktrace</h3>
+            <form>
+              <div class="form-group">
+                <label for = "submissionTitleOptional" id="submitTitleOptional">Title</label>
+                    	<input class="form-control input-styling" id="submitTitleOptional" placeholder="Title" type="text" name="Title" [(ngModel)]="currentStacktrace.title">
+               <label for = "submitCardContentType" id="submitContent" >Body</label>
+            <textarea class="form-control input-styling" id="submitContent" rows="5" name="Body" [(ngModel)]="currentStacktrace.body" placeholder="Write your [X] here..."></textarea>
+
+    </div>
+
+
+    </form>
+    <div class="wrapper">
+      <button (click)="deleteStacktrace()" type="button" class="btn custom-button" >Delete
+    </button>
+	    <p>{{ message }}</p>
+    </div>
+      <div *ngIf="!currentStacktrace.stacktraceId">
+      <br />
+      <p>Cannot access this Stacktrace</p>
+    </div>
+      </div>
+      </div>
+      </div> -->
+
+
+
+<app-base-page>
+  <div class="selected-content">
+   <div class="card" style="width: 18rem" id="Card-Wide">
+    <div *ngIf="currentStacktrace">
+  <div class="card-header" id="Card-Header">Stacktrace</div>
+  <div class="card-body" id="Card-Body">
+   <label><strong>Stacktrace ID:</strong></label> {{ currentStacktrace.stacktraceId }}
   </div>
+ <div class="card-body" id="Card-Body">
+   <label><strong>Creator ID:</strong></label> {{ currentStacktrace.userName}}
+  </div>
+ <div class="card-body" id="Card-Body">
+<label><strong>Title:</strong></label> {{ currentStacktrace.title }}
+  </div>
+ <div class="card-body" id="Card-Body">
+    <label><strong>Body:</strong></label>
+                  {{ currentStacktrace.body }}
+  </div>
+ <div class="card-body" id="Card-Body">
+  <label><strong>TechnologyId:</strong></label>
+                  {{ currentStacktrace.technologyName }}
+  </div>
+ <div class="card-body" id="Card-Body">
+    <label><strong>Creation Time:</strong></label>
+                  {{ currentStacktrace.creationTime }}
+  </div>
+</div>
+
+</div>
+</div>
+</app-base-page>

@@ -74,12 +74,12 @@ input {
 th {
   background: white;
   float: left;
-  width: 500px;
+  width: 688px;
 }
 
 td{
   min-width: 50%;
-  width: 500px;
+  width: 688px;
   text-align: left;
 
 }
@@ -142,3 +142,11 @@ caption {
   border-top-right-radius: 30px;
   border-bottom-right-radius: 30px;
 }
+
+.edit{
+  text-align: right !important;
+}
+
+
+
+
