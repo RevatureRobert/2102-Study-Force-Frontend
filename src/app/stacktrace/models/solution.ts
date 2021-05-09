@@ -1,11 +1,11 @@
 export interface Solution {
   solutionId: number;
-  stacktraceId: number;
+  stackTraceId: number;
   userId: number;
   userName: string;
   body: string;
   adminSelected: boolean;
   userSelected: boolean;
-  creationTime: string;
+  creationTime?: string;
   totalVote: number;
 }

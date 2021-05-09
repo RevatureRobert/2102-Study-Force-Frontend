@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Solution } from '../../models/solution';
+import { User } from '../../models/user';
 import { SolutionService } from '../../services/solution.service';
 
 @Component({
@@ -10,24 +11,39 @@ import { SolutionService } from '../../services/solution.service';
 })
 export class SolutionComponent implements OnInit {
 
+  LoggedUser: any;
   solutions?: Solution[];
   body: string = "";
   createSolution: Solution = {
     solutionId: 0,
-    stacktraceId: this.route.snapshot.params.stacktraceId,
+    stackTraceId: + this.route.snapshot.params.stacktraceId,
     userId: 0,  //Change later to check for local storage
     userName: "", //Change later to check for local storage
     body: "",
     adminSelected: false,
     userSelected: true,
-    creationTime: "",
     totalVote: 0,
   };
 
-  constructor(private solutionService: SolutionService, private route: ActivatedRoute) { }
+  constructor(private solutionService: SolutionService, private route: ActivatedRoute, private router: Router) { 
+    let u:User = {
+      userId:5,
+        email:"jomama@hotmail.gov",
+        name:"John Doe",
+        active:false,
+        subscribedStacktrace:true,
+        subscribedFlashcard:true,
+        authority:"USER",
+        registrationTime:new Date(1620310931740),
+        lastLogin:new Date(1620310931740)
+      };
+    //TODO remove this placeholder user in local storage
+    localStorage.setItem('loggedInUser', JSON.stringify(u));
+  }
 
   ngOnInit(): void {
     this.getAllSolutionsByStacktraceId(this.route.snapshot.params.stacktraceId, 0, 5)
+    this.LoggedUser = JSON.parse(localStorage.getItem("loggedInUser") || "{}");
   }
 
   getAllSolutionsByStacktraceId(stacktraceId: number, page: number, pageSize: number): void{
@@ -47,6 +63,12 @@ export class SolutionComponent implements OnInit {
     // this.solutionService.postSolution(this.createSolution)
     // .then();
     this.createSolution.body = this.body;
-    this.solutionService.postSolution(this.createSolution);
+    this.createSolution.userId = this.LoggedUser.userId;
+    console.log(this.createSolution);
+    this.solutionService.postSolution(this.createSolution).then(data =>{
+      window.location.reload();
+      // this.getAllSolutionsByStacktraceId();
+    });
   }
+
 }

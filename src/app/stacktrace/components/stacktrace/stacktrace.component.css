@@ -105,3 +105,13 @@ app-search-bar {
   position: relative;
   top: -5px;
 }
+
+#Remove-Button {
+  opacity: 0.75;
+  position: relative;
+  width: 103px;
+  background: #ff0101;
+  border: 1px solid #ff0000;
+  box-sizing: border-box;
+  border-radius: 30px;
+}

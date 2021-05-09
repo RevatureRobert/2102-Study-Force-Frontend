@@ -24,8 +24,8 @@ export class StacktraceHomeComponent implements OnInit {
   isAdmin = false;
   page = 0;
   count = 0;
-  pageSize = 3;
-  pageSizes = [3, 6, 9];
+  pageSize = 5;
+  pageSizes = [5, 10, 20];
   LoggedUser: any;
 
 
