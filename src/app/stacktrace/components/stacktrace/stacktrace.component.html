@@ -1,75 +1,3 @@
-<!-- <app-base-page>
-  <div class="selected-content">
-  <div class="card" style="width: 18rem;">
-    <div class="card-body">
-      <div *ngIf="currentStacktrace.stacktraceId" class="edit-form">
-      <h3 class="card-title test">Stacktrace</h3>
-      <form>
-        <div class="form-group">
-          <label for="title">Title</label>
-          <input class="form-control input-styling" placeholder="Title"  type="text"  [(ngModel)]="currentStacktrace.title" />
-        </div>
-        <div class="form-group">
-          <label for="body">Body</label>
-          <input
-            type="text"
-            class="form-control input-styling"
-            [(ngModel)]="currentStacktrace.body"
-            name="body"
-          />
-        </div>
-      </form>
-
-
-      <button (click)="deleteStacktrace()">
-        Delete
-      </button>
-
-
-    <p>{{ message }}</p>
-    </div>
-    <div *ngIf="!currentStacktrace.stacktraceId">
-      <br />
-      <p>Cannot access this Stacktrace</p>
-    </div>
-  </div>
-  </div>
-
-</div>
-</app-base-page> -->
-
-
-
- <!-- <div class="card" style="width: 18rem;">
-      <div class="card-body">
-	      <div *ngIf="currentStacktrace.stacktraceId" class="">
-          <h3 class="card-title test">Stacktrace</h3>
-            <form>
-              <div class="form-group">
-                <label for = "submissionTitleOptional" id="submitTitleOptional">Title</label>
-                    	<input class="form-control input-styling" id="submitTitleOptional" placeholder="Title" type="text" name="Title" [(ngModel)]="currentStacktrace.title">
-               <label for = "submitCardContentType" id="submitContent" >Body</label>
-            <textarea class="form-control input-styling" id="submitContent" rows="5" name="Body" [(ngModel)]="currentStacktrace.body" placeholder="Write your [X] here..."></textarea>
-
-    </div>
-
-
-    </form>
-    <div class="wrapper">
-      <button (click)="deleteStacktrace()" type="button" class="btn custom-button" >Delete
-    </button>
-	    <p>{{ message }}</p>
-    </div>
-      <div *ngIf="!currentStacktrace.stacktraceId">
-      <br />
-      <p>Cannot access this Stacktrace</p>
-    </div>
-      </div>
-      </div>
-      </div> -->
-
-
-
 <app-base-page>
   <div class="selected-content">
    <div class="card" style="width: 18rem" id="Card-Wide">
@@ -97,7 +25,6 @@
                   {{ currentStacktrace.creationTime }}
   </div>
 </div>
-
 </div>
 </div>
 </app-base-page>
