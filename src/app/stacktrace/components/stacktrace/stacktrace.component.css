@@ -21,6 +21,22 @@ app-search-bar {
   padding: 2em;
 }
 
+#Diologue-Card1 {
+  position: absolute;
+  left: 50%;
+  top: 20%;
+  width: 1048px !important;
+  min-height: 210px !important;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(
+    111.52deg,
+    rgba(255, 255, 255, 0.64) 0%,
+    rgba(255, 255, 255, 0.48) 100%
+  );
+  backdrop-filter: blur(100px);
+  border-radius: 30px;
+  border: none;
+}
 
 #Card-Header {
   height: 62px;

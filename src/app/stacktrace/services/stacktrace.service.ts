@@ -28,7 +28,7 @@ export class StacktraceService {
    * GETs a Stacktrace from the backend
    */
   getStacktrace(id:any): Observable<Stacktrace> {
-    return this.http.get(`${this.stacktraceURL}/${id}`);
+    return this.http.get<Stacktrace>(`${this.stacktraceURL}/${id}`, { headers: this.httpHeaders });
   }
 
   public findAll(params :any): Observable<any> {

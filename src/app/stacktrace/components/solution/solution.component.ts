@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Solution } from '../../models/solution';
+import { SolutionService } from '../../services/solution.service';
 
 @Component({
   selector: 'app-solution',
@@ -8,11 +10,38 @@ import { Solution } from '../../models/solution';
 })
 export class SolutionComponent implements OnInit {
 
-  solution?: Solution;
+  solutions?: Solution[];
+  createSolution: Solution = {
+    solutionId: 0,
+    stacktraceId: this.route.snapshot.params.stacktraceId,
+    userId: 0,  //Change later to check for local storage
+    userName: "", //Change later to check for local storage
+    body: "",
+    adminSelected: false,
+    userSelected: true,
+    creationTime: "",
+    totalVote: 0,
+  };
 
-  constructor() { }
+  constructor(private solutionService: SolutionService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.getAllSolutionsByStacktraceId(this.route.snapshot.params.stacktraceId, 0, 5)
   }
 
+  getAllSolutionsByStacktraceId(stacktraceId: number, page: number, pageSize: number): void{
+    this.solutionService.getAllSolutionsByStacktraceId(stacktraceId, 0, 5)
+    .then((result: any) => this.solutions = result.content);
+  }
+
+  /**
+   * Finish this for post mapping
+   */
+  postSolution(): void{
+    if(this.createSolution.body == ""){
+      alert("Please type solution before submitting")
+    }
+    this.solutionService.postSolution(this.createSolution)
+    .then();
+  }
 }
