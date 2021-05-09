@@ -45,7 +45,7 @@
                  [(ngModel)]="title"
        id="Search-Input"
      />
-     <button class="btn btn-outline-secondary" type="button" id="Search-Button" (click)="searchTitle()">
+     <button class="btn btn-outline-secondary" type="button" id="Search-Button" (click)="retrieveStacktraces()">
        <svg
          xmlns="http://www.w3.org/2000/svg"
          width="21"
@@ -59,8 +59,34 @@
            d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"
          />
        </svg>
-     </button>
+     </button> 
    </div>
+
+   <div class="dropdown" id="Dropdown">
+    <button
+      class="btn btn-secondary dropdown-toggle"
+      type="reset"
+      id="Dropdown-Button"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+      (click)="this.changeFocus()"
+      (focus)="this.setFalse()"
+    >
+      Technologies
+    </button>
+    <ul
+      class="dropdown-menu"
+      aria-labelledby="Dropdown-Button"
+      id="Dropdown-List"
+    >
+      <li *ngFor="let id of technology"><a class="dropdown-item" (click)="retrieveStacktracesByTechnology(id.technologyId)">{{id.technologyName}}</a></li>
+    </ul>
+  </div>
+  
+    
+    <!-- <select class="dropdown" id="Dropdown" id="Dropdown-Button" [(ngModel)]="technologyId" (ngModelChange)='retrieveStacktraces()'> <option id="Dropdown-List" *ngFor="let id of technology" [value]="id.technologyId">
+      {{id.technologyName}} </option></select>    -->
+
 
   <div class="col-md-12">
     <pagination-controls
@@ -152,11 +178,11 @@
         </div>
             <div class="card ">
 
-                <h2 class="card">{{ title }}</h2>
+                <!-- <h2 class="card">{{ title }}</h2> -->
                 <ul>
-                  <li class="list-inline-item">
+                  <!-- <li class="list-inline-item">
                     <a routerLink="/stacktrace" class="btn btn-info">List Stacktrace</a>
-                      </li>
+                      </li> -->
                   <li class="list-inline-item">
                     <a routerLink="/stacktraces/addstacktrace" class="btn btn-info">Add Stacktrace</a>
                       </li>

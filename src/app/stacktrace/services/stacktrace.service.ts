@@ -53,4 +53,8 @@ export class StacktraceService {
   findByTitle(title:any): Observable<Stacktrace[]> {
     return this.http.get<Stacktrace[]>(`${this.stacktraceURL}?title=${title}`);
   }
+
+  findByTitleAndTechnology(title:any, technologyId: number, page: number): Observable<any> {
+    return this.http.get<Stacktrace[]>(`${this.stacktraceURL}/search?title=${title}&technologyId=${technologyId}&page=${page}`);
+  }
 }
