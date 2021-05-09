@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Batch } from '../../models/batch';
 import { User } from '../../models/user';
+import { BatchService } from '../../services/batch.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -9,149 +11,70 @@ import { User } from '../../models/user';
   styleUrls: ['./user-profile.component.css']
 })
 
+/**
+ * Parent component for user profile, gathers information and determines which view to display
+ */
 export class UserProfileComponent implements OnInit {
 
-  //todo replace with user in local storage
   user?:User
   isAdmin:boolean = false;
   isMe:boolean = false;
   id?:number;
+  isLoading:boolean = true;
+  batches?:Batch[];
 
-  batches:Batch[] = [{
-    id: 3,
-    name: "2102 Enterprise",
-    instructors: [{
-      userId:5,
-      email:"jomama@hotmail.gov",
-      name:"Instructor Ted",
-      active:true,
-      subscribedStacktrace:true,
-      subscribedFlashcard:true,
-      authority:"USER",
-      registrationTime:new Date(1620310931740),
-      lastLogin:new Date(1620310931740)
-    }],
-    users: [{
-      userId:12,
-      email:"jomama@hotmail.gov",
-      name:"Member fffff",
-      active:true,
-      subscribedStacktrace:true,
-      subscribedFlashcard:true,
-      authority:"USER",
-      registrationTime:new Date(1620310931740),
-      lastLogin:new Date(1620310931740)
-    },{
-      userId:32,
-      email:"jomama@hotmail.gov",
-      name:"John Doe",
-      active:true,
-      subscribedStacktrace:true,
-      subscribedFlashcard:true,
-      authority:"USER",
-      registrationTime:new Date(1620310931740),
-      lastLogin:new Date(1620310931740)
-    }],
-    creationTime:new Date(1620310931740)
-  },{
-    id: 3,
-    name: "2102 Super Cool Dev ops team that does Dev ops",
-    instructors: [{
-      userId:5,
-      email:"jomama@hotmail.gov",
-      name:"Instructor Ted",
-      active:true,
-      subscribedStacktrace:true,
-      subscribedFlashcard:true,
-      authority:"USER",
-      registrationTime:new Date(1620310931740),
-      lastLogin:new Date(1620310931740)
-    }],
-    users: [{
-      userId:12,
-      email:"jomama@hotmail.gov",
-      name:"Member fffff",
-      active:true,
-      subscribedStacktrace:true,
-      subscribedFlashcard:true,
-      authority:"USER",
-      registrationTime:new Date(1620310931740),
-      lastLogin:new Date(1620310931740)
-    },{
-      userId:32,
-      email:"jomama@hotmail.gov",
-      name:"John Doe",
-      active:true,
-      subscribedStacktrace:true,
-      subscribedFlashcard:true,
-      authority:"USER",
-      registrationTime:new Date(1620310931740),
-      lastLogin:new Date(1620310931740)
-    }],
-    creationTime:new Date(1620310931740)
-  },{
-    id: 3,
-    name: "321654987541651 super dumn java script Enterprise batch that only works in JS",
-    instructors: [{
-      userId:5,
-      email:"jomama@hotmail.gov",
-      name:"Instructor Ted",
-      active:true,
-      subscribedStacktrace:true,
-      subscribedFlashcard:true,
-      authority:"USER",
-      registrationTime:new Date(1620310931740),
-      lastLogin:new Date(1620310931740)
-    }],
-    users: [{
-      userId:12,
-      email:"jomama@hotmail.gov",
-      name:"Member fffff",
-      active:true,
-      subscribedStacktrace:true,
-      subscribedFlashcard:true,
-      authority:"USER",
-      registrationTime:new Date(1620310931740),
-      lastLogin:new Date(1620310931740)
-    },{
-      userId:32,
-      email:"jomama@hotmail.gov",
-      name:"John Doe",
-      active:true,
-      subscribedStacktrace:true,
-      subscribedFlashcard:true,
-      authority:"USER",
-      registrationTime:new Date(1620310931740),
-      lastLogin:new Date(1620310931740)
-    }],
-    creationTime:new Date(1620310931740)
-  }]
 
-  constructor(private route:ActivatedRoute) {
+  /**
+   * Gathers profile id from route path parameter
+   * @param route
+   * @param userService
+   * @param batchService
+   */
+  constructor(private route:ActivatedRoute, private userService:UserService, private batchService:BatchService) {
     this.route.params.subscribe(params => {
       this.id = +params['id']
     })
   }
 
-  ngOnInit(): void {
-    //TODO remove this placeholder user
-    let u:User = {
-      userId:32,
-        email:"jomama@hotmail.gov",
-        name:"John Doe",
-        active:true,
-        subscribedStacktrace:true,
-        subscribedFlashcard:true,
-        authority:"ADMIN",
-        registrationTime:new Date(1620310931740),
-        lastLogin:new Date(1620310931740)
-      };
-    //TODO remove this placeholder user in local storage
-    localStorage.setItem('loggedInUser', JSON.stringify(u));
+  /**
+   * Gathers user info and checks if user profile should get admin view
+   */
+  async ngOnInit() {
+    this.isLoading = true;
 
-    //TODO if no id param route to my profile?
-    this.user = JSON.parse(localStorage.getItem('loggedInUser')!);
-    this.isMe = (this.user?.userId == this.id);
+    await this.populateUserProfileOrDefault();
+    await this.populateBatches();
+
     this.isAdmin = ((this.user?.authority == "ADMIN" || this.user?.authority == "SUPER_ADMIN") && !this.isMe);
+    this.isLoading = false;
+  }
+
+  /**
+   * Gets array of batches from BatchService and assigns it to this.batches
+   */
+  async populateBatches(){
+    try {
+      await this.batchService.getBatchesByMemberId(this.user!.userId).then(response => {
+        this.batches = JSON.parse(response);
+      })
+    } catch(exception) {
+      alert("There was an error retrieveing user's batches. Please try again later.\n\nIf this issue persists, please contact support.")
+    }
+  }
+
+  /**
+   * Gets user from UserService using id and assigns it to this.user
+   */
+  async populateUserProfileOrDefault(){
+    try {
+      await this.userService.getUserByUserId(this.id!).then(response => {
+        this.user = JSON.parse(response);
+        this.isMe = (this.user?.userId == this.id);
+      })
+    } catch(exception) {
+      alert('There was an error trying to retrieve the user.\n\nIf this issue persists, please contact support.\n\nYou will be returned to your profile.')
+      this.user = JSON.parse(localStorage.getItem('loggedInUser')!);
+      this.isMe = true;
+    }
   }
 }

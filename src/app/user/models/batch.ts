@@ -1,7 +1,7 @@
 import { User } from './user';
 
 export interface Batch {
-  id: number;
+  batchId: number;
   name: string;
   instructors: User[];
   users: User[];
