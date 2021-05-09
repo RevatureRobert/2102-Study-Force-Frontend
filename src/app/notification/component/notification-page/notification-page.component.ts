@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {NotificationService} from '../../service/notification.service';
 import {Notification} from '../../model/notification';
-import {Router} from "@angular/router";
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-notification-page',
@@ -14,10 +14,11 @@ export class NotificationPageComponent implements OnInit {
 
   constructor(
     private notificationService: NotificationService,
-    private router: Router) {
+    private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
+    this.route.params.subscribe();
     this.getAllNotificationsInPage();
   }
 

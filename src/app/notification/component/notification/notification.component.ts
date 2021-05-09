@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Notification} from '../../model/notification';
 import {NotificationService} from '../../service/notification.service';
 import {User} from '../../../user/User';
+import {ActivatedRoute} from '@angular/router';
 
 
 @Component({
@@ -13,10 +14,13 @@ export class NotificationComponent implements OnInit {
 
   notifications: Notification[] = [];
 
-  constructor(private notificationService: NotificationService) {
+  constructor(
+    private notificationService: NotificationService,
+    private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
+    this.route.params.subscribe();
     this.getAllNotificationsInNavbar();
   }
 

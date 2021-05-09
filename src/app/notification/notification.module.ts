@@ -1,13 +1,13 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { NotificationPageComponent } from './component/notification-page/notification-page.component';
-import {RouterModule} from "@angular/router";
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {NotificationRoutingModule} from './notification-routing.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule
+    NotificationRoutingModule,
   ],
-  declarations: [NotificationPageComponent]
+  declarations: []
 })
-export class NotificationModule { }
+export class NotificationModule {
+}

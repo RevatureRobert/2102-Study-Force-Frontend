@@ -5,5 +5,6 @@ export class Notification {
   timeToLive!: Date;
   createdTime!: Date;
   featureArea!: string;
+  featureAreaId!: number;
   userId!: number;
 }

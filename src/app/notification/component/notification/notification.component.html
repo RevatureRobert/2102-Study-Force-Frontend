@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col">
+  <div class="col col-md-12">
     <div ngbDropdown *ngIf="notifications.length !== 0" class="d-inline-block">
       <button class="btn text-white bg-danger font-weight-bolder" ngbDropdownToggle>
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bell"
@@ -9,9 +9,11 @@
         </svg>
       </button>
       <div ngbDropdownMenu>
-        <button (click)="deleteNotification(notification); pageRefresh()" *ngFor="let notification of notifications" ngbDropdownItem><a
-          routerLink="notifications">User ID: {{notification.userId}} {{notification.message}} {{notification.featureArea}}</a></button>
-        <button class="btn btn-success btn-block" [routerLink]="['/notification-page']">All Notifications</button>
+        <button (click)="deleteNotification(notification); pageRefresh()" *ngFor="let notification of notifications" ngbDropdownItem>
+          <a *ngIf="notification.featureArea==='STACKTRACE'" routerLink="stacktraces/{{notification.featureAreaId}}">User ID: {{notification.userId}} {{notification.message}} {{notification.featureArea}}</a>
+          <a *ngIf="notification.featureArea==='FLASHCARD'" routerLink="flashcards/{{notification.featureAreaId}}">User ID: {{notification.userId}} {{notification.message}} {{notification.featureArea}}</a>
+        </button>
+        <button class="btn btn-success btn-block" [routerLink]="['/notifications/notification-page']">All Notifications</button>
       </div>
     </div>
     <button *ngIf=" notifications.length === 0" class="btn btn-outline-info text-muted">
