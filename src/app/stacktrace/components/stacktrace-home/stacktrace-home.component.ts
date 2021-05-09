@@ -4,6 +4,7 @@ import { Stacktrace } from '../../models/stacktrace';
 import { TechnologyService } from '../../services/technology.service';
 import { Technology } from '../../models/technology';
 import { Router } from '@angular/router';
+import { User } from '../../models/user';
 
 /**
  * A component that displays a paginated table of Stacktraces, TODO: Stacktraces can be filtered by technology and search term
@@ -20,19 +21,43 @@ export class StacktraceHomeComponent implements OnInit {
   technology: Technology[] = [];
   currentIndex=-1;
   title = '';
-
+  isAdmin = false;
   page = 0;
   count = 0;
   pageSize = 3;
   pageSizes = [3, 6, 9];
+  LoggedUser: any;
 
 
-
-  constructor(private stacktraceService:StacktraceService, private technologyService: TechnologyService) { }
-
+  constructor(private stacktraceService:StacktraceService, private technologyService: TechnologyService) {
+    //TODO remove this placeholder user
+        let u:User = {
+          userId:32,
+            email:"jomama@hotmail.gov",
+            name:"John Doe",
+            active:false,
+            subscribedStacktrace:true,
+            subscribedFlashcard:true,
+            authority:"ADMIN",
+            registrationTime:new Date(1620310931740),
+            lastLogin:new Date(1620310931740)
+          };
+        //TODO remove this placeholder user in local storage
+        localStorage.setItem('loggedInUser', JSON.stringify(u));
+        // console.log(localStorage.getItem("loggedInUser"));
+   }
+    
   ngOnInit(): void {
     this.retrieveStacktraces();
     this.getAllTechnology();
+    this.LoggedUser = JSON.parse(localStorage.getItem("loggedInUser") || "{}");
+    this.getUserPriviledges();
+  }
+
+  getUserPriviledges(): void {
+    if( this.LoggedUser.authority === 'ADMIN'){
+      this.isAdmin = true;
+    };
   }
 
   getRequestParams(searchTitle: string, page: number, pageSize: number): any {
