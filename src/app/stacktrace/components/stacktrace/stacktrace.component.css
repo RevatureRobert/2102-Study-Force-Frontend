@@ -44,6 +44,12 @@ app-search-bar {
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
 }
+#Card-Header p {
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 21px;
+  color: #153c53;
+}
 
 #Card-Body {
   border-bottom-left-radius: 30px;
@@ -60,4 +66,42 @@ app-search-bar {
   backdrop-filter: blur(100px);
   border-radius: 30px;
   min-width: 100%
+}
+
+#Card-Body {
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+
+#Name {
+  position: absolute;
+  right: 40px;
+  top: 5px;
+  font-weight: 300;
+  font-size: 25px;
+  line-height: 21px;
+  color: #153c53;
+}
+
+#Card-Text {
+  font-weight: 300;
+  margin-left: 75px;
+  margin-right: 75px;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 21px;
+
+  color: #000000;
+}
+
+#Card-Footer {
+  height: 36px;
+  background: #ffffff;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+#Card-Footer svg {
+  position: relative;
+  top: -5px;
 }
