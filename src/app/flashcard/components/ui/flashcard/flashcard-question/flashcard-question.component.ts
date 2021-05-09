@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { RateService } from '../../../../service/rate.service'
+import { Vote } from 'src/app/flashcard/model/vote';
 
 
 
@@ -28,8 +29,13 @@ export class FlashcardQuestionComponent implements OnInit {
   @Input() flashcardId!: number;
   @Output() click = new EventEmitter;
 
+  lock: boolean = false;
+  default: number = 2;
+
+  // Whether or not slider has been clicked on
   isSliderActive: boolean = false;
 
+  // Whether or not user is subscribed
   subscribed = false;
   bellStyle = "../../../assets/bell.svg"
 
@@ -37,6 +43,9 @@ export class FlashcardQuestionComponent implements OnInit {
 
   // Converts numeric difficuulty to alphabetic difficulty
   ngOnInit(): void {
+
+
+
     switch (this.difficulty) {
       case 0:
           this.difficulty = "Easy";
@@ -50,6 +59,16 @@ export class FlashcardQuestionComponent implements OnInit {
       default:
         break;
     }
+
+    this.lock = false;
+    this.rateService.get(this.flashcardId, this.userId).subscribe(
+      (res: Vote) => {
+        this.lock = !!res;
+        this.default = res.value;
+
+      }
+    )
+
   }
 
   // Allows users to subscribe to Flashcard
@@ -83,12 +102,13 @@ export class FlashcardQuestionComponent implements OnInit {
     }
 
     if (this.flashcardId != undefined) {
-
+      let temp = 0;
       this.rateService.get(this.flashcardId, this.userId).toPromise().catch(error => {
         if (error.status == 410) {
-          this.rateService.create(rating).subscribe()
+          this.lock = true;
+          this.rateService.create(rating).subscribe();
         }
-      })
+      });
 
     }
 

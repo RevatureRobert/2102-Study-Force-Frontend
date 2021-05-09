@@ -16,16 +16,14 @@
     <p class="card-text">{{question}}</p>
   </div>
 
-  <div class="row" style="margin-right: 0px; margin-left: 0px; margin-bottom: 10px;">
-    <div class="col-9">
-      <div class="rate-card">
-        <div [ngClass]="{'inactive-slider': !isSliderActive}" >
-          <div class="rating-section" (click)="stopPropogation($event)">
-            <div class="slider" style="margin-bottom: 10px;">
-              <label for="rating-slider" class="form-label">Rate the Difficulty</label>
-                  <input #rating (click)="activateSlider(rating.value)" type="range" class="form-range" min="1" max="3" step="1" id="rating-slider">
-            </div>
-          </div>
+
+  <div class="rate-card">
+
+    <div [ngClass]="{'inactive-slider': !isSliderActive}">
+      <div class="rating-section" (click)="stopPropogation($event)">
+        <div class="slider">
+          <label for="rating-slider" class="form-label">Rate the Difficulty</label>
+              <input #rating [disabled]=lock [value]=default (click)="activateSlider(rating.value)" type="range" class="form-range" min="1" max="3" step="1" id="rating-slider">
         </div>
 
         <ul class="rating-label list-group list-group-horizontal range-labels" >
