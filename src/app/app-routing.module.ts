@@ -5,7 +5,7 @@ const routes: Routes = [
   {
     path: 'notifications',
     loadChildren: () =>
-      import('src/app/notification/notification.module').then(m => m.NotificationModule)
+      import('./notification/notification.module').then(m => m.NotificationModule)
   },
   {
     path: 'flashcards',

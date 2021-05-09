@@ -86,7 +86,7 @@
       <!-- <h2 class="">{{ title }}</h2> -->
       <ul>
         <li class="list-inline-item">
-          <a routerLink="/stacktrace" class="btn btn-info">List Stacktrace</a>
+          <a routerLink="/stacktrace" class="btn btn-info" *ngIf="isAdmin">List Stacktrace</a>
             </li>
         <li class="list-inline-item">
           <a routerLink="/stacktraces/addstacktrace" class="btn btn-info">Add Stacktrace</a>
