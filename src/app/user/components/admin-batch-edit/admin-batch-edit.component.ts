@@ -15,27 +15,12 @@ import { NgForm } from '@angular/forms';
 })
 export class AdminBatchEditComponent implements OnInit {
 
-  users: User[] = [];  //Users array that holds all the users in the batch.
-  instructors: User[] = [];  //Users array that holds all the instructors in the batch.
+  users: string[] = [];  //String array that holds all the emails of all users in the batch.
+  instructors: string[] = [];  //String array that holds all the emails of all instructors in the batch.
   creationTime: string = '';  //Creating time for the batch as a String.
   name: string = '';  //Name of the batch.
   loaded:boolean = false;  //To confirm view did load.
   id: string = "";  //ID of the batch to be used for batch service method.
-
-  /**
-   * Making a batch object base on the initial state of the batch
-   */
-  batch: Batch ={
-
-    batchId: parseInt(this.id),
-    name: this.name,
-    instructors: this.instructors,
-    users: this.users,
-    creationTime: <Date><unknown>this.creationTime
-  }
-
-
-
 
   /**
    *
@@ -67,8 +52,14 @@ export class AdminBatchEditComponent implements OnInit {
   setUp(): void {
     this.batchService.getBatchById(this.id)
     .subscribe(batch => {
-      this.instructors = batch.instructors;
-      this.users = batch.users;
+
+      for (var x in (batch.users)) {
+        this.users.push(batch.users[x].email);
+      }
+      for (var index in (batch.instructors)) {
+        this.instructors.push(batch.instructors[index].email);
+      }
+
       var date = new Date(batch.creationTime);
       this.creationTime = ((date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear());
       this.name = batch.name;
@@ -85,7 +76,7 @@ export class AdminBatchEditComponent implements OnInit {
     var answer = confirm(`Confirm the changes your have made on batch: ${this.name}`);
     if (answer == true){
         this.submit();
-        this.submitButtonClicked();
+        this.redirect();
     }
   }
 
@@ -97,6 +88,7 @@ export class AdminBatchEditComponent implements OnInit {
     var answer = confirm(`Are you sure you want to delete batch: ${this.name}`);
     if (answer == true){
         this.delete();
+        this.redirect();
     }
   }
 
@@ -108,13 +100,14 @@ export class AdminBatchEditComponent implements OnInit {
     var answer = confirm(`Are you sure you want to deactivate batch: ${this.name}`);
     if (answer == true){
         this.deactivate();
+
     }
   }
 
   /**
    * This is to redirect the admin back to the view batch details page.
    */
-  submitButtonClicked(): void {
+  redirect(): void {
     this.router.navigateByUrl(`adminBatchDetails/${this.id}`) ;
   }
 
@@ -123,16 +116,10 @@ export class AdminBatchEditComponent implements OnInit {
    * Then this function use the updateBatch in batchService to perform the update function.
    */
   submit(): void{
-   const batch = this.batch = {
-    batchId: parseInt(this.id),
-    name: this.name,
-    instructors: this.instructors,
-    users: this.users,
-    creationTime: <Date><unknown>this.creationTime
-   }
 
-    this.batchService.updateBatch(this.id,batch)
-    console.log(batch)
+
+    this.batchService.updateBatch(this.id,this.name,this.instructors,this.users);
+
   }
 
   /**
@@ -169,7 +156,7 @@ export class AdminBatchEditComponent implements OnInit {
  * @param user the user that will be removed from the array
  */
 
-onDeleteEmployee(user: User) {
+onDeleteEmployee(user: string) {
   this.users.forEach((value,index)=>{
     if(value==user) {
       this.users.splice(index,1);
@@ -182,7 +169,7 @@ onDeleteEmployee(user: User) {
  * Removing a specific instructor from the array of instructors on the display
  * @param user the user that will be removed from the array
  */
-onDeleteInstructor(user: User) {
+onDeleteInstructor(user: string) {
   this.instructors.forEach((value,index)=>{
     if(value==user) {
       this.instructors.splice(index,1);

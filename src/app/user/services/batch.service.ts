@@ -1,7 +1,9 @@
+import { CreateUpdateBatch } from './../models/createUpdateBatch';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Observable } from 'rxjs';
 import { Batch } from '../models/batch';
+import { BASE_API_URL } from 'src/environments/environment';
 
 /**
  * Provides methods for passing Batch objects to and from the backend.
@@ -12,10 +14,18 @@ import { Batch } from '../models/batch';
 })
 export class BatchService {
 
-  dev:string = 'http://localhost:9090';  // Base dev url to hit endpoint
+  dev:string = 'http://localhost:8080';  // Base dev url to hit endpoint
   batches:string = 'batches'; // Specfic endpoint to hit batches
   deactivate:string ='deactivateBatch';
   update:string ='update';
+
+  body: CreateUpdateBatch = {
+    batchId: 0,
+    name: "",
+    instructors: [],
+    users: []
+  }
+
 
   /**
    *
@@ -42,16 +52,35 @@ export class BatchService {
    * @param batch The Batch Object that is replacing the current one in the database
    * @returns Promise Batch Object
    */
-  updateBatch(id: string, batch: Batch): Promise<Batch> {
-    const body: string = `{
-      "batchId": ${id},
-      "name": ${batch.name},
-      "instructors": ${batch.instructors},
-      "users": ${batch.users},
-      "creationTime": ${batch.creationTime}}`;
+  updateBatch(id: string, name: string, instructorsEmail:string[], usersEmail:string[]){
 
-    const url =`${this.dev}/${this.batches}/${this.update}`
-    return this.http.put<Batch>(url,body).toPromise();
+    const headerInfo = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    }
+
+    const requestOptions = {
+      headers: new HttpHeaders(headerInfo)
+    };
+
+    // const body: string =
+    // `{
+    //   "batchId": ${id},
+    //   "name": "${name}",
+    //   "instructors": [${instructorsEmail}],
+    //   "users": [${usersEmail}]
+    //   }`;
+
+    const body = this.body = {
+        batchId: parseInt(id),
+        name: name,
+        instructors: instructorsEmail,
+        users: usersEmail
+      }
+
+    const url =`${this.dev}/${this.batches}`
+    console.log(body);
+    return this.http.put<any>(url,body,requestOptions).toPromise();
   }
 
   /**
@@ -59,9 +88,10 @@ export class BatchService {
    * @param id The ID for the batch to be deleted
    * @returns Promise Batch Object
    */
-  deleteBatch(id: string): Promise<Batch> {
+  deleteBatch(id: string){
+
     const url = `${this.dev}/${this.batches}/${id}`;
-    return this.http.delete<Batch>(url).toPromise();
+    return this.http.delete<Batch>(url);
   }
 
   /**
@@ -69,11 +99,21 @@ export class BatchService {
    * @param id The ID for the batch to be deactivated
    * @returns Promise Batch Object
    */
-  deactivateBatch(id: string): Promise<Batch> {
-    const body: string = `{
-      "batchId": ${id}}`;
-    const url = `${this.dev}/${this.batches}/${this.deactivate}`;
-    return this.http.put<Batch>(url,body).toPromise();
+  deactivateBatch(id: string){
+
+    const headerInfo = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    }
+
+    const requestOptions = {
+      headers: new HttpHeaders(headerInfo)
+    };
+
+    const url = `${this.dev}/${this.batches}/${this.deactivate}/${id}`;
+    return this.http.put<any>(url,requestOptions);
   }
+
+
 
 }

@@ -32,7 +32,7 @@
     <div class="col-4 text-center mt-5">
 
         <button class="btn btn-danger" type="button" id="Deactivate-Batch-Button" style="left: -80px;"
-        (click)="warningForDelete()">
+        (click)="warningForDeactivate()">
           Deactivate Batch
         </button>
 
@@ -59,7 +59,7 @@
         <tbody>
           <tr  *ngFor="let instructor of instructors; let index = index;">
             <!-- <td>{{ instructor.name  }}</td> -->
-            <td >{{ instructor.email }}</td>
+            <td >{{ instructor }}</td>
             <td>
                 <button class="btn btn-danger form-control Remove-Button"
                     (click)="onDeleteInstructor(instructor)">
@@ -87,7 +87,7 @@
                     <tbody>
                         <tr *ngFor="let user of users; let index = index;">
                             <!-- <td [(ngModel)]="users[index]">{{ user.email }}</td> -->
-                            <td >{{ user.email }}</td>
+                            <td >{{ user }}</td>
 
                             <td>
                                 <button class="btn btn-danger form-control Remove-Button"
