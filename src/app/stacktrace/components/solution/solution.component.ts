@@ -25,7 +25,11 @@ export class SolutionComponent implements OnInit {
     totalVote: 0,
   };
 
-  constructor(private solutionService: SolutionService, private route: ActivatedRoute, private router: Router) { 
+  // pagination values
+  page: number = 0;
+  pageSize: number = 5;
+
+  constructor(private solutionService: SolutionService, private route: ActivatedRoute, private router: Router) {
     let u:User = {
       userId:5,
         email:"jomama@hotmail.gov",
@@ -42,13 +46,22 @@ export class SolutionComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getAllSolutionsByStacktraceId(this.route.snapshot.params.stacktraceId, 0, 5)
+    this.getAllSolutionsByStacktraceId()
     this.LoggedUser = JSON.parse(localStorage.getItem("loggedInUser") || "{}");
   }
 
-  getAllSolutionsByStacktraceId(stacktraceId: number, page: number, pageSize: number): void{
-    this.solutionService.getAllSolutionsByStacktraceId(stacktraceId, 0, 5)
-    .then((result: any) => this.solutions = result.content);
+  /**
+   * Event called by SolutionVote when a vote is made, signaling this compoenent to update the solutions.
+   */
+  updateSolution() {
+    this.getAllSolutionsByStacktraceId();
+  }
+
+  getAllSolutionsByStacktraceId(): void{
+    this.solutionService.getAllSolutionsByStacktraceId(this.route.snapshot.params.stacktraceId, this.page, this.pageSize)
+        .then((result: any) => {
+          this.solutions = result.content;
+        });
   }
 
   /**

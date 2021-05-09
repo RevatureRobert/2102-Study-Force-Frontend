@@ -30,7 +30,7 @@
   <div class="card-body" id="Card-Body">
     <p class="card-text" id="Name">{{solution.userName}}</p>
     <p class="card-text" id="Card-Text">{{solution.body}}</p>
-    <app-solution-vote [solution]="solution"></app-solution-vote>
+    <app-solution-vote [solution]="solution" (solutionChange)="addItem($event)"></app-solution-vote>
   </div>
   <div class="card-footer" id="Card-Footer">
     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-trash"

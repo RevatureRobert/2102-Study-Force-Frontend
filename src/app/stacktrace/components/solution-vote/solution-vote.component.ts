@@ -13,7 +13,7 @@ export class SolutionVoteComponent implements OnInit {
   LoggedUser: any;
 
   @Input() solution!: Solution;
-  @Output() solutionChange = new EventEmitter<Solution>();
+  @Output() solutionChange = new EventEmitter();
   vote: Vote = {
     solutionId: 0,
     value: 0,
@@ -45,8 +45,8 @@ export class SolutionVoteComponent implements OnInit {
     this.initializeVote();
   }
 
-  emitSolution() {
-    this.solutionChange.emit(this.solution);
+  emitSolutionChange() {
+    this.solutionChange.emit();
   }
 
   initializeVote() {
@@ -63,7 +63,7 @@ export class SolutionVoteComponent implements OnInit {
     this.vote!.value = 1;
     this.solutionService.addVote(this.vote, this.solution).subscribe(solution => {
       this.solution = solution;
-      this.emitSolution();
+      this.emitSolutionChange();
     });
   }
 
@@ -73,7 +73,7 @@ export class SolutionVoteComponent implements OnInit {
     this.vote!.value = -1;
     this.solutionService.addVote(this.vote, this.solution).subscribe(solution => {
       this.solution = solution;
-      this.emitSolution();
+      this.emitSolutionChange();
     });
   }
 }
