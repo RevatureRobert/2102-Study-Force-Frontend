@@ -11,6 +11,7 @@ import { SolutionService } from '../../services/solution.service';
 export class SolutionComponent implements OnInit {
 
   solutions?: Solution[];
+  body: string = "";
   createSolution: Solution = {
     solutionId: 0,
     stacktraceId: this.route.snapshot.params.stacktraceId,
@@ -38,10 +39,14 @@ export class SolutionComponent implements OnInit {
    * Finish this for post mapping
    */
   postSolution(): void{
-    if(this.createSolution.body == ""){
-      alert("Please type solution before submitting")
+    if(this.body === ""){
+      alert("Please type solution before submitting");
+      console.log(this.createSolution);
+      return;
     }
-    this.solutionService.postSolution(this.createSolution)
-    .then();
+    // this.solutionService.postSolution(this.createSolution)
+    // .then();
+    this.createSolution.body = this.body;
+    this.solutionService.postSolution(this.createSolution);
   }
 }

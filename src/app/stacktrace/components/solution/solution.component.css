@@ -69,13 +69,6 @@
   top: -5px;
 }
 
-app-search-bar {
-  position: absolute;
-  left: 48%;
-  margin: 20px;
-  transform: translateX(-50%);
-}
-
 #glass-pane {
   position: relative;
   width: 75%;

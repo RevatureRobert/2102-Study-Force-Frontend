@@ -23,7 +23,7 @@ export class SolutionService{
   stacktraceUrl = environment.apiUrl.concat("/stacktrace");
 
   getAllSolutionsByStacktraceId(stacktraceId: number, page: number, pageSize: number): Promise<Solution[]>{
-    return this.http.get<Solution[]>(`${this.stacktraceUrl}/${stacktraceId}/solution?pageSize=${pageSize}&page=${page}`, { headers: this.httpHeaders }).toPromise();
+    return this.http.get<Solution[]>(`${this.stacktraceUrl}/solution/${stacktraceId}?pageSize=${pageSize}&page=${page}`, { headers: this.httpHeaders }).toPromise();
   }
 
   postSolution(solution: Solution): Promise<Solution>{
