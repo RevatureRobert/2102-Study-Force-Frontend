@@ -51,4 +51,8 @@ export class FlashcardAnswerComponent implements OnInit {
   vote(event: Event) {
     event.stopPropagation();
   }
+
+  markAsCorrect(event: Event): void {
+    event.stopPropagation();
+  }
 }

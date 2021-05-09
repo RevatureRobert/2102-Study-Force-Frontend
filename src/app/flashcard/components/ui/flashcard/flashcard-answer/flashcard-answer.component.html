@@ -14,7 +14,10 @@
     </div>
 
     <div [hidden]="!flip" class="answers">
-      <p *ngFor="let answer of answers">{{answer.answerText}}<br></p>
+      <p *ngFor="let answer of answers">{{answer.answerText}}
+        <button (click)="markAsCorrect($event)">Mark as correct</button>
+      <br>
+      </p>
       <button class="btn custom-button" (click)="toggleView($event)">
         View Less
       </button>
