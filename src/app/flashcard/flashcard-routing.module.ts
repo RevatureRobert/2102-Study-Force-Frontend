@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'submit-answer', component: SubmitAnswerPageComponent },
   { path: 'view-thread', component: ViewFlashcardThreadComponent},
   { path: 'view-flashcards', component: FlashcardPageComponent},
-  { path: 'view-topics', component: FlashcardTopicComponent} //Need route guarding for admin only
+  { path: 'view-topics', component: FlashcardTopicComponent} //require admin auth guard, please add in the future
 ];
 
 @NgModule({

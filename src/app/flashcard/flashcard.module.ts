@@ -18,9 +18,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { VoteService } from './service/vote.service';
 import { FlashcardTopicComponent } from './components/ui/flashcard/flashcard-topic/flashcard-topic.component';
 
-
-
-
 @NgModule({
   declarations: [
     FlashcardComponent,
