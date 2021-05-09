@@ -9,7 +9,7 @@
   z-index: 20;
 }
 
-app-page-base {
+.bottom-layer {
   z-index: 0;
 }
 

@@ -37,7 +37,7 @@ export class AnswerService {
     answerDTO.flashcardId= flashcardId;
     answerDTO.answer = answer;
 
-    return await this.http.post('http://'+environment.apiUrl+"/answers/",answerDTO,{headers:this.headerInfo}).toPromise();
+    return await this.http.post(`http://${environment.apiUrl}/answers/`,answerDTO,{headers:this.headerInfo}).toPromise();
   }
 
   setAnswerAsSelected(id: number): Observable<Answer> {
