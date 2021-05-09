@@ -35,21 +35,13 @@ import {TechnologyService} from 'src/app/stacktrace/services/technology.service'
     NgxPaginationModule
 
   ],
-<<<<<<< HEAD
   exports:[
-
+    StacktraceHomeComponent,
+    StacktraceComponent
   ],
   providers:[
     StacktraceService,
     TechnologyService
-=======
-  exports: [
-    StacktraceHomeComponent,
-    StacktraceComponent
-  ],
-  providers: [
-    StacktraceService
->>>>>>> dev
   ]
 })
 export class StacktraceModule { }
