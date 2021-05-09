@@ -5,7 +5,10 @@ import { FlashcardPageComponent } from './components/pages/flashcard-page/flashc
 import { SubmitAnswerPageComponent } from './components/pages/submit-answer-page/submit-answer-page.component';
 import { ViewFlashcardThreadComponent } from './components/pages/view-flashcard-thread/view-flashcard-thread.component';
 
-
+/**
+ * Routes for the flashcard branch of the Study Force application.
+ * By default, routes to viewing all flashcards
+ */
 const routes: Routes = [
   { path: '', redirectTo:'/view-flashcards',pathMatch:'full'},
   { path: 'create-question', component: CreateFlashcardPageComponent },

@@ -2,7 +2,6 @@ import { Component, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Answer } from 'src/app/flashcard/model/answer';
 import { AnswerPageable } from 'src/app/flashcard/model/answer-pageable';
-import { Flashcard } from 'src/app/flashcard/model/flashcard';
 import * as EventEmitter from 'events';
 import { FlashcardService } from 'src/app/flashcard/service/flashcard.service';
 import { AnswerService } from 'src/app/flashcard/service/answer.service';
@@ -22,7 +21,6 @@ export class FlashcardAnswerComponent implements OnInit {
   @Output() click = new EventEmitter();
   answers!: Answer[];
   isAnswer = !!this.answers;
-
   subscribed = false;
   flip = false;
 
@@ -71,9 +69,16 @@ export class FlashcardAnswerComponent implements OnInit {
     event.stopPropagation();
   }
 
+  toViewThread(): void {
+    this.flashcardService.setSelectedFlashcard(this.flashcardId);
+    this.router.navigate(['/view-thread']);
+  }
+
   // Just used to stop event propogation
   vote(event: Event) {
     event.stopPropagation();
   }
+
+
 
 }
