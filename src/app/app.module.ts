@@ -23,7 +23,7 @@ import { UserModule } from './user/user.module';
     SharedModule,
     FlashcardModule,
     StacktraceModule,
-    UserModule
+    UserModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
