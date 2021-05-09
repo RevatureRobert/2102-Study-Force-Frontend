@@ -45,10 +45,8 @@ export class VoteComponent implements OnInit {
 
 
       this.voteService.getVote(this.answerId, this.userId).toPromise().catch(error => {
-        console.log("STATUS: " + error.status);
 
         if (error.status == 418) {
-          console.log("ERROR: " + error.status);
 
           error418 = true;
         }}).then(res => {
@@ -57,7 +55,6 @@ export class VoteComponent implements OnInit {
           } else {
             this.hasVoted = true;
           }
-          // console.log("ID: " + this.answerId + ", HASVOTED: " + this.hasVoted);
         });
 
     }
