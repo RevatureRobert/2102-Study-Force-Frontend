@@ -5,7 +5,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
-
+import { SharedModule } from 'src/app/global-components/shared.module';
 import { StacktraceRoutingModule } from './stacktrace-routing.module';
 
 import { StacktraceService } from './services/stacktrace.service'
@@ -28,6 +28,7 @@ import {TechnologyService} from 'src/app/stacktrace/services/technology.service'
     HttpClientModule,
     CommonModule,
     NgbModule,
+    SharedModule,
     HttpClientModule,
     StacktraceRoutingModule,
     FormsModule,

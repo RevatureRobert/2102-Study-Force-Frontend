@@ -36,7 +36,7 @@ export class NewStacktraceComponent implements OnInit {
   }
 
   gotoStacktraceList() {
-    this.router.navigate(['/stacktrace']);
+    this.router.navigate(['/stacktraces']);
   }
 
 }
