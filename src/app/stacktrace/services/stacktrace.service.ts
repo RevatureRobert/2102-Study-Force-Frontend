@@ -9,12 +9,12 @@ import { Stacktrace } from '../models/stacktrace';
 })
 export class StacktraceService {
 
-  private stacktraceURL: string = 'http://localhost:8080/stacktrace';
-
   httpHeaders: HttpHeaders = new HttpHeaders({
     "Content-Type": 'application/json'//,
     //"Authorization": 'Bearer '.concat(localStorage.getItem('swagjwt'))
   });
+
+  stacktraceURL: string = 'http://localhost:8080/stacktrace';
 
   constructor(private http: HttpClient) {
   }
