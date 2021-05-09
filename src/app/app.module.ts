@@ -10,14 +10,12 @@ import { FlashcardModule } from './flashcard/flashcard.module';
 import { FormsModule } from '@angular/forms';
 import { StacktraceModule } from './stacktrace/stacktrace.module';
 import { UserModule } from './user/user.module';
-import {NotificationService} from './notification/service/notification.service';
-import {NotificationComponent} from './notification/component/notification/notification.component';
+import { NotificationModule } from './notification/notification.module';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    NotificationComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -28,6 +26,7 @@ import {NotificationComponent} from './notification/component/notification/notif
     SharedModule,
     FlashcardModule,
     StacktraceModule,
+    NotificationModule,
     UserModule
   ],
   providers: [],
