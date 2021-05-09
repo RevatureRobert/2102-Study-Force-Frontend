@@ -17,7 +17,7 @@ export class UserSearchComponent implements OnInit {
       id: 4,
       name: 'Sam Daniel',
       email: 'sam081295@gmail.com',
-      registrationDate: '10-02-2020',
+      registrationDate: new Date('10-02-2020'),
       authority: 'Employee',
       activity: 'Active',
     },
@@ -25,7 +25,7 @@ export class UserSearchComponent implements OnInit {
       id: 3,
       name: 'Billy Hitchcock',
       email: 'billy@wonderfizz.com',
-      registrationDate: '03-12-2021',
+      registrationDate: new Date('03-12-2021'),
       authority: 'Admin',
       activity: 'Active',
     },
@@ -33,7 +33,7 @@ export class UserSearchComponent implements OnInit {
       id: 2,
       name: 'Kevin Bobby',
       email: 'kevin@aol.com',
-      registrationDate: '08-01-2019',
+      registrationDate: new Date('08-01-2019'),
       authority: 'Employee',
       activity: 'De-Activated',
     },
@@ -41,7 +41,7 @@ export class UserSearchComponent implements OnInit {
       id: 5,
       name: 'Suzie Joe',
       email: 'suzie@yahoo.com',
-      registrationDate: '02-28-2018',
+      registrationDate: new Date('02-28-2018'),
       authority: 'Employee',
       activity: 'Active',
     },
@@ -49,7 +49,7 @@ export class UserSearchComponent implements OnInit {
       id: 1,
       name: 'John William',
       email: 'johny@binance.com',
-      registrationDate: '12-14-1995',
+      registrationDate: new Date('12-14-1995'),
       authority: 'Employee',
       activity: 'Active',
     },
@@ -94,12 +94,135 @@ export class UserSearchComponent implements OnInit {
 
   changeSort(sort: string) {
     this.sortBy = sort;
-    switch (
-      this.sortBy.toLowerCase
-      //   case "name":
-      //     this.users.sort((a:User, b:User) => a.);
-      //
-    ) {
+    switch (this.sortBy.toLowerCase()) {
+      case 'name': {
+        this.users.sort((a: User, b: User) => {
+          var nameA = a.name.toUpperCase(); // ignore upper and lowercase
+          var nameB = b.name.toUpperCase(); // ignore upper and lowercase
+          if (nameA < nameB) {
+            if (this.sortDirectionDesc == true) {
+              return -1;
+            } else {
+              return 1;
+            }
+          }
+          if (nameA > nameB) {
+            if (this.sortDirectionDesc == true) {
+              return 1;
+            } else {
+              return -1;
+            }
+          }
+
+          // names must be equal
+          return 0;
+        });
+        break;
+      }
+
+      case 'email': {
+        this.users.sort((a: User, b: User) => {
+          var nameA = a.email.toUpperCase(); // ignore upper and lowercase
+          var nameB = b.email.toUpperCase(); // ignore upper and lowercase
+          if (nameA < nameB) {
+            if (this.sortDirectionDesc == true) {
+              return -1;
+            } else {
+              return 1;
+            }
+          }
+          if (nameA > nameB) {
+            if (this.sortDirectionDesc == true) {
+              return 1;
+            } else {
+              return -1;
+            }
+          }
+
+          // names must be equal
+          return 0;
+        });
+        break;
+      }
+
+      case 'registration date': {
+        this.users.sort((a: User, b: User) => {
+          var nameA = a.registrationDate.valueOf(); // ignore upper and lowercase
+          var nameB = b.registrationDate.valueOf(); // ignore upper and lowercase
+          if (nameA < nameB) {
+            if (this.sortDirectionDesc == true) {
+              return -1;
+            } else {
+              return 1;
+            }
+          }
+          if (nameA > nameB) {
+            if (this.sortDirectionDesc == true) {
+              return 1;
+            } else {
+              return -1;
+            }
+          }
+
+          // names must be equal
+          return 0;
+        });
+        break;
+      }
+      case 'authority': {
+        this.users.sort((a: User, b: User) => {
+          var nameA = a.authority.toUpperCase(); // ignore upper and lowercase
+          var nameB = b.authority.toUpperCase(); // ignore upper and lowercase
+          if (nameA < nameB) {
+            if (this.sortDirectionDesc == true) {
+              return -1;
+            } else {
+              return 1;
+            }
+          }
+          if (nameA > nameB) {
+            if (this.sortDirectionDesc == true) {
+              return 1;
+            } else {
+              return -1;
+            }
+          }
+
+          // names must be equal
+          return 0;
+        });
+        break;
+      }
+
+      case 'activity': {
+        this.users.sort((a: User, b: User) => {
+          var nameA = a.activity.toUpperCase(); // ignore upper and lowercase
+          var nameB = b.activity.toUpperCase(); // ignore upper and lowercase
+          if (nameA < nameB) {
+            if (this.sortDirectionDesc == true) {
+              return -1;
+            } else {
+              return 1;
+            }
+          }
+          if (nameA > nameB) {
+            if (this.sortDirectionDesc == true) {
+              return 1;
+            } else {
+              return -1;
+            }
+          }
+
+          // names must be equal
+          return 0;
+        });
+        break;
+      }
+
+      default: {
+        this.users.sort();
+        break;
+      }
     }
   }
 
@@ -111,6 +234,7 @@ export class UserSearchComponent implements OnInit {
       this.sortDirectionAsc = true;
       this.sortDirectionDesc = false;
     }
+    this.changeSort(this.sortBy);
   }
 
   //If the dropdown loses focus, set the boolean to false.

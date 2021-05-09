@@ -136,7 +136,7 @@
           <tr *ngFor="let user of users" (click)="this.userDetails(user.id)">
             <td>{{ user.name }}</td>
             <td>{{ user.email }}</td>
-            <td>{{ user.registrationDate }}</td>
+            <td>{{ user.registrationDate.toLocaleDateString() }}</td>
             <td>{{ user.authority }}</td>
             <td>{{ user.activity }}</td>
           </tr>
