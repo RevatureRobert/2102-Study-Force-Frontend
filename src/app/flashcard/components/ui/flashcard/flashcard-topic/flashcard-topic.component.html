@@ -1,21 +1,26 @@
 <app-base-page>
-  <div class="selected-content">
+  <div class="selected-content wrapper">
     <div id="topic-table-container" class="d-flex justify-content-around">
-      <table id="topic-table">
-        <tr>
-          <th class="topic-element">Topic</th>
-          <th class="topic-element">Delete?</th>
-        </tr>
+      <table class="table-striped table-borderless">
+        <thead>
+          <tr>
+            <th scope="col">Topic</th>
+            <th scope="col">Delete?</th>
+          </tr>
 
-        <tr *ngFor="let topic of topics">
-          <td class="topic-element">{{topic.topicName}}</td>
-          <td class="topic-element"><button class="topic-delete-button" (click)="deleteTopic(topic)">Delete?</button></td>
-        </tr>
+        </thead>
 
-        <tr>
-          <td class="topic-element"><input placeholder="Add topic here" type="text" #newTopicInput style="width: 100%;"/></td>
-          <td class="topic-element"><button id="topic-add-button" (click)="addTopic(newTopicInput.value) ">Add</button></td>
-        </tr>
+        <tbody>
+          <tr *ngFor="let topic of topics">
+            <td>{{topic.topicName}}</td>
+            <td><button class="Remove-Button" (click)="deleteTopic(topic)">Delete?</button></td>
+          </tr>
+
+          <tr>
+            <td><input placeholder="Add topic here" type="text" #newTopicInput style="width: 100%;"/></td>
+            <td><button class="Add-Button" (click)="addTopic(newTopicInput.value) ">Add</button></td>
+          </tr>
+        </tbody>
       </table>
     </div>
 

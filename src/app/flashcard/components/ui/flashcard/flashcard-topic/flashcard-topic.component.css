@@ -1,4 +1,64 @@
-#topic-table-container {
+th {
+  background: white;
+}
+
+.table-striped > tbody > tr:nth-child(2n + 1) {
+  background: linear-gradient(
+    90.34deg,
+    rgba(255, 255, 255, 0.81) 0%,
+    rgba(255, 255, 255, 0.72) 100%
+  );
+  mix-blend-mode: normal;
+  backdrop-filter: blur(100px);
+}
+
+.table-striped > tbody > tr:nth-child(2n) {
+  background: linear-gradient(
+    90.34deg,
+    rgba(255, 255, 255, 0.56) 0%,
+    rgba(255, 255, 255, 0.42) 100%
+  );
+  mix-blend-mode: normal;
+  backdrop-filter: blur(100px);
+}
+
+table {
+  border-radius: 30px;
+  overflow: hidden;
+  background: none;
+  width: 100%;
+}
+
+caption {
+  background: #ffffff;
+  opacity: 0.5;
+  box-shadow: 0px -1px 0px #eceeef;
+  border-radius: 0px 0px 30px 30px;
+}
+
+.Remove-Button {
+  opacity: 0.75;
+  position: relative;
+  width: 103px;
+  background: #ff0101;
+  border: 1px solid #ff0000;
+  box-sizing: border-box;
+  border-radius: 30px;
+  color: white;
+}
+
+.Add-Button {
+  opacity: 0.75;
+  position: relative;
+  width: 148px;
+  background: #00d600;
+  border: 1px solid #80b366;
+  box-sizing: border-box;
+  border-radius: 30px;
+  color: white;
+}
+
+/* #topic-table-container {
   border: orange solid 1px;
   border-radius: 25px;
   padding: 1em;
@@ -36,4 +96,4 @@
 
 #topic-add-button:hover {
   background-color: green;
-}
+} */

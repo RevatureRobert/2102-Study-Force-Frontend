@@ -10,40 +10,79 @@
   padding: 1em;
 }
 
-.filter-button {
-  width: 7.2em;
-  height: 3.5em;
-  margin: .5em;
-  border-radius: 20px;
-  background: rgba(255, 165, 0, 20%);
-  border-width: .5px;
-}
-.filter-button:hover {
-  background: rgb(255, 165, 0);
-}
-
-.filter-small-box {
+.Dropdown-Button {
+  width: 175px;
+  color: rgba(21, 60, 83, 1);
+  background: #ffffff;
+  box-shadow: 0px -1px 0px #eceeef;
+  position: relative;
+  box-sizing: border-box;
   border-radius: 10px;
-  background: rgb(235, 189, 64);
+  border: none;
 }
 
-.filter-input:hover {
-  background: rgb(255, 165, 0);
-  color: white;
+.Dropdown-Button:not(:focus) {
+  border-radius: 10px !important;
 }
 
-.page-button {
-  height: 4em;
-  border-radius: 15px;
-  width: 8em;
-  font-size: 1em;
-  padding: 1em;
-  color: black;
-  font-weight: bold;
-  background: rgb(255, 198, 123);
+.Dropdown-List {
+  position: relative;
+  top: -2px !important;
+  background: none;
+  width: 175px;
+  position: relative;
+  box-sizing: border-box;
+  border: none;
+  padding: 0px;
+  box-sizing: border-box;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
-.page-button:hover {
-  color: white;
-  background: orange;
+.Dropdown-List button:nth-child(2n-1) {
+  background: linear-gradient(
+    90.34deg,
+    rgba(255, 255, 255, 0.81) 0%,
+    rgba(255, 255, 255, 0.72) 100%
+  );
+  mix-blend-mode: normal;
+  backdrop-filter: blur(100px);
+}
+
+.Dropdown-List button:nth-child(2n) {
+  background: linear-gradient(
+    90.34deg,
+    rgba(255, 255, 255, 0.56) 0%,
+    rgba(255, 255, 255, 0.42) 100%
+  );
+  mix-blend-mode: normal;
+  backdrop-filter: blur(100px);
+}
+.Dropdown-List button:last-child {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.Dropdown:hover button:last-child a {
+  box-sizing: border-box;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+
+.pagination {
+  color: #153c53;
+  justify-content: center;
+
+  width: 100px;
+  border-radius: 10px;
+
+
+  background: linear-gradient(
+    99.35deg,
+    rgba(255, 255, 255, 0.63) 0%,
+    rgba(255, 255, 255, 0.35) 99.96%
+  );
+  backdrop-filter: blur(50px);
+  border: none;
 }

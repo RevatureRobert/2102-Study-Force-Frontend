@@ -5,12 +5,12 @@
   </div>
 
   <div class="container">
-    <div class="row d-flex justify-content-center">
+    <div class="row d-flex justify-content-around">
       <div class="col-sm-2">
-        <button class="page-button" (click)="prevPage()" *ngIf="flashcardPage.number > 0">Prev</button>
+        <button class="pagination" (click)="prevPage()" *ngIf="flashcardPage.number > 0">Previous</button>
       </div>
       <div class="col-sm-2">
-        <button class="page-button" (click)="nextPage()" *ngIf="flashcardPage.number < flashcardPage.totalPages - 1">Next</button>
+        <button class="pagination" (click)="nextPage()" *ngIf="flashcardPage.number < flashcardPage.totalPages - 1">Next</button>
       </div>
     </div>
   </div>
@@ -18,8 +18,8 @@
 
 <div class="filter-box" *ngIf="flashcardPage !== undefined">
   <div ngbDropdown class="filter-element">
-    <button class="filter-button" ngbDropdownToggle>{{mode}}</button>
-    <div class="filter-small-box" ngbDropdownMenu aria-labelledby="dropdownBasic1">
+    <button class="Dropdown-Button" ngbDropdownToggle>{{mode}}</button>
+    <div class="Dropdown-List" ngbDropdownMenu aria-labelledby="dropdownBasic1">
       <button class="filter-input" ngbDropdownItem (click)="setModeToNone()">None</button>
       <button class="filter-input" ngbDropdownItem (click)="setModeToTopic()">Topic</button>
       <button class="filter-input" ngbDropdownItem (click)="setModeToDifficulty()">Difficulty</button>
@@ -27,8 +27,8 @@
     </div>
 
   <div ngbDropdown *ngIf="modeChoices.length > 0" class="filter-element">
-    <button class="filter-button" ngbDropdownToggle>{{filterDisplay}}</button>
-    <div class="filter-small-box" ngbDropdownMenu aria-labelledby="dropdownBasic1">
+    <button class="Dropdown-Button" ngbDropdownToggle>{{filterDisplay}}</button>
+    <div class="Dropdown-List" ngbDropdownMenu aria-labelledby="dropdownBasic1">
       <button class="filter-input" ngbDropdownItem *ngFor="let mode of modeChoices" (click)="setInput(mode.input)">{{mode.displayString}}</button>
     </div>
   </div>
