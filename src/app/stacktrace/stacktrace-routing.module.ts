@@ -7,10 +7,10 @@ import {StacktraceComponent} from 'src/app/stacktrace/components/stacktrace/stac
 
 const routes: Routes = [
 
-  { path: 'stacktraces', component: StacktraceHomeComponent },
-  { path: 'stacktraces/addstacktrace', component: NewStacktraceComponent },
-  { path: 'stacktraces/:stacktraceId', component: StacktraceComponent },
-  { path: 'stacktraces/technology', component: NewTechnologyComponent },
+  { path: 'stacktrace', component: StacktraceHomeComponent },
+  { path: 'stacktrace/addstacktrace', component: NewStacktraceComponent },
+  { path: 'stacktrace/:stacktraceId', component: StacktraceComponent },
+  { path: 'stacktrace/technology', component: NewTechnologyComponent },
 
 ];
 
