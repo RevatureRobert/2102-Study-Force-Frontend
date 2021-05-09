@@ -1,38 +1,34 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Batch } from '../../models/batch';
+import { NewBatch } from '../../models/new-batch';
 import { UserEmail } from '../../models/user-email';
 import { BatchService } from '../../services/batch.service';
 import { UserService } from '../../services/user.service';
 
 @Component({
-  selector: 'app-add-users-email',
-  templateUrl: './add-users-email.component.html',
-  styleUrls: ['./add-users-email.component.css'],
+  selector: 'app-add-users-new-batch',
+  templateUrl: './add-users-new-batch.component.html',
+  styleUrls: ['./add-users-new-batch.component.css']
 })
-
 /**
- * Component for adding multiple users at a time, can upload a CSV or type one by one
+ * Component for creating a batch and adding users and instructors to the batch at the same time.
+ * If the fields are left blank, it will create an empty batch
  * @author Steven Ceglarek
  */
-export class AddUsersEmailComponent implements OnInit {
+export class AddUsersNewBatchComponent implements OnInit {
 
-  @Input() batch?:Batch;
   user:UserEmail = {
     email: "",
     batchId: undefined
   }
-  newBatch: boolean = false;
+  instructor:UserEmail = {
+    email: "",
+    batchId: undefined
+  }
   userEmployeeArray: Array<UserEmail> = [];
-  batches?: Batch[];
-  selectedBatch?: Batch;
-  //  For Dropdown menu
-  yes: boolean = false;
-
+  userInstructorArray: Array<UserEmail> = [];
   constructor(private userService: UserService, private batchService: BatchService) { }
-
   ngOnInit(): void {
-    this.getAllBatches();
   }
 
   /**
@@ -83,6 +79,41 @@ export class AddUsersEmailComponent implements OnInit {
 
   }
 
+    /**
+   * To add an instructor email to the array of instructors to populate the table in HTML, and to ultimately send to the Service for post request
+   * @param formEmp form info coming from form tag in HTML
+   * @returns the userInstructorArray with the newly added email
+   */
+    onAddInstructor(formInst: NgForm) {
+      let checkedEmail = formInst.value.email;
+  
+      if (!this.isEmail(checkedEmail)) {
+          alert("Please check emails and try and submit again");
+          return;
+      }
+      const instructor = this.instructor = {
+        email: formInst.value.email
+      }
+      this.userInstructorArray.push(instructor)
+  
+      return this.userInstructorArray;
+    }
+  
+    /**
+     * Removing a specific instructor from the Array of displayed instructors table
+     * @param user the user that will be removed from the array
+     */
+    onDeleteInstructor(user: UserEmail) {
+      let i = 0;
+      for (let u of this.userInstructorArray) {
+        if (u.email == user.email) {
+          this.userInstructorArray.splice(i, 1);
+        }
+        i++;
+      }
+  
+    }
+
   /**
    * Grabs the CSV and puts it into a FileReader and then reads through the CSV and splits them on commas and calls another function and 
    * pushes it into an array
@@ -118,56 +149,44 @@ export class AddUsersEmailComponent implements OnInit {
       this.userEmployeeArray.push(newUser);
     }
   }
-
   /**
-   * Submits the userEmployeeArray to the userService to create all of the users
+   * Submits all of the information to create a new batch, There are also checks if the employeeArray or instructorArray is empty or not
+   * @param batchName this is the name of the batch that is being created
    */
-  submitAll() {
+  submitAll(batchName: string) {
     try {
-      console.log(this.selectedBatch);
-      this.userService.massCreateUsers(this.userEmployeeArray);
+      console.log(this.userInstructorArray);
+      console.log(this.userEmployeeArray);
+      let batch: NewBatch = {
+        id: 0,
+        name: batchName,
+        instructors: this.userInstructorArray,
+        users: this.userEmployeeArray
+      }
+      if(this.userEmployeeArray.length == 0 && this.userInstructorArray.length == 0) {
+        console.log("its doing number 1")
+        this.batchService.createBatch(batch);
+        return;
+      } else if (this.userInstructorArray.length == 0) {
+        console.log("its doing number 2")
+        this.userService.massCreateUsers(this.userEmployeeArray);
+        this.batchService.createBatch(batch);
+        return;
+      } else if (this.userEmployeeArray.length == 0) {
+        console.log("its doing number 3")
+        this.userService.massCreateUsers(this.userInstructorArray);
+        this.batchService.createBatch(batch);
+        return;
+      } else {
+        console.log("its doing number 4")
+        this.userService.massCreateUsers(this.userEmployeeArray);
+        this.userService.massCreateUsers(this.userInstructorArray);
+        this.batchService.createBatch(batch);
+        return;
+      }
     } catch (Exception) {
       console.log("Something is wrong with your stuff!")
     }
-  }
-
-  changeFocus() {
-    let parent = document.getElementById('Dropdown-Button');
-
-    if (this.yes === false) {
-      this.yes = true;
-      parent!.style.setProperty('border-bottom-right-radius', '0px');
-      parent!.style.setProperty('border-bottom-left-radius', '0px');
-    } else {
-      this.yes = false;
-      parent!.style.setProperty('border-bottom-right-radius', '10px');
-      parent!.style.setProperty('border-bottom-left-radius', '10px');
-    }
-  }
-
-  setFalse() {
-    this.yes = false;
-  }
-
-  /**
-   * Selects a batch by batchId and adds it to all of the users in the userEmployeeArray
-   * @param batchId the id of the batch you want all the users in the table to be assigned to
-   */
-  onSelectBatch(batchId:number) {
-    for (let u of this.userEmployeeArray) {
-      if(this.newBatch) {
-        u.batchId = 0;
-      } else {
-        u.batchId = batchId;
-      }
-    }
-  }
-
-  /**
-   * To get all of the batches to populate the dropdown with all of the batches
-   */
-  getAllBatches() {
-    this.batchService.getBatches().then(batch => this.batch = batch.content);
   }
 
 }

@@ -27,26 +27,15 @@
                         aria-labelledby="Dropdown-Button"
                         id="Dropdown-List"
                     >
-                        <div *ngFor='let b of batches'>
-                            <li><a class="dropdown-item" href="" (click)="onSelectBatch(b.id)">{{b.name}}</a></li>
+                        <div *ngFor='let b of batch'>
+                            <li><button class="dropdown-item" (click)="onSelectBatch(b.id)">{{b.name}}</button></li>
                         </div>
-                            <li><button class="dropdown-item btn btn-success" style="background-color: #00d600; color: white;" (click)="createNewBatch()"> Create new Batch</button></li>
                     </ul>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-4 mx-auto">
-                <div *ngIf='newBatch'>
-                    <input class="form-control Batch-Name-Input d-inline" type="text" placeholder="Batch name" name="batchName">
-                    <button class="btn btn-primary Add-Button form-control d-inline" type="submit">
-                        Add
-                </button>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-                <div class="wrapper col-8 mt-5 mx-auto">
+                <div class="wrapper col-6 mt-5 mx-auto">
                     <div class="table-responsive">
                         <table class="table table-striped table-borderless">
                             <thead class="m-2">
