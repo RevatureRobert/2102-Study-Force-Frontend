@@ -25,7 +25,7 @@ export class SolutionVoteComponent implements OnInit {
 
   constructor(private solutionService: SolutionService) {
     let u:User = {
-      userId:1,
+      userId:2,
         email:"jomama@hotmail.gov",
         name:"John Doe",
         active:false,
@@ -56,8 +56,9 @@ export class SolutionVoteComponent implements OnInit {
     this.upVoteSource = "../../../assets/selectedupvote.svg"
     this.scoreColor = "color: var(--red-orange-juice)"
     this.vote!.value = 1;
-    this.solutionService.addVote(this.vote, this.solution).subscribe(solution => {
-      this.solution = solution;
+    this.solutionService.addVote(this.vote).subscribe(data => {
+      this.solutionService.updateVote(this.solution).subscribe(solution => {this.solution = solution});
+
     });
   }
 
@@ -65,8 +66,8 @@ export class SolutionVoteComponent implements OnInit {
     this.downVoteSource = "../../../assets/selecteddownvote.svg"
     this.scoreColor = "color: var(--wizard-blue)"
     this.vote!.value = -1;
-    this.solutionService.addVote(this.vote, this.solution).subscribe(solution => {
-      this.solution = solution;
+    this.solutionService.addVote(this.vote).subscribe(data => {
+      this.solutionService.updateVote(this.solution).subscribe(solution => {this.solution = solution});
     });
   }
 }

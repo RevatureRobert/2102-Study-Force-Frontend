@@ -30,9 +30,12 @@ export class SolutionService{
     return this.http.post<Solution>(`${this.stacktraceUrl}/solution`, solution, {headers: this.httpHeaders}).toPromise();
   }
 
-  addVote(vote: Vote, solution: Solution): Observable<Solution> {
+  addVote(vote: Vote): Observable<Vote> {
     console.log(JSON.stringify(vote))
-    this.http.post<Vote>(`${this.stacktraceUrl}/solution-vote`, vote).subscribe();
+    return this.http.post<Vote>(`${this.stacktraceUrl}/solution-vote`, vote);
+  }
+
+  updateVote(solution: Solution): Observable<Solution>{
     return this.http.get<Solution>(`${this.stacktraceUrl}/solution/update-vote/${solution.solutionId}`);
   }
 }

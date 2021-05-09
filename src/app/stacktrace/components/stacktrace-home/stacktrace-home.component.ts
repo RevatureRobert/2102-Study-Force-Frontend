@@ -30,20 +30,20 @@ export class StacktraceHomeComponent implements OnInit {
 
 
   constructor(private stacktraceService:StacktraceService, private technologyService: TechnologyService) {
-    //TODO remove this placeholder user
-        let u:User = {
-          userId:32,
-            email:"jomama@hotmail.gov",
-            name:"John Doe",
-            active:false,
-            subscribedStacktrace:true,
-            subscribedFlashcard:true,
-            authority:"ADMIN",
-            registrationTime:new Date(1620310931740),
-            lastLogin:new Date(1620310931740)
-          };
-        //TODO remove this placeholder user in local storage
-        localStorage.setItem('loggedInUser', JSON.stringify(u));
+    // //TODO remove this placeholder user
+    //     let u:User = {
+    //       userId:32,
+    //         email:"jomama@hotmail.gov",
+    //         name:"John Doe",
+    //         active:false,
+    //         subscribedStacktrace:true,
+    //         subscribedFlashcard:true,
+    //         authority:"ADMIN",
+    //         registrationTime:new Date(1620310931740),
+    //         lastLogin:new Date(1620310931740)
+    //       };
+    //     //TODO remove this placeholder user in local storage
+    //     localStorage.setItem('loggedInUser', JSON.stringify(u));
         // console.log(localStorage.getItem("loggedInUser"));
    }
     

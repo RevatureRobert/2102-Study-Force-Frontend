@@ -30,19 +30,19 @@ export class SolutionComponent implements OnInit {
   pageSize: number = 5;
 
   constructor(private solutionService: SolutionService, private route: ActivatedRoute, private router: Router) {
-    let u:User = {
-      userId:5,
-        email:"jomama@hotmail.gov",
-        name:"John Doe",
-        active:false,
-        subscribedStacktrace:true,
-        subscribedFlashcard:true,
-        authority:"USER",
-        registrationTime:new Date(1620310931740),
-        lastLogin:new Date(1620310931740)
-      };
-    //TODO remove this placeholder user in local storage
-    localStorage.setItem('loggedInUser', JSON.stringify(u));
+    // let u:User = {
+    //   userId:5,
+    //     email:"jomama@hotmail.gov",
+    //     name:"John Doe",
+    //     active:false,
+    //     subscribedStacktrace:true,
+    //     subscribedFlashcard:true,
+    //     authority:"USER",
+    //     registrationTime:new Date(1620310931740),
+    //     lastLogin:new Date(1620310931740)
+    //   };
+    // //TODO remove this placeholder user in local storage
+    // localStorage.setItem('loggedInUser', JSON.stringify(u));
   }
 
   ngOnInit(): void {
