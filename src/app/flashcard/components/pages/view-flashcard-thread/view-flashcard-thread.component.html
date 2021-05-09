@@ -26,8 +26,9 @@
           </div>
           <div class="card-footer" id="Card-Footer">
             <div class="d-flex justify-content-end">
-              <div *ngIf="answer.selectedAnswer || answer.trainerSelected">Marked as correct</div>
-              <button *ngIf="!answer.selectedAnswer || !answer.trainerSelected" (click)="setAnswerAsSelected($event, answer.answerId)">Mark as correct</button>
+              <div class="marked" *ngIf="answer.selectedAnswer || answer.trainerSelected">Marked as correct-</div>
+              <!-- Line below should render only to admin -->
+              <button class="mark-button" *ngIf="!answer.selectedAnswer || !answer.trainerSelected" (click)="setAnswerAsSelected($event, answer.answerId)">Mark as correct</button>
               <div>
                 Rating: {{answer.answerScore}}
               </div>
