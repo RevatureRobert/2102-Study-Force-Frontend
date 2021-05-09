@@ -17,25 +17,19 @@ export class SolutionService{
     //"Authorization": 'Bearer '.concat(localStorage.getItem('swagjwt'))
   });
 
-
   constructor(private http: HttpClient) {}
 
   // Appended the service endpoint to the base url
-  apiServerUrl = environment.apiUrl.concat("/stacktrace/solution");
-// stacktraceUrl = environment.apiUrl.concat("/stacktrace");
- // Appended the service endpoint to the base url
+  stacktraceUrl = environment.apiUrl.concat("/stacktrace");
 
   getAllSolutionsByStacktraceId(stacktraceId: number, page: number, pageSize: number): Promise<Solution[]>{
-    return this.http.get<Solution[]>(`http://${this.apiServerUrl}/${stacktraceId}?pageSize=${pageSize}&page=${page}`, { headers: this.httpHeaders }).toPromise();
+    return this.http.get<Solution[]>(`http://${this.stacktraceUrl}/${stacktraceId}/solution?pageSize=${pageSize}&page=${page}`, { headers: this.httpHeaders }).toPromise();
   }
 
   postSolution(solution: Solution): Promise<Solution>{
-    return this.http.post<Solution>(`http://${this.apiServerUrl}`, solution, {headers: this.httpHeaders}).toPromise();
+    return this.http.post<Solution>(`http://${this.stacktraceUrl}`, solution, {headers: this.httpHeaders}).toPromise();
   }
-  
-    /**
-   * POSTs a Technology to the backend
-   */
+
   addVote(vote: Vote, solution: Solution): Observable<Solution> {
     console.log(JSON.stringify(vote))
     this.http.post<Vote>(`${this.stacktraceUrl}/solution-vote`, vote).subscribe();
