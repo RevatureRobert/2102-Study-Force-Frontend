@@ -28,7 +28,7 @@ export class StacktraceService {
   }
 
   getStacktrace(id:any): Observable<Stacktrace> {
-    return this.http.get(`${this.stacktraceURL}/${id}`);
+    return this.http.get<Stacktrace>(`${this.stacktraceURL}/${id}`, { headers: this.httpHeaders });
   }
 
 

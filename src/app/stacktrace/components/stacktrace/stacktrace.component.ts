@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StacktraceService } from '../../services/stacktrace.service'
 import { Stacktrace } from '../../models/stacktrace'
+import { Solution } from '../../models/solution';
+import { SolutionService } from '../../services/solution.service';
 
 @Component({
   selector: 'app-stacktrace',
@@ -10,17 +12,7 @@ import { Stacktrace } from '../../models/stacktrace'
 })
 export class StacktraceComponent implements OnInit {
 
-  currentStacktrace: Stacktrace = {
-    title : '',
-    body : '',
-    stacktraceId: 0,
-    userId : 0,
-    userName: "",
-    creationTime: "",
-    technologyId :0,
-    technologyName:"",
-  };
-  message = '';
+  currentStacktrace!: Stacktrace;
 
   constructor(private stacktraceService: StacktraceService, private route: ActivatedRoute,
     private router: Router) {
@@ -28,41 +20,15 @@ export class StacktraceComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.message = '';
     this.getStacktrace(this.route.snapshot.params.stacktraceId);
   }
 
-  getStacktrace(id: string): void {
-    this.stacktraceService.getStacktrace(id)
+  getStacktrace(stacktraceId: string): void {
+    this.stacktraceService.getStacktrace(stacktraceId)
       .subscribe(
         data => {
           this.currentStacktrace = data;
           console.log(data);
-        },
-        error => {
-          console.log(error);
-        });
-  }
-
-  updateStacktrace(): void {
-    this.stacktraceService.editStacktrace(this.currentStacktrace.stacktraceId, this.currentStacktrace)
-      .subscribe(
-        response => {
-          console.log(response);
-          this.message = response.message;
-        },
-        error => {
-          console.log(error);
-        });
-  }
-
-
-  deleteStacktrace(): void {
-    this.stacktraceService.deleteStacktrace(this.currentStacktrace.stacktraceId)
-      .subscribe(
-        response => {
-          console.log(response);
-          this.router.navigate(['/stacktrace']);
         },
         error => {
           console.log(error);

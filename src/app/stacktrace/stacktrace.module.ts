@@ -13,6 +13,7 @@ import {StacktraceHomeComponent} from 'src/app/stacktrace/components/stacktrace-
 import {NewStacktraceComponent} from 'src/app/stacktrace/components/new-stacktrace/new-stacktrace.component';
 import {StacktraceComponent} from 'src/app/stacktrace/components/stacktrace/stacktrace.component';
 import { NewTechnologyComponent } from './components/new-technology/new-technology.component';
+import { SolutionComponent } from './components/solution/solution.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { NewTechnologyComponent } from './components/new-technology/new-technolo
     StacktraceComponent,
     NewStacktraceComponent,
     StacktraceHomeComponent,
-    NewTechnologyComponent
+    NewTechnologyComponent,
+    SolutionComponent
   ],
   imports: [
     BrowserModule,
