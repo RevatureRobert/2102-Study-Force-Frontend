@@ -70,6 +70,10 @@ export class ViewFlashcardThreadComponent implements OnInit {
     })
   }
 
+  vote(event: Event) {
+    event.stopPropagation();
+  }
+
 }
 
 
