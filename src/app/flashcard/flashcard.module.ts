@@ -16,7 +16,7 @@ import { SharedModule } from '../shared.module';
 import { RateService } from './service/rate.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { VoteService } from './service/vote.service';
-
+import { FlashcardTopicComponent } from './components/ui/flashcard/flashcard-topic/flashcard-topic.component';
 
 
 
@@ -31,6 +31,8 @@ import { VoteService } from './service/vote.service';
     FlashcardDeleteComponent,
     SubmitAnswerPageComponent,
     ViewFlashcardThreadComponent
+    ViewFlashcardThreadComponent,
+    FlashcardTopicComponent
   ],
   imports: [
     CommonModule,
