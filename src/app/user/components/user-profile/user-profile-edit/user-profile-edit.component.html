@@ -5,6 +5,7 @@
       <label for="name-input">Full Name</label>
       <input type="text" id="name" autocomplete="off" [(ngModel)]="user!.name">
     </div>
+
     <ul class="list-group" id="Generic-List">
       <div class="card-header" id="Card-Header">Notifications</div>
       <li class="list-group-item long">Recieve Flashcard Notifications<input type="checkbox"  [(ngModel)]="user.subscribedFlashcard"></li>
@@ -15,9 +16,11 @@
       <li class="list-group-item tiny">Stacktrace<input type="checkbox" [(ngModel)]="user.subscribedStacktrace"></li>
       <div class="card-footer" id="Card-Footer"></div>
     </ul>
+
     <button class="btn btn-success" type="button" id="Back-Button" (click)="goBack()">Back</button>
     <button class="btn btn-primary" type="button" id="Add-Button" (click)="saveUserDetails()">Save</button>
   </div>
+  
   <div *ngIf="isLoading" id="glass-pane">
     <div class="card-header" id="Card-Header" style="text-align: center;"><p>Edit My Profile</p></div>
     <div class="d-flex justify-content-center" style="padding-top: 10rem;">

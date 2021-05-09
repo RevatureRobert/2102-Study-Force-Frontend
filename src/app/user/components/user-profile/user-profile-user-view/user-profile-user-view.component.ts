@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Batch } from 'src/app/user/models/batch';
 import { User } from 'src/app/user/models/user';
 
@@ -7,6 +8,10 @@ import { User } from 'src/app/user/models/user';
   templateUrl: './user-profile-user-view.component.html',
   styleUrls: ['./user-profile-user-view.component.css']
 })
+
+/**
+ * Component for the USER view of a user profile
+ */
 export class UserProfileUserViewComponent implements OnInit {
 
   @Input() user?:User;
@@ -14,7 +19,10 @@ export class UserProfileUserViewComponent implements OnInit {
   @Input() isMe?:boolean;
   isLoading:boolean = true;
 
-  constructor() { }
+  /**
+   * @param router
+   */
+  constructor(private router:Router) { }
 
   /**
    * Gets loggedInUser from local storage and checks if the user whoes
@@ -26,5 +34,13 @@ export class UserProfileUserViewComponent implements OnInit {
       this.isMe = true;
     }
     this.isLoading = false;
+  }
+
+  /**
+   * Routes to the batch details page of a specific batch
+   * @param batchId The id of the batch to navigate to
+   */
+  goToBatch(batchId:number){
+    this.router.navigate([`/batchDetails/${batchId}`]);
   }
 }

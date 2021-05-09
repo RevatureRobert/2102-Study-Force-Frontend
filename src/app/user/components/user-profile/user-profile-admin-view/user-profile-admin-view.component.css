@@ -69,6 +69,7 @@
 #Generic-List {
   overflow: hidden;
   overflow-y: auto;
+  height: 257px;
   max-height: 257px;
   position: relative;
   margin-left: auto;
@@ -336,6 +337,10 @@ li > input {
   }
 
   #Remove-Button {
+    top: -18.8rem;
+  }
+
+  #Add-Button {
     top: -18.8rem;
   }
 

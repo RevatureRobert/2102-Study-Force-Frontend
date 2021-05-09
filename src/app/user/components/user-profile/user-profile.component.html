@@ -1,12 +1,14 @@
 <div>
   <div *ngIf="!isLoading">
-    <div *ngIf="isAdmin">
+    <div *ngIf="!isAdmin">
       <app-user-profile-user-view [user]="user" [batches]="batches" [isMe]="isMe"></app-user-profile-user-view>
     </div>
-    <div *ngIf="!isAdmin">
+    
+    <div *ngIf="isAdmin">
       <app-user-profile-admin-view [user]="user" [batches]="batches"></app-user-profile-admin-view>
     </div>
   </div>
+
   <div *ngIf="isLoading" id="glass-pane">
     <div class="card-header" id="Card-Header" style="text-align: center;"><p style="font-size: 18pt; top: -0.7rem;">User Profile</p></div>
     <div class="d-flex justify-content-center" style="padding-top: 10rem;">

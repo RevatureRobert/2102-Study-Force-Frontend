@@ -9,6 +9,10 @@ import { UserService } from 'src/app/user/services/user.service';
   templateUrl: './user-profile-admin-view.component.html',
   styleUrls: ['./user-profile-admin-view.component.css']
 })
+
+/**
+ * Component for the ADMIN/SUPER_ADMIN view of a user profile
+ */
 export class UserProfileAdminViewComponent implements OnInit {
 
   @Input() user?:User;
@@ -22,6 +26,10 @@ export class UserProfileAdminViewComponent implements OnInit {
 
   yes:boolean = false;
 
+  /**
+   * @param userService
+   * @param router
+   */
   constructor(private userService:UserService, private router:Router) { }
 
   /**
@@ -107,6 +115,14 @@ export class UserProfileAdminViewComponent implements OnInit {
    */
    goBack(){
     this.router.navigate([`/profile/${this.user?.userId}`])
+  }
+
+  /**
+   * Routes to the batch details page of a specific batch
+   * @param batchId The id of the batch to navigate to
+   */
+   goToBatch(batchId:number){
+    this.router.navigate([`/batchDetails/${batchId}`]);
   }
 
   /**

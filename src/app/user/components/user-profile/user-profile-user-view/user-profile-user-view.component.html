@@ -7,24 +7,27 @@
         <p class="card-text" id="Card-Text">{{ user?.email }}</p>
       </div>
     </div>
+
     <div class="card" style="top: 12rem;" id="Card-Wide">
       <label for="" id="name-label">Name</label>
       <div class="card-body" id="Card-Body">
         <p class="card-text" id="Card-Text">{{ user?.name }}</p>
       </div>
     </div>
+
     <div class="card" style="top: 18rem;" id="Card-Wide">
       <label for="" id="registration-label">Member Since</label>
       <div class="card-body" id="Card-Body">
         <p class="card-text" id="Card-Text">{{ user?.registrationTime | date }}</p>
       </div>
     </div>
+
     <ul class="list-group" id="Generic-List">
       <div class="card-header" id="Card-Header">Batches</div>
-      <!-- TODO add link to batch details linking to that batch id -->
-      <li *ngFor="let batch of batches" class="list-group-item">{{ batch.name }}</li>
+      <li *ngFor="let batch of batches" class="list-group-item" (click)="goToBatch(batch.batchId)">{{ batch.name }}</li>
       <div class="card-footer" id="Card-Footer"></div>
     </ul>
+
     <ul class="list-group notifications" id="Generic-List2">
       <div class="card-header" id="Card-Header">Notifications</div>
       <li class="list-group-item long">Recieve Flashcard Notifications<input type="checkbox"  [checked]="user?.subscribedFlashcard" disabled></li>
@@ -35,8 +38,10 @@
       <li class="list-group-item tiny">Stacktrace<input type="checkbox" [checked]="user?.subscribedStacktrace" disabled></li>
       <div class="card-footer" id="Card-Footer"></div>
     </ul>
+
     <button *ngIf="isMe" class="btn btn-primary" type="button" id="Edit-Button" routerLink="/edit/profile">Edit My Details</button>
   </div>
+
   <div *ngIf="isLoading" id="glass-pane">
     <div class="card-header" id="Card-Header" style="text-align: center;"><p style="font-size: 18pt; top: -0.7rem;">User Profile</p></div>
     <div class="d-flex justify-content-center" style="padding-top: 10rem;">
@@ -46,4 +51,5 @@
       </div>
     </div>
   </div>
+
 </div>

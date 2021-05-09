@@ -71,7 +71,7 @@ export class UserService {
       headers: new HttpHeaders(headerInfo)
     };
 
-    let createUsers = this.http.post<any>(BASE_API_URL.concat(`/user/massCreate`), userArray, requestOptions);
+    let createUsers = this.http.post<any>(BASE_API_URL.concat(`/users/bulk`), userArray, requestOptions);
     createUsers.subscribe();
 
   }
@@ -101,7 +101,7 @@ export class UserService {
    * @param userId The id of the user being retrieved
    * @returns A promise of type any containing the json representation of the retrieved user, or empty json if no user was found with that id
    */
-   getUserByUserId(userId:number):Promise<any>{
+  getUserByUserId(userId:number):Promise<any>{
     return this.http.get<any>(BASE_API_URL.concat(`/users/${userId}`)).toPromise();
   }
 

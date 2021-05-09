@@ -8,13 +8,24 @@ import { UserService } from 'src/app/user/services/user.service';
   templateUrl: './user-profile-edit.component.html',
   styleUrls: ['./user-profile-edit.component.css']
 })
+
+/**
+ * component for a user to edit their user details
+ */
 export class UserProfileEditComponent implements OnInit {
 
   user!:User;
   isLoading:boolean = true;
 
+  /**
+   * @param userService
+   * @param router
+   */
   constructor(private userService:UserService, private router:Router) { }
 
+  /**
+   * Gets logged in user from localstorage
+   */
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem('loggedInUser')!);
     this.isLoading = false;
