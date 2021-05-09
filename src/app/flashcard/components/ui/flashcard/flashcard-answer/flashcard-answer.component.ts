@@ -69,9 +69,16 @@ export class FlashcardAnswerComponent implements OnInit {
     event.stopPropagation();
   }
 
+  toViewThread(): void {
+    this.flashcardService.setSelectedFlashcard(this.flashcardId);
+    this.router.navigate(['/view-thread']);
+  }
+
   // Just used to stop event propogation
   vote(event: Event) {
     event.stopPropagation();
   }
+
+
 
 }

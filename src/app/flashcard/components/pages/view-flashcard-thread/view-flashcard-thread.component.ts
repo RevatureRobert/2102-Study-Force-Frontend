@@ -13,7 +13,7 @@ import { FlashcardService } from 'src/app/flashcard/service/flashcard.service';
 })
 export class ViewFlashcardThreadComponent implements OnInit {
 
-  public flashcardId: number = 10;
+  public flashcardId: number = 0;
   public flashcard?: Flashcard;
 
   public answers!: Answer[];
@@ -26,6 +26,7 @@ export class ViewFlashcardThreadComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(localStorage.getItem('loggedInUser'));
+    this.flashcardId = this.flashcardService.selectedFlashcardForThread;
     this.getSelectedFlashcard();
     this.getAllAnswers();
 

@@ -18,7 +18,7 @@
         {{answers[0].answerText}}
         <app-vote (click)="vote($event)" [answerScore]=answers[0].answerScore></app-vote>
       </div>
-        <button class="btn custom-button" (click)="toggleView($event)" *ngIf="answers.length > 0">
+        <button class="btn custom-button" (click)="toViewThread()" *ngIf="answers.length > 0">
             View More
         </button>
     </div>

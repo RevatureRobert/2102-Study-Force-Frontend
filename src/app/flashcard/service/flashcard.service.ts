@@ -16,7 +16,7 @@ export class FlashcardService {
 
   private apiServerUrl = environment.apiUrl; // Base API URL
 
-  public selectedFlashcardForThread?: Flashcard; // Used to set the selected Flashcard
+  public selectedFlashcardForThread: number = 0; // Used to set the selected Flashcard
 
   /**
    * @param http - handles HTTP requests
@@ -142,8 +142,8 @@ export class FlashcardService {
    * Sets the selected Flashcard
    * @param flashcard - the Flashcard to set as selected
    */
-  setSelectedFlashcard(flashcard: Flashcard): void {
-    this.selectedFlashcardForThread = flashcard;
+  setSelectedFlashcard(flashcardId: number): void {
+    this.selectedFlashcardForThread = flashcardId;
   }
 
 }
