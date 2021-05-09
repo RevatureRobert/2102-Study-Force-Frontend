@@ -7,14 +7,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { SharedModule } from 'src/app/global-components/shared.module';
 import { StacktraceRoutingModule } from './stacktrace-routing.module';
-
 import { StacktraceService } from './services/stacktrace.service'
 import { StacktraceHomeComponent } from 'src/app/stacktrace/components/stacktrace-home/stacktrace-home.component';
 import { NewStacktraceComponent } from 'src/app/stacktrace/components/new-stacktrace/new-stacktrace.component';
 import { StacktraceComponent } from 'src/app/stacktrace/components/stacktrace/stacktrace.component';
 import { NewTechnologyComponent } from './components/new-technology/new-technology.component';
 import { SolutionComponent } from './components/solution/solution.component';
-import { SharedModule } from 'src/app/global-components/shared.module';
 import { TechnologyService } from 'src/app/stacktrace/services/technology.service';
 
 
