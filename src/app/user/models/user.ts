@@ -1,11 +1,11 @@
 export interface User {
-    id:number;
-    email:string;
-    name:string;
-    isActive:boolean;
-    isSubscribedFlashcard:boolean;
-    isSubscribedStacktrace:boolean;
-    authority:string;
-    registrationTime:number;
-    lastLogin:number;
+  userId:number;
+  email:string;
+  name:string;
+  active:boolean;
+  subscribedStacktrace:boolean;
+  subscribedFlashcard:boolean;
+  authority:string;
+  registrationTime:Date;
+  lastLogin:Date;
 }

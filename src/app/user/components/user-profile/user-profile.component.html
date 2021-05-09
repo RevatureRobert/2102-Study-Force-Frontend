@@ -1,0 +1,8 @@
+<div>
+  <div *ngIf="isAdmin">
+    <app-user-profile-user-view [user]="user" [batches]="batches" [isMe]="isMe"></app-user-profile-user-view>
+  </div>
+  <div *ngIf="!isAdmin">
+    <app-user-profile-admin-view [user]="user" [batches]="batches"></app-user-profile-admin-view>
+  </div>
+</div>
