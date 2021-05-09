@@ -25,6 +25,10 @@ export class FlashcardGridComponent implements OnInit {
   flashcards: Flashcard[] = [];
   private userId = 1;
 
+  /**
+   * @param flashcardService provides methods for passing Flashcard objects between the front and back end
+   * @param topicService provides methods for passing Topic objects between the front and back end
+   */
   constructor(private flashcardService: FlashcardService, private topicService: TopicService) { }
 
   ngOnInit(): void {
@@ -37,11 +41,17 @@ export class FlashcardGridComponent implements OnInit {
     });
   }
 
+  /**
+   * method to load the previous page of flashcards
+   */
   prevPage(): void {
     if(this.flashcardPage)
       this.loadPage(this.flashcardPage.number - 1);
   }
 
+  /**
+   * method to get all flashcards with pagination
+   */
   getAllFlashcards(): void {
     this.flashcardService.getAll().subscribe(
       (response: FlashcardPageable) => {
@@ -54,11 +64,17 @@ export class FlashcardGridComponent implements OnInit {
     );
   }
 
+  /**
+   * method to load the next page of flashcards
+   */
   nextPage(): void {
     if(this.flashcardPage)
       this.loadPage(this.flashcardPage.number + 1);
   }
 
+  /**
+   * method to set mode to none/default
+   */
   setModeToNone(): void {
     this.mode = Mode.NONE;
     this.modeChoices = []
@@ -66,6 +82,10 @@ export class FlashcardGridComponent implements OnInit {
     this.loadPage(0);
   }
 
+  /**
+   * method to set mode to difficulty
+   * 3 input values that correspond to easy, medium, and hard
+   */
   setModeToDifficulty(): void {
     this.mode = Mode.DIFFICULTY;
     this.modeChoices = [
@@ -77,6 +97,10 @@ export class FlashcardGridComponent implements OnInit {
       this.loadPage(0);
     }
 
+    /**
+     * method to set mode to resolved
+     * 2 input values that correspond to resolved or unresolved
+     */
   setModeToResolved(): void {
     this.mode = Mode.RESOLVED;
     this.modeChoices = [
@@ -86,6 +110,10 @@ export class FlashcardGridComponent implements OnInit {
       this.loadPage(0);
   }
 
+  /**
+     * method to set mode to resolved
+     * 1 input value that corresponds to a topic
+     */
   setModeToTopic(): void {
     this.mode = Mode.TOPIC;
     this.modeChoices = this.topics.map((topic: Topic)=> {
@@ -95,16 +123,27 @@ export class FlashcardGridComponent implements OnInit {
     this.loadPage(0);
   }
 
+  /**
+   * method to set mode to owned
+   */
   setModeToOwned(): void{
     this.mode = Mode.OWNED;
     this.loadPage(0);
   }
 
+  /**
+   * method to set the input that is sent to other methods
+   * @param input parameter of type any that corresponds to the users choice depending on mode
+   */
   setInput(input: any) {
     this.input = input;
     this.loadPage(0);
   }
 
+  /**
+   * method that loads pages to be displayed based on settings
+   * @param page the page number to display
+   */
   loadPage(page: number) {
     switch (this.mode) {
       case Mode.NONE:
@@ -139,11 +178,17 @@ export class FlashcardGridComponent implements OnInit {
 
 }
 
+/**
+ * model for what each mode has, contains input and string output
+ */
 interface DisplayData {
   input: any;
   displayString: string;
 }
 
+/**
+ * all modes available for the user to categorize flashcards by
+ */
 enum Mode {
   NONE = "None",
   TOPIC = "Topic",

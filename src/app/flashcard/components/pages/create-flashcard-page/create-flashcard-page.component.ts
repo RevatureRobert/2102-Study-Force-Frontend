@@ -29,6 +29,13 @@ export class CreateFlashcardPageComponent implements OnInit {
     difficulty: null
   };
 
+  /**
+   * constructor for creating a flashcard
+   * sets subscription
+   * sets topics to all topics
+   * @param flashcardService provides methods for passing Flashcard objects between the frontend and backend
+   * @param topicService provides methods for passing Topic objects between the frontend and backend
+   */
   constructor(private flashcardService: FlashcardService, private topicService: TopicService) {
     this.subscription = new Observable<any>().subscribe();
     this.topicService.getAll().subscribe(res => this.topics = res);
@@ -67,6 +74,9 @@ export class CreateFlashcardPageComponent implements OnInit {
     );
   }
 
+  /**
+   * stops waiting on updates if the flashcard is deleted
+   */
   onDestroy(): void {
     this.subscription.unsubscribe();
   }
