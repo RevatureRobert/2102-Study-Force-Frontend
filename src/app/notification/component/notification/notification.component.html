@@ -11,7 +11,7 @@
       <div ngbDropdownMenu>
         <button (click)="deleteNotification(notification); pageRefresh()" *ngFor="let notification of notifications" ngbDropdownItem><a
           routerLink="notifications">User ID: {{notification.userId}} {{notification.message}} {{notification.featureArea}}</a></button>
-        <button class="btn btn-success btn-block" [routerLink]="['/notifications-page']">All Notifications</button>
+        <button class="btn btn-success btn-block" [routerLink]="['/notification-page']">All Notifications</button>
       </div>
     </div>
     <button *ngIf=" notifications.length === 0" class="btn btn-outline-info text-muted">
