@@ -123,6 +123,9 @@ caption {
 #Search-Bar {
   width: 957px;
   border-radius: 30px;
+  position: relative;
+  transform: translateX(-50%);
+  left: 50%;
 }
 
 #Search-Input {
