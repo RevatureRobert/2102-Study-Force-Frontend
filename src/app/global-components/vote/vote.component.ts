@@ -1,7 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Answer } from 'src/app/flashcard/model/answer';
-import { Vote } from 'src/app/flashcard/model/vote';
-import { textChangeRangeIsUnchanged } from 'typescript';
 import { VoteService } from "../../flashcard/service/vote.service";
 
 @Component({
@@ -18,8 +16,8 @@ export class VoteComponent implements OnInit {
   TEST = "DEFAULT";
   @Input() userId!: number;
 
-  upVoteSource = "../../../assets/up doot unclicked.svg"
-  downVoteSource = "../../../assets/down doot unclicked.svg"
+  upVoteSource = "assets/up doot unclicked.svg"
+  downVoteSource = "vote-assets/down doot unclicked.svg"
   scoreColor = "color: var(--duskwood)"
 
   hasVoted = false;
@@ -65,8 +63,8 @@ export class VoteComponent implements OnInit {
 
   upVote() {
 
-    this.upVoteSource = "../../../assets/selectedupvote.svg";
-    this.scoreColor = "color: var(--blue)";
+    this.upVoteSource = "assets/selectedupvote.png"
+    this.scoreColor = "color: var(--red-orange-juice)";
     this.hasVoted =  true;
     // This will be removed once the userId is correct
     this.answerScore += 1;
@@ -89,8 +87,8 @@ export class VoteComponent implements OnInit {
   }
 
   downVote() {
-    this.upVoteSource = "../../../assets/selectedupvote.svg";
-    this.scoreColor = "color: var(--red-orange-juice)";
+    this.downVoteSource = "assets/selecteddownvote.svg";
+    this.scoreColor = "color: var(--blue)";
     this.hasVoted =  true;
     // This will be removed once the userId is correct
     this.answerScore -= 1;
