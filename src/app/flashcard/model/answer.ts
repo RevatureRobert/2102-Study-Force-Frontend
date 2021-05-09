@@ -1,3 +1,7 @@
+/**
+ * model for flashcard answer
+ * associated with its question by flashcardId
+ */
 export interface Answer {
   answerId: number;
   creatorId: number;

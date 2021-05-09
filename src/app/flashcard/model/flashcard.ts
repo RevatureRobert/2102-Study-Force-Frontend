@@ -1,3 +1,6 @@
+/**
+ * model for flashcard, contains the question
+ */
 export interface Flashcard {
   flashcardId: number;
   creatorId: number;
