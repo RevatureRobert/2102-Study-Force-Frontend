@@ -23,11 +23,11 @@ export class SolutionService{
   stacktraceUrl = environment.apiUrl.concat("/stacktrace");
 
   getAllSolutionsByStacktraceId(stacktraceId: number, page: number, pageSize: number): Promise<Solution[]>{
-    return this.http.get<Solution[]>(`http://${this.stacktraceUrl}/${stacktraceId}/solution?pageSize=${pageSize}&page=${page}`, { headers: this.httpHeaders }).toPromise();
+    return this.http.get<Solution[]>(`${this.stacktraceUrl}/${stacktraceId}/solution?pageSize=${pageSize}&page=${page}`, { headers: this.httpHeaders }).toPromise();
   }
 
   postSolution(solution: Solution): Promise<Solution>{
-    return this.http.post<Solution>(`http://${this.stacktraceUrl}`, solution, {headers: this.httpHeaders}).toPromise();
+    return this.http.post<Solution>(`${this.stacktraceUrl}`, solution, {headers: this.httpHeaders}).toPromise();
   }
 
   addVote(vote: Vote, solution: Solution): Observable<Solution> {
