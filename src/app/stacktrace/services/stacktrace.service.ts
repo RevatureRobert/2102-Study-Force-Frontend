@@ -9,7 +9,7 @@ import { Stacktrace } from '../models/stacktrace';
 })
 export class StacktraceService {
 
-  private stacktraceURL: string = 'http://localhost:8080/stacktrace'
+  stacktraceURL = environment.apiUrl.concat("/stacktrace");
 
   httpHeaders: HttpHeaders = new HttpHeaders({
     "Content-Type": 'application/json'//,
