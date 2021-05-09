@@ -10,15 +10,19 @@
         (click)="this.changeFocus()"
         (focus)="this.setFalse()"
       >
-        Search By
+        Search By: Name
       </button>
       <ul
         class="dropdown-menu"
         aria-labelledby="Dropdown-Button"
         id="Dropdown-List"
       >
-        <li><a class="dropdown-item">Name</a></li>
-        <li><a class="dropdown-item">Email</a></li>
+        <li>
+          <a class="dropdown-item" (click)="changeSearch('Name')">Name</a>
+        </li>
+        <li>
+          <a class="dropdown-item" (click)="changeSearch('Email')">Email</a>
+        </li>
       </ul>
     </div>
     <div class="input-group mb-3" id="Search-Bar">
@@ -133,10 +137,21 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let user of users" (click)="this.userDetails(user.id)">
+          <tr
+            *ngFor="let user of getUserItems()"
+            (click)="this.userDetails(user.id)"
+          >
             <td>{{ user.name }}</td>
             <td>{{ user.email }}</td>
-            <td>{{ user.registrationDate.toLocaleDateString() }}</td>
+            <td>
+              {{
+                user.registrationDate.toLocaleDateString(undefined, {
+                  month: "2-digit",
+                  day: "2-digit",
+                  year: "numeric"
+                })
+              }}
+            </td>
             <td>{{ user.authority }}</td>
             <td>{{ user.activity }}</td>
           </tr>
@@ -149,9 +164,14 @@
           <li class="page-item">
             <a class="page-link" href="#">Previous</a>
           </li>
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li
+            class="page-item"
+            *ngFor="let num of getPagination(); index as i"
+            id="Index"
+          >
+            <a class="page-link" (click)="getUserItems(i)">{{ i + 1 }}</a>
+          </li>
+
           <li class="page-item"><a class="page-link" href="#">Next</a></li>
         </ul>
       </nav>

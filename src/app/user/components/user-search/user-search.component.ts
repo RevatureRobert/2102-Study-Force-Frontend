@@ -53,6 +53,102 @@ export class UserSearchComponent implements OnInit {
       authority: 'Employee',
       activity: 'Active',
     },
+    {
+      id: 4,
+      name: 'agdagdagd',
+      email: 'sam081295@gmail.com',
+      registrationDate: new Date('10-02-2020'),
+      authority: 'Employee',
+      activity: 'Active',
+    },
+    {
+      id: 3,
+      name: 'naspgjbps',
+      email: 'billy@wonderfizz.com',
+      registrationDate: new Date('03-12-2021'),
+      authority: 'Admin',
+      activity: 'Active',
+    },
+    {
+      id: 2,
+      name: 'aogdpoamgpam',
+      email: 'kevin@aol.com',
+      registrationDate: new Date('08-01-2019'),
+      authority: 'Employee',
+      activity: 'De-Activated',
+    },
+    {
+      id: 5,
+      name: 'kagpopemg',
+      email: 'suzie@yahoo.com',
+      registrationDate: new Date('02-28-2018'),
+      authority: 'Employee',
+      activity: 'Active',
+    },
+    {
+      id: 1,
+      name: 'agpjdopagp',
+      email: 'johny@binance.com',
+      registrationDate: new Date('12-14-1995'),
+      authority: 'Employee',
+      activity: 'Active',
+    },
+    {
+      id: 4,
+      name: 'agnoadgnoadn',
+      email: 'sam081295@gmail.com',
+      registrationDate: new Date('10-02-2020'),
+      authority: 'Employee',
+      activity: 'Active',
+    },
+    {
+      id: 3,
+      name: 'Billy Hitchcock',
+      email: 'billy@wonderfizz.com',
+      registrationDate: new Date('03-12-2021'),
+      authority: 'Admin',
+      activity: 'Active',
+    },
+    {
+      id: 2,
+      name: 'Kevin Bobby',
+      email: 'kevin@aol.com',
+      registrationDate: new Date('08-01-2019'),
+      authority: 'Employee',
+      activity: 'De-Activated',
+    },
+    {
+      id: 5,
+      name: 'Suzie Joe',
+      email: 'suzie@yahoo.com',
+      registrationDate: new Date('02-28-2018'),
+      authority: 'Employee',
+      activity: 'Active',
+    },
+    {
+      id: 1,
+      name: 'John William',
+      email: 'johny@binance.com',
+      registrationDate: new Date('12-14-1995'),
+      authority: 'Employee',
+      activity: 'Active',
+    },
+    {
+      id: 1,
+      name: 'John William',
+      email: 'johny@binance.com',
+      registrationDate: new Date('12-14-1995'),
+      authority: 'Employee',
+      activity: 'Active',
+    },
+    {
+      id: 1,
+      name: 'John William',
+      email: 'johny@binance.com',
+      registrationDate: new Date('12-14-1995'),
+      authority: 'Employee',
+      activity: 'Active',
+    },
   ];
 
   //This checks if the dropdown is in focus
@@ -60,8 +156,16 @@ export class UserSearchComponent implements OnInit {
   yesSort: boolean = false;
   sortDirectionDesc: boolean = true;
   sortDirectionAsc: boolean = false;
+  currentIndex: number = 0;
 
   sortBy: string = 'Sort By';
+  searchBy: string = 'Name';
+
+  changeSearch(search: string) {
+    this.searchBy = search;
+    let parent = document.getElementById('Dropdown-Button');
+    parent!.innerText = 'Search By: ' + this.searchBy;
+  }
 
   //If the dropdown button is clicked this will provide functionallity to style the button based on the button click.
   changeFocus() {
@@ -249,5 +353,19 @@ export class UserSearchComponent implements OnInit {
 
   userDetails(userId: number) {
     this.router.navigate(['user-details', userId]);
+  }
+
+  getUserItems(i?: number) {
+    if (i != undefined) {
+      this.currentIndex = i * 5;
+      let parent = document.getElementById('Index');
+      parent!.querySelector('a')!.style.setProperty('background-color', 'blue');
+    }
+    return this.users.slice(this.currentIndex, this.currentIndex + 5);
+  }
+
+  getPagination() {
+    let pagination = new Array<number>(Math.ceil(this.users.length / 5));
+    return pagination;
   }
 }
