@@ -54,6 +54,8 @@ export class VoteComponent implements OnInit {
             this.hasVoted = false;
           } else {
             this.hasVoted = true;
+            res.value>0?this.scoreColor = "color: var(--blue)":this.scoreColor = "color: var(--red-orange-juice)";
+
           }
         });
 
@@ -64,7 +66,7 @@ export class VoteComponent implements OnInit {
   upVote() {
 
     this.upVoteSource = "../../../assets/selectedupvote.svg";
-    this.scoreColor = "color: var(--red-orange-juice)";
+    this.scoreColor = "color: var(--blue)";
     this.hasVoted =  true;
     // This will be removed once the userId is correct
     this.answerScore += 1;
