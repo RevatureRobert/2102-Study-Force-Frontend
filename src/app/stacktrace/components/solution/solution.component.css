@@ -3,7 +3,7 @@
   left: 50%;
   top: 50%;
   width: 1048px !important;
-  min-height: 210px !important;
+  min-height: fit-content;
   transform: translate(-50%, -50%);
   background: linear-gradient(
     111.52deg,
