@@ -1,13 +1,23 @@
-#glass-pane {
-  position: absolute;
-  width: 75%;
-  height: 75%;
+#Container {
+  position: fixed;
+  height: 80%;
+  width: 100%;
   left: 50%;
-  top: 100px;
-  margin-top: 10px;
-  transform: translateX(-50%);
-  box-shadow: 0 8px 15px 0 rgba(31, 38, 135, 0.37);
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 30px;
 
+  overflow: auto;
+}
+#glass-pane {
+  position: relative;
+  width: 75%;
+  min-width: 1450px;
+  min-height: 600px;
+  height: 96%;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 8px 15px 0 rgba(31, 38, 135, 0.7);
   background: rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(100px);
   -webkit-backdrop-filter: blur(100px);
@@ -16,6 +26,7 @@
 #Search-Bar {
   position: relative;
   left: 50%;
+  top: 10px;
   transform: translateX(-50%);
   width: 957px;
   border-radius: 30px;
@@ -51,8 +62,8 @@ th {
 .table-striped > tbody > tr:nth-child(2n + 1) {
   background: linear-gradient(
     90.34deg,
-    rgba(255, 255, 255, 0.81) 0%,
-    rgba(255, 255, 255, 0.72) 100%
+    rgba(255, 255, 255, 0.75) 0%,
+    rgba(255, 255, 255, 0.65) 100%
   );
   mix-blend-mode: normal;
   backdrop-filter: blur(100px);
@@ -61,8 +72,8 @@ th {
 .table-striped > tbody > tr:nth-child(2n) {
   background: linear-gradient(
     90.34deg,
-    rgba(255, 255, 255, 0.56) 0%,
-    rgba(255, 255, 255, 0.42) 100%
+    rgba(255, 255, 255, 0.4) 0%,
+    rgba(255, 255, 255, 0.3) 100%
   );
   mix-blend-mode: normal;
   backdrop-filter: blur(100px);
@@ -72,7 +83,8 @@ table {
   border-radius: 30px;
   overflow: hidden;
   background: none;
-  width: 75%;
+  width: 65%;
+  max-height: 75%;
 
   position: absolute;
   left: 50%;
@@ -80,15 +92,19 @@ table {
   transform: translate(-50%, -50%);
 }
 
-caption {
-  background: #ffffff;
-  opacity: 0.5;
-  box-shadow: 0px -1px 0px #eceeef;
-  border-radius: 0px 0px 30px 30px;
+.table-striped > tbody > tr:hover {
+  background: rgba(0, 0, 255, 0.5);
+  mix-blend-mode: normal;
+  backdrop-filter: blur(100px);
+}
+
+#Nav-Pagination {
+  position: absolute;
 }
 
 #Pagination {
   position: absolute;
+  bottom: 0;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -102,7 +118,6 @@ caption {
     rgba(255, 255, 255, 0.63) 0%,
     rgba(255, 255, 255, 0.35) 99.96%
   );
-  backdrop-filter: blur(50px);
   border: none;
 }
 
@@ -127,4 +142,116 @@ caption {
   margin-left: 5px;
 
   border-radius: 10px;
+}
+
+#Dropdown {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+#Dropdown-Sort {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+#Dropdown-Button {
+  width: 175px;
+  color: rgba(21, 60, 83, 1);
+  background: #ffffff;
+  box-shadow: 0px -1px 0px #eceeef;
+  position: relative;
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: none;
+}
+
+#Order {
+  width: 50px;
+  color: rgba(21, 60, 83, 1);
+  margin-left: 1px;
+  background: #ffffff;
+  box-shadow: 0px -1px 0px #eceeef;
+  position: relative;
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: none;
+}
+
+#Dropdown-Button:not(:focus) {
+  border-radius: 10px !important;
+}
+
+#Dropdown-Button-Sort {
+  width: 175px;
+  color: rgba(21, 60, 83, 1);
+  background: #ffffff;
+  box-shadow: 0px -1px 0px #eceeef;
+  position: relative;
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: none;
+}
+
+#Dropdown-Button-Sort:not(:focus) {
+  border-radius: 10px !important;
+}
+
+#Dropdown-List {
+  position: relative;
+  top: -2px !important;
+  background: none;
+
+  width: 175px;
+  position: relative;
+  box-sizing: border-box;
+  border: none;
+  padding: 0px;
+  box-sizing: border-box;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border: black;
+  box-shadow: 0 8px 15px 0 rgba(31, 38, 135, 0.7);
+}
+
+#Dropdown-List li:nth-child(2n-1) {
+  background: linear-gradient(
+    90.34deg,
+    rgba(255, 255, 255, 0.81) 0%,
+    rgba(255, 255, 255, 0.72) 100%
+  );
+}
+
+#Dropdown-List li:nth-child(2n) {
+  background: linear-gradient(
+    90.34deg,
+    rgba(255, 255, 255, 0.56) 0%,
+    rgba(255, 255, 255, 0.42) 100%
+  );
+}
+
+#Dropdown-List li:last-child {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+#Dropdown:hover li:last-child a {
+  box-sizing: border-box;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+#Dropdown li:hover a {
+  background-color: rgba(0, 0, 0, 0.24) !important;
+}
+
+#Dropdown-Sort li:hover a {
+  background-color: rgba(0, 0, 0, 0.24) !important;
+}
+
+#Dropdown-Sort:hover li:last-child a {
+  box-sizing: border-box;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }

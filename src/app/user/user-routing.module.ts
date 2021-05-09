@@ -19,6 +19,7 @@ const userRoutes: Routes = [
   { path: 'oauth2', component: PostLoginComponent },
   { path: 'addUsers', component: AddUsersEmailComponent },
   { path: 'user-search', component: UserSearchComponent },
+  { path: 'user-details/:id', component: UserSearchComponent },
 ];
 
 @NgModule({
