@@ -26,7 +26,16 @@
     background: white;
   }
   
-  .table-striped > tbody > tr:nth-child(2n + 1) {
+  .my-custom-scrollbar {
+    position: relative;
+    height: 200px;
+    overflow: auto;
+  }
+  .table-wrapper-scroll-y {
+    display: block;
+  }
+  
+  tbody > tr:nth-child(2n + 1) {
     background: linear-gradient(
       90.34deg,
       rgba(255, 255, 255, 0.81) 0%,
@@ -36,7 +45,7 @@
     backdrop-filter: blur(100px);
   }
   
-  .table-striped > tbody > tr:nth-child(2n) {
+  tbody > tr:nth-child(2n) {
     background: linear-gradient(
       90.34deg,
       rgba(255, 255, 255, 0.56) 0%,
@@ -69,6 +78,14 @@
     border: 1px solid #80b366;
     box-sizing: border-box;
     border-radius: 30px;
+  }
+  #Action {
+    padding-right: 55px;
+    text-align: right;
+  }
+  
+  .Remove-Button {
+    float: right;
   }
   .Email-Input {
     position: relative;
