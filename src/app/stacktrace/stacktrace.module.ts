@@ -14,6 +14,7 @@ import { StacktraceComponent } from 'src/app/stacktrace/components/stacktrace/st
 import { NewTechnologyComponent } from './components/new-technology/new-technology.component';
 import { SolutionComponent } from './components/solution/solution.component';
 import { TechnologyService } from 'src/app/stacktrace/services/technology.service';
+import { SolutionVoteComponent } from './components/solution-vote/solution-vote.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { TechnologyService } from 'src/app/stacktrace/services/technology.servic
     NewStacktraceComponent,
     StacktraceHomeComponent,
     NewTechnologyComponent,
-    SolutionComponent
+    SolutionComponent,
+    SolutionVoteComponent
 
   ],
   imports: [
