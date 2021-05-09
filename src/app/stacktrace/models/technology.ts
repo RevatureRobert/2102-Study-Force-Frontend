@@ -1,4 +1,4 @@
-export interface Technology {
+export class Technology {
   technologyId?: number;
-  technologyName: string;
+  technologyName?: string;
 }

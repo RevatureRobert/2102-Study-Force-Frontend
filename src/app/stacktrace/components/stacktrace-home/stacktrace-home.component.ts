@@ -14,77 +14,93 @@ import { Router } from '@angular/router';
   styleUrls: ['./stacktrace-home.component.css']
 })
 export class StacktraceHomeComponent implements OnInit {
-  allStacktraces: Stacktrace[] = [];
-  filteredStacktraces: Stacktrace[] = [];
-  technologies: Technology[] = [];
-  // The string to display on the dropdown menu for selecting a technology to filter by
-  currentTechnologyName: string = "All";
-  // Pagination fields
-  pageSize: number = 10;
-  page: number = 1;
+  stacktraces : Stacktrace[] = [];
+  currentStacktrace?: Stacktrace;
+  currentIndex=-1;
+  title = '';
 
-  constructor(
-    private stacktraceService: StacktraceService,
-    private technologyService: TechnologyService,
-    private router: Router
-    ) { }
+  page = 1;
+  count = 0;
+  pageSize = 3;
+  pageSizes = [3, 6, 9];
+
+
+
+  constructor(private stacktraceService:StacktraceService) { }
 
   ngOnInit(): void {
-    this.getStacktrace();
-    this.getTechnology();
+    this.retrieveStacktraces();
   }
 
-  /**
-   * Contains the logic for filtering which stacktraces to dispaly. This should eventually be done in the backend.
-   * @param technology The Technology to filter the stacktraced by
-   * @param searchParameter The search parameter to filter the stacktraced by, this is typed in a search bar at the top of the componenet
-   */
-  filterStacktraces(technology?: Technology, searchParameter?: string): void {
-    if(technology) {
-      this.currentTechnologyName = technology.technologyName;
-      this.filteredStacktraces = this.allStacktraces.filter((stacktrace: Stacktrace) => {
-        if(stacktrace.technology)
-          return stacktrace.technology!.technologyId == technology.technologyId;
-        else
-          return false;
-      })
-    } else {
-      this.currentTechnologyName = "All";
-      this.filteredStacktraces = this.allStacktraces;
+  getRequestParams(searchTitle: string, page: number, pageSize: number): any {
+    // tslint:disable-next-line:prefer-const
+    let params: any = {};
+
+    if (searchTitle) {
+      params[`title`] = searchTitle;
     }
+
+    if (page) {
+      params[`page`] = page - 1;
+    }
+
+    if (pageSize) {
+      params[`size`] = pageSize;
+    }
+
+    return params;
   }
 
-  /**
-   * retrieve Stacktraces from the backend through stacktrace.service
-   */
-  getStacktrace(): void {
-    this.stacktraceService.getAllStacktrace()
-      .then((data) => {
-        this.allStacktraces = data;
-        // Any Stacktraces without an assigned technology will display their technology as 'Other'
-        this.allStacktraces.forEach((stacktrace: Stacktrace) => {
-          if(!stacktrace.technology){
-            stacktrace.technology = {technologyName: 'Other'};
-          }
-        })
-        this.filterStacktraces();
+  retrieveStacktraces(): void {
+    const params = this.getRequestParams(this.title, this.page, this.pageSize);
+
+    this.stacktraceService.findAll(params)
+    .subscribe(
+      response => {
+        const { stacktraces, totalItems } = response;
+        this.stacktraces = stacktraces;
+        this.stacktraces = response.content;
+        this.count = totalItems;
+        console.log(response);
+      },
+      error => {
+        console.log(error);
       });
   }
 
-  /**
-   * retrieve Technologies from the backend through technology.service
-   */
-  getTechnology(): void {
-    this.technologyService.getAllTechnology()
-      .then((data) => {
-        this.technologies = data;
-      });
+  setActiveStacktrace( stacktrace:Stacktrace, index :number) : void{
+    this.currentStacktrace = stacktrace;
+    this.currentIndex=index;
   }
 
-  /**
-   * function called to route the user to the individual stacktrace after they click it
-   */
-  navigate(stacktrace: Stacktrace): void {
-    this.router.navigate([`/stacktrace/${stacktrace.stacktraceId}`]);
+
+  searchTitle(): void {
+   this.stacktraceService.findByTitle(this.title)
+      .subscribe(
+        data => {
+          this.stacktraces = data;
+          console.log(data);
+        },
+        error => {
+          console.log(error);
+        });
+  }
+
+  handlePageChange(event: number): void {
+    this.page = event;
+    this.retrieveStacktraces();
+  }
+
+  handlePageSizeChange(event: any): void {
+    this.pageSize = event.target.value;
+    this.page = 1;
+    this.retrieveStacktraces();
+  }
+
+
+  refreshList(): void {
+    this.retrieveStacktraces();
+    this.currentStacktrace = undefined;
+    this.currentIndex = -1;
   }
 }

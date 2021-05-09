@@ -1,29 +1,30 @@
-<p>stacktrace works!</p>
-<h2>Get StackTrace</h2>
-<table *ngIf = 'stacktrace != undefined' >
-  <caption>StackTrace Info</caption>
-  <tr>
-    <th scope="col">id</th>
-    <th scope="col">user id</th>
-    <th scope="col">username</th>
-    <th scope="col">title</th>
-    <th scope="col">body</th>
-    <th scope="col">technology id</th>
-    <th scope="col">technology name</th>
-    <th scope="col">creation time</th>
-  </tr>
-  <tr>
-    <td>{{stacktrace.stacktraceId}}</td>
-    <td>{{stacktrace.userId}}</td>
-    <td>{{stacktrace.userName}}</td>
-    <td>{{stacktrace.title}}</td>
-    <td>{{stacktrace.body}}</td>
-    <td>{{stacktrace.technologyId}}</td>
-    <td>{{stacktrace.technologyName}}</td>
-    <td>{{stacktrace.creationTime}}</td>
-  </tr>
-
-  <!-- TODO: change ngif to check if the current user is the owner of the stacktrace -->
-  <!-- TODO: delete stacktrace by actual id, not hardcoded value -->
-  <button mat-raised-button color="warn" (click)='deleteStacktrace(3)' *ngIf='currentUser == undefined'>Delete</button>
-</table>
+<app-base-page>
+  <div class="selected-content">
+   <div class="card" style="width: 18rem" id="Card-Wide">
+    <div *ngIf="currentStacktrace">
+  <div class="card-header" id="Card-Header">Stacktrace</div>
+  <div class="card-body" id="Card-Body">
+   <label><strong>Stacktrace ID:</strong></label> {{ currentStacktrace.stacktraceId }}
+  </div>
+ <div class="card-body" id="Card-Body">
+   <label><strong>Creator ID:</strong></label> {{ currentStacktrace.userName}}
+  </div>
+ <div class="card-body" id="Card-Body">
+<label><strong>Title:</strong></label> {{ currentStacktrace.title }}
+  </div>
+ <div class="card-body" id="Card-Body">
+    <label><strong>Body:</strong></label>
+                  {{ currentStacktrace.body }}
+  </div>
+ <div class="card-body" id="Card-Body">
+  <label><strong>TechnologyId:</strong></label>
+                  {{ currentStacktrace.technologyName }}
+  </div>
+ <div class="card-body" id="Card-Body">
+    <label><strong>Creation Time:</strong></label>
+                  {{ currentStacktrace.creationTime }}
+  </div>
+</div>
+</div>
+</div>
+</app-base-page>
