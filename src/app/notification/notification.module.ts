@@ -1,5 +1,4 @@
 import { SubscribeBellFlashcardComponent } from './component/subscribe-bell-flashcard/subscribe-bell-flashcard.component';
-import { SubscribeBellStacktraceComponent } from './component/subscribe-bell-stacktrace/subscribe-bell-stacktrace.component';
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {NotificationRoutingModule} from './notification-routing.module';
@@ -9,15 +8,14 @@ import {NotificationPageComponent} from './component/notification-page/notificat
 @NgModule({
   declarations: [
     NotificationComponent,
-    NotificationPageComponent
+    NotificationPageComponent,
+    SubscribeBellFlashcardComponent
   ],
   imports: [
-    CommonModule
-  ],
-  declarations: [SubscribeBellFlashcardComponent, SubscribeBellStacktraceComponent]
     CommonModule,
-    NotificationRoutingModule,
-  ]
+    NotificationRoutingModule
+  ],
+    
 })
 export class NotificationModule {
 }

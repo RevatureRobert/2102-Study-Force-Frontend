@@ -22,10 +22,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    NotificationComponent,
-    SubscribeBellFlashcardComponent,
-    SubscribeBellStacktraceComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -40,8 +37,6 @@ import { NgxPaginationModule } from 'ngx-pagination';
     NgxPaginationModule
   ],
   providers: [
-    SubscribeBellFlashcardService,
-    SubscribeBellStacktraceService
   ],
   bootstrap: [AppComponent],
 })

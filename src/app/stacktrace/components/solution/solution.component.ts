@@ -33,24 +33,28 @@ export class SolutionComponent implements OnInit {
 
   constructor(private solutionService: SolutionService, private route: ActivatedRoute, private router: Router, 
     private stacktraceService: StacktraceService) {
-    // let u:User = {
-    //   userId:5,
-    //     email:"jomama@hotmail.gov",
-    //     name:"John Doe",
-    //     active:false,
-    //     subscribedStacktrace:true,
-    //     subscribedFlashcard:true,
-    //     authority:"USER",
-    //     registrationTime:new Date(1620310931740),
-    //     lastLogin:new Date(1620310931740)
-    //   };
-    // //TODO remove this placeholder user in local storage
-    // localStorage.setItem('loggedInUser', JSON.stringify(u));
+    let u:User = {
+      userId:5,
+        email:"jomama@hotmail.gov",
+        name:"John Doe",
+        active:false,
+        subscribedStacktrace:true,
+        subscribedFlashcard:true,
+        authority:"USER",
+        registrationTime:new Date(1620310931740),
+        lastLogin:new Date(1620310931740)
+      };
+    //TODO remove this placeholder user in local storage
+    localStorage.setItem('loggedInUser', JSON.stringify(u));
   }
 
   ngOnInit(): void {
     this.getAllSolutionsByStacktraceId()
     this.LoggedUser = JSON.parse(localStorage.getItem("loggedInUser") || "{}");
+  }
+
+  deleteSolution(solutionId: number): void{
+    this.solutionService.deleteSolution(solutionId).subscribe();
   }
 
   getUserPriviledges(): void {

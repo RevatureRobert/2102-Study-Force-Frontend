@@ -28,8 +28,7 @@ export class StacktraceHomeComponent implements OnInit {
   pageSizes = [5, 10, 20];
   LoggedUser: any;
 
-
-  constructor(private stacktraceService:StacktraceService, private technologyService: TechnologyService) {
+  constructor(private stacktraceService:StacktraceService, private technologyService: TechnologyService, private router: Router) {
     // //TODO remove this placeholder user
     //     let u:User = {
     //       userId:32,
@@ -177,5 +176,9 @@ export class StacktraceHomeComponent implements OnInit {
   //If the dropdown loses focus, set the boolean to false.
   setFalse() {
     this.yes = false;
+  }
+
+  gotoStacktraceList(stacktraceId: number) {
+    this.router.navigate([`/stacktraces/${stacktraceId}`]);
   }
 }

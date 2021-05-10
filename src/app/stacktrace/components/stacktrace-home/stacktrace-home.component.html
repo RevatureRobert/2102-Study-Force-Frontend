@@ -56,7 +56,7 @@
           let i = index
         "
         [class.active]="i == currentIndex"
-        (click)="setActiveStacktrace(stacktrace, i)"
+        (click)="gotoStacktraceList(stacktrace.stacktraceId)"
       >
         <td>{{ stacktrace.title }}</td>
         <td>{{ stacktrace.technologyName }}</td>

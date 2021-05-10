@@ -39,4 +39,7 @@ export class SolutionService{
     return this.http.get<Solution>(`${this.stacktraceUrl}/solution/update-vote/${solution.solutionId}`);
   }
 
+  deleteSolution(solutionId: number): Observable<Solution>{
+    return this.http.delete<Solution>(`${this.stacktraceUrl}/solution/${solutionId}`)
+  }
 }
