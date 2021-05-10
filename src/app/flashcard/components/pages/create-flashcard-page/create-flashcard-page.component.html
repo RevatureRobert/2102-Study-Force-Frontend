@@ -1,4 +1,67 @@
-<app-navbar></app-navbar>
+<app-base-page>
+  <div class="selected-content">
+  <form
+  class="flashcard"
+  name="flashcard"
+  (ngSubmit) = "f.form.valid && onSubmit()"
+  #f = "ngForm">
+
+
+      <div class="form-group">
+          <input
+            name="question"
+            [(ngModel)]="form.question"
+            #question="ngModel"
+            placeholder="Question"
+            type="text"
+            required />
+      </div>
+
+      <div class="form-group">
+        <select
+          name="topic"
+          [(ngModel)]="form.topicId"
+          #topic="ngModel"
+          placeholder="Select topic"
+          type="text"
+          required>
+          <option selected="selected">None</option>
+          <option *ngFor="let topic of topics" value={{topic.id}}>{{topic.topicName}}</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+      <select
+        name="difficulty"
+        [(ngModel)]="form.difficulty"
+        #difficulty="ngModel"
+        placeholder="Select difficulty"
+        type="difficulty"
+        required>
+        <option value="easy" selected="selected">Easy</option>
+        <option value="medium">Medium</option>
+        <option value="hard">Hard</option>
+      </select>
+  </div>
+
+  <div>
+    <button>
+      Submit
+    </button>
+  </div>
+  </form>
+
+  </div>
+  </app-base-page>
+
+
+
+
+
+
+
+
+<!-- <app-navbar></app-navbar>
 <div class="container-fluid ">
   <div class="row"><br><br><br></div>
   <div class="row">
@@ -59,56 +122,58 @@
   <div class="col-3"></div>
   </div>
   <div class="flex-row"></div>
+</div> -->
+
+<!--
+ <div class="selected-content ">
+<form
+class="card card-body"
+name="flashcard"
+(ngSubmit) = "f.form.valid && onSubmit()"
+#f = "ngForm">
+
+
+
+
+
+
+ <div class="form-group">
+   <select
+     name="difficulty"
+     [(ngModel)]="form.difficulty"
+     #difficulty="ngModel"
+     placeholder="Select difficulty"
+     type="difficulty"
+     required>
+     <option value="easy" selected="selected">Easy</option>
+     <option value="medium">Medium</option>
+     <option value="hard">Hard</option>
+   </select>
 </div>
-<!--  <div class="selected-content ">-->
-<!--<form-->
-<!--class="card card-body"-->
-<!--name="flashcard"-->
-<!--(ngSubmit) = "f.form.valid && onSubmit()"-->
-<!--#f = "ngForm">-->
 
 
+ <div class="form-group">
+   <textarea
+     class="input-styling form-control"
+     name="question"
+     [(ngModel)]="form.question"
+     #question="ngModel"
+     placeholder="Question"
+     rows="12"
+     type="text"
+     required >
+   </textarea>
+ </div>
 
 
+<div>
+ <button class="custom-button">
+   Submit
+ </button>
+</div>
+</form>
 
-
-<!--  <div class="form-group">-->
-<!--    <select-->
-<!--      name="difficulty"-->
-<!--      [(ngModel)]="form.difficulty"-->
-<!--      #difficulty="ngModel"-->
-<!--      placeholder="Select difficulty"-->
-<!--      type="difficulty"-->
-<!--      required>-->
-<!--      <option value="easy" selected="selected">Easy</option>-->
-<!--      <option value="medium">Medium</option>-->
-<!--      <option value="hard">Hard</option>-->
-<!--    </select>-->
-<!--</div>-->
-
-
-<!--  <div class="form-group">-->
-<!--    <textarea-->
-<!--      class="input-styling form-control"-->
-<!--      name="question"-->
-<!--      [(ngModel)]="form.question"-->
-<!--      #question="ngModel"-->
-<!--      placeholder="Question"-->
-<!--      rows="12"-->
-<!--      type="text"-->
-<!--      required >-->
-<!--    </textarea>-->
-<!--  </div>-->
-
-
-<!--<div>-->
-<!--  <button class="custom-button">-->
-<!--    Submit-->
-<!--  </button>-->
-<!--</div>-->
-<!--</form>-->
-
-<!--</div>-->
-<!--  <br>-->
-<!--  <br>-->
-<!--  <br> -->
+</div>
+ <br>
+ <br>
+ <br> -->
