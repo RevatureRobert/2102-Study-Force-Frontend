@@ -1,10 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Batch } from '../../models/batch';
-import { NewEmployeeBatch } from '../../models/new-employee-batch';
-import { UserEmail } from '../../models/user-email';
-import { BatchService } from '../../services/batch.service';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -19,19 +15,12 @@ import { UserService } from '../../services/user.service';
  */
 export class AddUsersEmailComponent implements OnInit {
 
-  @Input() batch?:Batch;
   userEmail?: string;
-  newBatch: boolean = false;
   userEmployeeArray: Array<string> = [];
-  batches?: Batch[];
-  selectedBatch?: NewEmployeeBatch;
-  //  For Dropdown menu
-  yes: boolean = false;
 
-  constructor(private userService: UserService, private batchService: BatchService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
-    this.getAllBatches();
   }
 
   /**
@@ -124,62 +113,11 @@ export class AddUsersEmailComponent implements OnInit {
         alert("Please enter in an email first before trying to submit");
       } else {
         this.userService.massCreateUsers(this.userEmployeeArray);
-        // if (this.selectedBatch == undefined) {
-        //   console.log("There was no batch selected")
-        // } else {
-        //   for (let u of this.userEmployeeArray) {
-        //     this.selectedBatch.users.push(u);
-        //   }
-        //   console.log(this.selectedBatch);
-        //   this.batchService.updateBatch(this.selectedBatch);
-        // }
         this.router.navigate(['/addUsers']);
       }
     } catch (Exception) {
       console.log("Something is wrong with your stuff!")
     }
-  }
-
-  changeFocus() {
-    let parent = document.getElementById('Dropdown-Button');
-
-    if (this.yes === false) {
-      this.yes = true;
-      parent!.style.setProperty('border-bottom-right-radius', '0px');
-      parent!.style.setProperty('border-bottom-left-radius', '0px');
-    } else {
-      this.yes = false;
-      parent!.style.setProperty('border-bottom-right-radius', '10px');
-      parent!.style.setProperty('border-bottom-left-radius', '10px');
-    }
-  }
-
-  setFalse() {
-    this.yes = false;
-  }
-
-  /**
-   * Selects a batch by batchId and adds it to all of the users in the userEmployeeArray
-   * @param batchId the id of the batch you want all the users in the table to be assigned to
-   * @param batchName the name of the batch
-   * @param batchUsers the users that are currently in 
-   */
-  onSelectBatch(batchId:number, batchName: string, batchUsers: string[]) {
-    let thisBatch: NewEmployeeBatch = {
-      batchId: batchId,
-      name: batchName,
-      users: batchUsers
-    }
-    this.selectedBatch = thisBatch;
-    return this.selectedBatch;
-
-  }
-
-  /**
-   * To get all of the batches to populate the dropdown with all of the batches
-   */
-  getAllBatches() {
-    this.batchService.getBatches().then(batch => this.batch = batch.content);
   }
 
 }

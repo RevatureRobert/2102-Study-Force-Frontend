@@ -7,7 +7,6 @@ import { BASE_URL_LOGIN_REGISTRATION } from '../../environments/environment';
 import { PostLoginComponent } from './components/login/post-login/post-login.component';
 import { AddUsersEmailComponent } from './components/add-users-email/add-users-email.component';
 import { UserProfileEditComponent } from './components/user-profile/user-profile-edit/user-profile-edit.component';
-import { AddUsersNewBatchComponent } from './components/add-users-new-batch/add-users-new-batch.component';
 
 
 const userRoutes: Routes = [
@@ -23,7 +22,6 @@ const userRoutes: Routes = [
     {path: "oauth2", component: PostLoginComponent},
     {path: "addUsers", component: AddUsersEmailComponent},
     {path: "edit/profile", component: UserProfileEditComponent},
-    {path: "addUsersNewBatch", component: AddUsersNewBatchComponent},
 ];
 
 @NgModule({
