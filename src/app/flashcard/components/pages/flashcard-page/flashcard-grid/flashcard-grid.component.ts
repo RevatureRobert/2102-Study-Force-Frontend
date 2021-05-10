@@ -161,44 +161,24 @@ export class FlashcardGridComponent implements OnInit {
     }
   }
 
-  yes:boolean = false;
+  yes:boolean[] = [false, false];
 
-  changeFocus() {
-    let parent = document.getElementById('Dropdown-Button');
+  changeFocus(dNum: number) {
+    let parent = document.getElementById(`Dropdown-Button${dNum}`);
 
-    if (this.yes === false) {
-      this.yes = true;
+    if (this.yes[dNum] === false) {
+      this.yes[dNum] = true;
       parent!.style.setProperty('border-bottom-right-radius', '0px');
       parent!.style.setProperty('border-bottom-left-radius', '0px');
     } else {
-      this.yes = false;
+      this.yes[dNum] = false;
       parent!.style.setProperty('border-bottom-right-radius', '10px');
       parent!.style.setProperty('border-bottom-left-radius', '10px');
     }
   }
 
-  setFalse() {
-    this.yes = false;
-  }
-
-  yes2:boolean = false;
-
-  changeFocus2() {
-    let parent = document.getElementById('Dropdown-Button2');
-
-    if (this.yes2 === false) {
-      this.yes2 = true;
-      parent!.style.setProperty('border-bottom-right-radius', '0px');
-      parent!.style.setProperty('border-bottom-left-radius', '0px');
-    } else {
-      this.yes2 = false;
-      parent!.style.setProperty('border-bottom-right-radius', '10px');
-      parent!.style.setProperty('border-bottom-left-radius', '10px');
-    }
-  }
-
-  setFalse2() {
-    this.yes2 = false;
+  setFalse(dNum: number) {
+    this.yes[dNum] = false;
   }
 
 }

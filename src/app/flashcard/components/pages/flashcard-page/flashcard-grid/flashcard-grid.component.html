@@ -20,7 +20,7 @@
 
 <div class="filter-box" *ngIf="flashcardPage !== undefined">
   <div ngbDropdown class="filter-element">
-    <button class="Dropdown-Button" id="Dropdown-Button" (click)="this.changeFocus()" (focus)="this.setFalse()" ngbDropdownToggle>{{mode}}</button>
+    <button class="Dropdown-Button" id="Dropdown-Button0" (click)="this.changeFocus(0)" (focus)="this.setFalse(0)" ngbDropdownToggle>{{mode}}</button>
     <div class="Dropdown-List" ngbDropdownMenu aria-labelledby="dropdownBasic1" >
       <button class="filter-input" ngbDropdownItem (click)="setModeToNone()">None</button>
       <button class="filter-input" ngbDropdownItem (click)="setModeToTopic()">Topic</button>
@@ -29,7 +29,7 @@
     </div>
 
   <div ngbDropdown *ngIf="modeChoices.length > 0" class="filter-element">
-    <button class="Dropdown-Button" id="Dropdown-Button2" (click)="this.changeFocus2()" (focus)="this.setFalse2()" ngbDropdownToggle>{{filterDisplay}}</button>
+    <button class="Dropdown-Button" id="Dropdown-Button1" (click)="this.changeFocus(1)" (focus)="this.setFalse(1)" ngbDropdownToggle>{{filterDisplay}}</button>
     <div class="Dropdown-List" ngbDropdownMenu aria-labelledby="dropdownBasic1">
       <button class="filter-input" ngbDropdownItem *ngFor="let mode of modeChoices" (click)="setInput(mode.input)">{{mode.displayString}}</button>
     </div>
