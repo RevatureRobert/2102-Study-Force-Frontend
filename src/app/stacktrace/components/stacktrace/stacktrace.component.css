@@ -1,0 +1,138 @@
+app-search-bar {
+  position: absolute;
+  left: 48%;
+  margin: 20px;
+  transform: translateX(-50%);
+}
+
+#glass-pane {
+  position: relative;
+  width: 75%;
+  height: 75%;
+  left: 50%;
+  top: 100px;
+  transform: translateX(-50%);
+  box-shadow: 0 8px 15px 0 rgba(31, 38, 135, 0.37);
+
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(100px);
+  -webkit-backdrop-filter: blur(100px);
+  border-radius: 30px;
+  padding: 2em;
+}
+
+#Diologue-Card1 {
+  position: absolute;
+  left: 50%;
+  width: 1048px !important;
+  min-height: 210px !important;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    111.52deg,
+    rgba(255, 255, 255, 0.64) 0%,
+    rgba(255, 255, 255, 0.48) 100%
+  );
+  backdrop-filter: blur(100px);
+  border-radius: 30px;
+  border: none;
+}
+
+#Card-Header {
+  height: 62px;
+  background: #ffffff;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+#Card-Header p {
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 21px;
+  color: #153c53;
+}
+
+#Card-Body {
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  min-width: 100%;
+}
+#Card-Wide {
+
+  background: linear-gradient(
+    111.52deg,
+    rgba(255, 255, 255, 0.64) 0%,
+    rgba(255, 255, 255, 0.48) 100%
+  );
+  backdrop-filter: blur(100px);
+  border-radius: 30px;
+  min-width: 100%
+}
+
+#Card-Body {
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+
+#Name {
+  position: absolute;
+  right: 40px;
+  top: 5px;
+  font-weight: 300;
+  font-size: 25px;
+  line-height: 21px;
+  color: #153c53;
+}
+
+#Card-Text {
+  font-weight: 300;
+  margin-left: 75px;
+  margin-right: 75px;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 21px;
+
+  color: #000000;
+}
+
+#Card-Footer {
+  height: 36px;
+  background: #ffffff;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+#Card-Footer svg {
+  position: relative;
+  top: -5px;
+}
+
+#Remove-Button {
+  opacity: 0.75;
+  position: relative;
+  width: 103px;
+  background: #ff0101;
+  border: 1px solid #ff0000;
+  box-sizing: border-box;
+  border-radius: 30px;
+}
+
+app-solution {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 220px;
+}
+
+#some-container{
+  overflow: auto;
+  position: absolute;
+  top: 15%;
+  width: 100%;
+  bottom: 0;
+}
+
+#static-stuff{
+  height: 15%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}

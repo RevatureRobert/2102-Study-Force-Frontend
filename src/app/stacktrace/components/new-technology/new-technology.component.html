@@ -1,0 +1,20 @@
+<app-base-page>
+  <div class="selected-content">
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h3 class="card-title test">Submit a Technology</h3>
+        <form (ngSubmit)="onSubmit()" #technologyForm="ngForm">
+          <div class="form-group">
+            <label for="technologyName">Technology Name</label>
+            <input type="text" [(ngModel)]="technology.technologyName" class="form-control" id="technologyName"
+              name="technologyName" placeholder="Enter a Technology Name" required #technologyName="ngModel">
+          </div>
+          <div [hidden]="!technologyName.pristine" class="alert alert-danger">Technology Name is required</div>
+
+          <button type="submit" [disabled]="!technologyForm.form.valid" class="btn btn-info">Submit</button>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</app-base-page>

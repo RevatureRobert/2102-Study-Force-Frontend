@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { SharedModule } from './global-components/shared.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +17,8 @@ import {SubscribeBellFlashcardService} from './notification/service/subscribe-be
 import {SubscribeBellStacktraceService} from './notification/service/subscribe-bell-stacktrace.service';
 
 
+import { NotificationModule } from './notification/notification.module';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -28,14 +29,15 @@ import {SubscribeBellStacktraceService} from './notification/service/subscribe-b
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
     AppRoutingModule,
+    HttpClientModule,
     FormsModule,
     NgbModule,
-    SharedModule,
     FlashcardModule,
     StacktraceModule,
-    UserModule
+    NotificationModule,
+    UserModule,
+    NgxPaginationModule
   ],
   providers: [
     SubscribeBellFlashcardService,
