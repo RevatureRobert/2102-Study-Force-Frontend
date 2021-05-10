@@ -16,6 +16,7 @@ import { SolutionComponent } from './components/solution/solution.component';
 import { TechnologyService } from 'src/app/stacktrace/services/technology.service';
 import { SolutionVoteComponent } from './components/solution-vote/solution-vote.component';
 import { SubscribeBellStacktraceComponent } from '../notification/component/subscribe-bell-stacktrace/subscribe-bell-stacktrace.component';
+import { StackGuardGuard } from './services/stack-guard.guard';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { SubscribeBellStacktraceComponent } from '../notification/component/subs
   ],
   providers:[
     StacktraceService,
-    TechnologyService
+    TechnologyService,
+    StackGuardGuard
   ]
 })
 export class StacktraceModule { }
