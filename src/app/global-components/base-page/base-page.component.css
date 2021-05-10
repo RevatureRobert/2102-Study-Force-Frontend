@@ -18,5 +18,5 @@ app-search-bar {
   backdrop-filter: blur(100px);
   -webkit-backdrop-filter: blur(100px);
   border-radius: 30px;
-  padding: 2em;
+  padding:2em;
 }

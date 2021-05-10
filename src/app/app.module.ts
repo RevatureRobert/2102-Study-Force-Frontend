@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { SharedModule } from 'src/app/global-components/shared.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -30,11 +31,13 @@ import { NgxPaginationModule } from 'ngx-pagination';
     HttpClientModule,
     FormsModule,
     NgbModule,
+    SharedModule,
     FlashcardModule,
     StacktraceModule,
     NotificationModule,
     UserModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    UserModule
   ],
   providers: [
   ],

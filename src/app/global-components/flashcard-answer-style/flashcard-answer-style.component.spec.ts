@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FlashcardAnswerComponent } from './flashcard-answer.component';
+import { FlashcardAnswerStyleComponent } from './flashcard-answer-style.component';
 
 describe('FlashcardAnswerComponent', () => {
-  let component: FlashcardAnswerComponent;
-  let fixture: ComponentFixture<FlashcardAnswerComponent>;
+  let component: FlashcardAnswerStyleComponent;
+  let fixture: ComponentFixture<FlashcardAnswerStyleComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FlashcardAnswerComponent ]
+      declarations: [ FlashcardAnswerStyleComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FlashcardAnswerComponent);
+    fixture = TestBed.createComponent(FlashcardAnswerStyleComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

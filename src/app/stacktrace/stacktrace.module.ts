@@ -30,6 +30,7 @@ import { StackGuardGuard } from './services/stack-guard.guard';
     SubscribeBellStacktraceComponent
   ],
   imports: [
+    SharedModule,
     BrowserModule,
     HttpClientModule,
     CommonModule,
@@ -40,7 +41,7 @@ import { StackGuardGuard } from './services/stack-guard.guard';
     FormsModule,
     NgxPaginationModule,
     SharedModule
-    
+
   ],
   exports:[
     StacktraceHomeComponent,
