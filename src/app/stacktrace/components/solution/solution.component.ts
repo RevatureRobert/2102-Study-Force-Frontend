@@ -52,7 +52,7 @@ export class SolutionComponent implements OnInit {
         active:false,
         subscribedStacktrace:true,
         subscribedFlashcard:true,
-        authority:"USER",
+        authority:"ADMIN",
         registrationTime:new Date(1620310931740),
         lastLogin:new Date(1620310931740)
       };
