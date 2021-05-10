@@ -27,7 +27,7 @@ export class BatchService {
   /**
    * To get a Batch by an id
    * @param id the id of the batch you want to get
-   * @returns 
+   * @returns
    */
   getBatchById(id: string): Observable<Batch> {
 
@@ -59,7 +59,7 @@ export class BatchService {
   /**
    * To create a new batch
    * @param batch the batch that is being created
-   * @returns 
+   * @returns
    */
   createBatch(batch: NewBatch) {
 
@@ -98,4 +98,11 @@ export class BatchService {
 
 
 
+  /**
+   * Gets all batches with a user or instructor matching provided userId
+   * @param userId The userId by which batches will be retrieved
+   */
+  getBatchesByMemberId(userId:number):Promise<any> {
+    return this.http.get<any>(BASE_API_URL.concat(`/batches/userid/${userId}`)).toPromise();
+  }
 }

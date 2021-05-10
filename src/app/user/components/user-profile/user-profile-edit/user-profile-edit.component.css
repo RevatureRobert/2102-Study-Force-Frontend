@@ -6,7 +6,7 @@
 #glass-pane {
   position: absolute;
   width: 75%;
-  height: 75%;
+  height: 27.5rem;
   left: 50%;
   top: 100px;
   transform: translateX(-50%);
