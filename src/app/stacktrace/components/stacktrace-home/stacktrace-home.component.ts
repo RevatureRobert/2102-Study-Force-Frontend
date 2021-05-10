@@ -15,6 +15,8 @@ import { User } from '../../models/user';
   styleUrls: ['./stacktrace-home.component.css']
 })
 export class StacktraceHomeComponent implements OnInit {
+  stacktracePage: number = 0;
+  totalPages:number = 0;
   stacktraces : Stacktrace[] = [];
   currentStacktrace?: Stacktrace;
   technologyId: number = 1;
@@ -45,7 +47,7 @@ export class StacktraceHomeComponent implements OnInit {
     //     localStorage.setItem('loggedInUser', JSON.stringify(u));
         // console.log(localStorage.getItem("loggedInUser"));
    }
-    
+
   ngOnInit(): void {
     this.retrieveStacktraces();
     this.getAllTechnology();
@@ -110,9 +112,8 @@ export class StacktraceHomeComponent implements OnInit {
     this.stacktraceService.findAll(params)
     .subscribe(
       response => {
-        const { stacktraces, totalItems } = response;
         this.stacktraces = response.content;
-        this.count = totalItems;
+        this.totalPages = response.totalPages;
         console.log(response);
       },
       error => {
@@ -180,5 +181,17 @@ export class StacktraceHomeComponent implements OnInit {
 
   gotoStacktraceList(stacktraceId: number) {
     this.router.navigate([`/stacktraces/${stacktraceId}`]);
+  }
+
+  prevPage(): void{
+    this.stacktraceService.findAllStacktraces(this.stacktracePage-1, 5)
+    .subscribe(data => this.stacktraces = data.content);
+    this.stacktracePage--;
+  }
+
+  nextPage(): void{
+    this.stacktraceService.findAllStacktraces(this.stacktracePage+1, 5)
+    .subscribe(data => this.stacktraces = data.content);
+    this.stacktracePage++;
   }
 }

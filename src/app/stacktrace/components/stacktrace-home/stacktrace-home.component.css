@@ -219,7 +219,16 @@ caption {
   border-bottom-right-radius: 10px;
 }
 
-
+#Back-Button {
+  opacity: 0.75;
+  position: relative;
+  width: 86px;
+  background: #0275d8;
+  border: 1px solid #0275d8;
+  box-sizing: border-box;
+  border-radius: 30px;
+  float: right;
+}
 
 
 

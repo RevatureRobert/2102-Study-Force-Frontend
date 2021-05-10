@@ -35,6 +35,10 @@ export class StacktraceService {
     return this.http.get<any>(this.stacktraceURL, {params});
   }
 
+  public findAllStacktraces(page: number, pageSize: number): Observable<any> {
+    return this.http.get<any>(`${this.stacktraceURL}?pageSize=${pageSize}&page=${page}`, {headers: this.httpHeaders});
+  }
+
   // Backend PUT mapping isn't created yet
   editStacktrace( id:any , data : any): Observable<any> {
     return this.http.put(`${this.stacktraceURL}/${id}`, data);
