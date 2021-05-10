@@ -6,6 +6,9 @@ import { Solution } from '../../models/solution';
 import { SolutionService } from '../../services/solution.service';
 import { User } from '../../models/user';
 
+/**
+ * A component that displays a single Stacktrace in full, with nested solutions below it.
+ */
 @Component({
   selector: 'app-stacktrace',
   templateUrl: './stacktrace.component.html',
@@ -29,6 +32,9 @@ export class StacktraceComponent implements OnInit {
     this.getStacktrace(this.route.snapshot.params.stacktraceId);
   }
 
+  /**
+   * Sets the priveleges of the currently logged in user.
+   */
   getUserPriviledges(): void {
     if( this.LoggedUser.authority === 'ADMIN'){
       this.isAdmin = true;
@@ -40,6 +46,9 @@ export class StacktraceComponent implements OnInit {
     console.log(this.isCreator, this.isAdmin);
   }
 
+  /**
+   * Calls the StactraceService method getStacktrace() to retrieve the data for the stacktrace.
+   */
   getStacktrace(stacktraceId: string): void {
     this.stacktraceService.getStacktrace(stacktraceId)
       .subscribe(
@@ -53,6 +62,9 @@ export class StacktraceComponent implements OnInit {
         });
   }
 
+  /**
+   * Calls the StactraceService method deleteStacktrace()
+   */
   deleteStacktrace(){
     this.stacktraceService.deleteStacktrace(this.route.snapshot.params.stacktraceId).subscribe(result => {
       this.gotoStacktraceList();
