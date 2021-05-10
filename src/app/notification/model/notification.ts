@@ -1,3 +1,7 @@
+/*
+Creating the notification model
+Author: Ronald Lopez
+ */
 export interface Notification {
   id: number;
   body: string;
