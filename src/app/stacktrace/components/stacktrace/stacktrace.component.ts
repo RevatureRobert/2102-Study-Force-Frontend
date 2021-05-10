@@ -1,46 +1,86 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { StacktraceService } from '../../services/stacktrace.service'
 import { Stacktrace } from '../../models/stacktrace'
-import { StacktraceUser } from '../../models/user'
+import { Solution } from '../../models/solution';
+import { SolutionService } from '../../services/solution.service';
+import { User } from '../../models/user';
 
+
+/**
+ * A component that displays a single Stacktrace object in full, with nested solutions below it.
+ */
 @Component({
   selector: 'app-stacktrace',
   templateUrl: './stacktrace.component.html',
   styleUrls: ['./stacktrace.component.css']
 })
-export class StacktraceComponent implements OnInit, OnDestroy {
+export class StacktraceComponent implements OnInit {
+  isAdmin = false;
+  isCreator = false;
+  LoggedUser: any;
 
-  stacktrace?: Stacktrace;
-  currentUser?: StacktraceUser; // TODO: need getUser endpoint to fill this user with the appropriate user
+  currentStacktrace!: Stacktrace;
 
-  constructor(private stacktraceService: StacktraceService) {
-
-  }
+  /**
+   * @param stacktraceService the service for handling stacktrace-related requests
+   * @param route provides the route for getting the current Stacktrace
+   * @param router used for routing to other components
+   */
+  constructor(
+    private stacktraceService: StacktraceService,
+    private route: ActivatedRoute,
+    private router: Router
+    ) { }
 
   ngOnInit(): void {
-
-    // this.stacktraceService.getStacktrace(1)
-    // .subscribe(
-    //   data =>
-    //   {
-    //     this.stacktrace = data;
-    //   }
-    // )
+    this.LoggedUser = JSON.parse(localStorage.getItem("loggedInUser") || "{}");
+    this.getStacktrace(this.route.snapshot.params.stacktraceId);
   }
 
-  //  TODO: unsubscribe
-  ngOnDestroy(): void {
-
+  /**
+   * Accesses the priviledges [sic] of the currently-logged-in user and sets isAdmin and isCreator appropriately.
+   */
+  getUserPriviledges(): void {
+    if( this.LoggedUser.authority === 'ADMIN'){
+      this.isAdmin = true;
+    };
+    console.log(this.currentStacktrace.userId);
+    if(this.LoggedUser.userId === this.currentStacktrace.userId){
+      this.isCreator = true;
+    }
+    console.log(this.isCreator, this.isAdmin);
   }
 
-  deleteStacktrace(id:number): void{
-    this.stacktraceService.deleteStacktrace(id)
+  /**
+   * Retrieves the given Stacktrace object from the backend using the service's getStacktrace() method.
+   */
+  getStacktrace(stacktraceId: string): void {
+    this.stacktraceService.getStacktrace(stacktraceId)
       .subscribe(
-        data =>
-        {
+        data => {
+          this.currentStacktrace = data;
+          console.log(data);
+          this.getUserPriviledges();
+        },
+        error => {
+          console.log(error);
+        });
+  }
 
-        }
-      );
+  /**
+   * Deletes the given Stacktrace object from the backend using the service's deleteStacktrace() method.
+   */
+  deleteStacktrace() {
+    this.stacktraceService.deleteStacktrace(this.route.snapshot.params.stacktraceId).subscribe(result => {
+      this.gotoStacktraceList();
+    });
+  }
+
+  /**
+   * Routes the user back to the list of all stacktraces.
+   */
+  gotoStacktraceList() {
+    this.router.navigate(['/stacktraces']);
   }
 }
