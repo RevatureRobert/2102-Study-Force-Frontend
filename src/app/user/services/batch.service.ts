@@ -7,7 +7,8 @@ import { Observable } from 'rxjs';
 import { BASE_API_URL } from 'src/environments/environment';
 
 /**
- * Provides methods for passing Batch objects to and from the backend.
+ * This service support all the CRUD functions relate to Batch Object
+ * @author Anakin Kung
  */
 
 @Injectable({
@@ -15,11 +16,14 @@ import { BASE_API_URL } from 'src/environments/environment';
 })
 export class BatchService {
 
-  dev:string = 'http://localhost:8080';  // Base dev url to hit endpoint
-  batches:string = 'batches'; // Specfic endpoint to hit batches
-  deactivate:string ='deactivateBatch';
-  update:string ='update';
+  dev:string = 'http://localhost:8080';  // Base dev url to hit endpoint.
+  batches:string = 'batches'; // Specfic endpoint to hit batches.
+  deactivate:string ='deactivateBatch'; // Specific endpoint to hit deactivateBatch.
+  update:string ='update'; // Specific endpoint to hit update.
 
+/**
+ * This Model send only what is needed to create/update a batch, instead of the full Batch Object.
+ */
   body: CreateUpdateBatch = {
     batchId: 0,
     name: "",
@@ -48,10 +52,12 @@ export class BatchService {
   }
 
   /**
-   * PUTs request to the backend.
-   * @param id The ID for the batch to be updated
-   * @param batch The Batch Object that is replacing the current one in the database
-   * @returns Promise Batch Object
+   * This method update a Batch Object with the intended batchId.
+   * @param id id of the batch.
+   * @param name name of the batch.
+   * @param instructorsEmail emails for all the instructors.
+   * @param usersEmail emails for all the users.
+   * @returns a Promise<any>
    */
   updateBatch(id: string, name: string, instructorsEmail:string[], usersEmail:string[]): Promise<any>{
 
@@ -76,6 +82,14 @@ export class BatchService {
     return this.http.put<any>(url,body,requestOptions).toPromise();
   }
 
+  /**
+   *
+   * @param id id of the batch.
+   * @param name name of the batch.
+   * @param instructorsEmail emails for all the instructors.
+   * @param usersEmail emails for all the users.
+   * @returns a Promise<Batch>
+   */
   createBatch(id: string,name: string, instructorsEmail:string[], usersEmail:string[]): Promise<Batch>{
     const headerInfo = {
       'Content-Type': 'application/json',

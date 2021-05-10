@@ -3,6 +3,11 @@ import { ActivatedRoute } from '@angular/router';
 import { User } from '../../models/user';
 import { BatchService } from '../../services/batch.service';
 
+/**
+ * This is the Batch component.
+ * @author Anakin Kung
+ */
+
 @Component({
   selector: 'app-batch',
   templateUrl: './batch.component.html',

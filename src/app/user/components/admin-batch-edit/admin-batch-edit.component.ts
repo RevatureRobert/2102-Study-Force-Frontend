@@ -8,6 +8,10 @@ import { BatchService } from '../../services/batch.service';
 import { NgForm } from '@angular/forms';
 import { Input } from '@angular/core';
 
+/**
+ * This is the Batch Edit component.
+ * @author Anakin Kung
+ */
 
 @Component({
   selector: 'app-admin-batch-edit',
@@ -23,8 +27,8 @@ export class AdminBatchEditComponent implements OnInit {
   loaded:boolean = false;  //To confirm view did load.
   id: string = "";  //ID of the batch to be used for batch service method.
 
-  userCurrentEmail:string = "";
-  instructorCurrentEmail:string = "";
+  userCurrentEmail:string = ""; //This is the place holder for the user email field in the form.
+  instructorCurrentEmail:string = ""; //This is the place holder for the instructor email field in the form.
 
   /**
    *

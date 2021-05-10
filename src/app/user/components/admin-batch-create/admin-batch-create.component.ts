@@ -5,6 +5,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { BatchService } from '../../services/batch.service';
 import { UserService } from '../../services/user.service';
 
+/**
+ * This is the Batch Create component.
+ * @author Anakin Kung
+ */
 
 @Component({
   selector: 'app-admin-batch-create',
@@ -20,13 +24,12 @@ export class AdminBatchCreateComponent implements OnInit {
   loaded:boolean = false;  //To confirm view did load.
   id: string = "";  //ID of the batch to be used for batch service method.
 
-  userCurrentEmail:string = "";
-  instructorCurrentEmail:string = "";
+  userCurrentEmail:string = "";  //This is the place holder for the user email field in the form.
+  instructorCurrentEmail:string = "";  //This is the place holder for the instructor email field in the form.
 
   /**
    *
    * @param batchService The service this component uses.
-   * @param route The route this component use to get path parameter ID.
    * @param userService The service this component uses.
    * @param router The router this componet use to route back to the adminBatchDetails page.
    */
@@ -90,12 +93,6 @@ export class AdminBatchCreateComponent implements OnInit {
     (await this.batchService.createBatch("0",this.name, this.instructors, this.users)).batchId + "";
     console.log(this.id);
   }
-
-  /**
-   * This function delete the batch.
-   */
-
-
 
   /**
    * Validation for email
@@ -180,13 +177,13 @@ onAddInstructor(formEmp2: NgForm) {
 }
 
   /**
-   * Grabs the CSV and puts it into a FileReader and then reads through the CSV and splits them on commas and calls another function and 
+   * Grabs the CSV and puts it into a FileReader and then reads through the CSV and splits them on commas and calls another function and
    * pushes it into an array
    * @param files the CSV file that is uploaded containing all the user emails that will be added to the user Array
    */
     public changeListener(files: FileList){
     if(files && files.length > 0) {
-      let file : File | null = files.item(0); 
+      let file : File | null = files.item(0);
       let reader: FileReader = new FileReader();
       reader.readAsText(file || new Blob());
       reader.onload = (e) => {
@@ -197,7 +194,7 @@ onAddInstructor(formEmp2: NgForm) {
   }
 
   /**
-   * First validates emails that came from CSV and kicks it back if any email is invalid, then creates users with 
+   * First validates emails that came from CSV and kicks it back if any email is invalid, then creates users with
    * emails from csv and pushes them into the userEmployeeArray
    * @param arrayString the array of split strings coming from {@function changeListener()} to be added to array
    */

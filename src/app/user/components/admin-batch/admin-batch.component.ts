@@ -3,6 +3,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../../models/user';
 import { BatchService } from '../../services/batch.service';
 
+
+/**
+ * This is the Admin Batch View component.
+ * @author Anakin Kung
+ */
 @Component({
   selector: 'app-admin-batch',
   templateUrl: './admin-batch.component.html',
@@ -23,12 +28,14 @@ export class AdminBatchComponent implements OnInit {
    *
    * @param batchService The service this component uses.
    * @param route The route this component use to get path parameter ID.
+   * @param router The router this component use to route to a different component.
    */
   constructor(
     private batchService:BatchService,
     private route: ActivatedRoute,
     private router: Router
   ) {
+    // This takes in the id parameter from the path and stores it in this.id field.
     this.route.params.subscribe(params => {
       this.id = params['id'];
 
