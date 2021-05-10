@@ -139,7 +139,7 @@ color: rgba(0, 0, 0, 0.5);
 }
 
 #Card-Footer {
-  height: 36px;
+  height: 40px;
   background: #ffffff;
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
@@ -148,4 +148,19 @@ color: rgba(0, 0, 0, 0.5);
 #Card-Footer svg {
   position: relative;
   top: -5px;
+}
+
+.marked {
+  color: rgb(194, 194, 194);
+}
+
+.mark-button {
+  opacity: 0.75;
+  position: relative;
+  width: 148px;
+  background: #00d600;
+  border: 1px solid #80b366;
+  box-sizing: border-box;
+  border-radius: 30px;
+  color: white;
 }
