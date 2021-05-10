@@ -14,7 +14,7 @@ export class SubscribeBellFlashcardComponent implements OnInit {
   sub:FlashcardSubscriptionDTO;
 
   constructor(private subscribeBell:SubscribeBellFlashcardService) {
-    this.sub = {flashcardId: 2, userId: 25};
+    this.sub = {flashcardId: 34, userId: 2};
    }
 
   ngOnInit(): void {

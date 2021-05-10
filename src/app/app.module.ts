@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './global-components/shared.module';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -16,6 +16,8 @@ import {SubscribeBellStacktraceComponent} from './notification/component/subscri
 import {SubscribeBellFlashcardComponent} from './notification/component/subscribe-bell-flashcard/subscribe-bell-flashcard.component';
 import {SubscribeBellFlashcardService} from './notification/service/subscribe-bell-flashcard.service';
 import {SubscribeBellStacktraceService} from './notification/service/subscribe-bell-stacktrace.service';
+import { ServiceWorkerModule, SwPush, SwUpdate } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 
 
@@ -35,7 +37,14 @@ import {SubscribeBellStacktraceService} from './notification/service/subscribe-b
     SharedModule,
     FlashcardModule,
     StacktraceModule,
-    UserModule
+    UserModule,
+    ServiceWorkerModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   providers: [
     SubscribeBellFlashcardService,
