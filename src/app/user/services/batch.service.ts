@@ -3,10 +3,7 @@ import { CreateUpdateBatch } from './../models/createUpdateBatch';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Observable } from 'rxjs';
-import { Batch } from '../models/batch';
 import { BASE_API_URL } from '../../../environments/environment';
-import { NewBatch } from '../models/new-batch';
-import { NewEmployeeBatch } from '../models/new-employee-batch';
 
 /**
  * This service support all the CRUD functions relate to Batch Object
@@ -23,7 +20,7 @@ import { NewEmployeeBatch } from '../models/new-employee-batch';
  */
 export class BatchService {
 
-  dev:string = 'http://localhost:8080';  // Base dev url to hit endpoint.
+
   batches:string = 'batches'; // Specfic endpoint to hit batches.
   deactivate:string ='deactivateBatch'; // Specific endpoint to hit deactivateBatch.
   update:string ='update'; // Specific endpoint to hit update.
@@ -54,7 +51,7 @@ export class BatchService {
    */
   getBatchById(id: string): Observable<Batch> {
 
-    const url = `${this.dev}/${this.batches}/${id}`;
+    const url = `${BASE_API_URL}/${this.batches}/${id}`;
     return this.http.get<Batch>(url);
   }
 
@@ -84,7 +81,7 @@ export class BatchService {
         users: usersEmail
       }
 
-    const url =`${this.dev}/${this.batches}`
+    const url =`${BASE_API_URL}/${this.batches}`
     console.log(body);
     return this.http.put<any>(url,body,requestOptions).toPromise();
   }
@@ -114,7 +111,7 @@ export class BatchService {
       users: usersEmail
     }
 
-    const url =`${this.dev}/${this.batches}`
+    const url =`${BASE_API_URL}/${this.batches}`
     console.log(body);
     return this.http.post<Batch>(url,body,requestOptions).toPromise();
   }
@@ -126,7 +123,7 @@ export class BatchService {
    */
   deleteBatch(id: string): Promise<any>{
 
-    const url = `${this.dev}/${this.batches}/${id}`;
+    const url = `${BASE_API_URL}/${this.batches}/${id}`;
     return this.http.delete<any>(url).toPromise();
   }
 
@@ -137,7 +134,7 @@ export class BatchService {
    */
   deactivateBatch(id: string): Promise<any>{
 
-    const url = `${this.dev}/${this.batches}/${this.deactivate}/${id}`;
+    const url = `${BASE_API_URL}/${this.batches}/${this.deactivate}/${id}`;
     return this.http.put<any>(url,"").toPromise();
   }
 
