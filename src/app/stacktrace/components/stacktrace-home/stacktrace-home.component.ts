@@ -45,7 +45,7 @@ export class StacktraceHomeComponent implements OnInit {
     //     localStorage.setItem('loggedInUser', JSON.stringify(u));
         // console.log(localStorage.getItem("loggedInUser"));
    }
-
+    
   ngOnInit(): void {
     this.retrieveStacktraces();
     this.getAllTechnology();
