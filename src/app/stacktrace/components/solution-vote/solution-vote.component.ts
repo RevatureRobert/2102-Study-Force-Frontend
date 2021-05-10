@@ -4,13 +4,16 @@ import { User } from '../../models/user';
 import { Vote } from '../../models/vote';
 import { SolutionService } from '../../services/solution.service';
 
+/**
+ * Provides methods for updating and creation solution votes for any given solution.
+ */
 @Component({
   selector: 'app-solution-vote',
   templateUrl: './solution-vote.component.html',
   styleUrls: ['./solution-vote.component.css']
 })
 export class SolutionVoteComponent implements OnInit {
-  LoggedUser: any;
+  LoggedUser: any;//loads in the logged in users values
 
   @Input() solution!: Solution;
   vote: Vote = {
@@ -22,7 +25,10 @@ export class SolutionVoteComponent implements OnInit {
   upVoteSource = "../../../assets/up doot unclicked.svg"
   downVoteSource = "../../../assets/down doot unclicked.svg"
   scoreColor = "color: var(--duskwood)"
-
+  /**
+   * 
+   * @param solutionService used to updated total votes for a solution or create solution votes
+   */
   constructor(private solutionService: SolutionService) {
     // let u:User = {
     //   userId:2,
@@ -44,6 +50,9 @@ export class SolutionVoteComponent implements OnInit {
     this.initializeVote();
   }
 
+  /**
+   * This method is used to load the values to be passed for the creation of a solution vote.
+   */
   initializeVote() {
     this.vote = {
       solutionId: this.solution.solutionId,
@@ -52,6 +61,10 @@ export class SolutionVoteComponent implements OnInit {
     };
   }
 
+  /**
+   * This method is used to give a positive vote for a solution
+   * then update the total vote for the solution.
+   */
   upVote() {
     this.upVoteSource = "../../../assets/selectedupvote.svg"
     this.scoreColor = "color: var(--red-orange-juice)"
@@ -62,6 +75,10 @@ export class SolutionVoteComponent implements OnInit {
     });
   }
 
+  /**
+   * This method is used to give a negative vote for any given soltuion
+   * then update the total solution vote for that given solution.
+   */
   downVote() {
     this.downVoteSource = "../../../assets/selecteddownvote.svg"
     this.scoreColor = "color: var(--wizard-blue)"
