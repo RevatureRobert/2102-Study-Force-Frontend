@@ -1,8 +1,11 @@
-export class User {
-  id!: number;
-  name!: string;
-  email!: string;
-  registrationDate!: Date;
-  authority!: string;
-  activity!: string;
+export interface User {
+  userId: number;
+  email: string;
+  name: string;
+  active: boolean;
+  subscribedStacktrace: boolean;
+  subscribedFlashcard: boolean;
+  authority: string;
+  registrationTime?: Date;
+  lastLogin?: Date;
 }
