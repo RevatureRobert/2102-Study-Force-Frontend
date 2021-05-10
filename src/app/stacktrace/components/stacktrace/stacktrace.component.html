@@ -1,7 +1,11 @@
+<div id="static-stuff">
 <app-navbar></app-navbar>
 <app-search-bar></app-search-bar>
-<div id="glass-pane">
+<button class="btn btn-danger" type="button" id="Remove-Button" (click)="deleteStacktrace()">Delete Stacktrace</button>
+</div>
 
+<div id="some-container">
+<div></div>
   <div *ngIf="currentStacktrace != undefined">
     <div class="card" style="width: 18rem" id="Diologue-Card1">
       <div class="card-header" id="Card-Header">
@@ -22,6 +26,5 @@
       </div>
     </div>
   </div>
-  <button class="btn btn-danger" type="button" id="Remove-Button" (click)="deleteStacktrace()">Delete Stacktrace</button>
   <app-solution></app-solution>
 </div>
