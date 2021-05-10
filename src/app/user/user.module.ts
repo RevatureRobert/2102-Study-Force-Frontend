@@ -14,7 +14,6 @@ import { SharedModule } from '../global-components/shared.module';
 import { UserProfileEditComponent } from './components/user-profile/user-profile-edit/user-profile-edit.component';
 import { BatchComponent } from './components/batch/batch.component';
 import { AdminBatchComponent } from './components/admin-batch/admin-batch.component';
-import { AddUsersNewBatchComponent } from './components/add-users-new-batch/add-users-new-batch.component';
 
 
 @NgModule({
@@ -29,7 +28,6 @@ import { AddUsersNewBatchComponent } from './components/add-users-new-batch/add-
     UserProfileEditComponent,
     BatchComponent,
     AdminBatchComponent,
-    AddUsersNewBatchComponent,
     ],
 
   imports: [

@@ -8,19 +8,6 @@
         </button>
         <input type="file" (change)="changeListener($event.target.files)" />
       </div>
-      <div class="col-4 text-center mt-5">
-        <div class="dropdown" id="Dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="reset" id="Dropdown-Button" data-bs-toggle="dropdown"
-            aria-expanded="false" (click)="this.changeFocus()" (focus)="this.setFalse()">
-            Choose Batch
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="Dropdown-Button" id="Dropdown-List">
-            <div *ngFor='let b of batch'>
-              <li><button class="dropdown-item" id="" (click)="onSelectBatch(b.id)">{{b.name}}</button></li>
-            </div>
-          </ul>
-        </div>
-      </div>
     </div>
     <div class="row">
       <div class="wrapper col-6 mt-5 mx-auto">
@@ -34,7 +21,7 @@
             </thead>
             <tbody>
               <tr *ngFor="let e of userEmployeeArray">
-                <td>{{ e.email }}</td>
+                <td>{{ e }}</td>
                 <td>
                   <button class="btn btn-danger form-control Remove-Button" (click)="onDeleteEmployee(e)">
                     Remove
@@ -45,7 +32,7 @@
             <caption>
               <form (submit)="onAddEmployee(formEmp)" #formEmp="ngForm">
                 <input type="text" class="form-control d-inline Email-Input" name="email" placeholder="Email"
-                  [ngModel]="user?.email" #email="ngModel" id="Email-Input" />
+                  [ngModel]="userEmail" #email="ngModel" id="Email-Input" />
                 <button class="btn btn-primary Add-Button form-control d-inline" type="submit">
                   Add
                 </button>
