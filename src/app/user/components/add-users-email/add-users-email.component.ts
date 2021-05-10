@@ -124,15 +124,15 @@ export class AddUsersEmailComponent implements OnInit {
         alert("Please enter in an email first before trying to submit");
       } else {
         this.userService.massCreateUsers(this.userEmployeeArray);
-        if (this.selectedBatch == undefined) {
-          console.log("There was no batch selected")
-        } else {
-          for (let u of this.userEmployeeArray) {
-            this.selectedBatch.users.push(u);
-          }
-          console.log(this.selectedBatch);
-          this.batchService.updateBatch(this.selectedBatch);
-        }
+        // if (this.selectedBatch == undefined) {
+        //   console.log("There was no batch selected")
+        // } else {
+        //   for (let u of this.userEmployeeArray) {
+        //     this.selectedBatch.users.push(u);
+        //   }
+        //   console.log(this.selectedBatch);
+        //   this.batchService.updateBatch(this.selectedBatch);
+        // }
         this.router.navigate(['/addUsers']);
       }
     } catch (Exception) {

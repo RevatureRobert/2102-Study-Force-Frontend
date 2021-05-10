@@ -138,8 +138,7 @@ export class AddUsersNewBatchComponent implements OnInit {
       }
     }
     for (let i of arrayString) {
-      let newUser = new UserEmail();
-      newUser.email = i;
+      let newUser = i;
       this.userEmployeeArray.push(newUser);
     }
   }
@@ -147,7 +146,7 @@ export class AddUsersNewBatchComponent implements OnInit {
    * Submits all of the information to create a new batch, There are also checks if the employeeArray or instructorArray is empty or not
    * @param batchName this is the name of the batch that is being created
    */
-  submitAll(batchName: string) {
+  async submitAll(batchName: string) {
     try {
       let batch: NewBatch = {
         batchId: 0,
@@ -159,16 +158,16 @@ export class AddUsersNewBatchComponent implements OnInit {
         this.batchService.createBatch(batch);
         return;
       } else if (this.userInstructorArray.length == 0) {
-        this.userService.massCreateUsers(this.userEmployeeArray);
+        await this.userService.massCreateUsers(this.userEmployeeArray);
         this.batchService.createBatch(batch);
         return;
       } else if (this.userEmployeeArray.length == 0) {
-        this.userService.massCreateUsers(this.userInstructorArray);
+        await this.userService.massCreateUsers(this.userInstructorArray);
         this.batchService.createBatch(batch);
         return;
       } else {
-        this.userService.massCreateUsers(this.userEmployeeArray);
-        this.userService.massCreateUsers(this.userInstructorArray);
+        await this.userService.massCreateUsers(this.userEmployeeArray);
+        await this.userService.massCreateUsers(this.userInstructorArray);
         this.batchService.createBatch(batch);
         return;
       }
