@@ -7,20 +7,16 @@ import { Stacktrace } from '../models/stacktrace';
 /**
  * Provides methods for passing Stacktrace objects to and from the backend.
  */
-
 @Injectable({
   providedIn: 'root'
 })
 export class StacktraceService {
 
-
   // Set the headers
-
   httpHeaders: HttpHeaders = new HttpHeaders({
     "Content-Type": 'application/json'//,
     //"Authorization": 'Bearer '.concat(localStorage.getItem('swagjwt'))
   });
-
 
   // Appended the service endpoint to the base url
   apiServerUrl = environment.apiUrl.concat("/stacktrace");
@@ -66,5 +62,4 @@ export class StacktraceService {
   deleteStacktrace(id:number):Observable<Stacktrace> {
     return this.http.delete<Stacktrace>(`${this.apiServerUrl}/${id}`, { headers: this.httpHeaders });
   }
-
 }

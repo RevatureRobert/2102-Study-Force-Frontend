@@ -4,11 +4,16 @@ import {Notification} from '../model/notification';
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class NotificationService {
 
+  notifications!: Notification[];
+  private headerInfo = {
+    'Content-Type': 'application/json'
+  };
   private baseUrl = 'http://localhost:8080/notifications';
 
   constructor(private httpClient: HttpClient) {
@@ -41,5 +46,4 @@ Gets all notifications endpoint from the backend based on user id
   deleteAllNotificationsByUserId(id: number): Observable<any> {
     return this.httpClient.delete(`${(this.baseUrl)}/users/${id}`);
   }
-
 }

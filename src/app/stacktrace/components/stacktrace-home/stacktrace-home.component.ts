@@ -14,7 +14,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./stacktrace-home.component.css']
 })
 export class StacktraceHomeComponent implements OnInit {
-
   allStacktraces: Stacktrace[] = [];
   filteredStacktraces: Stacktrace[] = [];
   technologies: Technology[] = [];
@@ -87,6 +86,5 @@ export class StacktraceHomeComponent implements OnInit {
    */
   navigate(stacktrace: Stacktrace): void {
     this.router.navigate([`/stacktrace/${stacktrace.stacktraceId}`]);
-
   }
 }
