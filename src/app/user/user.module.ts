@@ -4,7 +4,7 @@ import { LoginComponent } from './components/login/login.component';
 import { UserRoutingModule } from './user-routing.module';
 import { RedirectGuardService } from './services/redirect-guard.service';
 import { PostLoginComponent } from './components/login/post-login/post-login.component';
-import { SharedModule } from '../global-components/shared.module';
+import { SharedModule } from '../shared.module';
 
 @NgModule({
   declarations: [
