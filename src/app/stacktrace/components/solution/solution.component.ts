@@ -11,6 +11,7 @@ import { StacktraceService } from '../../services/stacktrace.service';
   styleUrls: ['./solution.component.css']
 })
 export class SolutionComponent implements OnInit {
+  isAdmin = false;
 
   LoggedUser: any;
   solutions?: Solution[];
@@ -50,6 +51,12 @@ export class SolutionComponent implements OnInit {
   ngOnInit(): void {
     this.getAllSolutionsByStacktraceId()
     this.LoggedUser = JSON.parse(localStorage.getItem("loggedInUser") || "{}");
+  }
+
+  getUserPriviledges(): void {
+    if( this.LoggedUser.authority === 'ADMIN'){
+      this.isAdmin = true;
+    };
   }
 
   /**

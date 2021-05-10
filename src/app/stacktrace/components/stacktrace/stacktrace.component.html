@@ -1,7 +1,6 @@
 <div id="static-stuff">
 <app-navbar></app-navbar>
 <app-search-bar></app-search-bar>
-<button class="btn btn-danger" type="button" id="Remove-Button" (click)="deleteStacktrace()">Delete Stacktrace</button>
 </div>
 
 <div id="some-container">
@@ -17,7 +16,7 @@
       </div>
       <div class="card-footer" id="Card-Footer">
         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-trash"
-          viewBox="0 0 16 16">
+          viewBox="0 0 16 16" (click)="deleteStacktrace()" *ngIf="isAdmin || isCreator">
           <path
             d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
           <path fill-rule="evenodd"
