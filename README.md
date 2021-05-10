@@ -11,10 +11,6 @@ The frontend for the Batch 2102 capstone project, Study Force.
 * AWS CodePipeline
 * AWS API Gateway
 * AWS Cognito
-* Spring Data
-* Spring Boot
-* Spring Test
-* Spring MVC
 * Angular 10
 * Karma
 * Jasmine
@@ -25,13 +21,7 @@ The frontend for the Batch 2102 capstone project, Study Force.
 * REST
 * PostgreSQL
 * Sonarcloud
-* JUnit
-* MockMVC
-* Maven
-* Spring Framework
-* Swagger
 * Git
-* Java
 * TypeScript
 * Bootstrap
 
