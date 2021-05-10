@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Solution } from '../../models/solution';
+import { Stacktrace } from '../../models/stacktrace';
 import { User } from '../../models/user';
 import { SolutionService } from '../../services/solution.service';
 import { StacktraceService } from '../../services/stacktrace.service';
@@ -12,6 +13,8 @@ import { StacktraceService } from '../../services/stacktrace.service';
 })
 export class SolutionComponent implements OnInit {
   isAdmin = false;
+  isCreator = false;
+  stacktrace?: Stacktrace;
 
   LoggedUser: any;
   solutions?: Solution[];
@@ -34,7 +37,7 @@ export class SolutionComponent implements OnInit {
   constructor(private solutionService: SolutionService, private route: ActivatedRoute, private router: Router, 
     private stacktraceService: StacktraceService) {
     let u:User = {
-      userId:5,
+      userId:1,
         email:"jomama@hotmail.gov",
         name:"John Doe",
         active:false,
@@ -51,16 +54,29 @@ export class SolutionComponent implements OnInit {
   ngOnInit(): void {
     this.getAllSolutionsByStacktraceId()
     this.LoggedUser = JSON.parse(localStorage.getItem("loggedInUser") || "{}");
+    this.getStacktrace();
   }
 
   deleteSolution(solutionId: number): void{
-    this.solutionService.deleteSolution(solutionId).subscribe();
+    this.solutionService.deleteSolution(solutionId).subscribe(data =>{
+      window.location.reload();
+    });
+  }
+
+  getStacktrace(){
+    this.stacktraceService.getStacktrace(this.route.snapshot.params.stacktraceId).subscribe(data=>{
+      this.stacktrace = data;
+      this.getUserPriviledges();
+    });
   }
 
   getUserPriviledges(): void {
     if( this.LoggedUser.authority === 'ADMIN'){
       this.isAdmin = true;
     };
+    if(this.LoggedUser.userId === this.stacktrace?.userId){
+      this.isCreator = true;
+    }
   }
 
   /**
@@ -79,7 +95,6 @@ export class SolutionComponent implements OnInit {
     this.solutionService.getAllSolutionsByStacktraceId(this.route.snapshot.params.stacktraceId, this.page, this.pageSize)
         .then((result: any) => {
           this.solutions = result.content;
-
         });
   }
 
