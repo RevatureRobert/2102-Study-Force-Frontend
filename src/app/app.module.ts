@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { SharedModule } from './global-components/shared.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +9,14 @@ import { FlashcardModule } from './flashcard/flashcard.module';
 import { FormsModule } from '@angular/forms';
 import { StacktraceModule } from './stacktrace/stacktrace.module';
 import { UserModule } from './user/user.module';
+import {NotificationService} from './notification/service/notification.service';
+import {NotificationComponent} from './notification/component/notification/notification.component';
+import {SubscribeBellStacktraceComponent} from './notification/component/subscribe-bell-stacktrace/subscribe-bell-stacktrace.component'
+import {SubscribeBellFlashcardComponent} from './notification/component/subscribe-bell-flashcard/subscribe-bell-flashcard.component';
+import {SubscribeBellFlashcardService} from './notification/service/subscribe-bell-flashcard.service';
+import {SubscribeBellStacktraceService} from './notification/service/subscribe-bell-stacktrace.service';
+
+
 import { NotificationModule } from './notification/notification.module';
 import { NgxPaginationModule } from 'ngx-pagination';
 
@@ -23,14 +30,14 @@ import { NgxPaginationModule } from 'ngx-pagination';
     HttpClientModule,
     FormsModule,
     NgbModule,
-    SharedModule,
     FlashcardModule,
     StacktraceModule,
     NotificationModule,
     UserModule,
     NgxPaginationModule
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

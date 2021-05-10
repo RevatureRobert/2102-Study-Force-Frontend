@@ -1,9 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Notification} from '../../model/notification';
 import {NotificationService} from '../../service/notification.service';
-import { User } from '../../../user/User';
 import {ActivatedRoute} from '@angular/router';
-
 
 @Component({
   selector: 'app-notification',
@@ -20,24 +17,5 @@ export class NotificationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe();
-    this.getAllNotificationsInNavbar();
   }
-
-  getAllNotificationsInNavbar(): void {
-    this.notificationService.getAllNotificationsInNavbar().subscribe(
-      (response: any) => {
-        this.notifications = response.content;
-      });
-  }
-
-  // tslint:disable-next-line:typedef
-  deleteNotification(notification: Notification) {
-    this.notificationService.deleteByNotificationId(notification.id).subscribe();
-  }
-
-  pageRefresh(): void {
-    window.location.reload();
-  }
-
 }
