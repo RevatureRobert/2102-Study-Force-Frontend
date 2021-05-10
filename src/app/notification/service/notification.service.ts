@@ -3,6 +3,7 @@ import {Injectable} from '@angular/core';
 import {Notification} from '../model/notification';
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
+import {NotificationPage} from "../model/notification.page";
 
 
 @Injectable({
@@ -12,7 +13,8 @@ export class NotificationService {
 
   notifications!: Notification[];
   private headerInfo = {
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    Accept: 'application/json',
   };
   private baseUrl = 'http://localhost:8080/notifications';
 
@@ -23,14 +25,14 @@ export class NotificationService {
 Gets all notifications endpoint from the backend based on user id
  */
   getAllNotificationsInNavbar(): Observable<any> {
-    return this.httpClient.get(`${(this.baseUrl)}/users/${2}`);
+    return this.httpClient.get(`${(this.baseUrl)}/users/${1}`);
   }
 
   /*
   Gets all notifications endpoint from the backend based on user id
    */
   getAllNotificationsInPage(): Observable<any> {
-    return this.httpClient.get(`${(this.baseUrl)}/${2}`);
+    return this.httpClient.get(`${(this.baseUrl)}/users/${1}`);
   }
 
   /*
