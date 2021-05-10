@@ -4,6 +4,7 @@ import { BasePageComponent } from "./global-components/base-page/base-page.compo
 import { NavbarComponent } from "./global-components/navbar/navbar.component";
 import { SearchBarComponent } from './global-components/search-bar/search-bar.component';
 import { VoteComponent } from './global-components/vote/vote.component';
+import {FormsModule} from '@angular/forms';
 
 
 
@@ -14,9 +15,10 @@ import { VoteComponent } from './global-components/vote/vote.component';
     SearchBarComponent,
     VoteComponent,
   ],
-  imports: [
-    CommonModule
-  ],
+    imports: [
+        CommonModule,
+        FormsModule
+    ],
   exports: [
     BasePageComponent,
     NavbarComponent,
