@@ -1,8 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Batch } from '../../models/batch';
-import { UserEmail } from '../../models/user-email';
-import { BatchService } from '../../services/batch.service';
+import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -17,22 +15,12 @@ import { UserService } from '../../services/user.service';
  */
 export class AddUsersEmailComponent implements OnInit {
 
-  @Input() batch?:Batch;
-  user:UserEmail = {
-    email: "",
-    batchId: undefined
-  }
-  newBatch: boolean = false;
-  userEmployeeArray: Array<UserEmail> = [];
-  batches?: Batch[];
-  selectedBatch?: Batch;
-  //  For Dropdown menu
-  yes: boolean = false;
+  userEmail?: string;
+  userEmployeeArray: Array<string> = [];
 
-  constructor(private userService: UserService, private batchService: BatchService) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
-    this.getAllBatches();
   }
 
   /**
@@ -60,9 +48,7 @@ export class AddUsersEmailComponent implements OnInit {
         alert("Please check emails and try and submit again");
         return;
     }
-    const user = this.user = {
-      email: formEmp.value.email
-    }
+    const user = this.userEmail = formEmp.value.email;
     this.userEmployeeArray.push(user)
 
     return this.userEmployeeArray;
@@ -72,10 +58,10 @@ export class AddUsersEmailComponent implements OnInit {
    * Removing a specific user from the Array of displayed users table
    * @param user the user that will be removed from the array
    */
-  onDeleteEmployee(user: UserEmail) {
+  onDeleteEmployee(user: string) {
     let i = 0;
     for (let u of this.userEmployeeArray) {
-      if (u.email == user.email) {
+      if (u == user) {
         this.userEmployeeArray.splice(i, 1);
       }
       i++;
@@ -113,8 +99,7 @@ export class AddUsersEmailComponent implements OnInit {
       }
     }
     for (let i of arrayString) {
-      let newUser = new UserEmail();
-      newUser.email = i;
+      let newUser = i;
       this.userEmployeeArray.push(newUser);
     }
   }
@@ -124,50 +109,15 @@ export class AddUsersEmailComponent implements OnInit {
    */
   submitAll() {
     try {
-      console.log(this.selectedBatch);
-      this.userService.massCreateUsers(this.userEmployeeArray);
+      if (this.userEmployeeArray.length == 0) {
+        alert("Please enter in an email first before trying to submit");
+      } else {
+        this.userService.massCreateUsers(this.userEmployeeArray);
+        this.router.navigate(['/addUsers']);
+      }
     } catch (Exception) {
       console.log("Something is wrong with your stuff!")
     }
-  }
-
-  changeFocus() {
-    let parent = document.getElementById('Dropdown-Button');
-
-    if (this.yes === false) {
-      this.yes = true;
-      parent!.style.setProperty('border-bottom-right-radius', '0px');
-      parent!.style.setProperty('border-bottom-left-radius', '0px');
-    } else {
-      this.yes = false;
-      parent!.style.setProperty('border-bottom-right-radius', '10px');
-      parent!.style.setProperty('border-bottom-left-radius', '10px');
-    }
-  }
-
-  setFalse() {
-    this.yes = false;
-  }
-
-  /**
-   * Selects a batch by batchId and adds it to all of the users in the userEmployeeArray
-   * @param batchId the id of the batch you want all the users in the table to be assigned to
-   */
-  onSelectBatch(batchId:number) {
-    for (let u of this.userEmployeeArray) {
-      if(this.newBatch) {
-        u.batchId = 0;
-      } else {
-        u.batchId = batchId;
-      }
-    }
-  }
-
-  /**
-   * To get all of the batches to populate the dropdown with all of the batches
-   */
-  getAllBatches() {
-    this.batchService.getBatches().then(batch => this.batch = batch.content);
   }
 
 }

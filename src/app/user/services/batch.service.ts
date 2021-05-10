@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Batch } from '../models/batch';
 import { BASE_API_URL } from '../../../environments/environment';
 import { NewBatch } from '../models/new-batch';
+import { NewEmployeeBatch } from '../models/new-employee-batch';
 
 
 
@@ -74,6 +75,28 @@ export class BatchService {
 
     return this.http.post<any>(BASE_API_URL.concat("/batches"), batch, requestOptions).toPromise();
   }
+
+    /**
+   * To create a new batch
+   * @param batch the batch that is being created
+   * @returns 
+   */
+    updateBatch(batch: NewEmployeeBatch) {
+
+      const headerInfo = {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': 'Bearer '.concat(localStorage.getItem('access_token') || "")
+      }
+  
+      const requestOptions = {
+        headers: new HttpHeaders(headerInfo)
+      };
+      
+      return this.http.put<any>(BASE_API_URL.concat("/batches"), batch, requestOptions).toPromise();
+    }
+
+
 
   /**
    * Gets all batches with a user or instructor matching provided userId

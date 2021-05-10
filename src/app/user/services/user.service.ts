@@ -59,7 +59,7 @@ export class UserService {
    * To create many users at one time
    * @param userArray an array of Users that will be created
    */
-  massCreateUsers(userArray: UserEmail[]) {
+  massCreateUsers(userArray: string[]) {
 
     const headerInfo = {
       'Content-Type': 'application/json',
@@ -71,8 +71,8 @@ export class UserService {
       headers: new HttpHeaders(headerInfo)
     };
 
-    let createUsers = this.http.post<any>(BASE_API_URL.concat(`/users/bulk`), userArray, requestOptions);
-    createUsers.subscribe();
+    return this.http.post<any>(BASE_API_URL.concat(`/users/bulk`), userArray, requestOptions).toPromise();
+
 
   }
 
@@ -92,8 +92,8 @@ export class UserService {
       headers: new HttpHeaders(headerInfo)
     };
 
-    let createUsers = this.http.post<any>(BASE_API_URL.concat(`/user/create`), user, requestOptions);
-    createUsers.subscribe();
+    return this.http.post<any>(BASE_API_URL.concat(`/user/create`), user, requestOptions).toPromise();
+
   }
 
   /**
