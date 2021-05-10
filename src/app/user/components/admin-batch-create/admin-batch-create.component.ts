@@ -102,7 +102,7 @@ export class AdminBatchCreateComponent implements OnInit {
    * @param email The email that is being checked against the regex
    */
 
-   isEmail(email:string):boolean {
+  isEmail(email:string):boolean {
     let  isEmailVaild:boolean;
 
     let regexp = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
@@ -118,7 +118,7 @@ export class AdminBatchCreateComponent implements OnInit {
  * @param formEmp This is where the method takes in the email from the user input
  * @returns
  */
- onAddUser(formEmp: NgForm) {
+onAddUser(formEmp: NgForm) {
   let checkedEmail = formEmp.value.email;
 
   if (!this.isEmail(checkedEmail)) {
@@ -178,5 +178,40 @@ onAddInstructor(formEmp2: NgForm) {
 
   return this.instructors;
 }
+
+  /**
+   * Grabs the CSV and puts it into a FileReader and then reads through the CSV and splits them on commas and calls another function and 
+   * pushes it into an array
+   * @param files the CSV file that is uploaded containing all the user emails that will be added to the user Array
+   */
+    public changeListener(files: FileList){
+    if(files && files.length > 0) {
+      let file : File | null = files.item(0); 
+      let reader: FileReader = new FileReader();
+      reader.readAsText(file || new Blob());
+      reader.onload = (e) => {
+        let csv: string = reader.result as string;
+        this.addInformationIntoArray(csv.split(",\r\n"));
+        }
+      }
+  }
+
+  /**
+   * First validates emails that came from CSV and kicks it back if any email is invalid, then creates users with 
+   * emails from csv and pushes them into the userEmployeeArray
+   * @param arrayString the array of split strings coming from {@function changeListener()} to be added to array
+   */
+  addInformationIntoArray(arrayString: Array<string>) {
+    for (let i of arrayString) {
+      if (!this.isEmail(i)) {
+        alert("There is an invalid email in CSV, please check CSV and resubmit")
+        return;
+      }
+    }
+    for (let i of arrayString) {
+      let newUser = i;
+      this.users.push(newUser);
+    }
+  }
 
 }

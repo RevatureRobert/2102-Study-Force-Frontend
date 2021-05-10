@@ -37,7 +37,7 @@
           <button class="btn btn-primary" id="Upload-CSV-Button">
               Upload CSV
           </button>
-          <input type="file"  />
+          <input type="file" (change)="changeListener($event.target.files)" />
       </div>
 
   </div>
