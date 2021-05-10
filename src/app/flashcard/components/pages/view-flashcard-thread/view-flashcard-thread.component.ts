@@ -4,6 +4,8 @@ import { Answer } from 'src/app/flashcard/model/answer';
 import { Flashcard } from 'src/app/flashcard/model/flashcard';
 import { AnswerService } from 'src/app/flashcard/service/answer.service';
 import { FlashcardService } from 'src/app/flashcard/service/flashcard.service';
+import {Subscription} from 'rxjs';
+import {SearchContentService} from '../../../../global-components/search-content.service';
 
 
 
@@ -19,9 +21,15 @@ export class ViewFlashcardThreadComponent implements OnInit {
 
   public answers!: Answer[];
 
-  constructor(private flashcardService: FlashcardService, private answerService: AnswerService) {
+  searchText?: string;
+  subscription!: Subscription;
+
+  constructor(private flashcardService: FlashcardService,
+              private answerService: AnswerService,
+              private searchBar: SearchContentService) {
 
   }
+
 
 
 
@@ -31,6 +39,10 @@ export class ViewFlashcardThreadComponent implements OnInit {
     this.getSelectedFlashcard();
     this.getAllAnswers();
 
+    this.subscription = this.searchBar.currentMessage.subscribe(message => {
+      this.searchText = message;
+      this.searchAnswers(this.searchText);
+    });
   }
 
   getSelectedFlashcard(): void {
@@ -45,7 +57,7 @@ export class ViewFlashcardThreadComponent implements OnInit {
   }
 
   getAllAnswers(): void {
-    this.flashcardService.getAnswers(this.flashcardId).subscribe(
+    this.flashcardService.getAnswers(this.flashcardId).then(
       (response: any) => {
         console.log(response.entries);
         this.answers = response.content;
@@ -56,7 +68,23 @@ export class ViewFlashcardThreadComponent implements OnInit {
     );
   }
 
-  setAnswerAsSelected(event: Event, answerId: number) {
+
+  searchAnswers(key: string): void {
+      console.log(key);
+      let results: Answer[] = [];
+      for (const answer of this.answers) {
+        if (answer.answerText.toLowerCase().indexOf(key.toLowerCase()) !== -1) {
+          results.push(answer);
+        }
+      }
+      this.answers = results;
+      if (results.length === 0 || !key) {
+        this.getAllAnswers();
+      }
+  }
+
+
+  setAnswerAsSelected(event: Event, answerId: number): void {
     event.stopPropagation();
     this.answerService.setAnswerAsSelected(answerId).subscribe({
       next: result => {
@@ -67,10 +95,10 @@ export class ViewFlashcardThreadComponent implements OnInit {
           return answer;
         });
       }
-    })
+    });
   }
 
-  vote(event: Event) {
+  vote(event: Event): void {
     event.stopPropagation();
   }
 
