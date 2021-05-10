@@ -16,7 +16,7 @@
           </button>
           <ul class="dropdown-menu" aria-labelledby="Dropdown-Button" id="Dropdown-List">
             <div *ngFor='let b of batch'>
-              <li><button class="dropdown-item" id="" (click)="onSelectBatch(b.id)">{{b.name}}</button></li>
+              <li><button class="dropdown-item" id="" (click)="onSelectBatch(b.batchId, b.name, b.users)">{{b.name}}</button></li>
             </div>
           </ul>
         </div>

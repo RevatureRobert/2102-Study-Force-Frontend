@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Batch } from '../../models/batch';
+import { NewEmployeeBatch } from '../../models/new-employee-batch';
 import { UserEmail } from '../../models/user-email';
 import { BatchService } from '../../services/batch.service';
 import { UserService } from '../../services/user.service';
@@ -20,16 +22,15 @@ export class AddUsersEmailComponent implements OnInit {
   @Input() batch?:Batch;
   user:UserEmail = {
     email: "",
-    batchId: undefined
   }
   newBatch: boolean = false;
   userEmployeeArray: Array<UserEmail> = [];
   batches?: Batch[];
-  selectedBatch?: Batch;
+  selectedBatch?: NewEmployeeBatch;
   //  For Dropdown menu
   yes: boolean = false;
 
-  constructor(private userService: UserService, private batchService: BatchService) { }
+  constructor(private userService: UserService, private batchService: BatchService, private router: Router) { }
 
   ngOnInit(): void {
     this.getAllBatches();
@@ -124,8 +125,21 @@ export class AddUsersEmailComponent implements OnInit {
    */
   submitAll() {
     try {
-      console.log(this.selectedBatch);
-      this.userService.massCreateUsers(this.userEmployeeArray);
+      if (this.userEmployeeArray.length == 0) {
+        alert("Please enter in an email first before trying to submit");
+      } else {
+        this.userService.massCreateUsers(this.userEmployeeArray);
+        if (this.selectedBatch == undefined) {
+          console.log("There was no batch selected")
+        } else {
+          for (let u of this.userEmployeeArray) {
+            this.selectedBatch.users.push(u);
+          }
+          console.log(this.selectedBatch);
+          this.batchService.updateBatch(this.selectedBatch);
+        }
+        this.router.navigate(['/addUsers']);
+      }
     } catch (Exception) {
       console.log("Something is wrong with your stuff!")
     }
@@ -152,15 +166,18 @@ export class AddUsersEmailComponent implements OnInit {
   /**
    * Selects a batch by batchId and adds it to all of the users in the userEmployeeArray
    * @param batchId the id of the batch you want all the users in the table to be assigned to
+   * @param batchName the name of the batch
+   * @param batchUsers the users that are currently in 
    */
-  onSelectBatch(batchId:number) {
-    for (let u of this.userEmployeeArray) {
-      if(this.newBatch) {
-        u.batchId = 0;
-      } else {
-        u.batchId = batchId;
-      }
+  onSelectBatch(batchId:number, batchName: string, batchUsers: UserEmail[]) {
+    let thisBatch: NewEmployeeBatch = {
+      batchId: batchId,
+      name: batchName,
+      users: batchUsers
     }
+    this.selectedBatch = thisBatch;
+    return this.selectedBatch;
+
   }
 
   /**

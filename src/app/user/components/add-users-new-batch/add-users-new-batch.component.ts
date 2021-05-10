@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { NewBatch } from '../../models/new-batch';
 import { UserEmail } from '../../models/user-email';
 import { BatchService } from '../../services/batch.service';
@@ -19,15 +20,13 @@ export class AddUsersNewBatchComponent implements OnInit {
 
   user:UserEmail = {
     email: "",
-    batchId: undefined
   }
   instructor:UserEmail = {
     email: "",
-    batchId: undefined
   }
   userEmployeeArray: Array<UserEmail> = [];
   userInstructorArray: Array<UserEmail> = [];
-  constructor(private userService: UserService, private batchService: BatchService) { }
+  constructor(private userService: UserService, private batchService: BatchService, private router: Router) { }
   ngOnInit(): void {
   }
 
@@ -155,30 +154,24 @@ export class AddUsersNewBatchComponent implements OnInit {
    */
   submitAll(batchName: string) {
     try {
-      console.log(this.userInstructorArray);
-      console.log(this.userEmployeeArray);
       let batch: NewBatch = {
-        id: 0,
+        batchId: 0,
         name: batchName,
         instructors: this.userInstructorArray,
         users: this.userEmployeeArray
       }
       if(this.userEmployeeArray.length == 0 && this.userInstructorArray.length == 0) {
-        console.log("its doing number 1")
         this.batchService.createBatch(batch);
         return;
       } else if (this.userInstructorArray.length == 0) {
-        console.log("its doing number 2")
         this.userService.massCreateUsers(this.userEmployeeArray);
         this.batchService.createBatch(batch);
         return;
       } else if (this.userEmployeeArray.length == 0) {
-        console.log("its doing number 3")
         this.userService.massCreateUsers(this.userInstructorArray);
         this.batchService.createBatch(batch);
         return;
       } else {
-        console.log("its doing number 4")
         this.userService.massCreateUsers(this.userEmployeeArray);
         this.userService.massCreateUsers(this.userInstructorArray);
         this.batchService.createBatch(batch);
