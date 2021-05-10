@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FlashcardSubscriptionDTO } from '../../model/flashcard-subscription-dto';
 import { SubscribeBellFlashcardService } from '../../service/subscribe-bell-flashcard.service';
 
@@ -8,7 +8,8 @@ import { SubscribeBellFlashcardService } from '../../service/subscribe-bell-flas
   styleUrls: ['./subscribe-bell-flashcard.component.css']
 })
 export class SubscribeBellFlashcardComponent implements OnInit {
-
+  @Input() flashcardId!:number;
+  @Input() userId!:number;
   subscriptionStatus!:boolean;
   image!:string;
   sub:FlashcardSubscriptionDTO;
