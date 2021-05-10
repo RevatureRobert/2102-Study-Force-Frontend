@@ -26,8 +26,10 @@ export class FlashcardDeleteComponent implements OnInit {
   }
 
   deleteFlashcard(event: Event): void {
+    console.log(this.flashcardId);
     if (this.flashcardId) {
-      this.rateService.getAllRatings(88).toPromise().then(
+      console.log("get ratings");
+      this.rateService.getAllRatings(this.flashcardId).toPromise().then(
         res => {
           for (let rating of res) {
             console.log(rating.id);

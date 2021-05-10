@@ -72,7 +72,6 @@
     <form>
       <div class="form-group">
         <div class="form-group">
-
           <div class="row clearfix flex-fill">
         <div id="Dropdown-Button" class="float-left">
           <select id="Dropdown-List"
@@ -88,8 +87,6 @@
             <option *ngFor="let topic of topics" value={{topic.id}}>{{topic.topicName}}</option>
           </select>
         </div>
-
-
         <div class="form-group float-right">
           <select
             name="difficulty"
@@ -104,14 +101,11 @@
           </select>
       </div>
           </div>
-
         </div>
         <label for = "submitContent" >
         </label>
         <textarea class="form-control input-styling" id="submitContent" rows="12" placeholder="Describe your problem here"></textarea>
       </div>
-
-
     </form>
     <div class="wrapper">
       <button type="button" class="btn custom-button">Submit
@@ -132,48 +126,6 @@ name="flashcard"
 (ngSubmit) = "f.form.valid && onSubmit()"
 #f = "ngForm">
 
-
-
-
-
-
- <div class="form-group">
-   <select
-     name="difficulty"
-     [(ngModel)]="form.difficulty"
-     #difficulty="ngModel"
-     placeholder="Select difficulty"
-     type="difficulty"
-     required>
-     <option value="easy" selected="selected">Easy</option>
-     <option value="medium">Medium</option>
-     <option value="hard">Hard</option>
-   </select>
-</div>
-
-
- <div class="form-group">
-   <textarea
-     class="input-styling form-control"
-     name="question"
-     [(ngModel)]="form.question"
-     #question="ngModel"
-     placeholder="Question"
-     rows="12"
-     type="text"
-     required >
-   </textarea>
- </div>
-
-
-<div>
- <button class="custom-button">
-   Submit
- </button>
-</div>
-</form>
-
-</div>
  <br>
  <br>
  <br> -->
