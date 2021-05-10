@@ -14,7 +14,7 @@ export class SubscribeBellStacktraceComponent implements OnInit {
   subscriptionStatus!:boolean;
   image!:string;
   sub:StacktraceSubscriptionDTO;
-  constructor(private subscribeBell:SubscribeBellStacktraceService , subscriptionService:SubscriptionService) {
+  constructor(private subscribeBell:SubscribeBellStacktraceService ,private subscriptionService:SubscriptionService) {
     this.sub = {stacktraceId: 34, userId: 1};
 
     subscriptionService.requestSubscription();
@@ -44,6 +44,12 @@ export class SubscribeBellStacktraceComponent implements OnInit {
   }
 
   addSubscription(sub:StacktraceSubscriptionDTO):void{
+    if(!this.subscriptionService.hasSubscription(1)){
+      this.subscriptionService.requestSubscription();
+    }
+    else {
+      console.log("Already has subscription");
+    }
     console.log(sub);
     this.subscribeBell.addSubscription(sub).then(
       res => { this.subscriptionStatus = true; this.setBellFillImg(); console.log(res);},

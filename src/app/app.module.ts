@@ -52,4 +52,10 @@ import { environment } from '../environments/environment';
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(push:SwPush){
+    push.notificationClicks.subscribe(msg => {
+      console.log(msg);
+    })
+  }
+}

@@ -45,15 +45,15 @@ postSubscriptionDetails(sub : any){
 
 }
 
-/**
- * listen for notifications
- * This returns a observable because there are going to be more then more possible
- * notification sent
- */
+// /**
+//  * listen for notifications
+//  * This returns a observable because there are going to be more then more possible
+//  * notification sent
+//  */
 
-  listenForNotifications(){
-     return this.push.notificationClicks
-  }
+//   listenForNotifications(){
+//      return this.push.notificationClicks.subscribe
+//  }
 
  /**
      * Request a subscription/ allow notifications from the user in the browser
@@ -69,7 +69,7 @@ requestSubscription(){
     const key = 'BEH36g-ez23QfnT8OIbnZJMmj892dDYa_LKyGz_wM2tyZbSt1YK4Jy1sRz1OyAeilAOBDrg-TnCBLFtWdVIApK8';
     this.push.requestSubscription({ serverPublicKey: key }).then(pushSubscription => {
      console.log(pushSubscription.toJSON())
-     this.postSubscriptionDetails(pushSubscription).subscribe(data => this.subDetails = data);
+    this.postSubscriptionDetails(pushSubscription).subscribe(data => this.subDetails = data);
 
     })
 }
@@ -88,25 +88,31 @@ isSubscribed(){
  * @returns
  */
 hasSubscription(id:number){
-  return this.http.get<any>(this.serverPublicKeyBaseURL+`/subscriptions/${id}`).subscribe()
+   if(this.http.get<any>(this.serverPublicKeyBaseURL+`/subscriptions/${id}`).subscribe()===null){
+     return false;
+   }
+   else {
+     return true;
+   }
 }
 
-/**
- * Will either return the current the subscription or the users subscription already stored
- *
- * @param id
- * @returns
- */
-getSubscriptionForUser(id:number){
-  const temp = this.hasSubscription(id)
-  if(temp === null ){
-    return this.requestSubscription()
-  }
-  else {
-    return temp
-  }
+// /**
+//  * Will either return the current the subscription or the users subscription already stored
+//  *
+//  * @param id
+//  * @returns
+//  */
+// setSubscriptionForUser(id:number){
+//   const temp = this.hasSubscription(8)
+//   if(temp === null ){
+//       this.requestSubscription();
+//       return;
+//   }
+//   else {
+//     return;
+//   }
 
-}
+// }
 
 
 }

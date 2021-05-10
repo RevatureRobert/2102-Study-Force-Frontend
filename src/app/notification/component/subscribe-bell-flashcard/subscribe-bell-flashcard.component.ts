@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FlashcardSubscriptionDTO } from '../../model/flashcard-subscription-dto';
 import { SubscribeBellFlashcardService } from '../../service/subscribe-bell-flashcard.service';
+import { SubscriptionService } from '../../service/SubscriptionService';
 
 @Component({
   selector: 'app-subscribe-bell-flashcard',
@@ -13,7 +14,7 @@ export class SubscribeBellFlashcardComponent implements OnInit {
   image!:string;
   sub:FlashcardSubscriptionDTO;
 
-  constructor(private subscribeBell:SubscribeBellFlashcardService) {
+  constructor(private subscribeBell:SubscribeBellFlashcardService, private subscriptionService:SubscriptionService) {
     this.sub = {flashcardId: 34, userId: 2};
    }
 
@@ -37,6 +38,12 @@ export class SubscribeBellFlashcardComponent implements OnInit {
   }
 
   addSubscription(sub:FlashcardSubscriptionDTO):void{
+    if(!this.subscriptionService.hasSubscription(1)){
+      this.subscriptionService.requestSubscription();
+    }
+    else {
+      console.log("Already has subscription");
+    }
     this.subscribeBell.addSubscription(sub).then(
       res => { this.subscriptionStatus = true; this.setBellFillImg(); console.log(res);},
       error => {console.log(error)}
