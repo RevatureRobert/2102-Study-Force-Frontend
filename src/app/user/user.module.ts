@@ -1,3 +1,5 @@
+import { AdminBatchEditComponent } from './components/admin-batch-edit/admin-batch-edit.component';
+import { AdminBatchCreateComponent } from './components/admin-batch-create/admin-batch-create.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from './components/login/login.component';
@@ -28,6 +30,8 @@ import { AdminBatchComponent } from './components/admin-batch/admin-batch.compon
     UserProfileEditComponent,
     BatchComponent,
     AdminBatchComponent,
+    AdminBatchCreateComponent,
+    AdminBatchEditComponent
     ],
 
   imports: [
