@@ -110,6 +110,13 @@ export class FlashcardService {
     return this.http.get<FlashcardPage>(`http://${this.apiServerUrl}/flashcards/resolved?page=${page}&resolved=${resolved}`);
   }
 
+
+
+  getAllBySearch(page: number, question: string): Observable<FlashcardPage> {
+    return this.http.get<FlashcardPage>(`http://${this.apiServerUrl}/flashcards/question/?question=${question}`);
+  }
+
+
   /**
    * Gets the Flashcard with the given id
    * @param flashcardId - id of the Flashcard to return

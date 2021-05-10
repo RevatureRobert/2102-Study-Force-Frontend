@@ -5,8 +5,9 @@
 
 .filter-box {
   position:absolute;
-  top: 3em;
-  right: -1.3em;
+  top: 1em;
+  /* right: -5em; */
+  right: 0;
   padding: 1em;
 }
 
