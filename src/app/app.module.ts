@@ -12,12 +12,19 @@ import { StacktraceModule } from './stacktrace/stacktrace.module';
 import { UserModule } from './user/user.module';
 import {NotificationService} from './notification/service/notification.service';
 import {NotificationComponent} from './notification/component/notification/notification.component';
+import {SubscribeBellStacktraceComponent} from './notification/component/subscribe-bell-stacktrace/subscribe-bell-stacktrace.component'
+import {SubscribeBellFlashcardComponent} from './notification/component/subscribe-bell-flashcard/subscribe-bell-flashcard.component';
+import {SubscribeBellFlashcardService} from './notification/service/subscribe-bell-flashcard.service';
+import {SubscribeBellStacktraceService} from './notification/service/subscribe-bell-stacktrace.service';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NotificationComponent,
+    SubscribeBellFlashcardComponent,
+    SubscribeBellStacktraceComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +37,10 @@ import {NotificationComponent} from './notification/component/notification/notif
     StacktraceModule,
     UserModule
   ],
-  providers: [],
+  providers: [
+    SubscribeBellFlashcardService,
+    SubscribeBellStacktraceService
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
