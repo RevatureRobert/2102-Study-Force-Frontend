@@ -5,7 +5,6 @@
     <div class="flashcard-difficulty-medium" *ngIf="difficulty == 'Medium'">{{difficulty}}</div>
     <div class="flashcard-difficulty-hard" *ngIf="difficulty == 'Hard'">{{difficulty}}</div>
     <div class="subscription">
-      <!-- <img src="{{bellStyle}}" alt="subscription bell" height="30em" (click)="subscribe($event)"> -->
       <app-subscribe-bell-flashcard [flashcardId] = "flashcardId" [userId] = "userId"></app-subscribe-bell-flashcard>
     </div>
     <p class="card-text">{{question}}</p>
