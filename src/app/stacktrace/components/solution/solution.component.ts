@@ -37,13 +37,13 @@ export class SolutionComponent implements OnInit {
   constructor(private solutionService: SolutionService, private route: ActivatedRoute, private router: Router, 
     private stacktraceService: StacktraceService) {
     let u:User = {
-      userId:1,
+      userId:2,
         email:"jomama@hotmail.gov",
         name:"John Doe",
         active:false,
         subscribedStacktrace:true,
         subscribedFlashcard:true,
-        authority:"USER",
+        authority:"ADMIN",
         registrationTime:new Date(1620310931740),
         lastLogin:new Date(1620310931740)
       };
@@ -87,7 +87,9 @@ export class SolutionComponent implements OnInit {
   }
 
   chosenSolution(solutionId: number): void{
-    this.stacktraceService.chosenSolution(solutionId, this.route.snapshot.params.stacktraceId).subscribe();
+    this.stacktraceService.chosenSolution(solutionId, this.route.snapshot.params.stacktraceId).subscribe(data =>{
+      window.location.reload();
+    });
     
   }
 
