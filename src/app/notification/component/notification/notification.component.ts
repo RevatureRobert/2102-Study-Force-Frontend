@@ -38,7 +38,7 @@ export class NotificationComponent implements OnInit {
   Author: Ronald Lopez
    */
   getAllNotificationsInNavbar(): void {
-    this.notificationService.getAllNotificationsInNavbar().subscribe(
+    this.notificationService.getAllNotifications().subscribe(
       (response: any) => {
         this.notifications = response.content;
       });
