@@ -13,7 +13,6 @@ export class VoteComponent implements OnInit {
   @Input() answer!: Answer;
   @Input() answerId!: number;
   answerScore: number = 0;
-  TEST = "DEFAULT";
   @Input() userId!: number;
 
   upVoteSource = "assets/up doot unclicked.svg"

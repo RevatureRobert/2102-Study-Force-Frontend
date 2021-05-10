@@ -79,6 +79,7 @@ export class FlashcardAnswerComponent implements OnInit {
     event.stopPropagation();
   }
 
-
-
+  markAsCorrect(event: Event): void {
+    event.stopPropagation();
+  }
 }

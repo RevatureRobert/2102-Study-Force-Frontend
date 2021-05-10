@@ -21,7 +21,8 @@ export class FlashcardGridComponent implements OnInit {
   topics: Topic[] = [];
   input: any = null;
   flashcards: Flashcard[] = [];
-  private userId = 1;
+
+  filterDisplay:string = "";
 
   constructor(private flashcardService: FlashcardService, private topicService: TopicService) { }
 
@@ -61,18 +62,16 @@ export class FlashcardGridComponent implements OnInit {
     this.mode = Mode.NONE;
     this.modeChoices = []
     this.input = null;
-    this.loadPage(0);
+    this.setInput(null)
   }
 
   setModeToDifficulty(): void {
     this.mode = Mode.DIFFICULTY;
     this.modeChoices = [
-      {input: 0, displayString: "Easy"},
-      {input: 1, displayString: "Medium"},
-      {input: 2, displayString: "Hard"}];
-
-      this.input = 1;
-      this.loadPage(0);
+      {input: 1, displayString: "Easy"},
+      {input: 2, displayString: "Medium"},
+      {input: 3, displayString: "Hard"}];
+      this.setInput(this.modeChoices[0].input)
     }
 
   setModeToResolved(): void {
@@ -80,8 +79,7 @@ export class FlashcardGridComponent implements OnInit {
     this.modeChoices = [
       {input: true, displayString: "Resolved"},
       {input: false, displayString: "Not Resolved"}];
-      this.input = this.modeChoices[0].input;
-      this.loadPage(0);
+      this.setInput(this.modeChoices[0].input)
   }
 
   setModeToTopic(): void {
@@ -89,8 +87,7 @@ export class FlashcardGridComponent implements OnInit {
     this.modeChoices = this.topics.map((topic: Topic)=> {
       return {input: topic.topicName, displayString: topic.topicName};
     });
-    this.input = this.modeChoices[0].input;
-    this.loadPage(0);
+    this.setInput(this.modeChoices[0].input)
   }
 
   setModeToOwned(): void{
@@ -100,6 +97,31 @@ export class FlashcardGridComponent implements OnInit {
 
   setInput(input: any) {
     this.input = input;
+
+    switch (input) {
+      case null:
+        this.filterDisplay = "";
+        break;
+      case true:
+        this.filterDisplay = "Resolved";
+        break;
+      case false:
+        this.filterDisplay = "Not Resolved";
+        break;
+      case 1:
+        this.filterDisplay = "Easy";
+        break;
+      case 2:
+        this.filterDisplay = "Medium";
+        break;
+      case 3:
+        this.filterDisplay = "Hard";
+        break;
+      default:
+        this.filterDisplay = input;
+        break;
+    }
+
     this.loadPage(0);
   }
 
@@ -125,11 +147,6 @@ export class FlashcardGridComponent implements OnInit {
           next: result => this.flashcardPage = result
         });
         break;
-        case Mode.OWNED:
-          this.flashcardService.getFlashcardsByUserId(this.userId).subscribe({
-            next: result => this.flashcardPage = result
-          });
-          break;
       default:
         break;
     }
@@ -143,9 +160,9 @@ interface DisplayData {
 }
 
 enum Mode {
-  NONE = "None",
+  NONE = "Filter By:",
   TOPIC = "Topic",
   DIFFICULTY = "Difficulty",
   RESOLVED = "Resolved",
-  OWNED = "Owned"
+  OWNED = "OWNED"
 }
