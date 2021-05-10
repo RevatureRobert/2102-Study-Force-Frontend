@@ -57,6 +57,9 @@
           <p class="card-text" id="Name">{{ solution.userName }}</p>
           <p class="card-text" id="Card-Text">{{ solution.body }}</p>
           <app-solution-vote [solution]="solution"></app-solution-vote>
+              <button class="btn btn-danger" type="button" id="Activate-Button" (click)="chosenSolution(solution.solutionId)">
+      Activate
+    </button>
         </div>
         <div class="card-footer" id="Card-Footer">
           <svg

@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Solution } from '../../models/solution';
 import { User } from '../../models/user';
 import { SolutionService } from '../../services/solution.service';
+import { StacktraceService } from '../../services/stacktrace.service';
 
 @Component({
   selector: 'app-solution',
@@ -29,7 +30,8 @@ export class SolutionComponent implements OnInit {
   page: number = 0;
   pageSize: number = 5;
 
-  constructor(private solutionService: SolutionService, private route: ActivatedRoute, private router: Router) {
+  constructor(private solutionService: SolutionService, private route: ActivatedRoute, private router: Router, 
+    private stacktraceService: StacktraceService) {
     // let u:User = {
     //   userId:5,
     //     email:"jomama@hotmail.gov",
@@ -57,10 +59,16 @@ export class SolutionComponent implements OnInit {
     this.getAllSolutionsByStacktraceId();
   }
 
+  chosenSolution(solutionId: number): void{
+    this.stacktraceService.chosenSolution(solutionId, this.route.snapshot.params.stacktraceId).subscribe();
+    
+  }
+
   getAllSolutionsByStacktraceId(): void{
     this.solutionService.getAllSolutionsByStacktraceId(this.route.snapshot.params.stacktraceId, this.page, this.pageSize)
         .then((result: any) => {
           this.solutions = result.content;
+
         });
   }
 
@@ -80,7 +88,6 @@ export class SolutionComponent implements OnInit {
     console.log(this.createSolution);
     this.solutionService.postSolution(this.createSolution).then(data =>{
       window.location.reload();
-      // this.getAllSolutionsByStacktraceId();
     });
   }
 

@@ -9,7 +9,7 @@ import { Stacktrace } from '../models/stacktrace';
 })
 export class StacktraceService {
 
-  private stacktraceURL: string = 'http://localhost:8080/stacktrace'
+  private stacktraceURL: string = environment.apiUrl.concat('/stacktrace');
 
   httpHeaders: HttpHeaders = new HttpHeaders({
     "Content-Type": 'application/json'//,
@@ -50,5 +50,9 @@ export class StacktraceService {
 
   findByTitleAndTechnology(title:any, technologyId: number, page: number): Observable<any> {
     return this.http.get<Stacktrace[]>(`${this.stacktraceURL}/search?title=${title}&technologyId=${technologyId}&page=${page}`);
+  }
+
+  chosenSolution(solutionId: number, stacktraceId: number): Observable<Stacktrace>{
+    return this.http.get<Stacktrace>(`${this.stacktraceURL}/chosen-solution?solutionId=${solutionId}&stacktraceId=${stacktraceId}`)
   }
 }

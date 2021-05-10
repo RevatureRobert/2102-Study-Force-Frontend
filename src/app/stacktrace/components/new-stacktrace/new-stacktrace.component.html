@@ -25,34 +25,17 @@
           <div [hidden]="!body.pristine" class="alert alert-danger">Body is required</div>
         </div>
         <div class="form-group">
-          <label for="technology">TechnologyID</label>
-          <input type="number" [(ngModel)]="stacktrace.technologyId"
-            class="form-control"
-            id="technology"
-            name="technology"
-            placeholder="Enter a technology"
-            required #technology="ngModel">
+          <div class="dropdown" id="Dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="reset" id="Dropdown-Button" data-bs-toggle="dropdown"
+              aria-expanded="false" (click)="this.changeFocus()" (focus)="this.setFalse()">
+              Technologies
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="Dropdown-Button" id="Dropdown-List">
+              <li *ngFor="let id of technology"><a class="dropdown-item"
+                  (click)="setNewTechnologyId(id.technologyId)">{{id.technologyName}}</a></li>
+            </ul>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="technologyName">Technology Name</label>
-          <input type="text" [(ngModel)]="stacktrace.technologyName"
-            class="form-control"
-            id="technologyName"
-            name="technologyName"
-            placeholder="Enter a Technology Name"
-            required #technologyName="ngModel">
-        </div>
-        <div [hidden]="!title.pristine" class="alert alert-danger">Technology Name is required</div>
-        <div class="form-group">
-          <label for="creator">Creator ID</label>
-          <input type="number" [(ngModel)]="stacktrace.userId"
-            class="form-control"
-            id="creator"
-            name="creator"
-            placeholder="Enter a creator"
-            required #creator="ngModel">
-        </div>
-        <div [hidden]="!creator.pristine" class="alert alert-danger">Creator ID is required</div>
         <button type="submit" [disabled]="!stacktraceForm.form.valid"
         class="btn btn-info">Submit</button>
 

@@ -12,7 +12,6 @@ import { TechnologyService } from 'src/app/stacktrace/services/technology.servic
 export class NewTechnologyComponent implements OnInit {
 
   technology : Technology = {
-    technologyId : 0,
     technologyName : '',
   };
 
@@ -29,6 +28,6 @@ export class NewTechnologyComponent implements OnInit {
   }
 
   gotoStacktraceList() {
-    this.router.navigate(['/stacktrace']);
+    this.router.navigate(['/stacktraces']);
   }
 }

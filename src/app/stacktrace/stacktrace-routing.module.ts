@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: 'stacktraces', component: StacktraceHomeComponent },
   { path: 'stacktraces/addstacktrace', component: NewStacktraceComponent },
   { path: 'stacktraces/:stacktraceId', component: StacktraceComponent },
-  { path: 'stacktraces/technology', component: NewTechnologyComponent },
+  { path: 'technology', component: NewTechnologyComponent },
 
 ];
 
