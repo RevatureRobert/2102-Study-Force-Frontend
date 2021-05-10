@@ -4,6 +4,9 @@ import { Flashcard } from 'src/app/flashcard/model/flashcard';
 import { AnswerService } from 'src/app/flashcard/service/answer.service';
 import { FlashcardService } from 'src/app/flashcard/service/flashcard.service';
 
+/**
+ * Allows user to add an answer to a flashcard
+ */
 @Component({
   selector: 'app-submit-answer-page',
   templateUrl: './submit-answer-page.component.html',
@@ -18,9 +21,7 @@ export class SubmitAnswerPageComponent implements OnInit {
   flashcard!:Flashcard;
   flashcardDifficulty?:string;
 
-  constructor(private answerService: AnswerService, private flashcardService: FlashcardService, private router: Router) {
-
-  }
+  constructor(private answerService: AnswerService, private flashcardService: FlashcardService, private router: Router) {}
 
   ngOnInit(): void {
     let flashcardId = this.answerService.getCurrentFlashcardId();
@@ -47,6 +48,10 @@ export class SubmitAnswerPageComponent implements OnInit {
     })
   }
 
+  /**
+   * sends the answer to the database
+   * @returns
+   */
   onSubmit(){
     if(this.form.answer===null || this.form.answer===""){
       alert("Please fill your answer");
