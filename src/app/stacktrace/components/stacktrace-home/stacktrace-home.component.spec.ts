@@ -22,4 +22,5 @@ describe('StacktraceHomeComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });

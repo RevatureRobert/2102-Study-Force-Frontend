@@ -1,0 +1,166 @@
+#Card-Wide {
+  position: relative;
+  width: fit-content;
+  background: linear-gradient(
+    111.52deg,
+    rgba(255, 255, 255, 0.64) 0%,
+    rgba(255, 255, 255, 0.48) 100%
+  );
+  backdrop-filter: blur(100px);
+  border-radius: 30px;
+  border: none;
+  margin-bottom: 1em;
+}
+
+.page {
+  display: inline-block;
+  min-height: fit-content;
+}
+
+.card {
+  top: 2em;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.54) 100%);
+backdrop-filter: blur(100px);
+border-radius: 10px;
+min-width: 100%;
+}
+
+.card-body {
+  position: relative;
+}
+
+h3 {
+  position: absolute;
+  top: 0;
+  transform: translateY(-60%);
+
+font-family: Roboto, Arial, Helvetica, sans-serif;
+font-style: normal;
+font-weight: 500;
+font-size: 30px;
+line-height: 70%;
+}
+
+.custom-button {
+  background: linear-gradient(99.35deg, rgba(34, 51, 201, 0.63) 21.34%, rgba(48, 190, 105, 0.7) 99.96%);
+backdrop-filter: blur(50px);
+/* Note: backdrop-filter has minimal browser support */
+border-radius: 10px;
+color: white;
+text-align: center;
+letter-spacing: 1px;
+font-family: Roboto, Arial, Helvetica, sans-serif;
+font-style: normal;
+font-weight: 300;
+font-size: 20px;
+line-height: 105%;
+position: absolute;
+
+}
+
+.wrapper {
+  position: absolute;
+  right: 9em;
+  bottom:3em;
+  transform: translateY(60%);
+}
+
+/* .input-styling {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.54) 100%);
+backdrop-filter: blur(100px);
+Note: backdrop-filter has minimal browser support
+border-radius: 10px;
+font-family: Roboto, Arial, Helvetica, sans-serif;
+font-style: normal;
+font-weight: 300;
+font-size: 20px;
+line-height: 105%;
+letter-spacing: 1px;
+
+color: rgba(0, 0, 0, 0.5);
+} */
+
+#Diologue-Card {
+
+  position: relative;
+  width: fit-content;
+  min-height: 210px !important;
+  background: linear-gradient(
+    111.52deg,
+    rgba(255, 255, 255, 0.64) 0%,
+    rgba(255, 255, 255, 0.48) 100%
+  );
+  backdrop-filter: blur(100px);
+  border-radius: 30px;
+  border: none;
+  margin-bottom: 1em;
+}
+
+#Card-Header {
+  position: relative;
+  top: -20px;
+  left: 35px;
+  height: 21px;
+  background: none;
+  border: none;
+}
+
+#Card-Header p {
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 21px;
+  color: #153c53;
+}
+
+#Card-Body {
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+
+#Name {
+  position: absolute;
+  right: 40px;
+  top: 5px;
+  font-weight: 300;
+  font-size: 25px;
+  line-height: 21px;
+  color: #153c53;
+}
+
+#Card-Text {
+  font-weight: 300;
+  margin-left: 75px;
+  margin-right: 75px;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 21px;
+
+  color: #000000;
+}
+
+#Card-Footer {
+  height: 40px;
+  background: #ffffff;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+#Card-Footer svg {
+  position: relative;
+  top: -5px;
+}
+
+.marked {
+  color: rgb(194, 194, 194);
+}
+
+.mark-button {
+  opacity: 0.75;
+  position: relative;
+  width: 148px;
+  background: #00d600;
+  border: 1px solid #80b366;
+  box-sizing: border-box;
+  border-radius: 30px;
+  color: white;
+}
