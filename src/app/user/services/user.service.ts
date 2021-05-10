@@ -1,7 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BASE_API_URL } from '../../../environments/environment';
-import { User } from '../models/user';
 import { UserEmail } from '../models/user-email';
 
 @Injectable({

@@ -9,6 +9,9 @@ import { AddUsersEmailComponent } from './components/add-users-email/add-users-e
 import { UserProfileEditComponent } from './components/user-profile/user-profile-edit/user-profile-edit.component';
 import { UserSearchComponent } from './components/user-search/user-search.component';
 import { BatchComponent } from './components/batch/batch.component';
+import { AdminBatchCreateComponent } from './components/admin-batch-create/admin-batch-create.component';
+import { AdminBatchEditComponent } from './components/admin-batch-edit/admin-batch-edit.component';
+import { AdminBatchComponent } from './components/admin-batch/admin-batch.component';
 
 const userRoutes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -26,6 +29,12 @@ const userRoutes: Routes = [
   { path: 'edit/profile', component: UserProfileEditComponent },
   { path: 'user-search', component: UserSearchComponent },
   { path: 'batchDetails/:id', component: BatchComponent },
+  { path: "batchDetails", component: BatchComponent },
+  { path: "adminBatchDetails", component: AdminBatchComponent },
+  { path: "adminBatchDetails/:id", component: AdminBatchComponent },
+  { path: "adminBatchEditDetails", component: AdminBatchEditComponent },
+  { path: "adminBatchEditDetails/:id", component: AdminBatchEditComponent },
+  { path: "adminBatchCreate", component: AdminBatchCreateComponent }
 ];
 
 @NgModule({
