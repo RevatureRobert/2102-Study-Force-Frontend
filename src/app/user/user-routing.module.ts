@@ -7,6 +7,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RedirectGuardService } from './services/redirect-guard.service';
 import { BASE_URL_LOGIN_REGISTRATION } from '../../environments/environment';
 import { PostLoginComponent } from './components/login/post-login/post-login.component';
+import { AdminBatchCreateComponent } from './components/admin-batch-create/admin-batch-create.component';
 
 const userRoutes: Routes = [
     {path: "login", component: LoginComponent},
@@ -23,7 +24,8 @@ const userRoutes: Routes = [
     {path: "adminBatchDetails", component: AdminBatchComponent},
     {path: "adminBatchDetails/:id", component: AdminBatchComponent},
     {path: "adminBatchEditDetails", component: AdminBatchEditComponent},
-    {path: "adminBatchEditDetails/:id", component: AdminBatchEditComponent}
+    {path: "adminBatchEditDetails/:id", component: AdminBatchEditComponent},
+    {path: "adminBatchCreate", component: AdminBatchCreateComponent}
 ];
 
 @NgModule({

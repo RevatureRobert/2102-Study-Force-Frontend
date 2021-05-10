@@ -8,6 +8,7 @@ import { UserRoutingModule } from './user-routing.module';
 import { RedirectGuardService } from './services/redirect-guard.service';
 import { PostLoginComponent } from './components/login/post-login/post-login.component';
 import { FormsModule } from '@angular/forms';
+import { AdminBatchCreateComponent } from './components/admin-batch-create/admin-batch-create.component';
 
 
 
@@ -19,6 +20,7 @@ import { FormsModule } from '@angular/forms';
     AdminBatchEditComponent,
     LoginComponent,
     PostLoginComponent,
+    AdminBatchCreateComponent,
   ],
 
   imports: [

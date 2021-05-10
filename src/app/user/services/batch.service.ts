@@ -1,8 +1,9 @@
+import { Batch } from './../models/batch';
 import { CreateUpdateBatch } from './../models/createUpdateBatch';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Observable } from 'rxjs';
-import { Batch } from '../models/batch';
+
 import { BASE_API_URL } from 'src/environments/environment';
 
 /**
@@ -63,14 +64,6 @@ export class BatchService {
       headers: new HttpHeaders(headerInfo)
     };
 
-    // const body: string =
-    // `{
-    //   "batchId": ${id},
-    //   "name": "${name}",
-    //   "instructors": [${instructorsEmail}],
-    //   "users": [${usersEmail}]
-    //   }`;
-
     const body = this.body = {
         batchId: parseInt(id),
         name: name,
@@ -81,6 +74,28 @@ export class BatchService {
     const url =`${this.dev}/${this.batches}`
     console.log(body);
     return this.http.put<any>(url,body,requestOptions).toPromise();
+  }
+
+  createBatch(id: string,name: string, instructorsEmail:string[], usersEmail:string[]): Promise<Batch>{
+    const headerInfo = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    }
+
+    const requestOptions = {
+      headers: new HttpHeaders(headerInfo)
+    };
+
+    const body = this.body = {
+      batchId: parseInt(id),
+      name: name,
+      instructors: instructorsEmail,
+      users: usersEmail
+    }
+
+    const url =`${this.dev}/${this.batches}`
+    console.log(body);
+    return this.http.post<Batch>(url,body,requestOptions).toPromise();
   }
 
   /**
@@ -101,12 +116,8 @@ export class BatchService {
    */
   deactivateBatch(id: string): Promise<any>{
 
-
-
     const url = `${this.dev}/${this.batches}/${this.deactivate}/${id}`;
     return this.http.put<any>(url,"").toPromise();
   }
-
-
 
 }

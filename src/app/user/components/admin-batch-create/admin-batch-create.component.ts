@@ -1,20 +1,17 @@
 import { Batch } from './../../models/batch';
-import { UserEmail } from './../../models/user-email';
-import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { User } from '../../models/user';
-import { BatchService } from '../../services/batch.service';
 import { NgForm } from '@angular/forms';
-import { Input } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { BatchService } from '../../services/batch.service';
+import { UserService } from '../../services/user.service';
 
 
 @Component({
-  selector: 'app-admin-batch-edit',
-  templateUrl: './admin-batch-edit.component.html',
-  styleUrls: ['./admin-batch-edit.component.css']
+  selector: 'app-admin-batch-create',
+  templateUrl: './admin-batch-create.component.html',
+  styleUrls: ['./admin-batch-create.component.css']
 })
-export class AdminBatchEditComponent implements OnInit {
+export class AdminBatchCreateComponent implements OnInit {
 
   users: string[] = [];  //String array that holds all the emails of all users in the batch.
   instructors: string[] = [];  //String array that holds all the emails of all instructors in the batch.
@@ -36,13 +33,9 @@ export class AdminBatchEditComponent implements OnInit {
   constructor(
     private batchService:BatchService,
     private userService:UserService,
-    private route: ActivatedRoute,
     private router: Router
   ) {
-    this.route.params.subscribe(params => {
-      this.id = params['id'];
 
-    })
    }
 
   ngOnInit(): void {
@@ -56,23 +49,10 @@ export class AdminBatchEditComponent implements OnInit {
    * which only hold the emails of users/instructors instead of the actual user object.
    */
   setUp(): void {
-    this.batchService.getBatchById(this.id)
-    .subscribe(batch => {
-
-      for (var x in (batch.users)) {
-        this.users.push(batch.users[x].email);
-      }
-      for (var index in (batch.instructors)) {
-        this.instructors.push(batch.instructors[index].email);
-      }
-
-      var date = new Date(batch.creationTime);
-      this.creationTime =
-      ((date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear());
-      this.name = batch.name;
-
-      this.loaded = true;
-    })
+    this.users = [];
+    this.instructors = [];
+    this.name = "";
+    this.loaded = true;
   }
 
   /**
@@ -85,76 +65,37 @@ export class AdminBatchEditComponent implements OnInit {
     if (answer == true){
         this.loaded = false;
         await this.submit();
+        console.log(`adminBatchDetails/${this.id}`);
         this.redirect();
     }
   }
 
-  /**
-   * Warning for the delete button.
-   * If the user select yes thenit will execute the delete function.
-   */
-  async warningForDelete() {
-    let answer = confirm(`Are you sure you want to delete batch: ${this.name}?`);
-    if (answer == true){
-      this.loaded = false;
-      await this.delete();
-        this.redirect();
-    }
-  }
-
-  /**
-   * Warning for the deactivate button.
-   * If the user select yes thenit will execute the deactivate function.
-   */
-  async warningForDeactivate() {
-    let answer = confirm(`Are you sure you want to deactivate batch: ${this.name}? \nAll users will be deactivated and the batch will be deleted.`);
-    if (answer == true){
-      this.loaded = false;
-      await this.deactivate();
-      this.redirect();
-    }
-  }
 
   /**
    * This is to redirect the admin back to the view batch details page.
    */
   redirect(): void {
+    console.log(`adminBatchDetails/${this.id}`);
     this.router.navigateByUrl(`adminBatchDetails/${this.id}`) ;
   }
 
-  /**
-   * This is to refresh the page whenever a redirect is caleld.
-   */
-  refreshPage(){
-    window.location.reload();
-  }
+
 
   /**
    * This is the submit button that create a batch base on the state of the batch object when the submit button is pressed.
    * Then this function use the updateBatch in batchService to perform the update function.
-   * If a user tries to add in a user that doesn't exist in the database, it will alert the user about it.
    */
   async submit(){
-
-    await this.batchService.updateBatch(this.id,this.name,this.instructors,this.users).
-    catch(error => alert(error.message.concat(` At least one of the user doesn't exist in the database.`)));
-
+    this.id =
+    (await this.batchService.createBatch("0",this.name, this.instructors, this.users)).batchId + "";
+    console.log(this.id);
   }
 
   /**
    * This function delete the batch.
    */
 
-  async delete(){
-    await this.batchService.deleteBatch(this.id);
-  }
 
-  /**
-   * This function deactivate the batch.
-   */
-  async deactivate() {
-    await this.batchService.deactivateBatch(this.id);
-  }
 
   /**
    * Validation for email
@@ -186,30 +127,9 @@ export class AdminBatchEditComponent implements OnInit {
   }
   const email = this.userCurrentEmail = checkedEmail;
 
-  this.users.push(email)
+  this.users.push(email);
 
   return this.users;
-}
-
-/**
- * It checks the email to see if it is valid, if it is then it gets pushed to the array of emails
- * of instructors, if not then we alert the user to check the email format.
- * This method takes in email(instructor) that is already in the system.
- * @param formEmp2 This is where the method takes in the email from the user input
- * @returns
- */
- onAddInstructor(formEmp2: NgForm) {
-  let checkedEmail = formEmp2.value.email;
-
-  if (!this.isEmail(checkedEmail)) {
-      alert("Please check emails and try and submit again");
-      return;
-  }
-  const email = this.instructorCurrentEmail = checkedEmail;
-
-  this.instructors.push(email)
-
-  return this.instructors;
 }
 
 /**
@@ -238,6 +158,25 @@ onDeleteInstructor(user: string) {
   });
   console.log(this.instructors);
 }
+/**
+ * It checks the email to see if it is valid, if it is then it gets pushed to the array of emails
+ * of instructors, if not then we alert the user to check the email format.
+ * This method takes in email(instructor) that is already in the system.
+ * @param formEmp This is where the method takes in the email from the user input
+ * @returns
+ */
+onAddInstructor(formEmp2: NgForm) {
+  let checkedEmail = formEmp2.value.email;
 
+  if (!this.isEmail(checkedEmail)) {
+      alert("Please check emails and try and submit again");
+      return;
+  }
+  const email = this.instructorCurrentEmail = checkedEmail;
+
+  this.instructors.push(email);
+
+  return this.instructors;
+}
 
 }
