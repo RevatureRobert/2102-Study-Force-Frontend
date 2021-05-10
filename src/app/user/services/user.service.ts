@@ -1,37 +1,60 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BASE_API_URL } from '../../../environments/environment';
+import { User } from '../models/user';
 import { UserEmail } from '../models/user-email';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 /**
  * Service used for all CRUD operations related to users
  * @author Steven Ceglarek
  */
 export class UserService {
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
+  getUsers(pageSize: number = 25, pageNumber: number = 0) {
+    const headerInfo = {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      Authorization: 'Bearer '.concat(
+        localStorage.getItem('access_token') || ''
+      ),
+    };
+
+    const requestOptions = {
+      headers: new HttpHeaders(headerInfo),
+    };
+
+    return this.http
+      .get<any>(
+        BASE_API_URL.concat(`/user/all?offset=${pageSize}&page=${pageNumber}`),
+        requestOptions
+      )
+      .toPromise();
+  }
 
   /**
    * Calls to a /user/me route to grab the users info who is currently logged in
    * @returns the user who is logged in
    */
   getLoggedInUser() {
-
     const headerInfo = {
       'Content-Type': 'application/json',
-      'Accept': 'application/json',
-      'Authorization': 'Bearer '.concat(localStorage.getItem('access_token') || "")
-    }
-
-    const requestOptions = {
-      headers: new HttpHeaders(headerInfo)
+      Accept: 'application/json',
+      Authorization: 'Bearer '.concat(
+        localStorage.getItem('access_token') || ''
+      ),
     };
 
-    return this.http.get<any>(BASE_API_URL.concat('/user/me'), requestOptions).toPromise();
+    const requestOptions = {
+      headers: new HttpHeaders(headerInfo),
+    };
 
+    return this.http
+      .get<any>(BASE_API_URL.concat('/user/me'), requestOptions)
+      .toPromise();
   }
 
   /**
@@ -40,19 +63,33 @@ export class UserService {
    * @param pageNumber the page for pagination
    * @returns all users from database
    */
-  getUsers(pageSize:number = 25, pageNumber:number = 0) {
-
+  searchUsers(
+    search: string = '',
+    currentPage: number = 0,
+    pageSize: number = 10,
+    sortBy: string = 'userId',
+    order: string = 'asc'
+  ) {
     const headerInfo = {
       'Content-Type': 'application/json',
-      'Accept': 'application/json',
-      'Authorization': 'Bearer '.concat(localStorage.getItem('access_token') || "")
-    }
-
-    const requestOptions = {
-      headers: new HttpHeaders(headerInfo)
+      Accept: 'application/json',
+      Authorization: 'Bearer '.concat(
+        localStorage.getItem('access_token') || ''
+      ),
     };
 
-    return this.http.get<any>(BASE_API_URL.concat(`/user/all?offset=${pageSize}&page=${pageNumber}`), requestOptions).toPromise();
+    const requestOptions = {
+      headers: new HttpHeaders(headerInfo),
+    };
+
+    return this.http
+      .get<any>(
+        BASE_API_URL.concat(
+          `/users/search?search=${search}&page=${currentPage}&offset=${pageSize}&sort=${sortBy}&order=${order}`
+        ),
+        requestOptions
+      )
+      .toPromise();
   }
 
   /**
@@ -63,12 +100,14 @@ export class UserService {
 
     const headerInfo = {
       'Content-Type': 'application/json',
-      'Accept': 'application/json',
-      'Authorization': 'Bearer '.concat(localStorage.getItem('access_token') || "")
-    }
+      Accept: 'application/json',
+      Authorization: 'Bearer '.concat(
+        localStorage.getItem('access_token') || ''
+      ),
+    };
 
     const requestOptions = {
-      headers: new HttpHeaders(headerInfo)
+      headers: new HttpHeaders(headerInfo),
     };
 
     return this.http.post<any>(BASE_API_URL.concat(`/users/bulk`), userArray, requestOptions).toPromise();
@@ -81,15 +120,16 @@ export class UserService {
    * @param user the user being created
    */
   createOneUser(user: UserEmail) {
-
     const headerInfo = {
       'Content-Type': 'application/json',
-      'Accept': 'application/json',
-      'Authorization': 'Bearer '.concat(localStorage.getItem('access_token') || "")
-    }
+      Accept: 'application/json',
+      Authorization: 'Bearer '.concat(
+        localStorage.getItem('access_token') || ''
+      ),
+    };
 
     const requestOptions = {
-      headers: new HttpHeaders(headerInfo)
+      headers: new HttpHeaders(headerInfo),
     };
 
     return this.http.post<any>(BASE_API_URL.concat(`/user/create`), user, requestOptions).toPromise();
@@ -101,8 +141,10 @@ export class UserService {
    * @param userId The id of the user being retrieved
    * @returns A promise of type any containing the json representation of the retrieved user, or empty json if no user was found with that id
    */
-  getUserByUserId(userId:number):Promise<any>{
-    return this.http.get<any>(BASE_API_URL.concat(`/users/${userId}`)).toPromise();
+  getUserByUserId(userId: number): Promise<any> {
+    return this.http
+      .get<any>(BASE_API_URL.concat(`/users/${userId}`))
+      .toPromise();
   }
 
   /**
@@ -111,9 +153,11 @@ export class UserService {
    * @param userId The user whose information is being updated
    * @returns A promise of type any containing the json representation of the updated user
    */
-  updateUserActive(active:boolean, userId:number):Promise<any>{
-    const body:string = `{ "userId": ${userId}, "active": ${active} }`;
-    return this.http.put<any>(BASE_API_URL.concat('/users/active'), body).toPromise();
+  updateUserActive(active: boolean, userId: number): Promise<any> {
+    const body = { userId: userId, active: active };
+    return this.http
+      .put<any>(BASE_API_URL.concat('/users/active'), body)
+      .toPromise();
   }
 
   /**
@@ -122,9 +166,11 @@ export class UserService {
    * @param userId The id of the user whose information is being updated
    * @returns A promise of type any containing the json representation of the updated user
    */
-  updateUserName(name:string, userId:number):Promise<any>{
-    const body:string = `{ "userId": ${userId}, "name": ${name} }`;
-    return this.http.put<any>(BASE_API_URL.concat('/users/name'), body).toPromise();
+  updateUserName(name: string, userId: number): Promise<any> {
+    const body = { userId: userId, name: name };
+    return this.http
+      .put<any>(BASE_API_URL.concat('/users/name'), body)
+      .toPromise();
   }
 
   /**
@@ -134,9 +180,19 @@ export class UserService {
    * @param subscribedStacktrace Boolean indicating weather or not this user is subscribed to stacktraces
    * @returns A promise of type any containing the json representation of the updated user
    */
-  updateUserSubscriptions(userId:number, subscribedFlashcard:boolean, subscribedStacktrace:boolean):Promise<any>{
-    const body:string = `{ "userId": ${userId}, "subscribedFlashcard": ${subscribedFlashcard}, "subscribedStacktrace": ${subscribedStacktrace} }`;
-    return this.http.put<any>(BASE_API_URL.concat('/users/subscription'), body).toPromise();
+  updateUserSubscriptions(
+    userId: number,
+    subscribedFlashcard: boolean,
+    subscribedStacktrace: boolean
+  ): Promise<any> {
+    const body = {
+      userId: userId,
+      subscribedFlashcard: subscribedFlashcard,
+      subscribedStacktrace: subscribedStacktrace,
+    };
+    return this.http
+      .put<any>(BASE_API_URL.concat('/users/subscription'), body)
+      .toPromise();
   }
 
   /**
@@ -145,11 +201,17 @@ export class UserService {
    * @param userId The id of the user whose information is being updated
    * @returns A promise of type any containing the json representation of the updated user
    */
-  updateUserAuthority(authority:string, userId:number):Promise<any>{
-    if(authority != "USER" && authority != "ADMIN" && authority != "SUPER_ADMIN"){
-      throw new TypeError;
+  updateUserAuthority(authority: string, userId: number): Promise<any> {
+    if (
+      authority != 'USER' &&
+      authority != 'ADMIN' &&
+      authority != 'SUPER_ADMIN'
+    ) {
+      throw new TypeError();
     }
-    const body:string = `{ "userId": ${userId}, "authority": ${authority} }`;
-    return this.http.put<any>(BASE_API_URL.concat('/users/authority'), body).toPromise();
+    const body = { userId: userId, authority: authority };
+    return this.http
+      .put<any>(BASE_API_URL.concat('/users/authority'), body)
+      .toPromise();
   }
 }

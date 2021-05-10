@@ -8,21 +8,19 @@ import { UserService } from '../../services/user.service';
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
-  styleUrls: ['./user-profile.component.css']
+  styleUrls: ['./user-profile.component.css'],
 })
 
 /**
  * Parent component for user profile, gathers information and determines which view to display
  */
 export class UserProfileComponent implements OnInit {
-
-  user?:User
-  isAdmin:boolean = false;
-  isMe:boolean = false;
-  id?:number;
-  isLoading:boolean = true;
-  batches?:Batch[];
-
+  user?: User;
+  isAdmin: boolean = false;
+  isMe: boolean = false;
+  id?: number;
+  isLoading: boolean = true;
+  batches?: Batch[];
 
   /**
    * Gathers profile id from route path parameter
@@ -30,10 +28,14 @@ export class UserProfileComponent implements OnInit {
    * @param userService
    * @param batchService
    */
-  constructor(private route:ActivatedRoute, private userService:UserService, private batchService:BatchService) {
-    this.route.params.subscribe(params => {
-      this.id = +params['id']
-    })
+  constructor(
+    private route: ActivatedRoute,
+    private userService: UserService,
+    private batchService: BatchService
+  ) {
+    this.route.params.subscribe((params) => {
+      this.id = +params['id'];
+    });
   }
 
   /**
@@ -44,36 +46,47 @@ export class UserProfileComponent implements OnInit {
 
     await this.populateUserProfileOrDefault();
     await this.populateBatches();
+    let u: User = JSON.parse(localStorage.getItem('loggedInUser')!);
 
-    this.isAdmin = ((this.user?.authority == "ADMIN" || this.user?.authority == "SUPER_ADMIN") && !this.isMe);
+    this.isAdmin =
+      (u.authority === 'ADMIN' || u.authority === 'SUPER_ADMIN') && !this.isMe;
+
     this.isLoading = false;
   }
 
   /**
    * Gets array of batches from BatchService and assigns it to this.batches
    */
-  async populateBatches(){
+  async populateBatches() {
     try {
-      await this.batchService.getBatchesByMemberId(this.user!.userId).then(response => {
-        this.batches = JSON.parse(response);
-      })
-    } catch(exception) {
-      alert("There was an error retrieveing user's batches. Please try again later.\n\nIf this issue persists, please contact support.")
+      await this.batchService
+        .getBatchesByMemberId(this.user!.userId)
+        .then((response) => {
+          this.batches = response;
+        });
+    } catch (exception) {
+      alert(
+        "There was an error retrieveing user's batches. Please try again later.\n\nIf this issue persists, please contact support."
+      );
     }
   }
 
   /**
    * Gets user from UserService using id and assigns it to this.user
    */
-  async populateUserProfileOrDefault(){
+  async populateUserProfileOrDefault() {
+    let u: User = JSON.parse(localStorage.getItem('loggedInUser')!);
+
     try {
-      await this.userService.getUserByUserId(this.id!).then(response => {
-        this.user = JSON.parse(response);
-        this.isMe = (this.user?.userId == this.id);
-      })
-    } catch(exception) {
-      alert('There was an error trying to retrieve the user.\n\nIf this issue persists, please contact support.\n\nYou will be returned to your profile.')
-      this.user = JSON.parse(localStorage.getItem('loggedInUser')!);
+      await this.userService.getUserByUserId(this.id!).then((response) => {
+        this.user = response;
+        this.isMe = this.user?.userId == u.userId;
+      });
+    } catch (exception) {
+      alert(
+        'There was an error trying to retrieve the user.\n\nIf this issue persists, please contact support.\n\nYou will be returned to your profile.'
+      );
+      this.user = u;
       this.isMe = true;
     }
   }

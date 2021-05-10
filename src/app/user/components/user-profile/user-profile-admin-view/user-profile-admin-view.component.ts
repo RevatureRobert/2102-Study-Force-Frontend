@@ -7,54 +7,55 @@ import { UserService } from 'src/app/user/services/user.service';
 @Component({
   selector: 'app-user-profile-admin-view',
   templateUrl: './user-profile-admin-view.component.html',
-  styleUrls: ['./user-profile-admin-view.component.css']
+  styleUrls: ['./user-profile-admin-view.component.css'],
 })
 
 /**
  * Component for the ADMIN/SUPER_ADMIN view of a user profile
  */
 export class UserProfileAdminViewComponent implements OnInit {
+  @Input() user?: User;
+  @Input() batches?: Batch[];
+  editMode: boolean = false;
+  isLoading: boolean = true;
+  userVisible: boolean = true;
+  adminVisible: boolean = false;
+  superAdminVisible: boolean = false;
+  activateVisible: boolean = false;
 
-  @Input() user?:User;
-  @Input() batches?:Batch[];
-  editMode:boolean = false;
-  isLoading:boolean = true;
-  userVisible:boolean = true;
-  adminVisible:boolean = false;
-  superAdminVisible:boolean = false;
-  activateVisible:boolean = false;
-
-  yes:boolean = false;
+  yes: boolean = false;
 
   /**
    * @param userService
    * @param router
    */
-  constructor(private userService:UserService, private router:Router) { }
+  constructor(private userService: UserService, private router: Router) {}
 
   /**
    * Performs checks to see what this admin is able to edit depending
    * on their authority and the authority of the user's profile theyre viewing
    */
   ngOnInit(): void {
-    let u:User = JSON.parse(localStorage.getItem('loggedInUser')!)
+    let u: User = JSON.parse(localStorage.getItem('loggedInUser')!);
 
-    if(u.authority == 'ADMIN'){
+    if (u.authority == 'ADMIN') {
       this.userVisible = true;
       this.adminVisible = true;
       this.superAdminVisible = false;
       this.activateVisible = true;
-
-    } else if(u.authority == 'SUPER_ADMIN') {
+    } else if (u.authority == 'SUPER_ADMIN') {
       this.userVisible = true;
       this.adminVisible = true;
       this.superAdminVisible = true;
       this.activateVisible = true;
     }
 
-    if((u.authority == 'ADMIN' && (this.user?.authority == 'ADMIN' || this.user?.authority == 'SUPER_ADMIN'))
-     || (u.authority == 'SUPER_ADMIN' && this.user?.authority == 'SUPER_ADMIN')) {
-
+    if (
+      (u.authority == 'ADMIN' &&
+        (this.user?.authority == 'ADMIN' ||
+          this.user?.authority == 'SUPER_ADMIN')) ||
+      (u.authority == 'SUPER_ADMIN' && this.user?.authority == 'SUPER_ADMIN')
+    ) {
       this.userVisible = false;
       this.adminVisible = false;
       this.superAdminVisible = false;
@@ -68,19 +69,22 @@ export class UserProfileAdminViewComponent implements OnInit {
    * Sets the user's active status using updateUserActive in UserService
    * @param active The user's new active status
    */
-  async setUserActive(active:boolean){
-    if(confirm(`Are you sure you want to change this user's active status?`)){
+  async setUserActive(active: boolean) {
+    if (confirm(`Are you sure you want to change this user's active status?`)) {
       this.isLoading = true;
 
       try {
-        await this.userService.updateUserActive(active, this.user!.userId).then(response => {
-          this.user = JSON.parse(response);
-        })
+        await this.userService
+          .updateUserActive(active, this.user!.userId)
+          .then((response) => {
+            this.user = response;
+          });
         this.goBack();
         this.isLoading = false;
-
       } catch (exception) {
-        alert("Error occured when saving changes. Please try again later.\n\nIf this issue persists, please contact support.")
+        alert(
+          'Error occured when saving changes. Please try again later.\n\nIf this issue persists, please contact support.'
+        );
         this.isLoading = false;
       }
       this.isLoading = false;
@@ -91,19 +95,26 @@ export class UserProfileAdminViewComponent implements OnInit {
    * Sets the user's authority using updateUserAuthority() in UserService
    * @param authority The users new authority
    */
-  async setUserAuthority(authority:string){
-    if(confirm(`Are you sure you want to give\n\n${this.user?.name}\n\nthe authority of\n\n${authority}?`)){
+  async setUserAuthority(authority: string) {
+    if (
+      confirm(
+        `Are you sure you want to give\n\n${this.user?.name}\n\nthe authority of\n\n${authority}?`
+      )
+    ) {
       this.isLoading = true;
 
       try {
-        await this.userService.updateUserAuthority(authority, this.user!.userId).then(response => {
-          this.user = JSON.parse(response);
-        })
+        await this.userService
+          .updateUserAuthority(authority, this.user!.userId)
+          .then((response) => {
+            this.user = response;
+          });
         this.goBack();
         this.isLoading = false;
-
       } catch (exception) {
-        alert("Error occured when saving changes. Please try again later.\n\nIf this issue persists, please contact support.")
+        alert(
+          'Error occured when saving changes. Please try again later.\n\nIf this issue persists, please contact support.'
+        );
         this.isLoading = false;
       }
       this.isLoading = false;
@@ -113,15 +124,15 @@ export class UserProfileAdminViewComponent implements OnInit {
   /**
    * Routes to the profile of this user
    */
-   goBack(){
-    this.router.navigate([`/profile/${this.user?.userId}`])
+  goBack() {
+    this.router.navigate([`/profile/${this.user?.userId}`]);
   }
 
   /**
    * Routes to the batch details page of a specific batch
    * @param batchId The id of the batch to navigate to
    */
-   goToBatch(batchId:number){
+  goToBatch(batchId: number) {
     this.router.navigate([`/batchDetails/${batchId}`]);
   }
 

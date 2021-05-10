@@ -9,6 +9,7 @@ import { UserProfileAdminViewComponent } from './components/user-profile/user-pr
 import { PostLoginComponent } from './components/login/post-login/post-login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddUsersEmailComponent } from './components/add-users-email/add-users-email.component';
+import { UserSearchComponent } from './components/user-search/user-search.component';
 import { SharedModule } from '../global-components/shared.module';
 import { UserProfileEditComponent } from './components/user-profile/user-profile-edit/user-profile-edit.component';
 import { BatchComponent } from './components/batch/batch.component';
@@ -23,6 +24,7 @@ import { AdminBatchComponent } from './components/admin-batch/admin-batch.compon
     UserProfileAdminViewComponent,
     PostLoginComponent,
     AddUsersEmailComponent,
+    UserSearchComponent,
     UserProfileEditComponent,
     BatchComponent,
     AdminBatchComponent,
