@@ -10,7 +10,8 @@
       <div class="form-group">
         <div class="form-group">
 
-        <div id="Dropdown-Button" >
+          <div class="row clearfix flex-fill">
+        <div id="Dropdown-Button" class="float-left">
           <select id="Dropdown-List"
                   placeholder="Topic"
             name="topic"
@@ -19,10 +20,27 @@
             placeholder="Select topic"
             type="button"
             required>
+            <p>topic</p>
             <option selected="selected" hidden="true">None</option>
             <option *ngFor="let topic of topics" value={{topic.id}}>{{topic.topicName}}</option>
           </select>
         </div>
+
+
+        <div class="form-group float-right">
+          <select
+            name="difficulty"
+            [(ngModel)]="form.difficulty"
+            #difficulty="ngModel"
+            placeholder="Select difficulty"
+            type="difficulty"
+            required>
+            <option value="easy" selected="selected">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+          </select>
+      </div>
+          </div>
 
         </div>
         <label for = "submitContent" >
