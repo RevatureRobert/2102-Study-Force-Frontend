@@ -18,24 +18,11 @@ export class StacktraceComponent implements OnInit {
 
   currentStacktrace!: Stacktrace;
 
-  constructor(private stacktraceService: StacktraceService, private route: ActivatedRoute,
-    private router: Router) {
-      //TODO remove this placeholder user
-      // let u:User = {
-      //   userId:2,
-      //     email:"jomama@hotmail.gov",
-      //     name:"John Doe",
-      //     active:false,
-      //     subscribedStacktrace:true,
-      //     subscribedFlashcard:true,
-      //     authority:"USER",
-      //     registrationTime:new Date(1620310931740),
-      //     lastLogin:new Date(1620310931740)
-      //   };
-      // //TODO remove this placeholder user in local storage
-      // localStorage.setItem('loggedInUser', JSON.stringify(u));
-      // console.log(localStorage.getItem("loggedInUser"));
-  }
+  constructor(
+    private stacktraceService: StacktraceService,
+    private route: ActivatedRoute,
+    private router: Router
+    ) { }
 
   ngOnInit(): void {
     this.LoggedUser = JSON.parse(localStorage.getItem("loggedInUser") || "{}");
