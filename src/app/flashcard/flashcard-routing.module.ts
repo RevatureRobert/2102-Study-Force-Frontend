@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: '', redirectTo:'/view-flashcards',pathMatch:'full'},
   { path: 'create-question', component: CreateFlashcardPageComponent },
   { path: 'submit-answer', component: SubmitAnswerPageComponent },
-  { path: 'view-thread', component: ViewFlashcardThreadComponent},
+  { path: 'view-thread/:id', component: ViewFlashcardThreadComponent},
   { path: 'view-flashcards', component: FlashcardPageComponent},
   { path: 'view-topics', component: FlashcardTopicComponent} //require admin auth guard, please add in the future
 ];

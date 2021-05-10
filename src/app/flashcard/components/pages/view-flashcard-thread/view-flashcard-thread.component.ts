@@ -6,6 +6,7 @@ import { AnswerService } from 'src/app/flashcard/service/answer.service';
 import { FlashcardService } from 'src/app/flashcard/service/flashcard.service';
 import {Subscription} from 'rxjs';
 import {SearchContentService} from '../../../../global-components/search-content.service';
+import { ActivatedRoute } from '@angular/router';
 
 
 
@@ -26,8 +27,8 @@ export class ViewFlashcardThreadComponent implements OnInit {
 
   constructor(private flashcardService: FlashcardService,
               private answerService: AnswerService,
-              private searchBar: SearchContentService) {
-
+              private searchBar: SearchContentService,
+              private route: ActivatedRoute) {
   }
 
 
@@ -35,6 +36,15 @@ export class ViewFlashcardThreadComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(localStorage.getItem('loggedInUser'));
+
+    this.route.paramMap.subscribe(params => {
+      if(params.has('id')) {
+        this.flashcardService.selectedFlashcardForThread = parseInt(params.get('id') || '')
+        this.flashcardId = this.flashcardService.selectedFlashcardForThread
+        console.log(this.flashcardId)
+      }
+    });
+
     this.flashcardId = this.flashcardService.selectedFlashcardForThread;
     this.getSelectedFlashcard();
     this.getAllAnswers();
