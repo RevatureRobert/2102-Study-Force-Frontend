@@ -125,38 +125,7 @@ class="card card-body"
 name="flashcard"
 (ngSubmit) = "f.form.valid && onSubmit()"
 #f = "ngForm">
- <div class="form-group">
-   <select
-     name="difficulty"
-     [(ngModel)]="form.difficulty"
-     #difficulty="ngModel"
-     placeholder="Select difficulty"
-     type="difficulty"
-     required>
-     <option value="easy" selected="selected">Easy</option>
-     <option value="medium">Medium</option>
-     <option value="hard">Hard</option>
-   </select>
-</div>
- <div class="form-group">
-   <textarea
-     class="input-styling form-control"
-     name="question"
-     [(ngModel)]="form.question"
-     #question="ngModel"
-     placeholder="Question"
-     rows="12"
-     type="text"
-     required >
-   </textarea>
- </div>
-<div>
- <button class="custom-button">
-   Submit
- </button>
-</div>
-</form>
-</div>
+
  <br>
  <br>
  <br> -->

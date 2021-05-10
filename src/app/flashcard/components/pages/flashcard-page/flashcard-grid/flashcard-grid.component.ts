@@ -26,7 +26,7 @@ export class FlashcardGridComponent implements OnInit {
 
   filterDisplay = '';
 
-  searchText = '';
+  searchText!: string;
   subscription!: Subscription;
 
   constructor(private flashcardService: FlashcardService, private topicService: TopicService, private searchContent: SearchContentService) { }
@@ -44,6 +44,7 @@ export class FlashcardGridComponent implements OnInit {
       this.searchText = message;
       this.mode = Mode.SEARCH;
       this.loadPage(0);
+      this.flashcardService.get
     });
 
 
@@ -164,7 +165,9 @@ export class FlashcardGridComponent implements OnInit {
         });
         break;
       case Mode.SEARCH:
-        this.flashcardService.getAllBySearch(page, this.searchText);
+        this.flashcardService.getAllBySearch(page, this.searchText).subscribe({
+          next: result => this.flashcardPage = result
+        });
         break;
       default:
         break;
