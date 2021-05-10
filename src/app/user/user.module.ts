@@ -12,10 +12,11 @@ import { PostLoginComponent } from './components/login/post-login/post-login.com
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddUsersEmailComponent } from './components/add-users-email/add-users-email.component';
 import { UserSearchComponent } from './components/user-search/user-search.component';
-import { SharedModule } from '../global-components/shared.module';
+
 import { UserProfileEditComponent } from './components/user-profile/user-profile-edit/user-profile-edit.component';
 import { BatchComponent } from './components/batch/batch.component';
 import { AdminBatchComponent } from './components/admin-batch/admin-batch.component';
+import {SharedModule} from '../shared.module';
 
 
 @NgModule({
@@ -39,7 +40,7 @@ import { AdminBatchComponent } from './components/admin-batch/admin-batch.compon
     UserRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    SharedModule,
+    SharedModule
   ],
 
   providers: [RedirectGuardService]

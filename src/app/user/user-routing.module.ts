@@ -29,12 +29,12 @@ const userRoutes: Routes = [
   { path: 'edit/profile', component: UserProfileEditComponent },
   { path: 'user-search', component: UserSearchComponent },
   { path: 'batchDetails/:id', component: BatchComponent },
-  { path: "batchDetails", component: BatchComponent },
-  { path: "adminBatchDetails", component: AdminBatchComponent },
-  { path: "adminBatchDetails/:id", component: AdminBatchComponent },
-  { path: "adminBatchEditDetails", component: AdminBatchEditComponent },
-  { path: "adminBatchEditDetails/:id", component: AdminBatchEditComponent },
-  { path: "adminBatchCreate", component: AdminBatchCreateComponent }
+  { path: 'batchDetails', component: BatchComponent },
+  { path: 'adminBatchDetails', component: AdminBatchComponent },
+  { path: 'adminBatchDetails/:id', component: AdminBatchComponent },
+  { path: 'adminBatchEditDetails', component: AdminBatchEditComponent },
+  { path: 'adminBatchEditDetails/:id', component: AdminBatchEditComponent },
+  { path: 'adminBatchCreate', component: AdminBatchCreateComponent }
 ];
 
 @NgModule({
