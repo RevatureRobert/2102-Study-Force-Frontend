@@ -44,12 +44,8 @@ export class StacktraceService {
     return this.http.delete<Stacktrace>(`${this.stacktraceURL}/${id}`, { headers: this.httpHeaders });
   }
 
-  findByTitle(title:any): Observable<Stacktrace[]> {
-    return this.http.get<Stacktrace[]>(`${this.stacktraceURL}?title=${title}`);
-  }
-
-  findByTitleAndTechnology(title:any, technologyId: number, page: number): Observable<any> {
-    return this.http.get<Stacktrace[]>(`${this.stacktraceURL}/search?title=${title}&technologyId=${technologyId}&page=${page}`);
+  findByTitleAndOrTechnology(params :any): Observable<any> {
+    return this.http.get<Stacktrace[]>(`${this.stacktraceURL}/search`,{params});
   }
 
   chosenSolution(solutionId: number, stacktraceId: number): Observable<Stacktrace>{
