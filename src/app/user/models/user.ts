@@ -6,6 +6,6 @@ export interface User {
   subscribedStacktrace: boolean;
   subscribedFlashcard: boolean;
   authority: string;
-  registrationTime?: Date;
-  lastLogin?: Date;
+  registrationTime: Date;
+  lastLogin: Date;
 }

@@ -1,76 +1,64 @@
 <div class="container">
-    <div id="glass-pane">
-        <div class="row">
-            <div class="col-4"></div>
-            <div class="col-4 text-center mt-5 mb-5 upload-btn-wrapper">
-                <button class="btn btn-primary" id="Upload-CSV-Button">
-                    Upload CSV
-                </button>
-                <input type="file" (change)="changeListener($event.target.files)" />
+  <div id="glass-pane">
+    <div class="row">
+      <div class="col-4"></div>
+      <div class="col-4 text-center mt-5 mb-5 upload-btn-wrapper">
+        <button class="btn btn-primary" id="Upload-CSV-Button">
+          Upload CSV
+        </button>
+        <input type="file" (change)="changeListener($event.target.files)" />
+      </div>
+      <div class="col-4 text-center mt-5">
+        <div class="dropdown" id="Dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="reset" id="Dropdown-Button" data-bs-toggle="dropdown"
+            aria-expanded="false" (click)="this.changeFocus()" (focus)="this.setFalse()">
+            Choose Batch
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="Dropdown-Button" id="Dropdown-List">
+            <div *ngFor='let b of batch'>
+              <li><button class="dropdown-item" id="" (click)="onSelectBatch(b.id)">{{b.name}}</button></li>
             </div>
-            <div class="col-4 text-center mt-5">
-                <div class="dropdown" id="Dropdown">
-                    <button
-                        class="btn btn-secondary dropdown-toggle"
-                        type="reset"
-                        id="Dropdown-Button"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false"
-                        (click)="this.changeFocus()"
-                        (focus)="this.setFalse()"
-                    >
-                        Dropdown button
-                    </button>
-                    <ul
-                        class="dropdown-menu"
-                        aria-labelledby="Dropdown-Button"
-                        id="Dropdown-List"
-                    >
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                </div>
-            </div>
+          </ul>
         </div>
-        <div class="row">
-                <div class="wrapper col-8 mt-5 mx-auto">
-                    <div class="table-responsive">
-                        <table class="table table-striped table-borderless">
-                            <thead class="m-2">
-                                <tr>
-                                    <th id="">Employees</th>
-                                    <th id="">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr *ngFor="let e of userEmployeeArray">
-                                    <td>{{ e.email }}</td>
-                                    <td>
-                                        <button class="btn btn-danger form-control Remove-Button"
-                                            (click)="onDeleteEmployee()">
-                                            Remove
-                                        </button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                            <caption>
-                                <form (submit)="onSubmitEmployee(formEmp)" #formEmp="ngForm">
-                                    <input type="text" class="form-control d-inline" name="email" placeholder="email"
-                                        [ngModel]="user?.email" #email="ngModel" id="Email-Input" />
-                                    <button class="btn btn-primary Add-Button form-control d-inline" type="submit">
-                                        Add
-                                </button>
-                                </form>
-                            </caption>
-                        </table>
-                    </div>
-                </div>
-        </div>
-        <div class="col text-center mt-5 mb-5">
-            <button class="btn btn-primary" type="button" id="Submit-Button" (click)="submitAll()">
-                Submit
-            </button>
-        </div>
+      </div>
     </div>
+    <div class="row">
+      <div class="wrapper col-6 mt-5 mx-auto">
+        <div class="table-responsive">
+          <table class="table table-striped table-borderless">
+            <thead class="m-2">
+              <tr>
+                <th id="">Employees</th>
+                <th id="">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let e of userEmployeeArray">
+                <td>{{ e.email }}</td>
+                <td>
+                  <button class="btn btn-danger form-control Remove-Button" (click)="onDeleteEmployee(e)">
+                    Remove
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+            <caption>
+              <form (submit)="onAddEmployee(formEmp)" #formEmp="ngForm">
+                <input type="text" class="form-control d-inline Email-Input" name="email" placeholder="Email"
+                  [ngModel]="user?.email" #email="ngModel" id="Email-Input" />
+                <button class="btn btn-primary Add-Button form-control d-inline" type="submit">
+                  Add
+                </button>
+              </form>
+            </caption>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col text-center mt-5 mb-5">
+      <button class="btn btn-primary" type="button" id="Submit-Button" (click)="submitAll()">
+        Submit
+      </button>
+    </div>
+  </div>
 </div>
