@@ -6,6 +6,10 @@ import { Technology } from '../../models/technology';
 import { User } from '../../models/user';
 import { TechnologyService } from '../../services/technology.service';
 
+
+/**
+ * Handles the logic of the form that creates new Stacktrace objects.
+ */
 @Component({
   selector: 'app-new-stacktrace',
   templateUrl: './new-stacktrace.component.html',
@@ -16,6 +20,7 @@ export class NewStacktraceComponent implements OnInit {
   technology: Technology[] = [];
   LoggedUser: any;
 
+  // a blank Stacktrace object, ready to be populated from the form imput
   stacktrace: Stacktrace = {
     title : '',
     body : '',
@@ -27,7 +32,13 @@ export class NewStacktraceComponent implements OnInit {
     technologyName:"",
   };
 
-  constructor(private route :ActivatedRoute, private stacktraceService: StacktraceService,private router: Router, private technologyService: TechnologyService) {
+  /**
+   * @param route provides the route to be used upon form activation. Never used.
+   * @param stacktraceService the service used to send new stacktrace requests to the backend
+   * @param router provides for routing to other components
+   * @param technologyService the service used to send Technology-related requests to the backend
+   */
+  constructor(private route: ActivatedRoute, private stacktraceService: StacktraceService, private router: Router, private technologyService: TechnologyService) {
     this.stacktrace = new Stacktrace();
         // //TODO remove this placeholder user
         // let u:User = {
@@ -44,32 +55,42 @@ export class NewStacktraceComponent implements OnInit {
         // //TODO remove this placeholder user in local storage
         // localStorage.setItem('loggedInUser', JSON.stringify(u));
         // console.log(localStorage.getItem("loggedInUser"));
-   }
+  }
 
-   ngOnInit(): void {
+  ngOnInit(): void {
     this.LoggedUser = JSON.parse(localStorage.getItem("loggedInUser") || "{}");
     this.getAllTechnology();
   }
 
-  setNewTechnologyId(id: number): void{
+  /**
+   * Sets the new Stacktrace's technologyId based on the given value from the dropdown.
+   */
+  setNewTechnologyId(id: number): void {
     this.stacktrace.technologyId = id;
     this.technologyId = id;
   }
 
-
-
-   onSubmit() {
+  /**
+   * On form submission, saves the newly-created Stacktrace object to the backend.
+   */
+  onSubmit() {
     this.stacktrace.userId = this.LoggedUser.userId;
     this.stacktrace.technologyId = this.technologyId;
     console.log(this.stacktrace);
     this.stacktraceService.save(this.stacktrace).subscribe(result => this.gotoStacktraceList());
   }
 
+  /**
+   * On form submission, routes the user back to the list of all stacktraces.
+   */
   gotoStacktraceList() {
     this.router.navigate(['/stacktraces']);
   }
 
-  getAllTechnology(){
+  /**
+   * Retrieves all technologies from the backend for display in the dropdown menu.
+   */
+  getAllTechnology() {
     this.technologyService.getAllTechnology().then(
       (      data: Technology[]) =>{
         this.technology = data;
@@ -78,9 +99,12 @@ export class NewStacktraceComponent implements OnInit {
     )
   }
 
+  // Flag representing whether or not the dropdown button has been clicked
   yes: boolean = false;
 
-  //If the dropdown button is clicked this will provide functionallity to style the button based on the button click.
+  /**
+   * Provides functionality to style the dropdown button after it has been clicked.
+   */
   changeFocus() {
     let parent = document.getElementById('Dropdown-Button');
 
@@ -95,7 +119,9 @@ export class NewStacktraceComponent implements OnInit {
     }
   }
 
-  //If the dropdown loses focus, set the boolean to false.
+  /**
+   * Toggles the dropdown button flag.
+   */
   setFalse() {
     this.yes = false;
   }
