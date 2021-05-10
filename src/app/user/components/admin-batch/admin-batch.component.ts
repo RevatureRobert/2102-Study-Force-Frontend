@@ -56,6 +56,9 @@ export class AdminBatchComponent implements OnInit {
     })
   }
 
+  /**
+   * This is to redirect the admin to the page to edit the details for the batch.
+   */
   editButtonClicked(): void {
     this.router.navigateByUrl(`adminBatchEditDetails/${this.id}`) ;
   }

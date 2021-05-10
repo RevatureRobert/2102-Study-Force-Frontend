@@ -52,7 +52,7 @@ export class BatchService {
    * @param batch The Batch Object that is replacing the current one in the database
    * @returns Promise Batch Object
    */
-  updateBatch(id: string, name: string, instructorsEmail:string[], usersEmail:string[]){
+  updateBatch(id: string, name: string, instructorsEmail:string[], usersEmail:string[]): Promise<any>{
 
     const headerInfo = {
       'Content-Type': 'application/json',
@@ -88,10 +88,10 @@ export class BatchService {
    * @param id The ID for the batch to be deleted
    * @returns Promise Batch Object
    */
-  deleteBatch(id: string){
+  deleteBatch(id: string): Promise<any>{
 
     const url = `${this.dev}/${this.batches}/${id}`;
-    return this.http.delete<Batch>(url);
+    return this.http.delete<any>(url).toPromise();
   }
 
   /**
@@ -99,19 +99,12 @@ export class BatchService {
    * @param id The ID for the batch to be deactivated
    * @returns Promise Batch Object
    */
-  deactivateBatch(id: string){
+  deactivateBatch(id: string): Promise<any>{
 
-    const headerInfo = {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-    }
 
-    const requestOptions = {
-      headers: new HttpHeaders(headerInfo)
-    };
 
     const url = `${this.dev}/${this.batches}/${this.deactivate}/${id}`;
-    return this.http.put<any>(url,requestOptions);
+    return this.http.put<any>(url,"").toPromise();
   }
 
 

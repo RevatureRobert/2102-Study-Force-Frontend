@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../../models/user';
 import { BatchService } from '../../services/batch.service';
 import { NgForm } from '@angular/forms';
+import { Input } from '@angular/core';
 
 
 @Component({
@@ -21,6 +22,9 @@ export class AdminBatchEditComponent implements OnInit {
   name: string = '';  //Name of the batch.
   loaded:boolean = false;  //To confirm view did load.
   id: string = "";  //ID of the batch to be used for batch service method.
+
+  userCurrentEmail:string = "";
+  instructorCurrentEmail:string = "";
 
   /**
    *
@@ -72,10 +76,12 @@ export class AdminBatchEditComponent implements OnInit {
    * Warning for the submit button.
    * If the user select yes thenit will execute the submit function.
    */
-  warningForSubmit(): void {
-    var answer = confirm(`Confirm the changes your have made on batch: ${this.name}`);
+  async warningForSubmit() {
+
+    let answer = confirm(`Confirm the changes your have made on batch: ${this.name}.`);
     if (answer == true){
-        this.submit();
+        this.loaded = false;
+        await this.submit();
         this.redirect();
     }
   }
@@ -84,10 +90,11 @@ export class AdminBatchEditComponent implements OnInit {
    * Warning for the delete button.
    * If the user select yes thenit will execute the delete function.
    */
-  warningForDelete(): void {
-    var answer = confirm(`Are you sure you want to delete batch: ${this.name}`);
+  async warningForDelete() {
+    let answer = confirm(`Are you sure you want to delete batch: ${this.name}?`);
     if (answer == true){
-        this.delete();
+      this.loaded = false;
+      await this.delete();
         this.redirect();
     }
   }
@@ -96,11 +103,12 @@ export class AdminBatchEditComponent implements OnInit {
    * Warning for the deactivate button.
    * If the user select yes thenit will execute the deactivate function.
    */
-  warningForDeactivate(): void {
-    var answer = confirm(`Are you sure you want to deactivate batch: ${this.name}`);
+  async warningForDeactivate() {
+    let answer = confirm(`Are you sure you want to deactivate batch: ${this.name}? \nAll users will be deactivated and the batch will be deleted.`);
     if (answer == true){
-        this.deactivate();
-
+      this.loaded = false;
+      await this.deactivate();
+      this.redirect();
     }
   }
 
@@ -112,13 +120,19 @@ export class AdminBatchEditComponent implements OnInit {
   }
 
   /**
+   * This is to refresh the page whenever a redirect is caleld.
+   */
+  refreshPage(){
+    window.location.reload();
+  }
+
+  /**
    * This is the submit button that create a batch base on the state of the batch object when the submit button is pressed.
    * Then this function use the updateBatch in batchService to perform the update function.
    */
-  submit(): void{
+  async submit(){
 
-
-    this.batchService.updateBatch(this.id,this.name,this.instructors,this.users);
+    await this.batchService.updateBatch(this.id,this.name,this.instructors,this.users);
 
   }
 
@@ -126,15 +140,15 @@ export class AdminBatchEditComponent implements OnInit {
    * This function delete the batch.
    */
 
-  delete(): void{
-    this.batchService.deleteBatch(this.id);
+  async delete(){
+    await this.batchService.deleteBatch(this.id);
   }
 
   /**
    * This function deactivate the batch.
    */
-  deactivate(): void {
-    this.batchService.deactivateBatch(this.id);
+  async deactivate() {
+    await this.batchService.deactivateBatch(this.id);
   }
 
   /**
@@ -178,6 +192,37 @@ onDeleteInstructor(user: string) {
   console.log(this.instructors);
 }
 
+/**
+   * To add an employee email to the array of users to populate the table in HTML, and to ultimately send to the Service for post request
+   * @param formEmp form info coming from form tag in HTML
+   * @returns the userEmployeeArray with the newly added email
+   */
+ onAddUser(formEmp: NgForm) {
+  let checkedEmail = formEmp.value.email;
+
+  if (!this.isEmail(checkedEmail)) {
+      alert("Please check emails and try and submit again");
+      return;
+  }
+  const email = this.userCurrentEmail = checkedEmail;
+
+  this.users.push(email)
+
+  return this.users;
 }
 
+onAddInstructor(formEmp: NgForm) {
+  let checkedEmail = formEmp.value.email;
 
+  if (!this.isEmail(checkedEmail)) {
+      alert("Please check emails and try and submit again");
+      return;
+  }
+  const email = this.instructorCurrentEmail = checkedEmail;
+
+  this.instructors.push(checkedEmail)
+
+  return this.instructors;
+}
+
+}
