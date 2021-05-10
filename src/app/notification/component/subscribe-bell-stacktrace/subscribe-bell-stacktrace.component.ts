@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { StacktraceSubscriptionDTO } from '../../model/stacktrace-subscription-dto';
 import { SubscribeBellStacktraceService } from '../../service/subscribe-bell-stacktrace.service';
 
@@ -8,16 +8,17 @@ import { SubscribeBellStacktraceService } from '../../service/subscribe-bell-sta
   styleUrls: ['./subscribe-bell-stacktrace.component.css']
 })
 export class SubscribeBellStacktraceComponent implements OnInit {
-
+  @Input() stacktraceId!:number;
+  @Input() userId!:number;
   subscriptionStatus!:boolean;
   image!:string;
   sub:StacktraceSubscriptionDTO;
   constructor(private subscribeBell:SubscribeBellStacktraceService) {
-    this.sub = {stacktraceId: 1, userId: 1};
+    this.sub = {stacktraceId: this.stacktraceId, userId: 1};
    }
 
   ngOnInit(): void {
-    this.getSubscriptionStatus(1, 1);
+    this.getSubscriptionStatus(this.userId, this.stacktraceId);
   }
 
   getSubscriptionStatus(userId:number, stacktraceId:number):void{
