@@ -17,6 +17,8 @@ import { RateService } from './service/rate.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { VoteService } from './service/vote.service';
 import { FlashcardTopicComponent } from './components/ui/flashcard/flashcard-topic/flashcard-topic.component';
+import { SubscribeBellFlashcardComponent } from 'src/app/notification/component/subscribe-bell-flashcard/subscribe-bell-flashcard.component';
+import { SubscribeBellFlashcardService } from 'src/app/notification/service/subscribe-bell-flashcard.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { FlashcardTopicComponent } from './components/ui/flashcard/flashcard-top
     FlashcardDeleteComponent,
     SubmitAnswerPageComponent,
     ViewFlashcardThreadComponent,
-    FlashcardTopicComponent
+    FlashcardTopicComponent,
+    SubscribeBellFlashcardComponent
   ],
   imports: [
     CommonModule,
@@ -51,7 +54,7 @@ import { FlashcardTopicComponent } from './components/ui/flashcard/flashcard-top
   ],
   providers: [
     FlashcardService,
-
+    SubscribeBellFlashcardService,
     VoteService,
     RateService
 

@@ -24,7 +24,6 @@ import { FormsModule } from '@angular/forms';
 import { StacktraceModule } from './stacktrace/stacktrace.module';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +40,7 @@ import { StacktraceModule } from './stacktrace/stacktrace.module';
     DiologueCardComponent,
     HomeComponent,
     ListComponent,
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
