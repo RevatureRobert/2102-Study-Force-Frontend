@@ -85,7 +85,7 @@ overflow:hidden;
   text-align: center;
   margin: 0 auto;
   position: absolute;
-  bottom: 10%;
+  bottom: 25%;
 }
 
 .rating-label {
@@ -93,7 +93,7 @@ overflow:hidden;
   text-align: center;
   margin: 0 auto;
   position: absolute;
-  bottom: 4%;
+  bottom: 0%;
 }
 
 .form-label {

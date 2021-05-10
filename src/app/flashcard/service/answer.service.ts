@@ -17,31 +17,31 @@ export class AnswerService {
 
   private headerInfo = {
     'Content-Type': 'application/json',
-    'Accept': 'application/json',
-    //'Access-Control-Allow-Headers': 'Content-Type',
-    //'Authorization': 'Bearer '.concat(JWT.currentJWT)
+    Accept: 'application/json',
+    // 'Access-Control-Allow-Headers': 'Content-Type',
+    // 'Authorization': 'Bearer '.concat(JWT.currentJWT)
   };
 
-  setCurrentFlashcardId(flashcardId:number):void{
-    this.flashcardId=flashcardId;
+  setCurrentFlashcardId(flashcardId: number): void{
+    this.flashcardId = flashcardId;
   }
 
-  getCurrentFlashcardId():number{
+  getCurrentFlashcardId(): number {
     return this.flashcardId;
   }
 
   async postAnswer(flashcardId: number, userId: number, answer: string ): Promise<any>{
 
     let answerDTO = new AnswerDTO();
-    answerDTO.userId= userId;
-    answerDTO.flashcardId= flashcardId;
+    answerDTO.userId = userId;
+    answerDTO.flashcardId = flashcardId;
     answerDTO.answer = answer;
 
-    return await this.http.post(`http://${environment.apiUrl}/answers/`,answerDTO,{headers:this.headerInfo}).toPromise();
+    return await this.http.post(`http://${environment.apiUrl}/answers/`, answerDTO, {headers: this.headerInfo}).toPromise();
   }
 
   setAnswerAsSelected(id: number): Observable<Answer> {
-    return this.http.put<Answer>(`http://${environment.apiUrl}/answers/${id}`, null)
+    return this.http.put<Answer>(`http://${environment.apiUrl}/answers/${id}`, null);
   }
 
 }

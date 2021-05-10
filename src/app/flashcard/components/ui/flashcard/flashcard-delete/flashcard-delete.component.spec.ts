@@ -1,4 +1,6 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FlashcardComponent } from '../flashcard.component';
 
 import { FlashcardDeleteComponent } from './flashcard-delete.component';
 
@@ -8,7 +10,9 @@ describe('FlashcardDeleteComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FlashcardDeleteComponent ]
+      declarations: [ FlashcardDeleteComponent ],
+      imports: [ HttpClientModule ],
+      providers: [ FlashcardComponent ]
     })
     .compileComponents();
   });

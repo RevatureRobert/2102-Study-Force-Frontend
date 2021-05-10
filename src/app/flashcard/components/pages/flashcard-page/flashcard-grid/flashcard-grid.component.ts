@@ -6,6 +6,8 @@ import { FlashcardPage } from 'src/app/flashcard/model/flashcardPage';
 import { Topic } from 'src/app/flashcard/model/topic';
 import { TopicService } from 'src/app/flashcard/service/topic.service';
 import { FlashcardService } from '../../../../service/flashcard.service';
+import {Subscription} from 'rxjs';
+import {SearchContentService} from '../../../../../global-components/search-content.service';
 
 
 @Component({
@@ -17,14 +19,17 @@ export class FlashcardGridComponent implements OnInit {
 
   flashcardPage?: FlashcardPage;
   mode: Mode = Mode.NONE;
-  modeChoices:DisplayData[] = [];
+  modeChoices: DisplayData[] = [];
   topics: Topic[] = [];
   input: any = null;
   flashcards: Flashcard[] = [];
 
-  filterDisplay:string = "";
+  filterDisplay = '';
 
-  constructor(private flashcardService: FlashcardService, private topicService: TopicService) { }
+  searchText?: string;
+  subscription!: Subscription;
+
+  constructor(private flashcardService: FlashcardService, private topicService: TopicService, private searchContent: SearchContentService) { }
 
   ngOnInit(): void {
     this.flashcardService.getAllByPage(0).subscribe({
@@ -34,11 +39,14 @@ export class FlashcardGridComponent implements OnInit {
     this.topicService.getAll().subscribe({
       next: result => this.topics = result
     });
+
+    this.subscription = this.searchContent.currentMessage.subscribe(message => this.searchText = message);
   }
 
   prevPage(): void {
-    if(this.flashcardPage)
+    if (this.flashcardPage) {
       this.loadPage(this.flashcardPage.number - 1);
+    }
   }
 
   getAllFlashcards(): void {
@@ -54,40 +62,41 @@ export class FlashcardGridComponent implements OnInit {
   }
 
   nextPage(): void {
-    if(this.flashcardPage)
+    if (this.flashcardPage) {
       this.loadPage(this.flashcardPage.number + 1);
+    }
   }
 
   setModeToNone(): void {
     this.mode = Mode.NONE;
-    this.modeChoices = []
+    this.modeChoices = [];
     this.input = null;
-    this.setInput(null)
+    this.setInput(null);
   }
 
   setModeToDifficulty(): void {
     this.mode = Mode.DIFFICULTY;
     this.modeChoices = [
-      {input: 1, displayString: "Easy"},
-      {input: 2, displayString: "Medium"},
-      {input: 3, displayString: "Hard"}];
-      this.setInput(this.modeChoices[0].input)
+      {input: 1, displayString: 'Easy'},
+      {input: 2, displayString: 'Medium'},
+      {input: 3, displayString: 'Hard'}];
+    this.setInput(this.modeChoices[0].input);
     }
 
   setModeToResolved(): void {
     this.mode = Mode.RESOLVED;
     this.modeChoices = [
-      {input: true, displayString: "Resolved"},
-      {input: false, displayString: "Not Resolved"}];
-      this.setInput(this.modeChoices[0].input)
+      {input: true, displayString: 'Resolved'},
+      {input: false, displayString: 'Not Resolved'}];
+    this.setInput(this.modeChoices[0].input);
   }
 
   setModeToTopic(): void {
     this.mode = Mode.TOPIC;
-    this.modeChoices = this.topics.map((topic: Topic)=> {
+    this.modeChoices = this.topics.map((topic: Topic) => {
       return {input: topic.topicName, displayString: topic.topicName};
     });
-    this.setInput(this.modeChoices[0].input)
+    this.setInput(this.modeChoices[0].input);
   }
 
   setModeToOwned(): void{
@@ -100,22 +109,22 @@ export class FlashcardGridComponent implements OnInit {
 
     switch (input) {
       case null:
-        this.filterDisplay = "";
+        this.filterDisplay = '';
         break;
       case true:
-        this.filterDisplay = "Resolved";
+        this.filterDisplay = 'Resolved';
         break;
       case false:
-        this.filterDisplay = "Not Resolved";
+        this.filterDisplay = 'Not Resolved';
         break;
       case 1:
-        this.filterDisplay = "Easy";
+        this.filterDisplay = 'Easy';
         break;
       case 2:
-        this.filterDisplay = "Medium";
+        this.filterDisplay = 'Medium';
         break;
       case 3:
-        this.filterDisplay = "Hard";
+        this.filterDisplay = 'Hard';
         break;
       default:
         this.filterDisplay = input;
@@ -200,9 +209,9 @@ interface DisplayData {
 }
 
 enum Mode {
-  NONE = "Filter By:",
-  TOPIC = "Topic",
-  DIFFICULTY = "Difficulty",
-  RESOLVED = "Resolved",
-  OWNED = "OWNED"
+  NONE = 'Filter By:',
+  TOPIC = 'Topic',
+  DIFFICULTY = 'Difficulty',
+  RESOLVED = 'Resolved',
+  OWNED = 'OWNED'
 }

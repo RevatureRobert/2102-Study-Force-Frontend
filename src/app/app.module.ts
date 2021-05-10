@@ -26,34 +26,37 @@ import { StacktraceModule } from './stacktrace/stacktrace.module';
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    TableComponent,
-    FlashcardQuestionComponent,
-    ReplyCardComponent,
-    SubmitContentCardComponent,
-    FlashcardAnswerComponent,
-    GlassPaneComponent,
-    GenericCardWideComponent,
-    GenericCardComponent,
-    DropdownComponent,
-    PaginationComponent,
-    DiologueCardComponent,
-    HomeComponent,
-    ListComponent,
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FlashcardModule,
-    StacktraceModule,
-    FormsModule,
-    NgbModule,
-    SharedModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent],
+    declarations: [
+        AppComponent,
+        TableComponent,
+        FlashcardQuestionComponent,
+        ReplyCardComponent,
+        SubmitContentCardComponent,
+        FlashcardAnswerComponent,
+        GlassPaneComponent,
+        GenericCardWideComponent,
+        GenericCardComponent,
+        DropdownComponent,
+        PaginationComponent,
+        DiologueCardComponent,
+        HomeComponent,
+        ListComponent,
+        AppComponent
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        FlashcardModule,
+        StacktraceModule,
+        FormsModule,
+        NgbModule,
+        SharedModule
+    ],
+    providers: [],
+    bootstrap: [AppComponent],
+    exports: [
+        GlassPaneComponent
+    ]
 })
 export class AppModule {}
