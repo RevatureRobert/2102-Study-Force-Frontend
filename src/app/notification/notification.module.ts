@@ -1,21 +1,20 @@
-import { SubscribeBellFlashcardComponent } from './component/subscribe-bell-flashcard/subscribe-bell-flashcard.component';
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {NotificationRoutingModule} from './notification-routing.module';
 import {NotificationComponent} from './component/notification/notification.component';
 import {NotificationPageComponent} from './component/notification-page/notification-page.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
-  declarations: [
-    NotificationComponent,
-    NotificationPageComponent,
-    SubscribeBellFlashcardComponent
-  ],
   imports: [
     CommonModule,
-    NotificationRoutingModule
+    NotificationRoutingModule,
+    NgbModule
   ],
-    
+  declarations: [
+    NotificationComponent,
+    NotificationPageComponent
+  ]
 })
 export class NotificationModule {
 }
