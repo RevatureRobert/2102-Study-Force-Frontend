@@ -6,6 +6,7 @@ import { SharedModule } from '../app/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 import { TableComponent } from './global-components/table/table.component';
 import { FlashcardQuestionComponent } from './global-components/flashcard-question/flashcard-question.component';
 import { ReplyCardComponent } from './global-components/reply-card/reply-card.component';
@@ -22,7 +23,9 @@ import { ListComponent } from './global-components/list/list.component';
 import {FlashcardModule } from './flashcard/flashcard.module';
 import { FormsModule } from '@angular/forms';
 import { StacktraceModule } from './stacktrace/stacktrace.module';
-
+import { UserModule } from './user/user.module';
+import { NotificationModule } from './notification/notification.module';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -41,17 +44,20 @@ import { StacktraceModule } from './stacktrace/stacktrace.module';
     DiologueCardComponent,
     HomeComponent,
     ListComponent,
-    AppComponent
-  ],
+    ]
+  
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FlashcardModule,
-    StacktraceModule,
     FormsModule,
     NgbModule,
-    SharedModule
+    SharedModule,
+    FlashcardModule,
+    StacktraceModule,
+    NotificationModule,
+    UserModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent],
