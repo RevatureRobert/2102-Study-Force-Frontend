@@ -171,6 +171,26 @@ export class FlashcardGridComponent implements OnInit {
     }
   }
 
+  yes:boolean[] = [false, false];
+
+  changeFocus(dNum: number) {
+    let parent = document.getElementById(`Dropdown-Button${dNum}`);
+
+    if (this.yes[dNum] === false) {
+      this.yes[dNum] = true;
+      parent!.style.setProperty('border-bottom-right-radius', '0px');
+      parent!.style.setProperty('border-bottom-left-radius', '0px');
+    } else {
+      this.yes[dNum] = false;
+      parent!.style.setProperty('border-bottom-right-radius', '10px');
+      parent!.style.setProperty('border-bottom-left-radius', '10px');
+    }
+  }
+
+  setFalse(dNum: number) {
+    this.yes[dNum] = false;
+  }
+
 }
 
 interface DisplayData {
