@@ -26,7 +26,7 @@ export class FlashcardGridComponent implements OnInit {
 
   filterDisplay = '';
 
-  searchText?: string;
+  searchText = '';
   subscription!: Subscription;
 
   constructor(private flashcardService: FlashcardService, private topicService: TopicService, private searchContent: SearchContentService) { }
@@ -40,7 +40,13 @@ export class FlashcardGridComponent implements OnInit {
       next: result => this.topics = result
     });
 
-    this.subscription = this.searchContent.currentMessage.subscribe(message => this.searchText = message);
+    this.subscription = this.searchContent.currentMessage.subscribe(message => {
+      this.searchText = message;
+      this.mode = Mode.SEARCH;
+      this.loadPage(0);
+    });
+
+
   }
 
   prevPage(): void {
@@ -48,6 +54,7 @@ export class FlashcardGridComponent implements OnInit {
       this.loadPage(this.flashcardPage.number - 1);
     }
   }
+
 
   getAllFlashcards(): void {
     this.flashcardService.getAll().subscribe(
@@ -156,6 +163,9 @@ export class FlashcardGridComponent implements OnInit {
           next: result => this.flashcardPage = result
         });
         break;
+      case Mode.SEARCH:
+        this.flashcardService.getAllBySearch(page, this.searchText);
+        break;
       default:
         break;
     }
@@ -173,5 +183,6 @@ enum Mode {
   TOPIC = 'Topic',
   DIFFICULTY = 'Difficulty',
   RESOLVED = 'Resolved',
-  OWNED = 'OWNED'
+  OWNED = 'OWNED',
+  SEARCH = 'SEARCH'
 }

@@ -8,6 +8,9 @@
     aria-label="Search"
     aria-describedby="Search-Button"
     id="Search-Input"
+    [value]="output"
     (input)="updateSearch(key.value)" #key="ngModel" ngModel name="key"
   />
+
 </div>
+
