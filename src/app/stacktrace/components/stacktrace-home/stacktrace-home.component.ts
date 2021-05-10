@@ -219,12 +219,4 @@ export class StacktraceHomeComponent implements OnInit {
       this.stacktraceService.findByTitleAndOrTechnology(params).subscribe(data => this.stacktraces = data.content);
     }
   }
-  /**
-   * Handles pagination
-   */
-  handlePageSizeChange(event: any): void {
-    this.pageSize = event.target.value;
-    this.page = 1;
-    this.retrieveStacktraces();
-  }
 }
