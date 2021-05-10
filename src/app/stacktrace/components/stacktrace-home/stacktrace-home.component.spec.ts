@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FlashcardComponent } from './flashcard.component';
+import { StacktraceHomeComponent } from './stacktrace-home.component';
 
-describe('FlashcardComponent', () => {
-  let component: FlashcardComponent;
-  let fixture: ComponentFixture<FlashcardComponent>;
+describe('StacktraceHomeComponent', () => {
+  let component: StacktraceHomeComponent;
+  let fixture: ComponentFixture<StacktraceHomeComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FlashcardComponent ]
+      declarations: [ StacktraceHomeComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FlashcardComponent);
+    fixture = TestBed.createComponent(StacktraceHomeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

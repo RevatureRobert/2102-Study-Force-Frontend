@@ -3,8 +3,10 @@ import { CreateUpdateBatch } from './../models/createUpdateBatch';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Observable } from 'rxjs';
-
-import { BASE_API_URL } from 'src/environments/environment';
+import { Batch } from '../models/batch';
+import { BASE_API_URL } from '../../../environments/environment';
+import { NewBatch } from '../models/new-batch';
+import { NewEmployeeBatch } from '../models/new-employee-batch';
 
 /**
  * Provides methods for passing Batch objects to and from the backend.
@@ -13,6 +15,11 @@ import { BASE_API_URL } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
+/**
+ * Service used for all CRUD operations related to batches
+ * @author Steven Ceglarek
+ * @author Lok Kan Kung
+ */
 export class BatchService {
 
   dev:string = 'http://localhost:8080';  // Base dev url to hit endpoint
@@ -118,6 +125,14 @@ export class BatchService {
 
     const url = `${this.dev}/${this.batches}/${this.deactivate}/${id}`;
     return this.http.put<any>(url,"").toPromise();
+  }
+
+  /**
+   * Gets all batches with a user or instructor matching provided userId
+   * @param userId The userId by which batches will be retrieved
+   */
+  getBatchesByMemberId(userId:number):Promise<any> {
+    return this.http.get<any>(BASE_API_URL.concat(`/batches/userid/${userId}`)).toPromise();
   }
 
 }
