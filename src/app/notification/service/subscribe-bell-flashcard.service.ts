@@ -3,13 +3,14 @@ import {HttpClient} from '@angular/common/http';
 import { FlashcardSubscriptionDTO } from 'src/app/notification/model/flashcard-subscription-dto';
 import { FlashcardSubscription } from '../model/flashcard-subscription';
 import { HttpParams } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SubscribeBellFlashcardService {
 
-  url:string = "http://localhost:8080/subscriptions/flashcards";
+  url:string = environment.apiUrl.concat("/subscriptions/flashcards");
 
   constructor(private http:HttpClient) { }
 

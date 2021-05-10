@@ -8,16 +8,13 @@ import {NotificationPageComponent} from './component/notification-page/notificat
 
 @NgModule({
   declarations: [
+    CommonModule,
     NotificationComponent,
     NotificationPageComponent
   ],
   imports: [
     CommonModule
   ],
-  declarations: [SubscribeBellFlashcardComponent, SubscribeBellStacktraceComponent]
-    CommonModule,
-    NotificationRoutingModule,
-  ]
 })
 export class NotificationModule {
 }

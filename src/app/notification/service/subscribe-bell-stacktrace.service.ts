@@ -3,13 +3,14 @@ import {HttpClient} from '@angular/common/http';
 import { HttpParams } from '@angular/common/http';
 import { StacktraceSubscription } from '../model/stacktrace-subscription';
 import { StacktraceSubscriptionDTO } from '../model/stacktrace-subscription-dto';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SubscribeBellStacktraceService {
 
-  url:string = "http://localhost:8080/subscriptions/stacktraces";
+  url:string = environment.apiUrl.concat("/subscriptions/stacktraces");
 
   constructor(private http:HttpClient) { }
 
