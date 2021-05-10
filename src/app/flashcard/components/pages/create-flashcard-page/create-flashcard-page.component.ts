@@ -58,7 +58,7 @@ export class CreateFlashcardPageComponent implements OnInit {
     );
   }
 
-  onDestroy(): void {
+  ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
 }

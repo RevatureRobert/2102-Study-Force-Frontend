@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {SearchContentService} from '../search-content.service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-search-bar',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchBarComponent implements OnInit {
 
-  constructor() { }
+  output = '';
+  subscription!: Subscription;
+
+  constructor(private data: SearchContentService) { }
 
   ngOnInit(): void {
+    this.subscription = this.data.currentMessage.subscribe(message => this.output = message);
+  }
+
+  ngOnDestroy = (): void => {
+    this.subscription.unsubscribe();
+  }
+
+  updateSearch(message: string): void {
+    this.data.changeMessage(message);
   }
 
 }

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FlashcardService } from 'src/app/flashcard/service/flashcard.service';
+import { RateService } from 'src/app/flashcard/service/rate.service';
 import { FlashcardComponent } from '../flashcard.component';
 
 
@@ -18,17 +19,31 @@ export class FlashcardDeleteComponent implements OnInit {
 
   @Input() flashcardId?: number;
 
-  constructor(private parent: FlashcardComponent, private flashcardService: FlashcardService) {}
+  constructor(private parent: FlashcardComponent, private flashcardService: FlashcardService, private rateService: RateService) {}
 
   ngOnInit(): void {
     this.flashcardId = this.parent.deleteId;
   }
 
   deleteFlashcard(event: Event): void {
+    if (this.flashcardId) {
+      this.rateService.getAllRatings(88).toPromise().then(
+        res => {
+          for (let rating of res) {
+            console.log(rating.id);
 
-    this.flashcardService.delete(this.flashcardId).subscribe();
+            // (may use in the future)
+            // console.log(this.rateService.delete(104));
+          }
+          this.flashcardService.delete(this.flashcardId).subscribe();
+        }
+      ).finally(
+        () => {
+          window.location.reload();
+        }
+      )
+    }
     event.stopPropagation();
-    window.location.reload();
   }
 
 }

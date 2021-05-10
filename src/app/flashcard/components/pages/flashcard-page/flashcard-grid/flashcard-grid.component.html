@@ -1,5 +1,7 @@
 <div class="col" *ngIf="flashcardPage !== undefined">
 
+  <h4>Search text: {{searchText}}</h4>
+
   <div class="card-deck view-flashcard" *ngFor="let flashcard of flashcardPage.content">
     <app-flashcard [flashcard]="flashcard"></app-flashcard>
   </div>

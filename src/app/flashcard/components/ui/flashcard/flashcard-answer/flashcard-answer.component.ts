@@ -48,7 +48,7 @@ export class FlashcardAnswerComponent implements OnInit {
     }
 
     // Sets answers according to flashcardId
-    this.flashcardService.getAnswers(this.flashcardId).subscribe(
+    this.flashcardService.getAnswers(this.flashcardId).then(
       (response: AnswerPageable) => {
         this.answers = response.content;
 
@@ -60,7 +60,7 @@ export class FlashcardAnswerComponent implements OnInit {
   newAnswer(event: Event) {
     this.answerService.setCurrentFlashcardId(this.flashcardId);
     event.stopPropagation();
-    this.router.navigate(["/submit-answer"]);
+    this.router.navigate(['/submit-answer']);
   }
 
   // Flips between question and answer views
