@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Notification} from '../../model/notification';
 import {NotificationService} from '../../service/notification.service';
-import {User} from '../../../user/User';
 import {ActivatedRoute} from '@angular/router';
 
 
@@ -14,16 +13,30 @@ export class NotificationComponent implements OnInit {
 
   notifications: Notification[] = [];
 
+  /*
+  @param Injecting notificationService
+  @param Injecting activatedRoute
+  Author: Ronald Lopez
+   */
   constructor(
     private notificationService: NotificationService,
     private route: ActivatedRoute) {
   }
 
+  /*
+  Initial routing
+  Initial get all notification method
+  Author: Ronald Lopez
+   */
   ngOnInit(): void {
     this.route.params.subscribe();
     this.getAllNotificationsInNavbar();
   }
 
+  /*
+  Getting All Notifications from notificationService
+  Author: Ronald Lopez
+   */
   getAllNotificationsInNavbar(): void {
     this.notificationService.getAllNotificationsInNavbar().subscribe(
       (response: any) => {
@@ -31,11 +44,19 @@ export class NotificationComponent implements OnInit {
       });
   }
 
+  /*
+  Deleting a specific Notification from notificationService
+  Author: Ronald Lopez
+   */
   // tslint:disable-next-line:typedef
   deleteNotification(notification: Notification) {
     this.notificationService.deleteByNotificationId(notification.id).subscribe();
   }
 
+  /*
+  Method that refreshes the page
+  Author: Ronald Lopez
+   */
   pageRefresh(): void {
     window.location.reload();
   }
