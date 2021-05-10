@@ -6,12 +6,14 @@ import {NotificationPageComponent} from './component/notification-page/notificat
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
-  declarations: [
+  imports:[
     CommonModule,
-    NotificationRoutingModule,
+    NgbModule,
+    NotificationRoutingModule
+  ],
+  declarations: [
     NotificationComponent,
     NotificationPageComponent,
-    NgbModule
   ],
 })
 export class NotificationModule {

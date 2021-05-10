@@ -16,7 +16,7 @@
       <div class="notification-page col col-md-12 my-1 mx-5" *ngFor="let notification of notifications">
         <div class="col">
           <button [routerLink]="['/notifications']" class="btn text-light font-weight-bolder mr-3">
-            <span>{{notification.message}} in the {{notification.featureArea | titlecase}}s</span> -
+            <span>{{notification.body}} in the {{notification.featureArea | titlecase}}s</span> -
             <span *ngIf="notification.read === true">Read</span>
             <span *ngIf="notification.read !== true">Unread</span>
           </button>

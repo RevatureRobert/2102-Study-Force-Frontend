@@ -1,10 +1,6 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-<<<<<<< HEAD
-import {map} from 'rxjs/operators';
-=======
 import {Notification} from '../model/notification';
->>>>>>> notification
 import {Observable} from 'rxjs';
 
 
