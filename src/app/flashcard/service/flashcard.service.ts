@@ -77,8 +77,8 @@ export class FlashcardService {
    * @param flashcardId - id of the Flashcard to find Answers for
    * @returns - returns Answers tied to the Flashcard with the given id
    */
-  getAnswers(flashcardId: number): Observable<any> {
-    return this.http.get(`http://${this.apiServerUrl}/answers/${flashcardId}`);
+  getAnswers(flashcardId: number): Promise<any> {
+    return this.http.get(`http://${this.apiServerUrl}/answers/${flashcardId}`).toPromise();
   }
 
   /**
