@@ -1,7 +1,7 @@
 #glass-pane {
     position: absolute;
     width: 75%;
-    height: 75%;
+    min-height: 600px;
     left: 50%;
     top: 100px;
     transform: translateX(-50%);
@@ -10,7 +10,7 @@
     backdrop-filter: blur(100px);
     -webkit-backdrop-filter: blur(100px);
     border-radius: 30px;
-  }
+}
 
 #Upload-CSV-Button {
   opacity: 0.75;

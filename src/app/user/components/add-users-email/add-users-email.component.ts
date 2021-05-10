@@ -69,10 +69,10 @@ export class AddUsersEmailComponent implements OnInit {
    * Removing a specific user from the Array of displayed users table
    * @param user the user that will be removed from the array
    */
-  onDeleteEmployee(user: UserEmail) {
+  onDeleteEmployee(user: string) {
     let i = 0;
     for (let u of this.userEmployeeArray) {
-      if (u == user.email) {
+      if (u == user) {
         this.userEmployeeArray.splice(i, 1);
       }
       i++;
