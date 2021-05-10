@@ -1,16 +1,14 @@
 import {Component, OnInit} from '@angular/core';
-import {Notification} from '../../model/notification';
 import {NotificationService} from '../../service/notification.service';
-import {User} from '../../../user/User';
+import {Notification} from '../../model/notification';
 import {ActivatedRoute} from '@angular/router';
 
-
 @Component({
-  selector: 'app-notification',
-  templateUrl: './notification.component.html',
-  styleUrls: ['./notification.component.css']
+  selector: 'app-notification-page',
+  templateUrl: './notification-page.component.html',
+  styleUrls: ['./notification-page.component.css']
 })
-export class NotificationComponent implements OnInit {
+export class NotificationPageComponent implements OnInit {
 
   notifications: Notification[] = [];
 
@@ -21,11 +19,11 @@ export class NotificationComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe();
-    this.getAllNotificationsInNavbar();
+    this.getAllNotificationsInPage();
   }
 
-  getAllNotificationsInNavbar(): void {
-    this.notificationService.getAllNotificationsInNavbar().subscribe(
+  getAllNotificationsInPage(): void {
+    this.notificationService.getAllNotificationsInPage().subscribe(
       (response: any) => {
         this.notifications = response.content;
       });
@@ -34,6 +32,10 @@ export class NotificationComponent implements OnInit {
   // tslint:disable-next-line:typedef
   deleteNotification(notification: Notification) {
     this.notificationService.deleteByNotificationId(notification.id).subscribe();
+  }
+
+  deleteAllNotifications(id: number): void {
+    this.notificationService.deleteAllNotificationsByUserId(id).subscribe();
   }
 
   pageRefresh(): void {

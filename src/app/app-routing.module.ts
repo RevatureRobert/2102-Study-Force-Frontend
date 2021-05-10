@@ -1,8 +1,12 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './user/components/login/login.component';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 
 const routes: Routes = [
+  {
+    path: 'notifications',
+    loadChildren: () =>
+      import('src/app/notification/notification.module').then(m => m.NotificationModule)
+  },
   {
     path: 'flashcards',
     loadChildren: () =>
@@ -10,13 +14,13 @@ const routes: Routes = [
   },
   {
     path: 'stacktrace',
-      loadChildren: () =>
-        import('./stacktrace/stacktrace.module').then(m => m.StacktraceModule)
+    loadChildren: () =>
+      import('./stacktrace/stacktrace.module').then(m => m.StacktraceModule)
   },
   {
     path: 'user',
-      loadChildren: () =>
-        import('./user/user.module').then(m => m.UserModule)
+    loadChildren: () =>
+      import('./user/user.module').then(m => m.UserModule)
   }
 ];
 
@@ -24,4 +28,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

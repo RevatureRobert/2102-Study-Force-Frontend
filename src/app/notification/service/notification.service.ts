@@ -1,9 +1,9 @@
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Notification} from '../model/notification';
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
-
+import {NotificationPage} from "../model/notification.page";
 
 
 @Injectable({
@@ -11,27 +11,41 @@ import {Observable} from 'rxjs';
 })
 export class NotificationService {
 
+  notifications!: Notification[];
+  private headerInfo = {
+    'Content-Type': 'application/json',
+    Accept: 'application/json',
+  };
   private baseUrl = 'http://localhost:8080/notifications';
 
   constructor(private httpClient: HttpClient) {
   }
 
-  // tslint:disable-next-line:typedef
-  getNotifications(): Observable<Notification[]> {
-      return this.httpClient.get<GetResponseNotifications>(this.baseUrl).pipe(
-        map(response => response._embedded.notifications)
-    );
+  /*
+Gets all notifications endpoint from the backend based on user id
+ */
+  getAllNotificationsInNavbar(): Observable<any> {
+    return this.httpClient.get(`${(this.baseUrl)}/users/${1}`);
   }
 
-  // tslint:disable-next-line:typedef
-  deleteByNotificationId(id: number) {
+  /*
+  Gets all notifications endpoint from the backend based on user id
+   */
+  getAllNotificationsInPage(): Observable<any> {
+    return this.httpClient.get(`${(this.baseUrl)}/users/${1}`);
+  }
+
+  /*
+  Deletes a notification endpoint at the backend based on notification id
+ */
+  deleteByNotificationId(id: number): Observable<any> {
     return this.httpClient.delete(`${(this.baseUrl)}/${id}`);
   }
 
-}
-
-interface GetResponseNotifications {
-  _embedded: {
-    notifications: Notification[];
-  };
+  /*
+  Endpoint to delete all notifications in the backend based on user id
+   */
+  deleteAllNotificationsByUserId(id: number): Observable<any> {
+    return this.httpClient.delete(`${(this.baseUrl)}/users/${id}`);
+  }
 }

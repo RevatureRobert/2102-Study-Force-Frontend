@@ -1,0 +1,32 @@
+<div class="container mx-5">
+  <div class="row mx-5">
+    <div class="col"><h3 class="display-4 text-center">All Notifications</h3></div>
+    <div class="col col-md-12">
+      <div class="text-center " *ngIf="notifications.length !== 0">
+        <button class="clear-notifications btn btn-outline-danger btn-block btn-lg my-4 mx-5"
+                (click)="deleteAllNotifications(2);  pageRefresh()">
+          Clear Notifications
+        </button>
+      </div>
+      <h6 class="text-center mt-4" *ngIf="notifications.length === 0"><em>You currently have no notifications</em></h6>
+    </div>
+  </div>
+  <div class="container mx-4">
+    <div class="row">
+      <div class="notification-page col col-md-12 my-1 mx-5" *ngFor="let notification of notifications">
+        <div class="col">
+          <button [routerLink]="['/notifications']" class="btn text-light font-weight-bolder mr-3">
+            <span>{{notification.message}} in the {{notification.featureArea | titlecase}}s</span> -
+            <span *ngIf="notification.read === true">Read</span>
+            <span *ngIf="notification.read !== true">Unread</span>
+          </button>
+          <div class="col">
+            <button (click)="deleteNotification(notification); pageRefresh()"
+                    class="btn btn-sm btn-outline-danger font-weight-bolder mr-3 my-2">Remove
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
