@@ -18,14 +18,12 @@ import { UserService } from '../../services/user.service';
  */
 export class AddUsersNewBatchComponent implements OnInit {
 
-  user:UserEmail = {
-    email: "",
-  }
-  instructor:UserEmail = {
-    email: "",
-  }
-  userEmployeeArray: Array<UserEmail> = [];
-  userInstructorArray: Array<UserEmail> = [];
+  userEmail?:string;
+
+  instructorEmail?:string;
+
+  userEmployeeArray: Array<string> = [];
+  userInstructorArray: Array<string> = [];
   constructor(private userService: UserService, private batchService: BatchService, private router: Router) { }
   ngOnInit(): void {
   }
@@ -55,9 +53,7 @@ export class AddUsersNewBatchComponent implements OnInit {
         alert("Please check emails and try and submit again");
         return;
     }
-    const user = this.user = {
-      email: formEmp.value.email
-    }
+    const user = this.userEmail = formEmp.value.email;
     this.userEmployeeArray.push(user)
 
     return this.userEmployeeArray;
@@ -70,7 +66,7 @@ export class AddUsersNewBatchComponent implements OnInit {
   onDeleteEmployee(user: UserEmail) {
     let i = 0;
     for (let u of this.userEmployeeArray) {
-      if (u.email == user.email) {
+      if (u == user.email) {
         this.userEmployeeArray.splice(i, 1);
       }
       i++;
@@ -90,9 +86,8 @@ export class AddUsersNewBatchComponent implements OnInit {
           alert("Please check emails and try and submit again");
           return;
       }
-      const instructor = this.instructor = {
-        email: formInst.value.email
-      }
+      const instructor = this.instructorEmail = formInst.value.email;
+      
       this.userInstructorArray.push(instructor)
   
       return this.userInstructorArray;
@@ -105,7 +100,7 @@ export class AddUsersNewBatchComponent implements OnInit {
     onDeleteInstructor(user: UserEmail) {
       let i = 0;
       for (let u of this.userInstructorArray) {
-        if (u.email == user.email) {
+        if (u == user.email) {
           this.userInstructorArray.splice(i, 1);
         }
         i++;

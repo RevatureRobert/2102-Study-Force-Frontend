@@ -34,7 +34,7 @@
             </thead>
             <tbody>
               <tr *ngFor="let e of userEmployeeArray">
-                <td>{{ e.email }}</td>
+                <td>{{ e }}</td>
                 <td>
                   <button class="btn btn-danger form-control Remove-Button" (click)="onDeleteEmployee(e)">
                     Remove
@@ -45,7 +45,7 @@
             <caption>
               <form (submit)="onAddEmployee(formEmp)" #formEmp="ngForm">
                 <input type="text" class="form-control d-inline Email-Input" name="email" placeholder="Email"
-                  [ngModel]="user?.email" #email="ngModel" id="Email-Input" />
+                  [ngModel]="userEmail" #email="ngModel" id="Email-Input" />
                 <button class="btn btn-primary Add-Button form-control d-inline" type="submit">
                   Add
                 </button>

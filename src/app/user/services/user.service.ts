@@ -59,7 +59,7 @@ export class UserService {
    * To create many users at one time
    * @param userArray an array of Users that will be created
    */
-  massCreateUsers(userArray: UserEmail[]) {
+  massCreateUsers(userArray: string[]) {
 
     const headerInfo = {
       'Content-Type': 'application/json',

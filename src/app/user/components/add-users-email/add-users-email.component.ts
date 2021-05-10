@@ -20,11 +20,9 @@ import { UserService } from '../../services/user.service';
 export class AddUsersEmailComponent implements OnInit {
 
   @Input() batch?:Batch;
-  user:UserEmail = {
-    email: "",
-  }
+  userEmail?: string;
   newBatch: boolean = false;
-  userEmployeeArray: Array<UserEmail> = [];
+  userEmployeeArray: Array<string> = [];
   batches?: Batch[];
   selectedBatch?: NewEmployeeBatch;
   //  For Dropdown menu
@@ -61,9 +59,7 @@ export class AddUsersEmailComponent implements OnInit {
         alert("Please check emails and try and submit again");
         return;
     }
-    const user = this.user = {
-      email: formEmp.value.email
-    }
+    const user = this.userEmail = formEmp.value.email;
     this.userEmployeeArray.push(user)
 
     return this.userEmployeeArray;
@@ -76,7 +72,7 @@ export class AddUsersEmailComponent implements OnInit {
   onDeleteEmployee(user: UserEmail) {
     let i = 0;
     for (let u of this.userEmployeeArray) {
-      if (u.email == user.email) {
+      if (u == user.email) {
         this.userEmployeeArray.splice(i, 1);
       }
       i++;
@@ -114,8 +110,7 @@ export class AddUsersEmailComponent implements OnInit {
       }
     }
     for (let i of arrayString) {
-      let newUser = new UserEmail();
-      newUser.email = i;
+      let newUser = i;
       this.userEmployeeArray.push(newUser);
     }
   }
@@ -169,7 +164,7 @@ export class AddUsersEmailComponent implements OnInit {
    * @param batchName the name of the batch
    * @param batchUsers the users that are currently in 
    */
-  onSelectBatch(batchId:number, batchName: string, batchUsers: UserEmail[]) {
+  onSelectBatch(batchId:number, batchName: string, batchUsers: string[]) {
     let thisBatch: NewEmployeeBatch = {
       batchId: batchId,
       name: batchName,
