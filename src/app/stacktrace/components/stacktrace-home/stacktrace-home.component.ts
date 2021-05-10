@@ -188,7 +188,7 @@ export class StacktraceHomeComponent implements OnInit {
   prevPage(): void{
     this.page--;
     if (this.title === '' && this.searchTitleOnly) {
-      const params = this.getRequestParams(this.title, this.page, this.pageSize, undefined);
+      const params = this.getRequestParams(this.title, this.page, this.pageSize);
       this.stacktraceService.findAll(params).subscribe(data => this.stacktraces = data.content)
     }
     else if (this.searchTitleOnly) {
