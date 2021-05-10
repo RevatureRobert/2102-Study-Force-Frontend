@@ -24,19 +24,19 @@ export class SolutionVoteComponent implements OnInit {
   scoreColor = "color: var(--duskwood)"
 
   constructor(private solutionService: SolutionService) {
-    let u:User = {
-      userId:2,
-        email:"jomama@hotmail.gov",
-        name:"John Doe",
-        active:false,
-        subscribedStacktrace:true,
-        subscribedFlashcard:true,
-        authority:"USER",
-        registrationTime:new Date(1620310931740),
-        lastLogin:new Date(1620310931740)
-      };
-    //TODO remove this placeholder user in local storage
-    localStorage.setItem('loggedInUser', JSON.stringify(u));
+    // let u:User = {
+    //   userId:2,
+    //     email:"jomama@hotmail.gov",
+    //     name:"John Doe",
+    //     active:false,
+    //     subscribedStacktrace:true,
+    //     subscribedFlashcard:true,
+    //     authority:"USER",
+    //     registrationTime:new Date(1620310931740),
+    //     lastLogin:new Date(1620310931740)
+    //   };
+    // //TODO remove this placeholder user in local storage
+    // localStorage.setItem('loggedInUser', JSON.stringify(u));
    }
 
   ngOnInit(): void {

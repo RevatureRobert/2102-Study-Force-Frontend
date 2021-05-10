@@ -38,4 +38,5 @@ export class SolutionService{
   updateVote(solution: Solution): Observable<Solution>{
     return this.http.get<Solution>(`${this.stacktraceUrl}/solution/update-vote/${solution.solutionId}`);
   }
+
 }
