@@ -43,6 +43,4 @@ export class SubscribeBellFlashcardService {
       }
     }).toPromise<FlashcardSubscription>()
   }
-
-
 }

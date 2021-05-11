@@ -43,6 +43,4 @@ export class SubscribeBellStacktraceService {
       }
     }).toPromise<StacktraceSubscription>()
   }
-
-
 }
