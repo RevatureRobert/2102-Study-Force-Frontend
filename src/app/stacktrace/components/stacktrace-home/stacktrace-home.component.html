@@ -53,14 +53,6 @@
         <td>{{ stacktrace.technologyName }}</td>
         </tr>
       </tbody>
-      <div class="col">
-      <div *ngIf="currentStacktrace">
-           <button> <a routerLink="/stacktraces/{{ currentStacktrace.stacktraceId }}">Edit Stacktrace</a></button>
-      </div>
-      </div>
-
-      <div *ngIf="!currentStacktrace">
-      </div>
 
       <div class="container">
         <div class="row">

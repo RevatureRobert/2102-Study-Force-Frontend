@@ -1,6 +1,7 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Solution } from '../models/solution';
 import { Vote } from '../models/vote';
@@ -47,7 +48,10 @@ export class SolutionService {
    */
   addVote(vote: Vote): Observable<Vote> {
     console.log(JSON.stringify(vote))
-    return this.http.post<Vote>(`${this.stacktraceUrl}/solution-vote`, vote);
+    return this.http.post<Vote>(`${this.stacktraceUrl}/solution-vote`, vote).pipe(catchError(errorRes =>{
+      let errorMessage = 'You have already voted on that solution.';
+      return throwError(errorMessage);
+  }));
   }
 
   /**
