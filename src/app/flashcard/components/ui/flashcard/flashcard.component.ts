@@ -4,6 +4,7 @@ import {FlashcardAnswerComponent} from './flashcard-answer/flashcard-answer.comp
 import { Flashcard } from '../../../model/flashcard';
 import * as EventEmitter from 'events';
 import { Answer } from 'src/app/flashcard/model/answer';
+import { User } from 'src/app/user/models/user';
 
 
 /**
@@ -22,10 +23,7 @@ export class FlashcardComponent implements OnInit {
   bellStyle = '../../../assets/bell.svg';
 
   // TODO: GET CURRENT USER FROM STORAGE
-  // userId: number = Number(localStorage("asocaite"));
-  userId = 1;
-
-
+  userId!:number;
 
   public deleteId?: number;
 
@@ -39,7 +37,9 @@ export class FlashcardComponent implements OnInit {
   flip = false;
 
   ngOnInit(): void {
+    let u:User = JSON.parse(localStorage.getItem('loggedInUser')!);
 
+    this.userId = u.userId;
     if (this.flashcard){
       this.question = this.flashcard.question;
       this.deleteId = this.flashcard.flashcardId;

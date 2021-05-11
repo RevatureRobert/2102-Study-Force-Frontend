@@ -4,6 +4,7 @@ import { Observable, of, Subscriber, Subscription } from 'rxjs';
 import { FlashcardRoutingModule } from 'src/app/flashcard/flashcard-routing.module';
 import { Topic } from 'src/app/flashcard/model/topic';
 import { TopicService } from 'src/app/flashcard/service/topic.service';
+import { User } from 'src/app/user/models/user';
 import { FlashcardService } from '../../../service/flashcard.service';
 
 @Component({
@@ -32,12 +33,11 @@ export class CreateFlashcardPageComponent implements OnInit {
 
 
   ngOnInit(): void {
+    let u:User = JSON.parse(localStorage.getItem('loggedInUser')!);
+    this.form.userId = u.userId;
   }
 
   onSubmit(): void {
-
-    // TODO: set creator to current user
-    this.form.userId = 1;
 
     switch (this.form.difficulty) {
       case 'easy':
