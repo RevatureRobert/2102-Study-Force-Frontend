@@ -1,0 +1,46 @@
+<app-base-page>
+<div class="selected-content">
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h3 class="card-title test">Submit a Stacktrace</h3>
+      <form (ngSubmit)="onSubmit()" #stacktraceForm="ngForm">
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input type="text" [(ngModel)]="stacktrace.title"
+            class="form-control"
+            id="title"
+            name="title"
+            placeholder="Enter a title"
+            required #title="ngModel">
+        </div>
+        <div [hidden]="!title.pristine" class="alert alert-danger">Title is required</div>
+        <div class="form-group">
+          <label for="Body">Body</label>
+          <input type="text" [(ngModel)]="stacktrace.body"
+            class="form-control"
+            id="body"
+            name="body"
+            placeholder="Enter text"
+            required #body="ngModel">
+          <div [hidden]="!body.pristine" class="alert alert-danger">Body is required</div>
+        </div>
+        <div class="form-group">
+          <div class="dropdown" id="Dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="reset" id="Dropdown-Button" data-bs-toggle="dropdown"
+              aria-expanded="false" (click)="this.changeFocus()" (focus)="this.setFalse()">
+              Technologies
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="Dropdown-Button" id="Dropdown-List">
+              <li *ngFor="let id of technology"><a class="dropdown-item"
+                  (click)="setNewTechnologyId(id.technologyId)">{{id.technologyName}}</a></li>
+            </ul>
+          </div>
+        </div>
+        <button type="submit" [disabled]="!stacktraceForm.form.valid"
+        class="btn btn-info">Submit</button>
+
+      </form>
+    </div>
+  </div>
+</div>
+</app-base-page>

@@ -59,4 +59,5 @@ export class NotificationComponent implements OnInit {
   pageRefresh(): void {
     window.location.reload();
   }
+
 }

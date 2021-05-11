@@ -1,15 +1,84 @@
-<table>
-  <caption>List of Stacktraces</caption>
-  <tr>
-    <th scope="col">Title</th>
-  </tr>
-  <tr *ngFor="let stacktrace of stacktraces | slice: (page-1) * pageSize : page * pageSize">
-    <td>
-      <a href>{{stacktrace.title}}</a>
-    </td>
-  </tr>
-</table>
-<ngb-pagination
-  [(page)]="page"
-  [pageSize]="pageSize"
-  [collectionSize]="stacktraces.length"></ngb-pagination>
+<app-base-page>
+
+  <div class="selected-content">
+
+    <div class="dropdown" id="Dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="reset" id="Dropdown-Button" data-bs-toggle="dropdown"
+        aria-expanded="false" (click)="this.changeFocus()" (focus)="this.setFalse()">
+        Technologies
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="Dropdown-Button" id="Dropdown-List">
+        <li *ngFor="let id of technology"><a class="dropdown-item"
+            (click)="retrieveStacktracesByTechnology(id.technologyId)">{{id.technologyName}}</a></li>
+      </ul>
+    </div>
+
+
+  <div class="input-group mb-3" id="Search-Bar">
+    <input type="text" class="form-control" placeholder="Search by title" [(ngModel)]="title" id="Search-Input" />
+    <button class="btn btn-outline-secondary" type="button" id="Search-Button" (click)="onSearchButtonPress()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="currentColor" class="bi bi-arrow-right"
+        viewBox="0 0 16 16">
+        <path fill-rule="evenodd"
+          d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+      </svg>
+    </button>
+  </div>
+
+
+
+  <div class="wrapper">
+  <div class="table-responsive" id="Table">
+    <table class="table table-striped table-borderless">
+      <thead>
+        <tr>
+          <th scope="col">Title</th>
+          <th scope="col">Technology</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="list-group-item"
+        *ngFor="
+          let stacktrace of stacktraces | paginate : {
+                  itemsPerPage: pageSize,
+                  currentPage: page,
+                  totalItems: count
+                };
+          let i = index
+        "
+        [class.active]="i == currentIndex"
+        (click)="gotoStacktraceList(stacktrace.stacktraceId)"
+      >
+        <td>{{ stacktrace.title }}</td>
+        <td>{{ stacktrace.technologyName }}</td>
+        </tr>
+      </tbody>
+
+      <div class="container">
+        <div class="row">
+          <div class="col">
+          </div>
+        </div>
+      </div>
+      <router-outlet></router-outlet>
+    </table>
+
+    <div class="buttons">
+      <button class="btn btn-primary" id="Back-Button" (click)="nextPage()" *ngIf="page < totalPages-1">Next</button>
+      <button class="btn btn-primary" id="Back-Button" (click)="prevPage()" *ngIf="page != 0">Previous</button>
+    </div>
+
+    <div class="">
+      <ul>
+        <li class="list-inline-item">
+          <a routerLink="/technology" class="btn btn-info" *ngIf="isAdmin">Add Technologies</a>
+            </li>
+        <li class="list-inline-item">
+          <a routerLink="/stacktraces/addstacktrace" class="btn btn-info">Add Stacktrace</a>
+            </li>
+      </ul>
+  </div>
+  </div>
+  </div>
+</div>
+</app-base-page>

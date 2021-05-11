@@ -1,0 +1,54 @@
+<app-base-page>
+  <div class="selected-content">
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <div class="col-md-4">
+          Result
+          <div class="radio">
+              <label>
+                  <input [(ngModel)]="result" type="radio" name="rdoResult" value="add" [checked]="true">
+                    add
+              </label>
+          </div>
+          <div class="radio">
+              <label>
+                  <input [(ngModel)]="result" type="radio" name="rdoResult" value="edit">
+                    edit
+              </label>
+          </div>
+          <div class="radio">
+            <label>
+                <input [(ngModel)]="result" type="radio" name="rdoResult" value="delete">
+                  delete
+            </label>
+        </div>
+      </div>
+      <div class="alert alert-danger" *ngIf="error">
+        <p>{{error}}</p>
+      </div>
+      <div class="dropdown" id="Dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="reset" id="Dropdown-Button" data-bs-toggle="dropdown"
+          aria-expanded="false" (click)="this.changeFocus()" (focus)="this.setFalse()">
+          Technologies
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="Dropdown-Button" id="Dropdown-List">
+          <li *ngFor="let id of technologies"><a class="dropdown-item" 
+            (click)="setNewTechnologyId(id.technologyId)">{{id.technologyName}}</a></li>
+        </ul>
+      </div>
+        <h3 class="card-title test">Submit a Technology</h3>
+        <form (ngSubmit)="onSubmit()" #technologyForm="ngForm">
+          <div class="form-group" *ngIf="isAdd">
+            <label for="technologyName">Technology Name</label>
+            <input type="text" [(ngModel)]="technology.technologyName" class="form-control" id="technologyName"
+              name="technologyName" placeholder="Enter a Technology Name" required #technologyName="ngModel">
+          </div>
+          <div [hidden]="!technologyName.pristine" class="alert alert-danger" *ngIf="isAdd">Technology Name is required</div>
+
+          <button type="submit" [disabled]="!technologyForm.form.valid" class="btn btn-info">Submit</button>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</app-base-page>

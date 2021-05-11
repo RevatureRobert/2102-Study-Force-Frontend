@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-glass-pane',
@@ -6,9 +6,6 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./glass-pane.component.css']
 })
 export class GlassPaneComponent implements OnInit {
-
-  @Input()
-  content!: any;
 
   constructor() { }
 
