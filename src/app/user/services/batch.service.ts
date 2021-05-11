@@ -1,9 +1,9 @@
-import { Batch } from './../models/batch';
-import { CreateUpdateBatch } from './../models/createUpdateBatch';
+import { Batch } from '../models/batch';
+import { CreateUpdateBatch } from '../models/createUpdateBatch';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { BASE_API_URL } from '../../../environments/environment';
+import { environment } from '../../../environments/environment';
 
 /**
  * This service support all the CRUD functions relate to Batch Object
@@ -20,20 +20,21 @@ import { BASE_API_URL } from '../../../environments/environment';
  */
 export class BatchService {
 
+  private apiUrl = environment.apiUrl;
 
-  batches:string = 'batches'; // Specfic endpoint to hit batches.
-  deactivate:string ='deactivateBatch'; // Specific endpoint to hit deactivateBatch.
-  update:string ='update'; // Specific endpoint to hit update.
+  batches = 'batches'; // Specific endpoint to hit batches.
+  deactivate = 'deactivateBatch'; // Specific endpoint to hit deactivateBatch.
+  update = 'update'; // Specific endpoint to hit update.
 
 /**
  * This Model send only what is needed to create/update a batch, instead of the full Batch Object.
  */
   body: CreateUpdateBatch = {
     batchId: 0,
-    name: "",
+    name: '',
     instructors: [],
     users: []
-  }
+  };
 
 
   /**
@@ -41,7 +42,7 @@ export class BatchService {
    * @param http The client for handling HTTP requests for this service.
    */
   constructor(
-    private http:HttpClient
+    private http: HttpClient
   ) { }
 
   /**
@@ -51,7 +52,7 @@ export class BatchService {
    */
   getBatchById(id: string): Observable<Batch> {
 
-    const url = `${BASE_API_URL}/${this.batches}/${id}`;
+    const url = `${this.apiUrl}/${this.batches}/${id}`;
     return this.http.get<Batch>(url);
   }
 
@@ -63,27 +64,27 @@ export class BatchService {
    * @param usersEmail emails for all the users.
    * @returns a Promise<any>
    */
-  updateBatch(id: string, name: string, instructorsEmail:string[], usersEmail:string[]): Promise<any>{
+  updateBatch(id: string, name: string, instructorsEmail: string[], usersEmail: string[]): Promise<any>{
 
     const headerInfo = {
       'Content-Type': 'application/json',
-      'Accept': 'application/json',
-    }
+      Accept: 'application/json',
+    };
 
     const requestOptions = {
       headers: new HttpHeaders(headerInfo)
     };
 
     const body = this.body = {
-        batchId: parseInt(id),
-        name: name,
+        batchId: parseInt(id, 10),
+        name,
         instructors: instructorsEmail,
         users: usersEmail
-      }
+      };
 
-    const url =`${BASE_API_URL}/${this.batches}`
+    const url = `${this.apiUrl}/${this.batches}`;
     console.log(body);
-    return this.http.put<any>(url,body,requestOptions).toPromise();
+    return this.http.put<any>(url, body, requestOptions).toPromise();
   }
 
   /**
@@ -94,26 +95,26 @@ export class BatchService {
    * @param usersEmail emails for all the users.
    * @returns a Promise<Batch>
    */
-  createBatch(id: string,name: string, instructorsEmail:string[], usersEmail:string[]): Promise<Batch>{
+  createBatch(id: string, name: string, instructorsEmail: string[], usersEmail: string[]): Promise<Batch>{
     const headerInfo = {
       'Content-Type': 'application/json',
-      'Accept': 'application/json',
-    }
+      Accept: 'application/json',
+    };
 
     const requestOptions = {
       headers: new HttpHeaders(headerInfo)
     };
 
     const body = this.body = {
-      batchId: parseInt(id),
-      name: name,
+      batchId: parseInt(id, 10),
+      name,
       instructors: instructorsEmail,
       users: usersEmail
-    }
+    };
 
-    const url =`${BASE_API_URL}/${this.batches}`
+    const url = `${this.apiUrl}/${this.batches}`;
     console.log(body);
-    return this.http.post<Batch>(url,body,requestOptions).toPromise();
+    return this.http.post<Batch>(url, body, requestOptions).toPromise();
   }
 
   /**
@@ -123,7 +124,7 @@ export class BatchService {
    */
   deleteBatch(id: string): Promise<any>{
 
-    const url = `${BASE_API_URL}/${this.batches}/${id}`;
+    const url = `${this.apiUrl}/${this.batches}/${id}`;
     return this.http.delete<any>(url).toPromise();
   }
 
@@ -134,16 +135,16 @@ export class BatchService {
    */
   deactivateBatch(id: string): Promise<any>{
 
-    const url = `${BASE_API_URL}/${this.batches}/${this.deactivate}/${id}`;
-    return this.http.put<any>(url,"").toPromise();
+    const url = `${this.apiUrl}/${this.batches}/${this.deactivate}/${id}`;
+    return this.http.put<any>(url, '').toPromise();
   }
 
   /**
    * Gets all batches with a user or instructor matching provided userId
    * @param userId The userId by which batches will be retrieved
    */
-  getBatchesByMemberId(userId:number):Promise<any> {
-    return this.http.get<any>(BASE_API_URL.concat(`/batches/userid/${userId}`)).toPromise();
+  getBatchesByMemberId(userId: number): Promise<any> {
+    return this.http.get<any>(this.apiUrl.concat(`/batches/userid/${userId}`)).toPromise();
   }
 
 }
