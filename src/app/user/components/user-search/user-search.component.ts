@@ -12,18 +12,6 @@ export class UserSearchComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.searchFor();
-    let u: User = {
-      userId: 1,
-      name: 'John Doe',
-      email: 'jdoe@revature.com',
-      active: true,
-      subscribedFlashcard: false,
-      subscribedStacktrace: true,
-      registrationTime: new Date(Date.now()),
-      lastLogin: new Date(Date.now()),
-      authority: 'ADMIN',
-    };
-    localStorage.setItem('loggedInUser', JSON.stringify(u));
   }
 
   ngAfterViewInit() {

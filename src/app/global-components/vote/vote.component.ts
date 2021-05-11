@@ -15,8 +15,8 @@ export class VoteComponent implements OnInit {
   answerScore: number = 0;
   @Input() userId!: number;
 
-  upVoteSource = "assets/up doot unclicked.svg"
-  downVoteSource = "vote-assets/down doot unclicked.svg"
+  upVoteSource = "/assets/updootunclicked.svg"
+  downVoteSource = "vote-assets/downdootunclicked.svg"
   scoreColor = "color: var(--duskwood)"
 
   hasVoted = false;

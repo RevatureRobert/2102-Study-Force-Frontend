@@ -24,7 +24,7 @@ export class FlashcardAnswerComponent implements OnInit {
   subscribed = false;
   flip = false;
 
-  newAnswerIcon = "../../../assets/add new answer.png"
+  newAnswerIcon = "/assets/addnewanswer.png"
 
   constructor(private flashcardService: FlashcardService, private answerService: AnswerService, private router: Router) {
 
