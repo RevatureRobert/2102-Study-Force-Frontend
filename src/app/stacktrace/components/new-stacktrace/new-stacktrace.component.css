@@ -1,1 +1,152 @@
+app-search-bar {
+  position: absolute;
+  left: 48%;
+  margin: 20px;
+  transform: translateX(-50%);
+}
 
+#glass-pane {
+  position: relative;
+  width: 75%;
+  height: 75%;
+  left: 50%;
+  top: 100px;
+  transform: translateX(-50%);
+  box-shadow: 0 8px 15px 0 rgba(31, 38, 135, 0.37);
+
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(100px);
+  -webkit-backdrop-filter: blur(100px);
+  border-radius: 30px;
+  padding: 2em;
+}
+
+.card {
+  top: 2em;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.54) 100%);
+backdrop-filter: blur(100px);
+border-radius: 10px;
+min-width:100%;
+}
+
+.card-body {
+  position: relative;
+}
+
+h3 {
+  position: absolute;
+  top: 0;
+  transform: translateY(-60%);
+  float: left;
+
+font-family: Roboto, Arial, Helvetica, sans-serif;
+font-style: normal;
+font-weight: 500;
+font-size: 30px;
+line-height: 70%;
+
+}
+
+.custom-button {
+  background: linear-gradient(99.35deg, rgba(34, 51, 201, 0.63) 21.34%, rgba(48, 190, 105, 0.7) 99.96%);
+backdrop-filter: blur(50px);
+/* Note: backdrop-filter has minimal browser support */
+border-radius: 10px;
+color: white;
+text-align: center;
+letter-spacing: 1px;
+font-family: Roboto, Arial, Helvetica, sans-serif;
+font-style: normal;
+font-weight: 300;
+font-size: 20px;
+line-height: 105%;
+position: absolute;
+;
+}
+
+.wrapper {
+  position: absolute;
+  right: 9em;
+  bottom:3em;
+  transform: translateY(60%);
+}
+
+.input-styling {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.54) 100%);
+backdrop-filter: blur(100px);
+/* Note: backdrop-filter has minimal browser support */
+border-radius: 10px;
+font-family: Roboto, Arial, Helvetica, sans-serif;
+font-style: normal;
+font-weight: 300;
+font-size: 20px;
+line-height: 105%;
+letter-spacing: 1px;
+
+color: rgba(0, 0, 0, 0.5);
+}
+
+/* #Dropdown {
+  position: relative;
+  float: right; 
+   left: 50%;
+  bottom: 50%; 
+} */
+#Dropdown-Button {
+  width: 175px;
+  color: rgba(21, 60, 83, 1);
+  background: #ffffff;
+  box-shadow: 0px -1px 0px #eceeef;
+  position: relative;
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: none;
+}
+
+#Dropdown-Button:not(:focus) {
+  border-radius: 10px !important;
+}
+
+#Dropdown-List {
+  position: relative;
+  top: -2px !important;
+  background: none;
+  width: 175px;
+  position: relative;
+  box-sizing: border-box;
+  border: none;
+  padding: 0px;
+  box-sizing: border-box;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+#Dropdown-List li:nth-child(2n-1) {
+  background: linear-gradient(
+    90.34deg,
+    rgba(255, 255, 255, 0.81) 0%,
+    rgba(255, 255, 255, 0.72) 100%
+  );
+  mix-blend-mode: normal;
+  backdrop-filter: blur(100px);
+}
+
+#Dropdown-List li:nth-child(2n) {
+  background: linear-gradient(
+    90.34deg,
+    rgba(255, 255, 255, 0.56) 0%,
+    rgba(255, 255, 255, 0.42) 100%
+  );
+  mix-blend-mode: normal;
+  backdrop-filter: blur(100px);
+}
+#Dropdown-List li:last-child {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+#Dropdown:hover li:last-child a {
+  box-sizing: border-box;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { SharedModule } from './global-components/shared.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,27 +9,24 @@ import { FlashcardModule } from './flashcard/flashcard.module';
 import { FormsModule } from '@angular/forms';
 import { StacktraceModule } from './stacktrace/stacktrace.module';
 import { UserModule } from './user/user.module';
-import {NotificationService} from './notification/service/notification.service';
-import {NotificationComponent} from './notification/component/notification/notification.component';
-
-
+import { NotificationModule } from './notification/notification.module';
 @NgModule({
   declarations: [
     AppComponent,
-    NotificationComponent,
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
     AppRoutingModule,
+    HttpClientModule,
     FormsModule,
     NgbModule,
-    SharedModule,
     FlashcardModule,
     StacktraceModule,
-    UserModule
+    NotificationModule,
+    UserModule,
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

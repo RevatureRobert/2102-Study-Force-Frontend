@@ -4,62 +4,55 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Stacktrace } from '../models/stacktrace';
 
-/**
- * Provides methods for passing Stacktrace objects to and from the backend.
- */
 @Injectable({
   providedIn: 'root'
 })
 export class StacktraceService {
 
-  // Set the headers
+  private stacktraceURL: string = environment.apiUrl.concat('/stacktrace');
+
   httpHeaders: HttpHeaders = new HttpHeaders({
     "Content-Type": 'application/json'//,
     //"Authorization": 'Bearer '.concat(localStorage.getItem('swagjwt'))
   });
 
-  // Appended the service endpoint to the base url
-  apiServerUrl = environment.apiUrl.concat("/stacktrace");
+  constructor(private http: HttpClient) {
+  }
 
-  /**
-   * @param http The client for handeling HTTP requests.
-   */
-  constructor(private http: HttpClient) { }
-
-  /**
-   * POSTs a Stacktrace to the backend
-   */
-  addStacktrace(stacktrace: Stacktrace): void {
-        let r = this.http.post(this.apiServerUrl, stacktrace, { headers: this.httpHeaders });
-        r.subscribe();
+   save(stacktrace: Stacktrace) {
+    console.log(JSON.stringify(stacktrace))
+    return this.http.post<Stacktrace>(this.stacktraceURL, stacktrace);
   }
 
   /**
    * GETs a Stacktrace from the backend
    */
-  getStacktrace(id:number): Observable<Stacktrace> {
-    return this.http.get<Stacktrace>(`${this.apiServerUrl}/${id}`, { headers: this.httpHeaders });
+  getStacktrace(id:any): Observable<Stacktrace> {
+    return this.http.get<Stacktrace>(`${this.stacktraceURL}/${id}`, { headers: this.httpHeaders });
   }
 
-  /**
-   * GETs all Stacktraces from the backend
-   */
-  getAllStacktrace(): Promise<Stacktrace[]> {
-    return this.http.get<Stacktrace[]>(this.apiServerUrl, { headers: this.httpHeaders }).toPromise();
+  public findAll(params :any): Observable<any> {
+    return this.http.get<any>(this.stacktraceURL, {params});
   }
 
-  /**
-   * PUTs a Stacktrace to the backend
-   */
-  editStacktrace(stacktrace: Stacktrace): void {
-    let r = this.http.put(this.apiServerUrl, stacktrace, { headers: this.httpHeaders });
-    r.subscribe();
+  // Backend PUT mapping isn't created yet
+  editStacktrace( id:any , data : any): Observable<any> {
+    return this.http.put(`${this.stacktraceURL}/${id}`, data);
   }
 
-  /**
-   * DELETEs a Stacktrace from the backend
-   */
-  deleteStacktrace(id:number):Observable<Stacktrace> {
-    return this.http.delete<Stacktrace>(`${this.apiServerUrl}/${id}`, { headers: this.httpHeaders });
+  deleteStacktrace(id:any):Observable<Stacktrace> {
+    return this.http.delete<Stacktrace>(`${this.stacktraceURL}/${id}`, { headers: this.httpHeaders });
+  }
+
+  findByTitle(title:any): Observable<Stacktrace[]> {
+    return this.http.get<Stacktrace[]>(`${this.stacktraceURL}?title=${title}`);
+  }
+
+  findByTitleAndTechnology(title:any, technologyId: number, page: number): Observable<any> {
+    return this.http.get<Stacktrace[]>(`${this.stacktraceURL}/search?title=${title}&technologyId=${technologyId}&page=${page}`);
+  }
+
+  chosenSolution(solutionId: number, stacktraceId: number): Observable<Stacktrace>{
+    return this.http.get<Stacktrace>(`${this.stacktraceURL}/chosen-solution?solutionId=${solutionId}&stacktraceId=${stacktraceId}`)
   }
 }

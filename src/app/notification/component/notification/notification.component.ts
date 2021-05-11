@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Notification} from '../../model/notification';
 import {NotificationService} from '../../service/notification.service';
 import {ActivatedRoute} from '@angular/router';
-
+import { Notification } from 'src/app/notification/model/notification';
 
 @Component({
   selector: 'app-notification',
@@ -60,5 +59,4 @@ export class NotificationComponent implements OnInit {
   pageRefresh(): void {
     window.location.reload();
   }
-
 }

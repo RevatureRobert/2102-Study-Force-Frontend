@@ -1,0 +1,119 @@
+#Diologue-Card {
+  position: relative;
+  left: 50%;
+  width: 1048px !important;
+  min-height: fit-content;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    111.52deg,
+    rgba(255, 255, 255, 0.64) 0%,
+    rgba(255, 255, 255, 0.48) 100%
+  );
+  backdrop-filter: blur(100px);
+  border-radius: 30px;
+  border: none;
+}
+
+#Card-Header {
+  position: relative;
+  top: -20px;
+  left: 35px;
+  height: 21px;
+  background: none;
+  border: none;
+}
+
+#Card-Header p {
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 21px;
+  color: #153c53;
+}
+
+#Card-Body {
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+
+#Name {
+  position: absolute;
+  right: 40px;
+  top: 5px;
+  font-weight: 300;
+  font-size: 25px;
+  line-height: 21px;
+  color: #153c53;
+}
+
+#Card-Text {
+  font-weight: 300;
+  margin-left: 75px;
+  margin-right: 75px;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 21px;
+
+  color: #000000;
+}
+
+#Card-Footer {
+  height: 36px;
+  background: #ffffff;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+#Card-Footer svg {
+  position: relative;
+  top: -5px;
+}
+
+#glass-pane {
+  position: relative;
+  width: 1048px !important;
+  height: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 8px 15px 0 rgba(31, 38, 135, 0.37);
+
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(100px);
+  -webkit-backdrop-filter: blur(100px);
+  border-radius: 30px;
+  padding: 2em;
+}
+
+/* #solutions-container{
+  position: absolute;
+  height: 100%;
+  transform: translateX(-50%);
+  left: 50%;
+} */
+
+.card{
+  border-radius: 30px;
+}
+
+#submitContent{
+  border-radius: 30px;
+  margin: 10px;
+}
+
+#Submit-Button {
+  opacity: 0.75;
+  position: relative;
+  width: 86px;
+  background: #0275d8;
+  border: 1px solid #0275d8;
+  box-sizing: border-box;
+  border-radius: 30px;
+}
+
+table{
+  margin-top: 10px;
+
+}
+
+td{
+  padding: 10px;
+}
