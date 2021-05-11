@@ -18,7 +18,7 @@
         {{answers[0].answerText}}
         <app-vote (click)="vote($event)" id="vote-display" [answer]=answers[0] [answerId]=answers[0].answerId [userId]=userId></app-vote>
       </div>
-        <button class="btn custom-button" id="view-more" (click)="toViewThread()" *ngIf="answers.length > 0">
+        <button class="btn custom-button" [routerLink]="['/view-thread', flashcardId]" *ngIf="answers.length > 0">
             View More
         </button>
     </div>
