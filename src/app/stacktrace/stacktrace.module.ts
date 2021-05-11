@@ -43,11 +43,11 @@ import { StackGuardGuard } from './services/stack-guard.guard';
     SharedModule
 
   ],
-  exports:[
+  exports: [
     StacktraceHomeComponent,
     StacktraceComponent
   ],
-  providers:[
+  providers: [
     StacktraceService,
     TechnologyService,
     StackGuardGuard
