@@ -70,7 +70,9 @@ export class NewTechnologyComponent implements OnInit {
       this.technologyService.deleteTechnology(this.technologyId).subscribe(result => {this.gotoStacktraceList()},
       errorMessage => {
       this.error = errorMessage;
-      setTimeout(location.reload.bind(location), 2750);
+      setTimeout(() => { window.location.href = window.location.href; }, 2750);
+      // setTimeout(location.reload.bind(location), 2750);
+      
     });
     }
   }
