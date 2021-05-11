@@ -15,7 +15,7 @@ import { environment } from 'src/environments/environment';
 })
 export class SubscribeBellFlashcardService {
 
-  url:string = environment.apiUrl.concat("/subscriptions/flashcards");
+  url: string = environment.apiUrl.concat('/subscriptions/flashcards');
 
   /**
    *
@@ -35,10 +35,10 @@ export class SubscribeBellFlashcardService {
     params = params.append('user-id', userId.toString());
 
     return this.http.get<FlashcardSubscription>(this.url, {
-      headers:{
+      headers: {
         'Content-Type': 'application/json'
       },
-      params:params
+      params
     }).toPromise<FlashcardSubscription>();
   }
 
@@ -49,7 +49,7 @@ export class SubscribeBellFlashcardService {
  */
   addSubscription(sub:FlashcardSubscriptionDTO):Promise<FlashcardSubscription>{
     return this.http.post<FlashcardSubscription>(this.url, sub, {
-      headers:{
+      headers: {
         'Content-Type': 'application/json'
       }
     }).toPromise<FlashcardSubscription>();
@@ -63,10 +63,10 @@ export class SubscribeBellFlashcardService {
   removeSubscription(sub:FlashcardSubscriptionDTO):Promise<FlashcardSubscription>{
     return this.http.request<FlashcardSubscription>('delete', this.url, {
       body: sub,
-      headers:{
+      headers: {
         'Content-Type': 'application/json'
       }
-    }).toPromise<FlashcardSubscription>()
+    }).toPromise<FlashcardSubscription>();
   }
 
 

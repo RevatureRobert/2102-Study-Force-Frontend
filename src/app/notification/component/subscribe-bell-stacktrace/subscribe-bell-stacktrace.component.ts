@@ -47,9 +47,20 @@ export class SubscribeBellStacktraceComponent implements OnInit {
  */
   getSubscriptionStatus(userId:number, stacktraceId:number):void{
     this.subscribeBell.getSubscription(userId, stacktraceId).then(
-      res => {if(res === null){this.subscriptionStatus = false; this.setBellImg();}else{this.subscriptionStatus = true; this.setBellFillImg();} console.log(res);},
-      error => {console.log(error); this.subscriptionStatus = false; this.setBellImg();});
+      res => {if (res === null){
+                this.subscriptionStatus = false; this.setBellImg();
+              }
+              else {
+                this.subscriptionStatus = true; this.setBellFillImg();
+              }
+              console.log(res);
+              },
+      error => {console.log(error);
+                this.subscriptionStatus = false;
+                this.setBellImg();
+                });
   }
+  
   /**
    * changeSubscriptionStatus is called when the user clicks the bell
    * Then we either unsubscribe the user or subscribe the user depending on subscriptionStatus
@@ -69,20 +80,22 @@ export class SubscribeBellStacktraceComponent implements OnInit {
   addSubscription(sub:StacktraceSubscriptionDTO):void{
     console.log(sub);
     this.subscribeBell.addSubscription(sub).then(
-      res => { this.subscriptionStatus = true; this.setBellFillImg(); console.log(res);},
-      error => {console.log(error)}
+      res => { this.subscriptionStatus = true; this.setBellFillImg(); console.log(res); },
+      error => {console.log(error); }
     );
   }
+  
 /**
  * removeSubscription unsubscribes the user form the flashcard
  * @param sub is the subscription we want to remove
  */
   removeSubscription(sub:StacktraceSubscriptionDTO):void{
     this.subscribeBell.removeSubscription(sub).then(
-      res=> { this.subscriptionStatus = false; this.setBellImg(); console.log(res);},
-      error => {console.log(error)}
+      res => { this.subscriptionStatus = false; this.setBellImg(); console.log(res); },
+      error => {console.log(error); }
     );
   }
+  
   /*
   * setBillFillImg makes the bell fill image be displayed
   */

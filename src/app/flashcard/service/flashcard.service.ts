@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Flashcard } from '../model/flashcard';
-import { FlashcardPage } from "src/app/flashcard/model/flashcardPage";
+import { FlashcardPage } from 'src/app/flashcard/model/flashcardPage';
 import { environment } from 'src/environments/environment';
 
 
@@ -16,7 +16,7 @@ export class FlashcardService {
 
   private apiServerUrl = environment.apiUrl; // Base API URL
 
-  public selectedFlashcardForThread: number = 0; // Used to set the selected Flashcard
+  public selectedFlashcardForThread = 0; // Used to set the selected Flashcard
 
   /**
    * @param http - handles HTTP requests
@@ -30,7 +30,7 @@ export class FlashcardService {
    * @returns - returns a paginated Flashcard observable
    */
   getAllByPage(page: number): Observable<FlashcardPage> {
-    return this.http.get<FlashcardPage>(`http://${this.apiServerUrl}/flashcards?page=${page}`);
+    return this.http.get<FlashcardPage>(`${this.apiServerUrl}/flashcards?page=${page}`);
   }
 
   /**
@@ -40,8 +40,9 @@ export class FlashcardService {
    * @returns - returns a paginated Flashcard observable
    */
   getAllByDifficultyPage(page: number, difficulty: number): Observable<FlashcardPage> {
-    return this.http.get<FlashcardPage>(`http://${this.apiServerUrl}/flashcards/difficulty?page=${page}&difficulty=${difficulty}`);
+    return this.http.get<FlashcardPage>(`${this.apiServerUrl}/flashcards/difficulty?page=${page}&difficulty=${difficulty}`);
   }
+
 
 
   /**
@@ -49,7 +50,7 @@ export class FlashcardService {
    * @returns - returns an observable with all Flashcards
    */
   getAll(): Observable<any> {
-    return this.http.get(`http://${this.apiServerUrl}/flashcards`);
+    return this.http.get(`${this.apiServerUrl}/flashcards`);
   }
 
 
@@ -59,7 +60,7 @@ export class FlashcardService {
    * @returns - returns Flashcard with the given id
    */
   getFlashcardById(flashcardId: number): Promise<any> {
-    return this.http.get(`http://${this.apiServerUrl}/flashcards/${flashcardId}`).toPromise();
+    return this.http.get(`${this.apiServerUrl}/flashcards/${flashcardId}`).toPromise();
 
   }
 
@@ -68,8 +69,8 @@ export class FlashcardService {
    * @param userId - the id of the user to look for
    * @returns - returns an observable of the Flashcards with the given user id
    */
-  getFlashcardsByUserId(userId:number): Observable<any>{
-    return this.http.get(`http://${this.apiServerUrl}/flashcards/by-user/${userId}`);
+  getFlashcardsByUserId(userId: number): Observable<any>{
+    return this.http.get(`${this.apiServerUrl}/flashcards/by-user/${userId}`);
   }
 
   /**
@@ -78,7 +79,7 @@ export class FlashcardService {
    * @returns - returns Answers tied to the Flashcard with the given id
    */
   getAnswers(flashcardId: number): Promise<any> {
-    return this.http.get(`http://${this.apiServerUrl}/answers/${flashcardId}`).toPromise();
+    return this.http.get(`${this.apiServerUrl}/answers/${flashcardId}`).toPromise();
   }
 
   /**
@@ -87,7 +88,7 @@ export class FlashcardService {
    * @returns - returns all Flashcards with the given difficulty
    */
   getAllByDifficulty(difficulty: number): Observable<any> {
-    return this.http.get(`http://${this.apiServerUrl}/difficulty?difficulty=${difficulty}`);
+    return this.http.get(`${this.apiServerUrl}/difficulty?difficulty=${difficulty}`);
   }
 
   /**
@@ -97,7 +98,7 @@ export class FlashcardService {
    * @returns - returns a paginated Flashcard observable
    */
   getAllByTopic(page: number, topic: string): Observable<FlashcardPage> {
-    return this.http.get<FlashcardPage>(`http://${this.apiServerUrl}/flashcards/topics?page=${page}&topicName=${topic}`);
+    return this.http.get<FlashcardPage>(`${this.apiServerUrl}/flashcards/topics?page=${page}&topicName=${topic}`);
   }
 
   /**
@@ -106,14 +107,14 @@ export class FlashcardService {
    * @param resolved - only Flashcards with this resolved status [true|false] will be returned
    * @returns - returns a paginated Flashcard observable
    */
-  getAllByResolved(page:number, resolved: boolean): Observable<FlashcardPage> {
-    return this.http.get<FlashcardPage>(`http://${this.apiServerUrl}/flashcards/resolved?page=${page}&resolved=${resolved}`);
+  getAllByResolved(page: number, resolved: boolean): Observable<FlashcardPage> {
+    return this.http.get<FlashcardPage>(`${this.apiServerUrl}/flashcards/resolved?page=${page}&resolved=${resolved}`);
   }
 
 
 
   getAllBySearch(page: number, question: string): Observable<FlashcardPage> {
-    return this.http.get<FlashcardPage>(`http://${this.apiServerUrl}/flashcards/question/?question=${question}`);
+    return this.http.get<FlashcardPage>(`${this.apiServerUrl}/flashcards/question/?question=${question}`);
   }
 
 
@@ -123,7 +124,7 @@ export class FlashcardService {
    * @returns - returns Flashcard with the given id
    */
   get(id: any): Observable<Flashcard> {
-    return this.http.get<Flashcard>(`http://${this.apiServerUrl}/${id}`);
+    return this.http.get<Flashcard>(`${this.apiServerUrl}/${id}`);
   }
 
   /**
@@ -132,7 +133,7 @@ export class FlashcardService {
    * @returns - returns the persisted Flashcard
    */
   create(data: any): Observable<any> {
-    return this.http.post(`http://${this.apiServerUrl}/flashcards`, data);
+    return this.http.post(`${this.apiServerUrl}/flashcards`, data);
   }
 
   /**
@@ -141,7 +142,7 @@ export class FlashcardService {
    * @returns - returns the updated Flashcard
    */
   update(data: any): Observable<any> {
-    return this.http.put(`http://${this.apiServerUrl}`, data);
+    return this.http.put(`${this.apiServerUrl}`, data);
   }
 
 
@@ -151,7 +152,7 @@ export class FlashcardService {
    * @returns - returns the deleted Flashcard
    */
   delete(id: any): Observable<any> {
-    return this.http.delete(`http://${this.apiServerUrl}/flashcards/${id}`);
+    return this.http.delete(`${this.apiServerUrl}/flashcards/${id}`);
   }
 
   /**

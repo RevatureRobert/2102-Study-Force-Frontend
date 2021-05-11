@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-flashcard-answer',
-  templateUrl: './flashcard-answer.component.html',
-  styleUrls: ['./flashcard-answer.component.css']
+  selector: 'app-flashcard-answer-style',
+  templateUrl: './flashcard-answer-style.component.html',
+  styleUrls: ['./flashcard-answer-style.component.css']
 })
-export class FlashcardAnswerComponent implements OnInit {
+export class FlashcardAnswerStyleComponent implements OnInit {
 
   subscribed = false;
 

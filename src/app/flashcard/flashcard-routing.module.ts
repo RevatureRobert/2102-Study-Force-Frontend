@@ -8,7 +8,7 @@ import { FlashcardTopicComponent } from './components/ui/flashcard/flashcard-top
 
 
 const routes: Routes = [
-  { path: '', redirectTo:'/view-flashcards',pathMatch:'full'},
+  { path: '', redirectTo: '/view-flashcards', pathMatch: 'full'},
   { path: 'create-question', component: CreateFlashcardPageComponent },
   { path: 'submit-answer', component: SubmitAnswerPageComponent },
   { path: 'view-thread', component: ViewFlashcardThreadComponent},

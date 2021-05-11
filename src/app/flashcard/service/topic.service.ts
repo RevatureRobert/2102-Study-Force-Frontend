@@ -17,14 +17,14 @@ export class TopicService {
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<Topic[]> {
-    return this.http.get<Topic[]>(`http://${this.apiServerUrl}/topics`);
+    return this.http.get<Topic[]>(`${this.apiServerUrl}/topics`);
   }
 
   addTopic(topic: string): Observable<Topic> {
-    return this.http.post<Topic>(`http://${this.apiServerUrl}/topics`, {topic: topic});
+    return this.http.post<Topic>(`${this.apiServerUrl}/topics`, {topic: topic});
   }
 
   deleteTopic(id: number): Observable<Topic> {
-    return this.http.delete<Topic>(`http://${this.apiServerUrl}/topics/${id}`);
+    return this.http.delete<Topic>(`${this.apiServerUrl}/topics/${id}`);
   }
 }

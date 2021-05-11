@@ -17,8 +17,8 @@ import { RateService } from './service/rate.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { VoteService } from './service/vote.service';
 import { FlashcardTopicComponent } from './components/ui/flashcard/flashcard-topic/flashcard-topic.component';
-import { SubscribeBellFlashcardComponent } from 'src/app/notification/component/subscribe-bell-flashcard/subscribe-bell-flashcard.component';
-import { SubscribeBellFlashcardService } from 'src/app/notification/service/subscribe-bell-flashcard.service';
+import {SubscribeBellFlashcardComponent} from '../notification/component/subscribe-bell-flashcard/subscribe-bell-flashcard.component';
+import {SubscribeBellFlashcardService} from '../notification/service/subscribe-bell-flashcard.service';
 
 @NgModule({
   declarations: [

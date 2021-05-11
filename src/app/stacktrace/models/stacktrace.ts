@@ -1,4 +1,7 @@
-export class Stacktrace {
+
+
+export interface Stacktrace {
+//export class Stacktrace {
   stacktraceId?: number;
   userId?: number;
   userName?: string;

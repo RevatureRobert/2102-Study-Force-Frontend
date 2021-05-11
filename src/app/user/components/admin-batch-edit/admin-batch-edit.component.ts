@@ -20,15 +20,15 @@ import { Input } from '@angular/core';
 })
 export class AdminBatchEditComponent implements OnInit {
 
-  users: string[] = [];  //String array that holds all the emails of all users in the batch.
-  instructors: string[] = [];  //String array that holds all the emails of all instructors in the batch.
-  creationTime: string = '';  //Creating time for the batch as a String.
-  name: string = '';  //Name of the batch.
-  loaded:boolean = false;  //To confirm view did load.
-  id: string = "";  //ID of the batch to be used for batch service method.
+  users: string[] = [];  // String array that holds all the emails of all users in the batch.
+  instructors: string[] = [];  // String array that holds all the emails of all instructors in the batch.
+  creationTime = '';  // Creating time for the batch as a String.
+  name = '';  // Name of the batch.
+  loaded = false;  // To confirm view did load.
+  id = '';  // ID of the batch to be used for batch service method.
 
-  userCurrentEmail:string = ""; //This is the place holder for the user email field in the form.
-  instructorCurrentEmail:string = ""; //This is the place holder for the instructor email field in the form.
+  userCurrentEmail = ''; // This is the place holder for the user email field in the form.
+  instructorCurrentEmail = ''; // This is the place holder for the instructor email field in the form.
 
   /**
    *
@@ -38,15 +38,15 @@ export class AdminBatchEditComponent implements OnInit {
    * @param router The router this componet use to route back to the adminBatchDetails page.
    */
   constructor(
-    private batchService:BatchService,
-    private userService:UserService,
+    private batchService: BatchService,
+    private userService: UserService,
     private route: ActivatedRoute,
     private router: Router
   ) {
     this.route.params.subscribe(params => {
-      this.id = params['id'];
+      this.id = params.id;
 
-    })
+    });
    }
 
   ngOnInit(): void {
@@ -63,20 +63,20 @@ export class AdminBatchEditComponent implements OnInit {
     this.batchService.getBatchById(this.id)
     .subscribe(batch => {
 
-      for (var x in (batch.users)) {
+      for (const x in (batch.users)) {
         this.users.push(batch.users[x].email);
       }
-      for (var index in (batch.instructors)) {
+      for (const index in (batch.instructors)) {
         this.instructors.push(batch.instructors[index].email);
       }
 
-      var date = new Date(batch.creationTime);
+      const date = new Date(batch.creationTime);
       this.creationTime =
       ((date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear());
       this.name = batch.name;
 
       this.loaded = true;
-    })
+    });
   }
 
   /**
@@ -85,7 +85,7 @@ export class AdminBatchEditComponent implements OnInit {
    */
   async warningForSubmit() {
 
-    let answer = confirm(`Confirm the changes your have made on batch: ${this.name}.`);
+    const answer = confirm(`Confirm the changes your have made on batch: ${this.name}.`);
     if (answer == true){
         this.loaded = false;
         await this.submit();
@@ -98,11 +98,11 @@ export class AdminBatchEditComponent implements OnInit {
    * If the user select yes thenit will execute the delete function.
    */
   async warningForDelete() {
-    let answer = confirm(`Are you sure you want to delete batch: ${this.name}?`);
+    const answer = confirm(`Are you sure you want to delete batch: ${this.name}?`);
     if (answer == true){
       this.loaded = false;
       await this.delete();
-        this.redirect();
+      this.redirect();
     }
   }
 
@@ -111,7 +111,7 @@ export class AdminBatchEditComponent implements OnInit {
    * If the user select yes thenit will execute the deactivate function.
    */
   async warningForDeactivate() {
-    let answer = confirm(`Are you sure you want to deactivate batch: ${this.name}? \nAll users will be deactivated and the batch will be deleted.`);
+    const answer = confirm(`Are you sure you want to deactivate batch: ${this.name}? \nAll users will be deactivated and the batch will be deleted.`);
     if (answer == true){
       this.loaded = false;
       await this.deactivate();
@@ -140,7 +140,7 @@ export class AdminBatchEditComponent implements OnInit {
    */
   async submit(){
 
-    await this.batchService.updateBatch(this.id,this.name,this.instructors,this.users).
+    await this.batchService.updateBatch(this.id, this.name, this.instructors, this.users).
     catch(error => alert(error.message.concat(` At least one of the user doesn't exist in the database.`)));
 
   }
@@ -165,10 +165,10 @@ export class AdminBatchEditComponent implements OnInit {
    * @param email The email that is being checked against the regex
    */
 
-   isEmail(email:string):boolean {
-    let  isEmailVaild:boolean;
+   isEmail(email: string): boolean {
+    let  isEmailVaild: boolean;
 
-    let regexp = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+    const regexp = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
     isEmailVaild = regexp.test(email);
 
     return isEmailVaild;
@@ -182,15 +182,15 @@ export class AdminBatchEditComponent implements OnInit {
  * @returns
  */
  onAddUser(formEmp: NgForm) {
-  let checkedEmail = formEmp.value.email;
+  const checkedEmail = formEmp.value.email;
 
   if (!this.isEmail(checkedEmail)) {
-      alert("Please check emails and try and submit again");
+      alert('Please check emails and try and submit again');
       return;
   }
   const email = this.userCurrentEmail = checkedEmail;
 
-  this.users.push(email)
+  this.users.push(email);
 
   return this.users;
 }
@@ -203,15 +203,15 @@ export class AdminBatchEditComponent implements OnInit {
  * @returns
  */
  onAddInstructor(formEmp2: NgForm) {
-  let checkedEmail = formEmp2.value.email;
+  const checkedEmail = formEmp2.value.email;
 
   if (!this.isEmail(checkedEmail)) {
-      alert("Please check emails and try and submit again");
+      alert('Please check emails and try and submit again');
       return;
   }
   const email = this.instructorCurrentEmail = checkedEmail;
 
-  this.instructors.push(email)
+  this.instructors.push(email);
 
   return this.instructors;
 }
@@ -222,9 +222,9 @@ export class AdminBatchEditComponent implements OnInit {
  */
 
 onDeleteUser(user: string) {
-  this.users.forEach((value,index)=>{
-    if(value==user) {
-      this.users.splice(index,1);
+  this.users.forEach((value, index) => {
+    if (value == user) {
+      this.users.splice(index, 1);
     }
   });
   console.log(this.users);
@@ -235,9 +235,9 @@ onDeleteUser(user: string) {
  * @param user the user that will be removed from the array
  */
 onDeleteInstructor(user: string) {
-  this.instructors.forEach((value,index)=>{
-    if(value==user) {
-      this.instructors.splice(index,1);
+  this.instructors.forEach((value, index) => {
+    if (value == user) {
+      this.instructors.splice(index, 1);
     }
   });
   console.log(this.instructors);

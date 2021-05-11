@@ -15,7 +15,7 @@ import { environment } from 'src/environments/environment';
 })
 export class SubscribeBellStacktraceService {
 
-  url:string = environment.apiUrl.concat("/subscriptions/stacktraces");
+  url: string = environment.apiUrl.concat('/subscriptions/stacktraces');
 
   /**
    *
@@ -35,10 +35,10 @@ export class SubscribeBellStacktraceService {
     params = params.append('user-id', userId.toString());
 
     return this.http.get<StacktraceSubscription>(this.url, {
-      headers:{
+      headers: {
         'Content-Type': 'application/json'
       },
-      params:params
+      params
     }).toPromise<StacktraceSubscription>();
   }
 
@@ -63,10 +63,10 @@ export class SubscribeBellStacktraceService {
   removeSubscription(sub:StacktraceSubscriptionDTO):Promise<StacktraceSubscription>{
     return this.http.request<StacktraceSubscription>('delete', this.url, {
       body: sub,
-      headers:{
+      headers: {
         'Content-Type': 'application/json'
       }
-    }).toPromise<StacktraceSubscription>()
+    }).toPromise<StacktraceSubscription>();
   }
 
 

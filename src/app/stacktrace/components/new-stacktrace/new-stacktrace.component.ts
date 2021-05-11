@@ -1,4 +1,4 @@
-import { Component,OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Stacktrace } from 'src/app/stacktrace/models/stacktrace';
 import { StacktraceService } from 'src/app/stacktrace/services/stacktrace.service';
@@ -39,7 +39,7 @@ export class NewStacktraceComponent implements OnInit {
    * @param technologyService the service used to send Technology-related requests to the backend
    */
   constructor(private route: ActivatedRoute, private stacktraceService: StacktraceService, private router: Router, private technologyService: TechnologyService) {
-    this.stacktrace = new Stacktrace();
+    //this.stacktrace = new Stacktrace();
         // //TODO remove this placeholder user
         // let u:User = {
         //   userId:2,

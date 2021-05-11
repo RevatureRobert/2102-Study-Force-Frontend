@@ -5,7 +5,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { SharedModule } from 'src/app/global-components/shared.module';
+import { SharedModule } from 'src/app/shared.module';
 import { StacktraceRoutingModule } from './stacktrace-routing.module';
 import { StacktraceService } from './services/stacktrace.service'
 import { StacktraceHomeComponent } from 'src/app/stacktrace/components/stacktrace-home/stacktrace-home.component';
@@ -30,6 +30,7 @@ import { StackGuardGuard } from './services/stack-guard.guard';
     SubscribeBellStacktraceComponent
   ],
   imports: [
+    SharedModule,
     BrowserModule,
     HttpClientModule,
     CommonModule,
@@ -40,13 +41,13 @@ import { StackGuardGuard } from './services/stack-guard.guard';
     FormsModule,
     NgxPaginationModule,
     SharedModule
-    
+
   ],
-  exports:[
+  exports: [
     StacktraceHomeComponent,
     StacktraceComponent
   ],
-  providers:[
+  providers: [
     StacktraceService,
     TechnologyService,
     StackGuardGuard

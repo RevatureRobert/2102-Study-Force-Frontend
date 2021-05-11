@@ -97,7 +97,7 @@ export class NewTechnologyComponent implements OnInit {
      */
     changeFocus() {
       let parent = document.getElementById('Dropdown-Button');
-  
+
       if (this.yes === false) {
         this.yes = true;
         parent!.style.setProperty('border-bottom-right-radius', '0px');
@@ -108,7 +108,7 @@ export class NewTechnologyComponent implements OnInit {
         parent!.style.setProperty('border-bottom-left-radius', '10px');
       }
     }
-  
+
     /**
      * Toggles the dropdown button flag.
      */
