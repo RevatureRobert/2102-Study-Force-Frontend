@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
+import * as EventEmitter from 'events';
 import { FlashcardSubscriptionDTO } from '../../model/flashcard-subscription-dto';
 import { SubscribeBellFlashcardService } from '../../service/subscribe-bell-flashcard.service';
 
@@ -13,13 +14,14 @@ export class SubscribeBellFlashcardComponent implements OnInit {
   subscriptionStatus!:boolean;
   image!:string;
   sub:FlashcardSubscriptionDTO;
+  @Output()click = new EventEmitter();
 
   constructor(private subscribeBell:SubscribeBellFlashcardService) {
-    this.sub = {flashcardId: 2, userId: 25};
+    this.sub = {flashcardId: this.flashcardId, userId: this.userId};
    }
 
   ngOnInit(): void {
-    this.getSubscriptionStatus(1, 1);
+    this.getSubscriptionStatus(this.userId, this.flashcardId);
   }
 
   getSubscriptionStatus(userId:number, flashcardId:number):void{
@@ -28,13 +30,14 @@ export class SubscribeBellFlashcardComponent implements OnInit {
       error => {console.log(error); this.subscriptionStatus = false; this.setBellImg();});
   }
 
-  changeSubscriptionStatus():void{
+  changeSubscriptionStatus(event:Event):void{
     if(this.subscriptionStatus){
       this.removeSubscription(this.sub);
     }
     else{
       this.addSubscription(this.sub);
     }
+    event.stopPropagation();
   }
 
   addSubscription(sub:FlashcardSubscriptionDTO):void{

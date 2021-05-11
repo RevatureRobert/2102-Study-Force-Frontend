@@ -1,9 +1,31 @@
 .card {
   top: 2em;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.54) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 255, 255, 0.54) 100%
+  );
   backdrop-filter: blur(100px);
   border-radius: 10px;
   min-width: 590px;
+  margin: 0 auto;
+  margin-bottom: 3em;
+  width: 600px;
+}
+
+.form-group {
+  width: fit-content;
+  position: relative;
+  margin: auto;
+}
+
+#first {
+  position: relative;
+  top: 30px;
+}
+
+#second {
+  top: 20px;
 }
 
 .glass-pane {
@@ -20,11 +42,15 @@
   backdrop-filter: blur(100px);
   -webkit-backdrop-filter: blur(100px);
   border-radius: 30px;
-}
 
+  min-height: fit-content;
+}
 
 .card-body {
   position: relative;
+  /* margin:  auto; */
+  width: 600px;
+  left: 25%;
 }
 
 h3 {
@@ -39,31 +65,19 @@ h3 {
   line-height: 70%;
 }
 
-.custom-button {
-  background: linear-gradient(99.35deg, rgba(34, 51, 201, 0.63) 21.34%, rgba(48, 190, 105, 0.7) 99.96%);
-  backdrop-filter: blur(50px);
-  /* Note: backdrop-filter has minimal browser support */
-  border-radius: 10px;
-  color: white;
-  text-align: center;
-  letter-spacing: 1px;
-  font-family: Roboto, Arial, Helvetica, sans-serif;
-  font-style: normal;
-  font-weight: 300;
-  font-size: 20px;
-  line-height: 105%;
-  position: absolute;
-}
-
 .wrapper {
   position: absolute;
   right: 9em;
-  bottom:3em;
+  bottom: 3em;
   transform: translateY(60%);
 }
 
 .input-styling {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.54) 90%);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 255, 255, 0.54) 90%
+  );
   backdrop-filter: blur(100px);
   /* Note: backdrop-filter has minimal browser support */
   border-radius: 10px;
@@ -73,10 +87,22 @@ h3 {
   font-size: 20px;
   line-height: 105%;
   letter-spacing: 1px;
-
+  width: 400px;
+  max-width: fit-content;
+  min-height: 100px;
   color: rgba(0, 0, 0, 0.5);
 }
+#container {
+  position: relative;
+  width: fit-content;
+  left: 50%;
+  transform: translateX(-50%);
+}
 
+#input-dialogue {
+  position: relative;
+  top: 20px;
+}
 
 #Dropdown {
   position: absolute;
@@ -142,13 +168,48 @@ h3 {
   border-bottom-right-radius: 10px;
 }
 
+.flashcard {
+  min-height: 300px;
+  width: fit-content;
+}
 
+.start {
+  width: 175px;
+  color: rgba(21, 60, 83, 1);
+  background: #ffffff;
+  box-shadow: 0px -1px 0px #eceeef;
+  position: relative;
+  box-sizing: border-box;
+  border-radius: 10px;
 
+  margin-bottom: 20px;
+}
 
+#button-submit {
+  position: absolute;
+  bottom: 10px;
+}
+.custom-button {
+  opacity: 0.75;
+  position: relative;
+  width: 86px;
+  background: #0275d8;
+  border: 1px solid #0275d8;
+  box-sizing: border-box;
+  color: white;
+  border-radius: 30px;
+  margin-top: 10px;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
 
-
-
-
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: "";
+}
 
 /*.card {*/
 /*  top: 2em;*/

@@ -13,10 +13,10 @@
           <div *ngFor="let notification of notifications" ngbDropdownItem>
             <a class="btn btn-block btn-outline-light" (click)="pageRefresh()"
                *ngIf="notification.featureArea==='STACKTRACE'"
-               routerLink="stacktraces/{{notification.featureAreaId}}"> {{notification.message}} {{notification.featureArea | lowercase}}</a>
+               routerLink="stacktraces/{{notification.referenceId}}"> {{notification.body}} {{notification.featureArea | lowercase}}</a>
             <a class="btn btn-block btn-outline-light" (click)="pageRefresh()"
                *ngIf="notification.featureArea==='FLASHCARD'"
-               routerLink="flashcards/{{notification.featureAreaId}}">{{notification.message}} {{notification.featureArea | lowercase}}</a>
+               routerLink="flashcards/{{notification.referenceId}}">{{notification.body}} {{notification.featureArea | lowercase}}</a>
           </div>
         </div>
         <div class="container">
