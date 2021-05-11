@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { NumericLiteral } from 'typescript';
 import { FlashcardSubscriptionDTO } from '../../model/flashcard-subscription-dto';
 import { SubscribeBellFlashcardService } from '../../service/subscribe-bell-flashcard.service';
 
@@ -15,11 +16,11 @@ export class SubscribeBellFlashcardComponent implements OnInit {
   sub:FlashcardSubscriptionDTO;
 
   constructor(private subscribeBell:SubscribeBellFlashcardService) {
-    this.sub = {flashcardId: 2, userId: 25};
+    this.sub = {flashcardId: this.flashcardId, userId: this.userId};
    }
 
   ngOnInit(): void {
-    this.getSubscriptionStatus(1, 1);
+    this.getSubscriptionStatus(this.userId, this.flashcardId);
   }
 
   getSubscriptionStatus(userId:number, flashcardId:number):void{
