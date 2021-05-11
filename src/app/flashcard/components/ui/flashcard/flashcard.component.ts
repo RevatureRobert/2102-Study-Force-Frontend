@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
 import {FlashcardQuestionComponent} from './flashcard-question/flashcard-question.component';
 import {FlashcardAnswerComponent} from './flashcard-answer/flashcard-answer.component';
-import { Flashcard } from "../../../model/flashcard";
+import { Flashcard } from '../../../model/flashcard';
 import * as EventEmitter from 'events';
 import { Answer } from 'src/app/flashcard/model/answer';
 
@@ -19,17 +19,17 @@ export class FlashcardComponent implements OnInit {
   @Output() click = new EventEmitter();
   answer?: string;
   subscribed = false;
-  bellStyle = "../../../assets/bell.svg";
+  bellStyle = '../../../assets/bell.svg';
 
-  //TODO: GET CURRENT USER FROM STORAGE
+  // TODO: GET CURRENT USER FROM STORAGE
   // userId: number = Number(localStorage("asocaite"));
-  userId: number = 1;
+  userId = 1;
 
 
 
   public deleteId?: number;
 
-  public question: string = 'question body';
+  public question = 'question body';
 
 
   public realAnswer?: Answer;
@@ -40,7 +40,7 @@ export class FlashcardComponent implements OnInit {
 
   ngOnInit(): void {
 
-    if(this.flashcard){
+    if (this.flashcard){
       this.question = this.flashcard.question;
       this.deleteId = this.flashcard.flashcardId;
     }
@@ -54,13 +54,13 @@ export class FlashcardComponent implements OnInit {
 
   // Subscribes user to Flashcard
   subscribe(event: Event) {
-    this.subscribed = !this.subscribed
+    this.subscribed = !this.subscribed;
 
-    if(this.subscribed) {
-      this.bellStyle="../../../assets/bell fill.svg";
+    if (this.subscribed) {
+      this.bellStyle = '../../../assets/bell fill.svg';
     }
     else {
-      this.bellStyle="../../../assets/bell.svg";
+      this.bellStyle = '../../../assets/bell.svg';
     }
 
     event.stopPropagation();
