@@ -1,0 +1,120 @@
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { SwPush } from '@angular/service-worker';
+
+
+
+@Injectable({
+  providedIn: 'root'
+})
+export class SubscriptionService {
+
+  subDetails:any;
+  constructor(private http: HttpClient ,private push :SwPush) { }
+
+  private serverPublicKeyBaseURL = "http://localhost:8080/";
+
+  getPublicKey(): Observable<any> {
+    return this.http.get(this.serverPublicKeyBaseURL + "publicSigningKey", { responseType: 'text' })
+  }
+
+
+/**
+ * Post your subscription details to the database
+ * @param sub
+ * @returns
+ */
+postSubscriptionDetails(sub : any, id:number){
+  const url = this.serverPublicKeyBaseURL + "subscriptions";
+
+
+  const body = {
+    id: 11,
+    endpoint: sub.endpoint,
+    key : sub.toJSON().keys.p256dh ,
+    auth : sub.toJSON().keys.auth ,
+    userId : id
+
+  }
+  console.log(body);
+  const headers= new HttpHeaders()
+  .set('content-type', 'application/json')
+  .set('Access-Control-Allow-Origin', '*');
+  return this.http.post<number>(url,body,{'headers':headers});
+
+}
+
+// /**
+//  * listen for notifications
+//  * This returns a observable because there are going to be more then more possible
+//  * notification sent
+//  */
+
+//   listenForNotifications(){
+//      return this.push.notificationClicks.subscribe
+//  }
+
+ /**
+     * Request a subscription/ allow notifications from the user in the browser
+     * It will use the key to ensure that when there are new notifications sent by the server
+     * they will be received by the intended user
+     */
+requestSubscription(id:number){
+
+    /**
+     * This is the VAPID public key used to decrypt the notification when you send it up to the
+     * browser Server
+     */
+    const key = 'BEH36g-ez23QfnT8OIbnZJMmj892dDYa_LKyGz_wM2tyZbSt1YK4Jy1sRz1OyAeilAOBDrg-TnCBLFtWdVIApK8';
+    this.push.requestSubscription({ serverPublicKey: key }).then(pushSubscription => {
+     console.log(pushSubscription.toJSON())
+    this.postSubscriptionDetails(pushSubscription, id).subscribe(data => this.subDetails = data);
+
+    })
+}
+
+/**
+ *
+ * @returns This will true if the service worker is enabled
+ */
+isSubscribed(){
+  return this.push.isEnabled;
+}
+
+/**
+ *
+ * @param id Will check if a user a subscription
+ * @returns
+ */
+hasSubscription(id:number){
+   if(this.http.get<any>(this.serverPublicKeyBaseURL+`/subscriptions/${id}`).subscribe()===null){
+     return false;
+   }
+   else {
+     return true;
+   }
+}
+
+// /**
+//  * Will either return the current the subscription or the users subscription already stored
+//  *
+//  * @param id
+//  * @returns
+//  */
+// setSubscriptionForUser(id:number){
+//   const temp = this.hasSubscription(8)
+//   if(temp === null ){
+//       this.requestSubscription();
+//       return;
+//   }
+//   else {
+//     return;
+//   }
+
+// }
+
+
+}
+
+

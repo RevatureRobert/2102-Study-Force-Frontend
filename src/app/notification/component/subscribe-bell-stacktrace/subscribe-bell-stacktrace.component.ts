@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { SwPush, SwUpdate } from '@angular/service-worker';
 import { StacktraceSubscriptionDTO } from '../../model/stacktrace-subscription-dto';
 import { SubscribeBellStacktraceService } from '../../service/subscribe-bell-stacktrace.service';
+import { SubscriptionService } from '../../service/SubscriptionService';
 
 /**
  * author: Patrick Gonzalez
@@ -28,7 +30,7 @@ export class SubscribeBellStacktraceComponent implements OnInit {
    * @param subscribeBell is the service we use to make http requests to the backend
    * sub is set in the constructor in order to make it available
    */
-  constructor(private subscribeBell:SubscribeBellStacktraceService) {
+  constructor(private subscribeBell:SubscribeBellStacktraceService, private subscriptionService:SubscriptionService) {
     this.sub = {stacktraceId: this.stacktraceId, userId: this.userId};
    }
    /**
@@ -67,6 +69,12 @@ export class SubscribeBellStacktraceComponent implements OnInit {
  * @param sub is the subscription we want to add
  */
   addSubscription(sub:StacktraceSubscriptionDTO):void{
+    if(!this.subscriptionService.hasSubscription(sub.userId)){
+      this.subscriptionService.requestSubscription(sub.userId);
+    }
+    else {
+      console.log("Already has subscription");
+    }
     console.log(sub);
     this.subscribeBell.addSubscription(sub).then(
       res => { this.subscriptionStatus = true; this.setBellFillImg(); console.log(res);},

@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FlashcardSubscriptionDTO } from '../../model/flashcard-subscription-dto';
 import { SubscribeBellFlashcardService } from '../../service/subscribe-bell-flashcard.service';
+import { SubscriptionService } from '../../service/SubscriptionService';
 
 /**
  * author: Patrick Gonzalez
@@ -28,8 +29,8 @@ export class SubscribeBellFlashcardComponent implements OnInit {
    * @param subscribeBell is the service we use to make http requests to the backend
    * sub is set in the constructor in order to make it available
    */
-  constructor(private subscribeBell:SubscribeBellFlashcardService) {
-    this.sub = {flashcardId: this.flashcardId, userId: this.userId};
+  constructor(private subscribeBell:SubscribeBellFlashcardService, private subscriptionService:SubscriptionService) {
+    this.sub = {flashcardId: 2, userId: 1};
    }
 
    /**
@@ -71,6 +72,12 @@ export class SubscribeBellFlashcardComponent implements OnInit {
  * @param sub is the subscription we want to add
  */
   addSubscription(sub:FlashcardSubscriptionDTO):void{
+    if(!this.subscriptionService.hasSubscription(sub.userId)){
+      this.subscriptionService.requestSubscription(sub.userId);
+    }
+    else {
+      console.log("Already has subscription");
+    }
     this.subscribeBell.addSubscription(sub).then(
       res => { this.subscriptionStatus = true; this.setBellFillImg(); console.log(res);},
       error => {console.log(error)}

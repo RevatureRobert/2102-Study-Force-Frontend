@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { NgxPaginationModule } from 'ngx-pagination';
 import { SharedModule } from 'src/app/global-components/shared.module';
 import { StacktraceRoutingModule } from './stacktrace-routing.module';
 import { StacktraceService } from './services/stacktrace.service'
@@ -36,7 +35,6 @@ import { SolutionVoteComponent } from './components/solution-vote/solution-vote.
     HttpClientModule,
     StacktraceRoutingModule,
     FormsModule,
-    NgxPaginationModule,
     SharedModule
   ],
   exports:[

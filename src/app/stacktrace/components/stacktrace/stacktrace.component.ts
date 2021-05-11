@@ -43,14 +43,14 @@ export class StacktraceComponent implements OnInit {
   }
 
   getUserPriviledges(): void {
-    if( this.LoggedUser.authority === 'ADMIN'){
-      this.isAdmin = true;
-    };
-    console.log(this.currentStacktrace.userId);
-    if(this.LoggedUser.userId === this.currentStacktrace.userId){
-      this.isCreator = true;
-    }
-    console.log(this.isCreator, this.isAdmin);
+    // if( this.LoggedUser.authority === 'ADMIN'){
+    //   this.isAdmin = true;
+    // };
+    // console.log(this.currentStacktrace.userId);
+    // if(this.LoggedUser.userId === this.currentStacktrace.userId){
+    //   this.isCreator = true;
+    // }
+    // console.log(this.isCreator, this.isAdmin);
   }
 
   getStacktrace(stacktraceId: string): void {
