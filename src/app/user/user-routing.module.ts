@@ -11,7 +11,7 @@ import { BatchComponent } from './components/batch/batch.component';
 import { AdminBatchCreateComponent } from './components/admin-batch-create/admin-batch-create.component';
 import { AdminBatchEditComponent } from './components/admin-batch-edit/admin-batch-edit.component';
 import { AdminBatchComponent } from './components/admin-batch/admin-batch.component';
-import {BASE_URL_LOGIN_REGISTRATION} from '../../environments/environment.prod';
+import {BASE_URL_LOGIN_REGISTRATION} from '../../environments/environment';
 
 const userRoutes: Routes = [
   { path: 'login', component: LoginComponent },
