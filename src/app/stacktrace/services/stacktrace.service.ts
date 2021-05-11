@@ -77,6 +77,6 @@ export class StacktraceService {
    * GETs the Stacktrace object together with the chosen solution from the backend.
    */
   chosenSolution(solutionId: number, stacktraceId: number): Observable<Stacktrace> {
-    return this.http.get<Stacktrace>(`${this.stacktraceURL}/chosen-solution?solutionId=${solutionId}&stacktraceId=${stacktraceId}`)
+    return this.http.get<Stacktrace>(`${this.stacktraceURL}/chosen-solution?solutionId=${solutionId}&stacktraceId=${stacktraceId}`);
   }
 }

@@ -14,6 +14,8 @@ import { SolutionService } from '../../services/solution.service';
 })
 export class SolutionVoteComponent implements OnInit {
   LoggedUser: any;//loads in the logged in users values
+  error?: string;
+  isError = false;
 
   @Input() solution!: Solution;
   vote: Vote = {
@@ -30,24 +32,16 @@ export class SolutionVoteComponent implements OnInit {
    * @param solutionService used to updated total votes for a solution or create solution votes
    */
   constructor(private solutionService: SolutionService) {
-    // let u:User = {
-    //   userId:2,
-    //     email:"jomama@hotmail.gov",
-    //     name:"John Doe",
-    //     active:false,
-    //     subscribedStacktrace:true,
-    //     subscribedFlashcard:true,
-    //     authority:"USER",
-    //     registrationTime:new Date(1620310931740),
-    //     lastLogin:new Date(1620310931740)
-    //   };
-    // //TODO remove this placeholder user in local storage
-    // localStorage.setItem('loggedInUser', JSON.stringify(u));
    }
 
   ngOnInit(): void {
     this.LoggedUser = JSON.parse(localStorage.getItem("loggedInUser") || "{}");
     this.initializeVote();
+  }
+
+  isErrorTrue(): void{
+    if(this.error === 'You have already voted on that solution.')
+    this.isError = true;
   }
 
   /**
@@ -64,6 +58,8 @@ export class SolutionVoteComponent implements OnInit {
   /**
    * This method is used to give a positive vote for a solution
    * then update the total vote for the solution.
+   * The error message is used to catch the duplicate key constraint 
+   * so you can only upvote once per solution.
    */
   upVote() {
     this.upVoteSource = "../../../assets/selectedupvote.svg"
@@ -71,13 +67,16 @@ export class SolutionVoteComponent implements OnInit {
     this.vote!.value = 1;
     this.solutionService.addVote(this.vote).subscribe(data => {
       this.solutionService.updateVote(this.solution).subscribe(solution => {this.solution = solution});
-
-    });
-  }
+  },
+    errorMessage => {
+    this.error = errorMessage;
+  });};
 
   /**
    * This method is used to give a negative vote for any given soltuion
    * then update the total solution vote for that given solution.
+   * The error message is used to catch the duplicate key constraint 
+   * so you can only upvote once per solution.
    */
   downVote() {
     this.downVoteSource = "../../../assets/selecteddownvote.svg"
@@ -85,6 +84,9 @@ export class SolutionVoteComponent implements OnInit {
     this.vote!.value = -1;
     this.solutionService.addVote(this.vote).subscribe(data => {
       this.solutionService.updateVote(this.solution).subscribe(solution => {this.solution = solution});
-    });
-  }
+  },
+    errorMessage => {
+    this.error = errorMessage;
+  });};
+
 }
