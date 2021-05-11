@@ -1,0 +1,52 @@
+<app-base-page>
+  <div class="selected-content">
+
+
+    <div class="card" style="width: 18rem" id="Diologue-Card">
+      <div class="card-header" id="Card-Header">
+        <p>{{flashcard?.topicName}}</p>
+      </div>
+      <div class="card-body" id="Card-Body">
+        <p class="card-text" id="Card-Text">
+          {{flashcard?.question}}
+        </p>
+      </div>
+      <div class="card-footer" id="Card-Footer">
+      </div>
+    </div>
+
+
+      <div *ngFor="let answer of answers">
+        <div class="card" style="width: 18rem" id="Card-Wide">
+          <div class="card-body" id="Card-Body">
+            <!-- <p class="card-text" id="Name">{{answer.creator.firstName}} {{answer.creator.lastName}}</p> -->
+            <p class="card-text" id="Card-Text">
+              {{answer.answerText}}
+            </p>
+          </div>
+          <div class="card-footer" id="Card-Footer">
+            <div class="d-flex justify-content-between">
+              <div>
+                <div class="marked" *ngIf="answer.selectedAnswer || answer.trainerSelected">Marked as correct</div>
+                <!-- Line below should render only to admin -->
+                <button class="mark-button" *ngIf="!answer.selectedAnswer || !answer.trainerSelected" (click)="setAnswerAsSelected($event, answer.answerId)">Mark as correct</button>
+              </div>
+              <div>
+                Rating: {{answer.answerScore}}
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+  </div>
+</app-base-page>
+
+
+<!-- <h2> {{flashcard?.question}} </h2> -->
+
+<!-- <div class="card text-center">
+  <h3> {{answer.answerText}} </h3>
+</div> -->

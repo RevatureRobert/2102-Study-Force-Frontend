@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
+import * as EventEmitter from 'events';
 import { FlashcardSubscriptionDTO } from '../../model/flashcard-subscription-dto';
 import { SubscribeBellFlashcardService } from '../../service/subscribe-bell-flashcard.service';
 
@@ -23,6 +24,7 @@ export class SubscribeBellFlashcardComponent implements OnInit {
   subscriptionStatus!:boolean;
   image!:string;
   sub:FlashcardSubscriptionDTO;
+  @Output()click = new EventEmitter();
 
   /**
    * @param subscribeBell is the service we use to make http requests to the backend
@@ -57,13 +59,14 @@ export class SubscribeBellFlashcardComponent implements OnInit {
    * changeSubscriptionStatus is called when the user clicks the bell
    * Then we either unsubscribe the user or subscribe the user depending on subscriptionStatus
    */
-  changeSubscriptionStatus():void{
+  changeSubscriptionStatus(event:Event):void{
     if(this.subscriptionStatus){
       this.removeSubscription(this.sub);
     }
     else{
       this.addSubscription(this.sub);
     }
+    event.stopPropagation();
   }
 
 /**

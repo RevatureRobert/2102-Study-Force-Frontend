@@ -16,22 +16,13 @@
 
   <div class="input-group mb-3" id="Search-Bar">
     <input type="text" class="form-control" placeholder="Search by title" [(ngModel)]="title" id="Search-Input" />
-    <button class="btn btn-outline-secondary" type="button" id="Search-Button" (click)="retrieveStacktracesByTechnology(technologyId)">
+    <button class="btn btn-outline-secondary" type="button" id="Search-Button" (click)="onSearchButtonPress()">
       <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="currentColor" class="bi bi-arrow-right"
         viewBox="0 0 16 16">
         <path fill-rule="evenodd"
           d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
       </svg>
     </button>
-  </div>
-
-   <div class="">
-    <pagination-controls
-      previousLabel="Prev"
-      nextLabel="Next"
-      [responsive]="true"
-      (pageChange)="handlePageChange($event)"
-    ></pagination-controls>
   </div>
 
 
@@ -56,20 +47,12 @@
           let i = index
         "
         [class.active]="i == currentIndex"
-        (click)="setActiveStacktrace(stacktrace, i)"
+        (click)="gotoStacktraceList(stacktrace.stacktraceId)"
       >
         <td>{{ stacktrace.title }}</td>
         <td>{{ stacktrace.technologyName }}</td>
         </tr>
       </tbody>
-      <div class="col">
-      <div *ngIf="currentStacktrace">
-           <button> <a routerLink="/stacktraces/{{ currentStacktrace.stacktraceId }}">Edit Stacktrace</a></button>
-      </div>
-      </div>
-
-      <div *ngIf="!currentStacktrace">
-      </div>
 
       <div class="container">
         <div class="row">
@@ -80,36 +63,21 @@
       <router-outlet></router-outlet>
     </table>
 
-
-
+    <div class="buttons">
+      <button class="btn btn-primary" id="Back-Button" (click)="nextPage()" *ngIf="page < totalPages-1">Next</button>
+      <button class="btn btn-primary" id="Back-Button" (click)="prevPage()" *ngIf="page != 0">Previous</button>
+    </div>
 
     <div class="">
-      <!-- <h2 class="">{{ title }}</h2> -->
       <ul>
         <li class="list-inline-item">
-          <a routerLink="/stacktrace" class="btn btn-info" *ngIf="isAdmin">List Stacktrace</a>
+          <a routerLink="/technology" class="btn btn-info" *ngIf="isAdmin">Add Technologies</a>
             </li>
         <li class="list-inline-item">
           <a routerLink="/stacktraces/addstacktrace" class="btn btn-info">Add Stacktrace</a>
             </li>
       </ul>
   </div>
-
-  <div class="mt-3">
-    Items per Page:
-<select (change)="handlePageSizeChange($event)">
-  <option *ngFor="let size of pageSizes" [ngValue]="size">
-    {{ size }}
-  </option>
-</select>
-</div>
-
-
-
-
-
-
-
   </div>
   </div>
 </div>

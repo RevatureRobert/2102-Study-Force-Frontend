@@ -4,13 +4,14 @@ import {StacktraceHomeComponent} from 'src/app/stacktrace/components/stacktrace-
 import {NewStacktraceComponent} from 'src/app/stacktrace/components/new-stacktrace/new-stacktrace.component';
 import {NewTechnologyComponent} from 'src/app/stacktrace/components/new-technology/new-technology.component';
 import {StacktraceComponent} from 'src/app/stacktrace/components/stacktrace/stacktrace.component';
+import { StackGuardGuard } from './services/stack-guard.guard';
 
 const routes: Routes = [
 
   { path: 'stacktraces', component: StacktraceHomeComponent },
   { path: 'stacktraces/addstacktrace', component: NewStacktraceComponent },
   { path: 'stacktraces/:stacktraceId', component: StacktraceComponent },
-  { path: 'technology', component: NewTechnologyComponent },
+  { path: 'technology', component: NewTechnologyComponent, canActivate : [StackGuardGuard] }, 
 
 ];
 

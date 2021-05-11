@@ -1,3 +1,6 @@
+<div class="alert alert-danger" *ngIf="error">
+  <p>{{error}}</p>
+</div>
 <div class="parent">
   <img class="scaled" id= "upvote" src="{{upVoteSource}}" alt="Upvote icon" role="img"
     (click)="upVote()"
