@@ -19,6 +19,8 @@ export class StacktraceComponent implements OnInit {
   isAdmin = false;
   isCreator = false;
   LoggedUser: any;
+  stacktraceId?: number;// added these to get rid of error from notifications
+  userId?: number;// added these to get rid of error from notifications
 
   currentStacktrace!: Stacktrace;
 

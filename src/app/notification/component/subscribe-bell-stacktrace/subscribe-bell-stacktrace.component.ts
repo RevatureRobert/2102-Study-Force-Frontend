@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { StacktraceSubscriptionDTO } from '../../model/stacktrace-subscription-dto';
 import { SubscribeBellStacktraceService } from '../../service/subscribe-bell-stacktrace.service';
 
@@ -14,7 +14,7 @@ export class SubscribeBellStacktraceComponent implements OnInit {
   image!:string;
   sub:StacktraceSubscriptionDTO;
   constructor(private subscribeBell:SubscribeBellStacktraceService) {
-    this.sub = {stacktraceId: this.stacktraceId, userId: this.userId};
+    this.sub = {stacktraceId: this.stacktraceId, userId: 1};
    }
 
   ngOnInit(): void {

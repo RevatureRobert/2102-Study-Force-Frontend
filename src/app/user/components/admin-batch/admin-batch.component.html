@@ -1,0 +1,70 @@
+<div class="glass-pane">
+  <div id="container">
+    <div class="dateCard">
+      <label id="label">Date</label>
+    </div>
+    <p class="center-text">
+      {{ creationTime }}
+    </p>
+  </div>
+
+  <div id="container2">
+    <div class="batchCard" id="Batch-Card">
+      <label id="label">Batch Name</label>
+    </div>
+    <p class="center-text2">
+      {{ name }}
+    </p>
+  </div>
+
+  <div class="instructors">
+    <div class="table-responsive">
+      <table class="table table-striped table-borderless">
+        <thead>
+          <tr>
+            <th scope="col">Instructors</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let instructor of instructors">
+            <td>{{ instructor.name }}</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="users" id="wrapper">
+    <div class="table-responsive">
+      <table class="table table-striped table-borderless">
+        <thead>
+          <tr>
+            <th scope="col">Enrolled Employees</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="deactivate">
+    <button
+      class="btn btn-primary"
+      type="button"
+      id="Edit-Button"
+      (click)="editButtonClicked()"
+    >
+      Edit
+    </button>
+  </div>
+</div>

@@ -1,0 +1,251 @@
+* {
+  font-family: Roboto;
+  font-style: normal;
+}
+
+#Card-Wide {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 50%;
+  height: 48px;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(
+    111.52deg,
+    rgba(255, 255, 255, 0.64) 0%,
+    rgba(255, 255, 255, 0.48) 100%
+  );
+  backdrop-filter: blur(100px);
+  border-radius: 30px;
+}
+
+#Card-Body {
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+
+#Card-Footer {
+  background: #ffffff;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+#glass-pane {
+  position: absolute;
+  width: 75%;
+  height: 40rem;
+  left: 50%;
+  top: 100px;
+  transform: translateX(-50%);
+  box-shadow: 0 8px 15px 0 rgba(31, 38, 135, 0.37);
+
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(100px);
+  -webkit-backdrop-filter: blur(100px);
+  border-radius: 30px;
+}
+
+#Card-Wide {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 70%;
+  height: 4rem;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(
+    111.52deg,
+    rgba(255, 255, 255, 0.64) 0%,
+    rgba(255, 255, 255, 0.48) 100%
+  );
+  backdrop-filter: blur(100px);
+  border-radius: 30px;
+}
+
+#Card-Body {
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+#Generic-List {
+  overflow: hidden;
+  overflow-y: auto;
+  max-height: 257px;
+  position: relative;
+  margin-left: auto;
+  margin-right: 55%;
+  width: 30%;
+  top: 19.8rem;
+  background: none;
+  box-sizing: border-box;
+  border: none;
+  padding: 0px;
+  box-sizing: border-box;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+#Generic-List li:nth-child(2n-1) {
+  background: linear-gradient(
+    90.34deg,
+    rgba(255, 255, 255, 0.81) 0%,
+    rgba(255, 255, 255, 0.72) 100%
+  );
+  mix-blend-mode: normal;
+  backdrop-filter: blur(100px);
+}
+
+#Generic-List li:nth-child(2n) {
+  background: linear-gradient(
+    90.34deg,
+    rgba(255, 255, 255, 0.56) 0%,
+    rgba(255, 255, 255, 0.42) 100%
+  );
+  mix-blend-mode: normal;
+  backdrop-filter: blur(100px);
+}
+
+#Generic-List2 {
+  max-height: 257px;
+  position: absolute;
+  margin-left: 55%;
+  margin-right: auto;
+  width: 30%;
+  top: 22rem;
+  background: none;
+  box-sizing: border-box;
+  border: none;
+  padding: 0px;
+  box-sizing: border-box;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+#Generic-List2 li:nth-child(2n-1) {
+  background: linear-gradient(
+    90.34deg,
+    rgba(255, 255, 255, 0.81) 0%,
+    rgba(255, 255, 255, 0.72) 100%
+  );
+  mix-blend-mode: normal;
+  backdrop-filter: blur(100px);
+}
+
+#Generic-List2 li:nth-child(2n) {
+  background: linear-gradient(
+    90.34deg,
+    rgba(255, 255, 255, 0.56) 0%,
+    rgba(255, 255, 255, 0.42) 100%
+  );
+  mix-blend-mode: normal;
+  backdrop-filter: blur(100px);
+}
+
+#Card-Header {
+  font-weight: bold;
+  color: #153C53;
+  height: 35px;
+  background: #ffffff;
+  opacity: 0.9;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+
+#Card-Footer {
+  height: 35px;
+  background: #ffffff;
+  opacity: 0.9;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+p {
+  text-align: center;
+  position: relative;
+  top: -32px;
+  white-space: nowrap;
+}
+
+li > input {
+  float: right;
+  position: relative;
+  top: 0.5rem;
+}
+
+#Edit-Button {
+  opacity: 0.75;
+  position: absolute;
+  margin-left: 55%;
+  top: 34rem;
+  width: 148px;
+  background: #0275d8;
+  border: 1px solid #0275d8;
+  box-sizing: border-box;
+  border-radius: 30px;
+}
+
+#registration-label {
+  position: relative;
+  top: -13px;
+  left: 22px;
+}
+
+#name-label {
+  position: relative;
+  top: -13px;
+  left: 22px;
+}
+
+#email-label {
+  position: relative;
+  top: -13px;
+  left: 22px;
+}
+
+.short {
+  display: none;
+}
+
+.tiny {
+  display: none;
+}
+
+@media (max-width: 1300px) {
+  .short {
+    display: inline-block;
+  }
+  .long {
+    display: none;
+  }
+}
+
+@media (max-width: 1030px) {
+  .tiny {
+    display: inline-block;
+  }
+  .short {
+    display: none;
+  }
+  .long {
+    display: none;
+  }
+}
+
+@media (max-width: 700px) {
+  #glass-pane {
+    width: 95%;
+  }
+
+  #Card-Wide {
+    width: 95%;
+  }
+
+  #Generic-List {
+    margin-right: 56%;
+    width: 40%;
+  }
+
+  #Generic-List2 {
+    margin-left: 56;
+    width: 40%;
+  }
+}
