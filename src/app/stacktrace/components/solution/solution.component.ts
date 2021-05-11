@@ -45,19 +45,6 @@ export class SolutionComponent implements OnInit {
    */
   constructor(private solutionService: SolutionService, private route: ActivatedRoute, 
     private stacktraceService: StacktraceService) {
-    let u:User = {
-      userId:2,
-        email:"jomama@hotmail.gov",
-        name:"John Doe",
-        active:false,
-        subscribedStacktrace:true,
-        subscribedFlashcard:true,
-        authority:"USER",
-        registrationTime:new Date(1620310931740),
-        lastLogin:new Date(1620310931740)
-      };
-    //TODO remove this placeholder user in local storage
-    localStorage.setItem('loggedInUser', JSON.stringify(u));
   }
 
   ngOnInit(): void {
