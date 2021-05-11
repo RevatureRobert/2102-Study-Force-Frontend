@@ -3,8 +3,6 @@ phases:
   install:
     runtime-versions:
       nodejs: 10
-    commands:
-      - apt-get update
   pre_build:
     commands:
       - echo installing dependencies...
