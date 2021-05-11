@@ -1,12 +1,18 @@
 <div class="parent">
   <img class="scaled" id= "upvote" src="{{upVoteSource}}" alt="Upvote icon" role="img"
-    (click)="upVote()"
+    (click)="upVote()" *ngIf="!hasVoted"
     />
-  <p class="score" [style.color]="scoreColor" [style]="scoreColor">3</p>
+    <img class="scaled" id= "upvote" src="assets/selectedupvote.svg" alt="Upvote icon" role="img"
+     *ngIf="hasVoted"
+    />
+  <p class="score" [style.color]="scoreColor" [style]="scoreColor">{{answerScore}}</p>
   <img class="scaled" id = "downvote" src="{{downVoteSource}}" alt="Downvote icon" role="img"
-    (click)="downVote()"/>
+    (click)="downVote()" *ngIf="!hasVoted"
+    />
+    <img class="scaled" id = "downvote" src="assets/selecteddownvote.svg" alt="Downvote icon" role="img"
+    *ngIf="hasVoted "
+    />
 </div>
-
 <!--
 
                                    ,,

@@ -1,0 +1,37 @@
+
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <div class="flashcard-difficulty-easy" *ngIf="difficulty == 'Easy'">{{difficulty}}</div>
+    <div class="flashcard-difficulty-medium" *ngIf="difficulty == 'Medium'">{{difficulty}}</div>
+    <div class="flashcard-difficulty-hard" *ngIf="difficulty == 'Hard'">{{difficulty}}</div>
+    <div class="subscription">
+      <img src="{{bellStyle}}" alt="subscription bell" height="30em" (click)="subscribe($event)">
+    </div>
+    <p class="card-text">{{question}}</p>
+  </div>
+
+
+  <div class="row" style="margin-right: 0px; margin-left: 0px; margin-bottom: 10px;">
+    <div class="col-9">
+      <div class="rate-card">
+        <div [ngClass]="{'inactive-slider': !isSliderActive}" >
+          <div class="rating-section" (click)="stopPropogation($event)">
+        <div class="slider">
+          <label for="rating-slider" class="form-label">Rate the Difficulty</label>
+              <input #rating [disabled]=lock [value]=default (click)="activateSlider(rating.value)" type="range" class="form-range" min="1" max="3" step="1" id="rating-slider">
+            </div>
+          </div>
+        </div>
+
+        <ul class="rating-label list-group list-group-horizontal range-labels" >
+          <li class="list-group-item flex-fill">Easy</li>
+          <li class="list-group-item  flex-fill active-selected">Medium</li>
+          <li class="list-group-item flex-fill">Hard</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-2" style="margin-bottom: 10px;">
+      <app-flashcard-delete class=""></app-flashcard-delete>
+    </div>
+  </div>
+</div>

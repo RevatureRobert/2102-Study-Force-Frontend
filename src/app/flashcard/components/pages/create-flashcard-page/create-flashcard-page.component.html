@@ -1,0 +1,131 @@
+<app-base-page>
+  <div class="selected-content">
+  <form
+  class="flashcard"
+  name="flashcard"
+  (ngSubmit) = "f.form.valid && onSubmit()"
+  #f = "ngForm">
+
+
+      <div class="form-group">
+          <input
+            name="question"
+            [(ngModel)]="form.question"
+            #question="ngModel"
+            placeholder="Question"
+            type="text"
+            required />
+      </div>
+
+      <div class="form-group">
+        <select
+          name="topic"
+          [(ngModel)]="form.topicId"
+          #topic="ngModel"
+          placeholder="Select topic"
+          type="text"
+          required>
+          <option selected="selected">None</option>
+          <option *ngFor="let topic of topics" value={{topic.id}}>{{topic.topicName}}</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+      <select
+        name="difficulty"
+        [(ngModel)]="form.difficulty"
+        #difficulty="ngModel"
+        placeholder="Select difficulty"
+        type="difficulty"
+        required>
+        <option value="easy" selected="selected">Easy</option>
+        <option value="medium">Medium</option>
+        <option value="hard">Hard</option>
+      </select>
+  </div>
+
+  <div>
+    <button>
+      Submit
+    </button>
+  </div>
+  </form>
+
+  </div>
+  </app-base-page>
+
+
+
+
+
+
+
+
+<!-- <app-navbar></app-navbar>
+<div class="container-fluid ">
+  <div class="row"><br><br><br></div>
+  <div class="row">
+  <div class="col-3 align-content-center"></div>
+  <div class="card col align-content-center" style="width: 18rem;" id="glass-pane">
+  <div class="card-body" >
+    <h3 class="card-title test">Submit A Flashcard</h3>
+    <form>
+      <div class="form-group">
+        <div class="form-group">
+          <div class="row clearfix flex-fill">
+        <div id="Dropdown-Button" class="float-left">
+          <select id="Dropdown-List"
+                  placeholder="Topic"
+            name="topic"
+            [(ngModel)]="form.topicId"
+            #topic="ngModel"
+            placeholder="Select topic"
+            type="button"
+            required>
+            <p>topic</p>
+            <option selected="selected" hidden="true">None</option>
+            <option *ngFor="let topic of topics" value={{topic.id}}>{{topic.topicName}}</option>
+          </select>
+        </div>
+        <div class="form-group float-right">
+          <select
+            name="difficulty"
+            [(ngModel)]="form.difficulty"
+            #difficulty="ngModel"
+            placeholder="Select difficulty"
+            type="difficulty"
+            required>
+            <option value="easy" selected="selected">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+          </select>
+      </div>
+          </div>
+        </div>
+        <label for = "submitContent" >
+        </label>
+        <textarea class="form-control input-styling" id="submitContent" rows="12" placeholder="Describe your problem here"></textarea>
+      </div>
+    </form>
+    <div class="wrapper">
+      <button type="button" class="btn custom-button">Submit
+      </button>
+    </div>
+  </div>
+  </div>
+  <div class="col-3"></div>
+  </div>
+  <div class="flex-row"></div>
+</div> -->
+
+<!--
+ <div class="selected-content ">
+<form
+class="card card-body"
+name="flashcard"
+(ngSubmit) = "f.form.valid && onSubmit()"
+#f = "ngForm">
+
+ <br>
+ <br>
+ <br> -->

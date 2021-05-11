@@ -1,0 +1,29 @@
+<app-base-page>
+  <div class="selected-content wrapper">
+    <div id="topic-table-container" class="d-flex justify-content-around">
+      <table class="table-striped table-borderless" aria-label="topic table">
+        <thead>
+          <tr>
+            <th scope="col">Topic</th>
+            <th scope="col">Delete?</th>
+          </tr>
+
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let topic of topics">
+            <td>{{topic.topicName}}</td>
+            <td><button class="Remove-Button" (click)="deleteTopic(topic)">Delete?</button></td>
+          </tr>
+
+          <tr>
+            <td><input placeholder="Add topic here" type="text" #newTopicInput style="width: 100%;"/></td>
+            <td><button class="Add-Button" (click)="addTopic(newTopicInput.value) ">Add</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+</app-base-page>

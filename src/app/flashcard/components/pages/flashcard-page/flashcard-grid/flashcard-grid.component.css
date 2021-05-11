@@ -1,0 +1,87 @@
+.view-flashcard {
+  width: fit-content;
+  display: inline-block;
+}
+
+.filter-box {
+  position:absolute;
+  top: 1em;
+  /* right: -5em; */
+  right: 0;
+  padding: 1em;
+}
+
+.Dropdown-Button {
+  width: 175px;
+  color: rgba(21, 60, 83, 1);
+  background: #ffffff;
+  box-shadow: 0px -1px 0px #eceeef;
+  position: relative;
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: none;
+}
+
+.Dropdown-Button:not(:focus) {
+  border-radius: 10px !important;
+}
+
+.Dropdown-List {
+  position: relative;
+  top: -2px !important;
+  background: none;
+  width: 175px;
+  box-sizing: border-box;
+  border: none;
+  padding: 0px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.Dropdown-List button:nth-child(2n-1) {
+  background: linear-gradient(
+    90.34deg,
+    rgba(255, 255, 255, 0.81) 0%,
+    rgba(255, 255, 255, 0.72) 100%
+  );
+  mix-blend-mode: normal;
+  backdrop-filter: blur(100px);
+}
+
+.Dropdown-List button:nth-child(2n) {
+  background: linear-gradient(
+    90.34deg,
+    rgba(255, 255, 255, 0.56) 0%,
+    rgba(255, 255, 255, 0.42) 100%
+  );
+  mix-blend-mode: normal;
+  backdrop-filter: blur(100px);
+}
+.Dropdown-List button:last-child {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.Dropdown:hover button:last-child a {
+  box-sizing: border-box;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+
+.pagination {
+  color: #153c53;
+  justify-content: center;
+
+  width: 100px;
+  border-radius: 10px;
+
+
+  background: linear-gradient(
+    99.35deg,
+    rgba(255, 255, 255, 0.63) 0%,
+    rgba(255, 255, 255, 0.35) 99.96%
+  );
+  backdrop-filter: blur(50px);
+  border: none;
+}
