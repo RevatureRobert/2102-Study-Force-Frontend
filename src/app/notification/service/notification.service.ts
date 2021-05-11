@@ -2,6 +2,7 @@ import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Notification} from '../model/notification';
 import {Observable} from 'rxjs';
+import {environment} from '../../../environments/environment';
 
 
 @Injectable({
@@ -14,7 +15,7 @@ export class NotificationService {
     'Content-Type': 'application/json',
     Accept: 'application/json',
   };
-  private baseUrl = 'http://localhost:8080/notifications';
+  private baseUrl = environment.apiUrl.concat('/notifications');
 
   /*
 @param httpClient

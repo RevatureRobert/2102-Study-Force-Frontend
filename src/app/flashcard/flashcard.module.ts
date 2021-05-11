@@ -12,11 +12,11 @@ import { FlashcardGridComponent } from './components/pages/flashcard-page/flashc
 import { FlashcardDeleteComponent } from './components/ui/flashcard/flashcard-delete/flashcard-delete.component';
 import { SubmitAnswerPageComponent } from './components/pages/submit-answer-page/submit-answer-page.component';
 import { ViewFlashcardThreadComponent } from './components/pages/view-flashcard-thread/view-flashcard-thread.component';
-import { SharedModule } from '../shared.module';
 import { RateService } from './service/rate.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { VoteService } from './service/vote.service';
 import { FlashcardTopicComponent } from './components/ui/flashcard/flashcard-topic/flashcard-topic.component';
+import {SharedModule} from '../shared.module';
 
 @NgModule({
   declarations: [

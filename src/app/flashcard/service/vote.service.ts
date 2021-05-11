@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Flashcard } from '../model/flashcard';
-import { FlashcardPage } from "src/app/flashcard/model/flashcardPage";
 import { environment } from 'src/environments/environment';
 import { Vote } from '../model/vote';
 
@@ -30,7 +28,7 @@ export class VoteService {
    * @returns - returns the persisted Vote object
    */
   createAnswerVote(data: any): Observable<any> {
-    return this.http.post(`http://${this.apiServerUrl}/flashcards/votes`, data);
+    return this.http.post(`${this.apiServerUrl}/flashcards/votes`, data);
   }
 
   /**
@@ -40,7 +38,7 @@ export class VoteService {
    * @returns - returns the associated Vote object, if it exists
    */
    getVote(answerId: number, userId: number): Observable<any> {
-    return this.http.get(`http://${this.apiServerUrl}/flashcards/votes?answerId=${answerId}&userId=${userId}`);
+    return this.http.get(`${this.apiServerUrl}/flashcards/votes?answerId=${answerId}&userId=${userId}`);
   }
 
   /**
@@ -49,7 +47,7 @@ export class VoteService {
    * @returns - returns all vote objects for the given answer
    */
    getAllVotes(answerId: number): Observable<Vote[]> {
-    return this.http.get<Vote[]>(`http://${this.apiServerUrl}/flashcards/votes/all?answerId=${answerId}`);
+    return this.http.get<Vote[]>(`${this.apiServerUrl}/flashcards/votes/all?answerId=${answerId}`);
   }
 
 }

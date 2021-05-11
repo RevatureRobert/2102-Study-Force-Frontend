@@ -34,7 +34,7 @@ export class StacktraceComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.LoggedUser = JSON.parse(localStorage.getItem("loggedInUser") || "{}");
+    this.LoggedUser = JSON.parse(localStorage.getItem('loggedInUser') || '{}');
     this.getStacktrace(this.route.snapshot.params.stacktraceId);
   }
 
@@ -42,11 +42,11 @@ export class StacktraceComponent implements OnInit {
    * Accesses the priviledges [sic] of the currently-logged-in user and sets isAdmin and isCreator appropriately.
    */
   getUserPriviledges(): void {
-    if( this.LoggedUser.authority === 'ADMIN'){
+    if (this.LoggedUser.authority === 'ADMIN'){
       this.isAdmin = true;
-    };
+    }
     console.log(this.currentStacktrace.userId);
-    if(this.LoggedUser.userId === this.currentStacktrace.userId){
+    if (this.LoggedUser.userId === this.currentStacktrace.userId){
       this.isCreator = true;
     }
     console.log(this.isCreator, this.isAdmin);
@@ -71,7 +71,7 @@ export class StacktraceComponent implements OnInit {
   /**
    * Deletes the given Stacktrace object from the backend using the service's deleteStacktrace() method.
    */
-  deleteStacktrace() {
+  deleteStacktrace(): void {
     this.stacktraceService.deleteStacktrace(this.route.snapshot.params.stacktraceId).subscribe(result => {
       this.gotoStacktraceList();
     });
@@ -80,7 +80,7 @@ export class StacktraceComponent implements OnInit {
   /**
    * Routes the user back to the list of all stacktraces.
    */
-  gotoStacktraceList() {
+  gotoStacktraceList(): void {
     this.router.navigate(['/stacktraces']);
   }
 }

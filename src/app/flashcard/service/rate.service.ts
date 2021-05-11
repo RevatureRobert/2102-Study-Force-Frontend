@@ -25,7 +25,7 @@ export class RateService {
    * @returns - returns persisted Rate object
    */
   create(data: any): Observable<any> {
-    return this.http.post(`http://${this.apiServerUrl}/flashcards/ratings/`, data);
+    return this.http.post(`${this.apiServerUrl}/flashcards/ratings/`, data);
   }
 
   /**
@@ -35,7 +35,7 @@ export class RateService {
    * @returns - returns the associated Rate object, if it exists
    */
   get(flashcardId: number, userId: number): Observable<any> {
-    return this.http.get(`http://${this.apiServerUrl}/flashcards/ratings?flashcardId=${flashcardId}&userId=${userId}`);
+    return this.http.get(`${this.apiServerUrl}/flashcards/ratings?flashcardId=${flashcardId}&userId=${userId}`);
   }
 
   /**
@@ -44,7 +44,7 @@ export class RateService {
    * @returns - returns all Rating objects for the given answer
    */
    getAllRatings(flashcardId: number): Observable<Rating[]> {
-    return this.http.get<Rating[]>(`http://${this.apiServerUrl}/flashcards/ratings/all?flashcardId=${flashcardId}`);
+    return this.http.get<Rating[]>(`${this.apiServerUrl}/flashcards/ratings/all?flashcardId=${flashcardId}`);
   }
 
   // (may use in the future)

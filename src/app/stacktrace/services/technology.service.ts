@@ -12,16 +12,16 @@ import { Technology } from '../models/technology';
 })
 export class TechnologyService {
 
-  private technologyURL :string;
+  private technologyURL: string;
 
   // Set the headers
   httpHeaders: HttpHeaders = new HttpHeaders({
-    "Content-Type": 'application/json'//,
-    //"Authorization": 'Bearer '.concat(localStorage.getItem('swagjwt'))
+    'Content-Type': 'application/json'// ,
+    // "Authorization": 'Bearer '.concat(localStorage.getItem('swagjwt'))
   });
 
   // Appended the service endpoint to the base url
-  apiServerUrl = environment.apiUrl.concat("/stacktrace/technology");
+  apiServerUrl = environment.apiUrl.concat('/stacktrace/technology');
 
   /**
    * @param http The client for handeling HTTP requests.
@@ -40,15 +40,15 @@ export class TechnologyService {
   /**
    * POSTs a Technology to the backend
    */
-  addTechnology(technology : Technology) {
-    console.log(JSON.stringify(technology))
+  addTechnology(technology: Technology) {
+    console.log(JSON.stringify(technology));
     return this.http.post<Technology>(this.technologyURL, technology);
   }
   /**
    * DELETEs a Technology from the backend
    */
   deleteTechnology(technology: Technology): void {
-    let t = this.http.delete<Technology>(this.apiServerUrl, { headers: this.httpHeaders });
+    const t = this.http.delete<Technology>(this.apiServerUrl, { headers: this.httpHeaders });
     t.subscribe();
   }
 

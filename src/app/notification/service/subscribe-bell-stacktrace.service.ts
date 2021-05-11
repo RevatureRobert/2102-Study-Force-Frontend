@@ -10,24 +10,24 @@ import { environment } from 'src/environments/environment';
 })
 export class SubscribeBellStacktraceService {
 
-  url:string = environment.apiUrl.concat("/subscriptions/stacktraces");
+  url: string = environment.apiUrl.concat('/subscriptions/stacktraces');
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  getSubscription(userId:number, stacktraceId:number):Promise<StacktraceSubscription>{
+  getSubscription(userId: number, stacktraceId: number): Promise<StacktraceSubscription>{
     let params = new HttpParams();
     params = params.append('stacktrace-id', stacktraceId.toString());
     params = params.append('user-id', userId.toString());
 
     return this.http.get<StacktraceSubscription>(this.url, {
-      headers:{
+      headers: {
         'Content-Type': 'application/json'
       },
-      params:params
+      params
     }).toPromise<StacktraceSubscription>();
   }
 
-  addSubscription(sub:StacktraceSubscriptionDTO):Promise<StacktraceSubscription>{
+  addSubscription(sub: StacktraceSubscriptionDTO): Promise<StacktraceSubscription>{
     return this.http.post<StacktraceSubscription>(this.url, sub, {
       headers:{
         'Content-Type': 'application/json'
@@ -35,13 +35,13 @@ export class SubscribeBellStacktraceService {
     }).toPromise<StacktraceSubscription>();
   }
 
-  removeSubscription(sub:StacktraceSubscriptionDTO):Promise<StacktraceSubscription>{
+  removeSubscription(sub: StacktraceSubscriptionDTO): Promise<StacktraceSubscription>{
     return this.http.request<StacktraceSubscription>('delete', this.url, {
       body: sub,
-      headers:{
+      headers: {
         'Content-Type': 'application/json'
       }
-    }).toPromise<StacktraceSubscription>()
+    }).toPromise<StacktraceSubscription>();
   }
 
 

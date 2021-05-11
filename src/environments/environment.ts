@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'localhost:8080',
+  apiUrl: 'http://localhost:8080'
 };
 
 /*
@@ -21,5 +21,5 @@ export const BASE_URL_LOGIN_REGISTRATION: string =
   'https://studyforce.auth.us-east-1.amazoncognito.com/login?client_id=1v2vmtuo6oiaace3vckil4cfqf&response_type=token&scope=aws.cognito.signin.user.admin&redirect_uri=http://localhost:4200/oauth2/';
 
 //todo change base url to aws once backend is deployed
-//Base url for api
-export const BASE_API_URL: string = 'http://localhost:8080';
+// Base url for api
+export const BASE_API_URL = 'http://localhost:8080';

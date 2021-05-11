@@ -13,14 +13,14 @@ export class SolutionService{
 
     // Set the headers
   httpHeaders: HttpHeaders = new HttpHeaders({
-    "Content-Type": 'application/json'//,
+    'Content-Type': 'application/json'// ,
     //"Authorization": 'Bearer '.concat(localStorage.getItem('swagjwt'))
   });
 
   constructor(private http: HttpClient) {}
 
   // Appended the service endpoint to the base url
-  stacktraceUrl = environment.apiUrl.concat("/stacktrace");
+  stacktraceUrl = environment.apiUrl.concat('/stacktrace');
 
   getAllSolutionsByStacktraceId(stacktraceId: number, page: number, pageSize: number): Promise<Solution[]>{
     return this.http.get<Solution[]>(`${this.stacktraceUrl}/solution/${stacktraceId}?pageSize=${pageSize}&page=${page}`, { headers: this.httpHeaders }).toPromise();
@@ -31,7 +31,7 @@ export class SolutionService{
   }
 
   addVote(vote: Vote): Observable<Vote> {
-    console.log(JSON.stringify(vote))
+    console.log(JSON.stringify(vote));
     return this.http.post<Vote>(`${this.stacktraceUrl}/solution-vote`, vote);
   }
 

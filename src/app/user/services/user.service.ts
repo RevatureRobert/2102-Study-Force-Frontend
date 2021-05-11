@@ -153,7 +153,7 @@ export class UserService {
    * @returns A promise of type any containing the json representation of the updated user
    */
   updateUserActive(active: boolean, userId: number): Promise<any> {
-    const body = { userId: userId, active: active };
+    const body = { userId, active };
     return this.http
       .put<any>(BASE_API_URL.concat('/users/active'), body)
       .toPromise();
@@ -166,7 +166,7 @@ export class UserService {
    * @returns A promise of type any containing the json representation of the updated user
    */
   updateUserName(name: string, userId: number): Promise<any> {
-    const body = { userId: userId, name: name };
+    const body = { userId, name };
     return this.http
       .put<any>(BASE_API_URL.concat('/users/name'), body)
       .toPromise();
@@ -185,9 +185,9 @@ export class UserService {
     subscribedStacktrace: boolean
   ): Promise<any> {
     const body = {
-      userId: userId,
-      subscribedFlashcard: subscribedFlashcard,
-      subscribedStacktrace: subscribedStacktrace,
+      userId,
+      subscribedFlashcard,
+      subscribedStacktrace,
     };
     return this.http
       .put<any>(BASE_API_URL.concat('/users/subscription'), body)
@@ -208,7 +208,7 @@ export class UserService {
     ) {
       throw new TypeError();
     }
-    const body = { userId: userId, authority: authority };
+    const body = { userId, authority };
     return this.http
       .put<any>(BASE_API_URL.concat('/users/authority'), body)
       .toPromise();
