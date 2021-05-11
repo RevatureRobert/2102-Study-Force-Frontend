@@ -5,6 +5,8 @@ phases:
       - apt-get update
   pre_build:
     commands:
+      - echo installing dependencies...
+      - npm i -g @angular/cli
       - npm install
   build:
     commands:
