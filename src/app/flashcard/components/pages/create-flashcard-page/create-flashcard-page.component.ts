@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable, of, Subscriber, Subscription } from 'rxjs';
+import { FlashcardRoutingModule } from 'src/app/flashcard/flashcard-routing.module';
 import { Topic } from 'src/app/flashcard/model/topic';
 import { TopicService } from 'src/app/flashcard/service/topic.service';
 import { FlashcardService } from '../../../service/flashcard.service';
@@ -23,7 +25,7 @@ export class CreateFlashcardPageComponent implements OnInit {
   };
 
 
-  constructor(private flashcardService: FlashcardService, private topicService: TopicService) {
+  constructor(private flashcardService: FlashcardService, private topicService: TopicService, private router: Router) {
     this.subscription = new Observable<any>().subscribe();
     this.topicService.getAll().subscribe(res => this.topics = res);
   }
@@ -54,6 +56,7 @@ export class CreateFlashcardPageComponent implements OnInit {
     this.subscription = this.flashcardService.create(this.form).subscribe(
       data => {
         console.log(data);
+        this.router.navigate(['/view-flashcards'])
       }
     );
   }

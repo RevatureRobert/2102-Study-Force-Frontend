@@ -4,6 +4,8 @@
   backdrop-filter: blur(100px);
   border-radius: 10px;
   min-width: 590px;
+  margin: 0 auto;
+  margin-bottom: 3em;
 }
 
 .glass-pane {
@@ -20,11 +22,15 @@
   backdrop-filter: blur(100px);
   -webkit-backdrop-filter: blur(100px);
   border-radius: 30px;
+
+  min-height: fit-content;
+
 }
 
 
 .card-body {
   position: relative;
+  margin: 0 auto;
 }
 
 h3 {
@@ -39,20 +45,14 @@ h3 {
   line-height: 70%;
 }
 
-.custom-button {
-  background: linear-gradient(99.35deg, rgba(34, 51, 201, 0.63) 21.34%, rgba(48, 190, 105, 0.7) 99.96%);
-  backdrop-filter: blur(50px);
-  /* Note: backdrop-filter has minimal browser support */
-  border-radius: 10px;
-  color: white;
-  text-align: center;
-  letter-spacing: 1px;
-  font-family: Roboto, Arial, Helvetica, sans-serif;
-  font-style: normal;
-  font-weight: 300;
-  font-size: 20px;
-  line-height: 105%;
-  position: absolute;
+#Submit-Button {
+  opacity: 0.75;
+  position: relative;
+  width: 86px;
+  background: #0275d8;
+  border: 1px solid #0275d8;
+  box-sizing: border-box;
+  border-radius: 30px;
 }
 
 .wrapper {
@@ -73,6 +73,7 @@ h3 {
   font-size: 20px;
   line-height: 105%;
   letter-spacing: 1px;
+  max-width: fit-content;
 
   color: rgba(0, 0, 0, 0.5);
 }
@@ -142,9 +143,40 @@ h3 {
   border-bottom-right-radius: 10px;
 }
 
+.start {
+  width: 175px;
+  color: rgba(21, 60, 83, 1);
+  background: #ffffff;
+  box-shadow: 0px -1px 0px #eceeef;
+  position: relative;
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: none;
+}
 
+.custom-button {
+  background: linear-gradient(99.35deg, rgba(34, 51, 201, 0.63) 21.34%, rgba(48, 190, 105, 0.7) 99.96%);
+backdrop-filter: blur(50px);
+/* Note: backdrop-filter has minimal browser support */
+border-radius: 10px;
+color: white;
+text-align: center;
+letter-spacing: 1px;
+font-family: Roboto, Arial, Helvetica, sans-serif;
+font-style: normal;
+font-weight: 300;
+font-size: 20px;
+line-height: 105%;
+position: absolute;
+;
+}
 
-
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
+}
 
 
 

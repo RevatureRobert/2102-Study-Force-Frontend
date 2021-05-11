@@ -1,5 +1,10 @@
 <app-base-page>
   <div class="selected-content">
+
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h3 class="card-title test">Create a Question</h3>
+
   <form
   class="flashcard"
   name="flashcard"
@@ -8,48 +13,51 @@
 
 
       <div class="form-group">
-          <input
+          <textarea class="form-control input-styling"
             name="question"
             [(ngModel)]="form.question"
             #question="ngModel"
             placeholder="Question"
             type="text"
-            required />
+            required></textarea>
       </div>
 
       <div class="form-group">
-        <select
+        <select class="start"
           name="topic"
           [(ngModel)]="form.topicId"
           #topic="ngModel"
           placeholder="Select topic"
           type="text"
           required>
-          <option selected="selected">None</option>
+          <option hidden value="" disabled selected>Select District/City</option>
+          <option>None</option>
           <option *ngFor="let topic of topics" value={{topic.id}}>{{topic.topicName}}</option>
         </select>
     </div>
 
     <div class="form-group">
-      <select
+      <select class="start"
         name="difficulty"
         [(ngModel)]="form.difficulty"
         #difficulty="ngModel"
         placeholder="Select difficulty"
         type="difficulty"
         required>
-        <option value="easy" selected="selected">Easy</option>
+        <option value="easy" selected>Easy</option>
         <option value="medium">Medium</option>
         <option value="hard">Hard</option>
       </select>
   </div>
 
   <div>
-    <button>
-      Submit
-    </button>
+    <button class="btn btn-primary" type="button" id="Submit-Button">Submit</button>
   </div>
   </form>
+
+
+</div>
+</div>
 
   </div>
   </app-base-page>
