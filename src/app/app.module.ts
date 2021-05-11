@@ -9,10 +9,7 @@ import { FlashcardModule } from './flashcard/flashcard.module';
 import { FormsModule } from '@angular/forms';
 import { StacktraceModule } from './stacktrace/stacktrace.module';
 import { UserModule } from './user/user.module';
-
 import { NotificationModule } from './notification/notification.module';
-import { NgxPaginationModule } from 'ngx-pagination';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +24,6 @@ import { NgxPaginationModule } from 'ngx-pagination';
     StacktraceModule,
     NotificationModule,
     UserModule,
-    NgxPaginationModule
   ],
   providers: [
   ],
