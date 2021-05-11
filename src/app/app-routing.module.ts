@@ -4,6 +4,12 @@ import {HomeComponent} from './home-component/home/home.component';
 
 const routes: Routes = [
   {
+    path: '', redirectTo: '/home', pathMatch: 'full'
+  },
+  {
+    path: 'home', component: HomeComponent
+  },
+  {
     path: 'notifications',
     loadChildren: () =>
       import('src/app/notification/notification.module').then(m => m.NotificationModule)
@@ -22,11 +28,7 @@ const routes: Routes = [
     path: 'user',
     loadChildren: () =>
       import('./user/user.module').then(m => m.UserModule)
-  },
-  {
-    path: 'home', component: HomeComponent
-  },
-  { path: '', redirectTo: '/home', pathMatch: 'full'}
+  }
 
 ];
 
