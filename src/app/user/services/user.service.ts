@@ -1,7 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BASE_API_URL } from '../../../environments/environment';
+import { environment } from '../../../environments/environment';
 import { UserEmail } from '../models/user-email';
+
 
 @Injectable({
   providedIn: 'root',
@@ -11,6 +12,9 @@ import { UserEmail } from '../models/user-email';
  * @author Steven Ceglarek
  */
 export class UserService {
+
+  private apiUrl = environment.apiUrl;
+
   constructor(private http: HttpClient) {}
 
   getUsers(pageSize: number = 25, pageNumber: number = 0) {
@@ -28,7 +32,7 @@ export class UserService {
 
     return this.http
       .get<any>(
-        BASE_API_URL.concat(`/user/all?offset=${pageSize}&page=${pageNumber}`),
+        this.apiUrl.concat(`/user/all?offset=${pageSize}&page=${pageNumber}`),
         requestOptions
       )
       .toPromise();
@@ -52,7 +56,7 @@ export class UserService {
     };
 
     return this.http
-      .get<any>(BASE_API_URL.concat('/user/me'), requestOptions)
+      .get<any>(this.apiUrl.concat('/user/me'), requestOptions)
       .toPromise();
   }
 
@@ -83,7 +87,7 @@ export class UserService {
 
     return this.http
       .get<any>(
-        BASE_API_URL.concat(
+        this.apiUrl.concat(
           `/users/search?search=${search}&page=${currentPage}&offset=${pageSize}&sort=${sortBy}&order=${order}`
         ),
         requestOptions
@@ -109,7 +113,7 @@ export class UserService {
       headers: new HttpHeaders(headerInfo),
     };
 
-    return this.http.post<any>(BASE_API_URL.concat(`/users/bulk`), userArray, requestOptions).toPromise();
+    return this.http.post<any>(this.apiUrl.concat(`/users/bulk`), userArray, requestOptions).toPromise();
 
 
   }
@@ -131,18 +135,20 @@ export class UserService {
       headers: new HttpHeaders(headerInfo),
     };
 
-    return this.http.post<any>(BASE_API_URL.concat(`/user/create`), user, requestOptions).toPromise();
+    return this.http.post<any>(this.apiUrl.concat(`/user/create`), user, requestOptions).toPromise();
 
   }
 
   /**
    * Gets a user by their user id by calling backend API
    * @param userId The id of the user being retrieved
-   * @returns A promise of type any containing the json representation of the retrieved user, or empty json if no user was found with that id
+   * @returns A promise of type any containing the json
+   * representation of the retrieved user, or empty json
+   * if no user was found with that id
    */
   getUserByUserId(userId: number): Promise<any> {
     return this.http
-      .get<any>(BASE_API_URL.concat(`/users/${userId}`))
+      .get<any>(this.apiUrl.concat(`/users/${userId}`))
       .toPromise();
   }
 
@@ -153,9 +159,9 @@ export class UserService {
    * @returns A promise of type any containing the json representation of the updated user
    */
   updateUserActive(active: boolean, userId: number): Promise<any> {
-    const body = { userId: userId, active: active };
+    const body = { userId, active };
     return this.http
-      .put<any>(BASE_API_URL.concat('/users/active'), body)
+      .put<any>(this.apiUrl.concat('/users/active'), body)
       .toPromise();
   }
 
@@ -166,9 +172,9 @@ export class UserService {
    * @returns A promise of type any containing the json representation of the updated user
    */
   updateUserName(name: string, userId: number): Promise<any> {
-    const body = { userId: userId, name: name };
+    const body = { userId, name };
     return this.http
-      .put<any>(BASE_API_URL.concat('/users/name'), body)
+      .put<any>(this.apiUrl.concat('/users/name'), body)
       .toPromise();
   }
 
@@ -185,12 +191,12 @@ export class UserService {
     subscribedStacktrace: boolean
   ): Promise<any> {
     const body = {
-      userId: userId,
-      subscribedFlashcard: subscribedFlashcard,
-      subscribedStacktrace: subscribedStacktrace,
+      userId,
+      subscribedFlashcard,
+      subscribedStacktrace,
     };
     return this.http
-      .put<any>(BASE_API_URL.concat('/users/subscription'), body)
+      .put<any>(this.apiUrl.concat('/users/subscription'), body)
       .toPromise();
   }
 
@@ -202,15 +208,15 @@ export class UserService {
    */
   updateUserAuthority(authority: string, userId: number): Promise<any> {
     if (
-      authority != 'USER' &&
-      authority != 'ADMIN' &&
-      authority != 'SUPER_ADMIN'
+      authority !== 'USER' &&
+      authority !== 'ADMIN' &&
+      authority !== 'SUPER_ADMIN'
     ) {
       throw new TypeError();
     }
-    const body = { userId: userId, authority: authority };
+    const body = { userId, authority };
     return this.http
-      .put<any>(BASE_API_URL.concat('/users/authority'), body)
+      .put<any>(this.apiUrl.concat('/users/authority'), body)
       .toPromise();
   }
 }
