@@ -69,7 +69,9 @@ export class NewTechnologyComponent implements OnInit {
       console.log(this.technologyId)
       this.technologyService.deleteTechnology(this.technologyId).subscribe(result => {this.gotoStacktraceList()},
       errorMessage => {
-      this.error = errorMessage;});
+      this.error = errorMessage;
+      setTimeout(() => { window.location.href = window.location.href; }, 2750);
+    });
     }
   }
 
