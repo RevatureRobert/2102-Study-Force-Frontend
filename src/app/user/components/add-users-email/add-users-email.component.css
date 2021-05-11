@@ -1,15 +1,15 @@
 #glass-pane {
-    position: absolute;
-    width: 75%;
-    min-height: 600px;
-    left: 50%;
-    top: 100px;
-    transform: translateX(-50%);
-    box-shadow: 0 8px 15px 0 rgba(31, 38, 135, 0.37);
-    background: rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(100px);
-    -webkit-backdrop-filter: blur(100px);
-    border-radius: 30px;
+  position: absolute;
+  width: 75%;
+  min-height: 600px;
+  left: 50%;
+  top: 100px;
+  transform: translateX(-50%);
+  box-shadow: 0 8px 15px 0 rgba(31, 38, 135, 0.37);
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(100px);
+  -webkit-backdrop-filter: blur(100px);
+  border-radius: 30px;
 }
 
 #Upload-CSV-Button {
@@ -95,10 +95,19 @@ table {
   border-radius: 30px;
 }
 .Batch-Name-Input {
-    position: relative;
-    width: 75%;
-    border-radius: 30px;
-  }
+  position: relative;
+  width: 75%;
+  border-radius: 30px;
+}
+
+#inputId {
+  position: absolute;
+  transform: translateX(-50%);
+  left: 50%;
+  width: 148px;
+  height: 40px;
+  border-radius: 30px;
+}
 
 #Submit-Button {
   opacity: 0.75;
@@ -133,5 +142,3 @@ caption {
 td {
   width: 100%;
 }
-
-

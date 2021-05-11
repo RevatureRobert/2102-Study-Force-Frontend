@@ -138,10 +138,19 @@ color: #FFFFFF;
   position: relative;
 }
 
-.vote-positioning{
+#vote-display{
   bottom: 0;
   right: 0;
-  position: fixed;
+  margin-bottom: 1em;
+  position: absolute;
+}
+
+#view-more {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  margin-left: 2em;
+  margin-bottom: 1em;
 }
 
 .form-label {

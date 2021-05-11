@@ -2,7 +2,6 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../../models/user';
 import { UserService } from '../../services/user.service';
-
 @Component({
   selector: 'app-user-search',
   templateUrl: './user-search.component.html',
@@ -110,28 +109,31 @@ export class UserSearchComponent implements OnInit, AfterViewInit {
   getUserItems(i?: number) {
     if (i != undefined) {
       if (i == 0) {
-        let parent2 = document.querySelectorAll<HTMLElement>('.page-link')[0];
-        parent2.style.visibility = 'hidden';
+        let parent5 = document.querySelectorAll<HTMLElement>('.page-link')[0];
+        parent5.style.visibility = 'hidden';
       } else {
-        let parent2 = document.querySelectorAll<HTMLElement>('.page-link')[0];
-        parent2.style.visibility = 'visible';
+        let parent6 = document.querySelectorAll<HTMLElement>('.page-link')[0];
+        parent6.style.visibility = 'visible';
       }
 
       if (i == this.getPagination().length - 1) {
-        let parent2 = document.querySelectorAll<HTMLElement>('.page-link')[
-          this.getPagination().length + 1
-        ];
-        parent2.style.visibility = 'hidden';
+        let parent3 =
+          document.querySelectorAll<HTMLElement>('.page-link')[
+            this.getPagination().length + 1
+          ];
+        parent3.style.visibility = 'hidden';
       } else {
-        let parent2 = document.querySelectorAll<HTMLElement>('.page-link')[
-          this.getPagination().length + 1
-        ];
-        parent2.style.visibility = 'visible';
+        let parent4 =
+          document.querySelectorAll<HTMLElement>('.page-link')[
+            this.getPagination().length + 1
+          ];
+        parent4.style.visibility = 'visible';
       }
 
-      let parent = document.querySelectorAll<HTMLElement>('.page-link')[
-        this.prevIndex + 1
-      ];
+      let parent =
+        document.querySelectorAll<HTMLElement>('.page-link')[
+          this.prevIndex + 1
+        ];
       parent.style.setProperty('background-color', '');
 
       this.prevIndex = i;

@@ -6,7 +6,11 @@
         <button class="btn btn-primary" id="Upload-CSV-Button">
           Upload CSV
         </button>
-        <input type="file" (change)="changeListener($event.target.files)" />
+        <input
+          type="file"
+          (change)="changeListener($event.target.files)"
+          id="inputId"
+        />
       </div>
     </div>
     <div class="row">
@@ -23,7 +27,10 @@
               <tr *ngFor="let e of userEmployeeArray">
                 <td>{{ e }}</td>
                 <td>
-                  <button class="btn btn-danger form-control Remove-Button" (click)="onDeleteEmployee(e)">
+                  <button
+                    class="btn btn-danger form-control Remove-Button"
+                    (click)="onDeleteEmployee(e)"
+                  >
                     Remove
                   </button>
                 </td>
@@ -31,9 +38,19 @@
             </tbody>
             <caption>
               <form (submit)="onAddEmployee(formEmp)" #formEmp="ngForm">
-                <input type="text" class="form-control d-inline Email-Input" name="email" placeholder="Email"
-                  [ngModel]="userEmail" #email="ngModel" id="Email-Input" />
-                <button class="btn btn-primary Add-Button form-control d-inline" type="submit">
+                <input
+                  type="text"
+                  class="form-control d-inline Email-Input"
+                  name="email"
+                  placeholder="Email"
+                  [ngModel]="userEmail"
+                  #email="ngModel"
+                  id="Email-Input"
+                />
+                <button
+                  class="btn btn-primary Add-Button form-control d-inline"
+                  type="submit"
+                >
                   Add
                 </button>
               </form>
@@ -43,7 +60,12 @@
       </div>
     </div>
     <div class="col text-center mt-5 mb-5">
-      <button class="btn btn-primary" type="button" id="Submit-Button" (click)="submitAll()">
+      <button
+        class="btn btn-primary"
+        type="button"
+        id="Submit-Button"
+        (click)="submitAll()"
+      >
         Submit
       </button>
     </div>

@@ -19,4 +19,8 @@ app-search-bar {
   -webkit-backdrop-filter: blur(100px);
   border-radius: 30px;
   padding:2em;
+
+  max-height: 40em;
+  overflow-y: auto;
 }
+
