@@ -98,9 +98,6 @@ table {
   backdrop-filter: blur(100px);
 }
 
-#Nav-Container {
-}
-
 #Pagination {
   position: absolute;
   bottom: 0;

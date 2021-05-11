@@ -16,6 +16,7 @@ import { SharedModule } from '../global-components/shared.module';
 import { UserProfileEditComponent } from './components/user-profile/user-profile-edit/user-profile-edit.component';
 import { BatchComponent } from './components/batch/batch.component';
 import { AdminBatchComponent } from './components/admin-batch/admin-batch.component';
+import { NavbarComponent } from '../global-components/navbar/navbar.component';
 
 
 @NgModule({

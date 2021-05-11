@@ -14,7 +14,8 @@ import { AdminBatchEditComponent } from './components/admin-batch-edit/admin-bat
 import { AdminBatchComponent } from './components/admin-batch/admin-batch.component';
 
 const userRoutes: Routes = [
-  { path: 'login', component: LoginComponent },
+  { path: '', component: LoginComponent },
+
   {
     path: 'loginRoute',
     canActivate: [RedirectGuardService],
@@ -29,12 +30,12 @@ const userRoutes: Routes = [
   { path: 'edit/profile', component: UserProfileEditComponent },
   { path: 'user-search', component: UserSearchComponent },
   { path: 'batchDetails/:id', component: BatchComponent },
-  { path: "batchDetails", component: BatchComponent },
-  { path: "adminBatchDetails", component: AdminBatchComponent },
-  { path: "adminBatchDetails/:id", component: AdminBatchComponent },
-  { path: "adminBatchEditDetails", component: AdminBatchEditComponent },
-  { path: "adminBatchEditDetails/:id", component: AdminBatchEditComponent },
-  { path: "adminBatchCreate", component: AdminBatchCreateComponent }
+  { path: 'batchDetails', component: BatchComponent },
+  { path: 'adminBatchDetails', component: AdminBatchComponent },
+  { path: 'adminBatchDetails/:id', component: AdminBatchComponent },
+  { path: 'adminBatchEditDetails', component: AdminBatchEditComponent },
+  { path: 'adminBatchEditDetails/:id', component: AdminBatchEditComponent },
+  { path: 'adminBatchCreate', component: AdminBatchCreateComponent },
 ];
 
 @NgModule({
