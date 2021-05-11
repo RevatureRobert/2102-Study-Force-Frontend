@@ -8,12 +8,23 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
+/*
+* author: Patrick Gonzalez
+* Fields
+* url is the base endpoint that we use to make our http requests
+*/
 export class SubscribeBellStacktraceService {
 
   url:string = environment.apiUrl.concat("/subscriptions/stacktraces");
 
+  /*
+  * http is used to make the http request to the backend
+  */
   constructor(private http:HttpClient) { }
 
+  /*
+  * getSubscription returns a promise that contains the details of the stacktrace subscription
+  */
   getSubscription(userId:number, stacktraceId:number):Promise<StacktraceSubscription>{
     let params = new HttpParams();
     params = params.append('stacktrace-id', stacktraceId.toString());
@@ -27,6 +38,9 @@ export class SubscribeBellStacktraceService {
     }).toPromise<StacktraceSubscription>();
   }
 
+  /*
+  * addSubscription returns a promise that contains the subscription that was inserted
+  */
   addSubscription(sub:StacktraceSubscriptionDTO):Promise<StacktraceSubscription>{
     return this.http.post<StacktraceSubscription>(this.url, sub, {
       headers:{
@@ -35,6 +49,9 @@ export class SubscribeBellStacktraceService {
     }).toPromise<StacktraceSubscription>();
   }
 
+  /*
+  * removeSubscription returns a promise that contains the subscription that was removed
+  */
   removeSubscription(sub:StacktraceSubscriptionDTO):Promise<StacktraceSubscription>{
     return this.http.request<StacktraceSubscription>('delete', this.url, {
       body: sub,
