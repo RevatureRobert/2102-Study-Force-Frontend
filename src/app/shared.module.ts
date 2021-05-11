@@ -5,7 +5,6 @@ import { NavbarComponent } from './global-components/navbar/navbar.component';
 import { SearchBarComponent } from './global-components/search-bar/search-bar.component';
 import { VoteComponent } from './global-components/vote/vote.component';
 import { TableComponent } from './global-components/table/table.component';
-import { HomeComponent } from './home-component/home/home.component';
 import { DiologueCardComponent } from './global-components/diologue-card/diologue-card.component';
 import { DropdownComponent } from './global-components/dropdown/dropdown.component';
 import {FlashcardAnswerStyleComponent} from './global-components/flashcard-answer-style/flashcard-answer-style.component';
@@ -29,7 +28,6 @@ import {FormsModule} from '@angular/forms';
     FlashcardAnswerStyleComponent,
     FlashcardQuestionStyleComponent,
     GenericCardComponent,
-    HomeComponent,
     GenericCardWideComponent,
     GlassPaneComponent,
     ListComponent,
@@ -50,7 +48,6 @@ import {FormsModule} from '@angular/forms';
     DiologueCardComponent,
     DropdownComponent,
     GenericCardComponent,
-    HomeComponent,
     GenericCardWideComponent,
     GlassPaneComponent,
     ListComponent,

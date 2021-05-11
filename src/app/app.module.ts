@@ -10,11 +10,12 @@ import { StacktraceModule } from './stacktrace/stacktrace.module';
 import { UserModule } from './user/user.module';
 import { NotificationModule } from './notification/notification.module';
 import {SharedModule} from './shared.module';
+import {HomeComponent} from './home-component/home/home.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent, HomeComponent
   ],
   imports: [
     BrowserModule,
