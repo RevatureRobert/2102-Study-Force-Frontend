@@ -14,23 +14,23 @@ import { User } from 'src/app/user/models/user';
  */
 export class UserProfileUserViewComponent implements OnInit {
 
-  @Input() user?:User;
-  @Input() batches?:Batch[];
-  @Input() isMe?:boolean;
-  isLoading:boolean = true;
+  @Input() user?: User;
+  @Input() batches?: Batch[];
+  @Input() isMe?: boolean;
+  isLoading = true;
 
   /**
    * @param router
    */
-  constructor(private router:Router) { }
+  constructor(private router: Router) { }
 
   /**
    * Gets loggedInUser from local storage and checks if the user whoes
    * profile is being viewed is the currently logged in user
    */
   ngOnInit(): void {
-    let u:User = JSON.parse(localStorage.getItem('loggedInUser')!);
-    if(u.userId == this.user?.userId){
+    const u: User = JSON.parse(localStorage.getItem('loggedInUser')!);
+    if (u.userId == this.user?.userId){
       this.isMe = true;
     }
     this.isLoading = false;
@@ -40,7 +40,7 @@ export class UserProfileUserViewComponent implements OnInit {
    * Routes to the batch details page of a specific batch
    * @param batchId The id of the batch to navigate to
    */
-  goToBatch(batchId:number){
+  goToBatch(batchId: number){
     this.router.navigate([`/batchDetails/${batchId}`]);
   }
 }

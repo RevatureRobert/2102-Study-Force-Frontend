@@ -14,7 +14,7 @@ import { TechnologyService } from 'src/app/stacktrace/services/technology.servic
 })
 export class NewTechnologyComponent implements OnInit {
 
-  technology : Technology = {
+  technology: Technology = {
     technologyName : '',
   };
 
@@ -23,7 +23,7 @@ export class NewTechnologyComponent implements OnInit {
    * @param technologyService the service used to send Technology-related requests to the backend
    * @param router provides for routing to other components
    */
-  constructor(private route :ActivatedRoute, private technologyService : TechnologyService,private router: Router) {
+  constructor(private route: ActivatedRoute, private technologyService: TechnologyService, private router: Router) {
     this.technology =  new Technology();
   }
 
