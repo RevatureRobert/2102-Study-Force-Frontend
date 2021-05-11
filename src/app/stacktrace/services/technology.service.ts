@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Technology } from '../models/technology';
 
@@ -41,15 +42,21 @@ export class TechnologyService {
   /**
    * POSTs the given Technology object to the backend.
    */
-  addTechnology(technology : Technology) {
+  addTechnology(technology : Technology): Observable<Technology>{
     console.log(JSON.stringify(technology))
     return this.http.post<Technology>(this.technologyURL, technology);
   }
   /**
    * DELETEs the given Technology object from the backend.
    */
-  deleteTechnology(technology: Technology): void {
-    let t = this.http.delete<Technology>(this.apiServerUrl, { headers: this.httpHeaders });
-    t.subscribe();
+  deleteTechnology(technologyId: number): Observable<Technology>{
+    return this.http.delete<Technology>(`${this.apiServerUrl}/${technologyId}`, { headers: this.httpHeaders }).pipe(catchError(errorRes =>{
+      let errorMessage = 'You should edit this technology instead, its connected to Stacktraces already.';
+      return throwError(errorMessage);
+  }));
+  }
+
+  editTechnology(technology: Technology): Observable<Technology>{
+    return this.http.put<Technology>(this.technologyURL, technology);
   }
 }

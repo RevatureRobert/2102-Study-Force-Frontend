@@ -4,6 +4,7 @@ import { Stacktrace } from '../../models/stacktrace';
 import { TechnologyService } from '../../services/technology.service';
 import { Technology } from '../../models/technology';
 import { Router } from '@angular/router';
+import { User } from '../../models/user';
 
 /**
  * A component that displays a paginated table of Stacktraces
@@ -30,6 +31,19 @@ export class StacktraceHomeComponent implements OnInit {
   totalPages:number = 0;
 
   constructor(private stacktraceService:StacktraceService, private technologyService: TechnologyService, private router: Router) {
+    let u:User = {
+      userId:2,
+        email:"jomama@hotmail.gov",
+        name:"John Doe",
+        active:false,
+        subscribedStacktrace:true,
+        subscribedFlashcard:true,
+        authority:"ADMIN",
+        registrationTime:new Date(1620310931740),
+        lastLogin:new Date(1620310931740)
+      };
+    //TODO remove this placeholder user in local storage
+    localStorage.setItem('loggedInUser', JSON.stringify(u));
    }
 
   ngOnInit(): void {
