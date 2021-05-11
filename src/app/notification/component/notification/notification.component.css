@@ -1,0 +1,16 @@
+.ngbDropdown-opacity {
+  background: none;
+  border: none;
+}
+
+#Notification-Button-Full {
+  background: #ff0101;
+  border: 1px solid #ff0000;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+#Notification-Button-Empty {
+  box-sizing: border-box;
+  border-radius: 10px;
+}

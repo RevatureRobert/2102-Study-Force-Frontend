@@ -1,14 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {NotificationService} from '../../service/notification.service';
+import {Notification} from '../../model/notification';
 import {ActivatedRoute} from '@angular/router';
-import { Notification } from 'src/app/notification/model/notification';
 
 @Component({
-  selector: 'app-notification',
-  templateUrl: './notification.component.html',
-  styleUrls: ['./notification.component.css']
+  selector: 'app-notification-page',
+  templateUrl: './notification-page.component.html',
+  styleUrls: ['./notification-page.component.css']
 })
-export class NotificationComponent implements OnInit {
+export class NotificationPageComponent implements OnInit {
 
   notifications: Notification[] = [];
 
@@ -29,14 +29,14 @@ export class NotificationComponent implements OnInit {
    */
   ngOnInit(): void {
     this.route.params.subscribe();
-    this.getAllNotificationsInNavbar();
+    this.getAllNotificationsInPage();
   }
 
   /*
   Getting All Notifications from notificationService
   Author: Ronald Lopez
    */
-  getAllNotificationsInNavbar(): void {
+  getAllNotificationsInPage(): void {
     this.notificationService.getAllNotifications().subscribe(
       (response: any) => {
         this.notifications = response.content;
@@ -53,10 +53,19 @@ export class NotificationComponent implements OnInit {
   }
 
   /*
+  Deleting all Notifications from notificationService
+  Author: Ronald Lopez
+   */
+  deleteAllNotifications(id: number): void {
+    this.notificationService.deleteAllNotificationsByUserId(id).subscribe();
+  }
+
+  /*
   Method that refreshes the page
   Author: Ronald Lopez
    */
   pageRefresh(): void {
     window.location.reload();
   }
+
 }

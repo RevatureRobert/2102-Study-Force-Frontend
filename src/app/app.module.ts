@@ -24,7 +24,6 @@ import { FormsModule } from '@angular/forms';
 import { StacktraceModule } from './stacktrace/stacktrace.module';
 
 
-
 @NgModule({
     declarations: [
         AppComponent,
