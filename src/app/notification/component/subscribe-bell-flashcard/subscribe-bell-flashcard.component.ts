@@ -30,7 +30,7 @@ export class SubscribeBellFlashcardComponent implements OnInit {
    * @param subscribeBell is the service we use to make http requests to the backend
    * sub is set in the constructor in order to make it available
    */
-  constructor(private subscribeBell:SubscribeBellFlashcardService) {
+  constructor(private subscribeBell: SubscribeBellFlashcardService) {
     this.sub = {flashcardId: this.flashcardId, userId: this.userId};
    }
 
