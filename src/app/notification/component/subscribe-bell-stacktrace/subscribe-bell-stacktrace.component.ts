@@ -45,7 +45,7 @@ export class SubscribeBellStacktraceComponent implements OnInit {
  *
  * @param flashcardId is the id of the flashcard that the user interested in
  */
-  getSubscriptionStatus(userId:number, stacktraceId:number):void{
+  getSubscriptionStatus(userId: number, stacktraceId: number): void {
     this.subscribeBell.getSubscription(userId, stacktraceId).then(
       res => {if(res === null){this.subscriptionStatus = false; this.setBellImg();}else{this.subscriptionStatus = true; this.setBellFillImg();} console.log(res);},
       error => {console.log(error); this.subscriptionStatus = false; this.setBellImg();});

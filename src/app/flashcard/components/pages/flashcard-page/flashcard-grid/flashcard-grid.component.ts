@@ -44,9 +44,9 @@ export class FlashcardGridComponent implements OnInit {
       this.searchText = message;
       this.mode = Mode.SEARCH;
       this.loadPage(0);
-      this.flashcardService.get
     });
 
+    this.mode = Mode.NONE;
 
   }
 
