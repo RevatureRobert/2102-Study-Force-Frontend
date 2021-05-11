@@ -1,11 +1,31 @@
 .card {
   top: 2em;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.54) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 255, 255, 0.54) 100%
+  );
   backdrop-filter: blur(100px);
   border-radius: 10px;
   min-width: 590px;
   margin: 0 auto;
   margin-bottom: 3em;
+  width: 600px;
+}
+
+.form-group {
+  width: fit-content;
+  position: relative;
+  margin: auto;
+}
+
+#first {
+  position: relative;
+  top: 30px;
+}
+
+#second {
+  top: 20px;
 }
 
 .glass-pane {
@@ -24,13 +44,13 @@
   border-radius: 30px;
 
   min-height: fit-content;
-
 }
-
 
 .card-body {
   position: relative;
-  margin: 0 auto;
+  /* margin:  auto; */
+  width: 600px;
+  left: 25%;
 }
 
 h3 {
@@ -48,12 +68,16 @@ h3 {
 .wrapper {
   position: absolute;
   right: 9em;
-  bottom:3em;
+  bottom: 3em;
   transform: translateY(60%);
 }
 
 .input-styling {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.54) 90%);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 255, 255, 0.54) 90%
+  );
   backdrop-filter: blur(100px);
   /* Note: backdrop-filter has minimal browser support */
   border-radius: 10px;
@@ -63,11 +87,22 @@ h3 {
   font-size: 20px;
   line-height: 105%;
   letter-spacing: 1px;
+  width: 400px;
   max-width: fit-content;
-
+  min-height: 100px;
   color: rgba(0, 0, 0, 0.5);
 }
+#container {
+  position: relative;
+  width: fit-content;
+  left: 50%;
+  transform: translateX(-50%);
+}
 
+#input-dialogue {
+  position: relative;
+  top: 20px;
+}
 
 #Dropdown {
   position: absolute;
@@ -133,6 +168,11 @@ h3 {
   border-bottom-right-radius: 10px;
 }
 
+.flashcard {
+  min-height: 300px;
+  width: fit-content;
+}
+
 .start {
   width: 175px;
   color: rgba(21, 60, 83, 1);
@@ -141,9 +181,14 @@ h3 {
   position: relative;
   box-sizing: border-box;
   border-radius: 10px;
-  border: none;
+
+  margin-bottom: 20px;
 }
 
+#button-submit {
+  position: absolute;
+  bottom: 10px;
+}
 .custom-button {
   opacity: 0.75;
   position: relative;
@@ -153,19 +198,18 @@ h3 {
   box-sizing: border-box;
   color: white;
   border-radius: 30px;
-;
+  margin-top: 10px;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 select {
   -webkit-appearance: none;
   -moz-appearance: none;
   text-indent: 1px;
-  text-overflow: '';
+  text-overflow: "";
 }
-
-
-
-
 
 /*.card {*/
 /*  top: 2em;*/
