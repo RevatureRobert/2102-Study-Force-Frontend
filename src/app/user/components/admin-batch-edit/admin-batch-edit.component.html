@@ -1,0 +1,164 @@
+<div>
+  <div *ngIf="!loaded" id="glass-pane" class="glass-pane">
+    <div class="card-header" id="Card-Header" style="text-align: center">
+      <p style="font-size: 18pt; top: -0.7rem">Batch Detail</p>
+    </div>
+    <div class="d-flex justify-content-center" style="padding-top: 10rem">
+      <label
+        for=""
+        style="position: absolute; left: auto; right: auto; padding-top: 2rem"
+        >Loading...</label
+      >
+      <div class="spinner-border text-primary" id="loading" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="glass-pane" *ngIf="loaded">
+    <div id="container">
+      <div class="dateCard">
+        <label id="label">Date</label>
+      </div>
+      <p class="center-text">
+        {{ creationTime }}
+      </p>
+    </div>
+
+    <div id="container2">
+      <div class="batchCard" id="Batch-Card">
+        <label id="label">Batch Name</label>
+      </div>
+      <p class="center-text2">
+        <input [(ngModel)]="name" type="text" value="{{ name }}" />
+      </p>
+    </div>
+
+    <div class="row">
+      <div class="col-4 text-center mt-5">
+        <button
+          class="btn btn-danger"
+          type="button"
+          id="Deactivate-Batch-Button"
+          style="left: 920px"
+          (click)="warningForDeactivate()"
+        >
+          Deactivate Batch
+        </button>
+
+        <button
+          class="btn btn-danger"
+          type="button"
+          id="Deactivate-Button"
+          style="left: 950px"
+          (click)="warningForDelete()"
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+
+    <div class="instructors">
+      <div class="table-responsive">
+        <table class="table table-striped table-borderless">
+          <thead>
+            <tr>
+              <th scope="col">Instructors</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let instructor of instructors; let index = index">
+              <td>{{ instructor }}</td>
+              <td>
+                <button
+                  class="btn btn-danger form-control Remove-Button"
+                  (click)="onDeleteInstructor(instructor)"
+                >
+                  Remove
+                </button>
+              </td>
+            </tr>
+          </tbody>
+          <caption>
+            <form (submit)="onAddInstructor(formEmp2)" #formEmp2="ngForm">
+              <input
+                type="text"
+                class="form-control d-inline Email-Input"
+                name="email"
+                placeholder="Email"
+                [ngModel]="instructorCurrentEmail"
+                #email="ngModel"
+                id="Email-Input"
+              />
+              <button
+                class="btn btn-primary Add-Button form-control d-inline"
+                type="submit"
+              >
+                Add
+              </button>
+            </form>
+          </caption>
+        </table>
+      </div>
+    </div>
+    <div class="row">
+      <div class="wrapper col-8 mt-5 mx-auto" id="wrapper">
+        <div class="table-responsive">
+          <table class="table table-striped table-borderless">
+            <thead class="m-2">
+              <tr>
+                <th id="">Employees</th>
+                <th id=""></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of users; let index = index">
+                <td>{{ user }}</td>
+
+                <td>
+                  <button
+                    class="btn btn-danger form-control Remove-Button"
+                    (click)="onDeleteUser(user)"
+                  >
+                    Remove
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+            <caption>
+              <form (submit)="onAddUser(formEmp)" #formEmp="ngForm">
+                <input
+                  type="text"
+                  class="form-control d-inline Email-Input"
+                  name="email"
+                  placeholder="Email"
+                  [ngModel]="userCurrentEmail"
+                  #email="ngModel"
+                  id="Email-Input"
+                />
+                <button
+                  class="btn btn-primary Add-Button form-control d-inline"
+                  type="submit"
+                >
+                  Add
+                </button>
+              </form>
+            </caption>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="deactivate">
+      <button
+        class="btn btn-primary"
+        type="button"
+        id="Submit-Button"
+        (click)="warningForSubmit()"
+      >
+        Submit
+      </button>
+    </div>
+  </div>
+</div>

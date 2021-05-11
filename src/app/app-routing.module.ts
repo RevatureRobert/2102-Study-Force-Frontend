@@ -10,7 +10,7 @@ const routes: Routes = [
   {
     path: 'flashcards',
     loadChildren: () =>
-      import('./flashcard/flashcard.module').then(m => m.FlashcardModule)
+      import('./flashcard/flashcard.module').then((m) => m.FlashcardModule),
   },
   {
     path: 'stacktrace',
@@ -26,7 +26,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule {
 }
