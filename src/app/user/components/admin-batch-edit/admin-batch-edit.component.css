@@ -1,6 +1,6 @@
 .batchCard {
   background: #ffffff;
-  opacity: .5;
+  opacity: 0.5;
   border: 1px solid #e5e5e5;
   border-radius: 30px;
   position: absolute;
@@ -17,7 +17,7 @@ label {
   top: -12px;
   right: -20px;
 }
-#container{
+#container {
   position: relative;
 
   top: 38px;
@@ -26,26 +26,31 @@ label {
   min-width: 10%;
 }
 
-#container2{
+p > input {
+  border-radius: 30px;
+  text-align: center;
+  border: none;
+}
+
+#container2 {
   position: relative;
   left: 50%;
   top: -48px;
 }
-.center-text{
+.center-text {
   position: absolute;
   top: 13px;
   left: 38px;
-  color:black;
+  color: black;
   font-family: Roboto;
   font-style: normal;
-
 }
 
-.center-text2{
+.center-text2 {
   position: absolute;
   top: 50px;
   left: -90px;
-  color:black;
+  color: black;
   font-family: Roboto;
   font-style: normal;
 }
@@ -57,7 +62,6 @@ label {
   border-radius: 30px;
   width: 148px;
   height: 49px;
-
 }
 
 .instructors {
@@ -72,7 +76,7 @@ label {
   overflow: auto;
 }
 
-.users {
+#users {
   position: relative;
   left: 50%;
   transform: translateX(-50%);
@@ -80,17 +84,19 @@ label {
   opacity: 0.95;
   width: 50%;
   max-height: 400px;
-
 }
 #wrapper {
-  overflow:auto;
-  height:400px;
+  top: -49px;
+  overflow: auto;
+  position: relative;
+
+  border-radius: 30px;
 }
 
 .glass-pane {
   position: absolute;
   width: 75%;
-  height: 75%;
+  min-height: 800px;
   left: 50%;
   top: 100px;
   transform: translateX(-50%);
@@ -100,6 +106,8 @@ label {
   backdrop-filter: blur(100px);
   -webkit-backdrop-filter: blur(100px);
   border-radius: 30px;
+  bottom: 0;
+  overflow: auto;
 }
 
 .card {
@@ -168,38 +176,54 @@ th {
   background: white;
 }
 
-.table-striped > tbody > tr:nth-child(2n+1) {
-  background: linear-gradient(90.34deg, rgba(255, 255, 255, 0.81) 0%, rgba(255, 255, 255, 0.72) 100%);
-mix-blend-mode: normal;
-backdrop-filter: blur(100px);
+tbody {
+  max-height: 300px !important;
+  overflow: auto;
 }
 
+.table-striped > tbody > tr:nth-child(2n + 1) {
+  background: linear-gradient(
+    90.34deg,
+    rgba(255, 255, 255, 0.81) 0%,
+    rgba(255, 255, 255, 0.72) 100%
+  );
+  mix-blend-mode: normal;
+  backdrop-filter: blur(100px);
+}
 
-.table-striped > tbody > tr:nth-child(2n){
-  background: linear-gradient(90.34deg, rgba(255, 255, 255, 0.56) 0%, rgba(255, 255, 255, 0.42) 100%);
-mix-blend-mode: normal;
-backdrop-filter: blur(100px);
+.table-responsive {
+  border-radius: 30px 30px 0px 0px;
+  overflow: hidden;
+}
+
+.table-striped > tbody > tr:nth-child(2n) {
+  background: linear-gradient(
+    90.34deg,
+    rgba(255, 255, 255, 0.56) 0%,
+    rgba(255, 255, 255, 0.42) 100%
+  );
+  mix-blend-mode: normal;
+  backdrop-filter: blur(100px);
 }
 
 table {
-  border-radius: 30px;
-  overflow: hidden;
-
   table-layout: fixed;
 }
 
 th {
   padding: 13px;
-  font-weight: bold; color: #153C53; font-family: Roboto; font-style: normal;
-
+  font-weight: bold;
+  color: #153c53;
+  font-family: Roboto;
+  font-style: normal;
 }
 
-td{
+td {
   padding: 13px;
-  font-family: Roboto; font-style: normal;
+  font-family: Roboto;
+  font-style: normal;
   line-height: 41px;
 }
-
 
 #Login-Button {
   opacity: 0.75;
@@ -232,6 +256,7 @@ td{
   border: 1px solid #0275d8;
   box-sizing: border-box;
   border-radius: 30px;
+  bottom: 0;
 }
 
 #Register-Button {
@@ -316,12 +341,14 @@ td{
 
 #Deactivate-Batch-Button {
   opacity: 0.75;
-  position: relative;
+  position: fixed;
   width: 175px;
   background: #ff0101;
   border: 1px solid #ff0000;
   box-sizing: border-box;
   border-radius: 30px;
+  top: 10px;
+  right: 10px;
 }
 
 #Activate-Button {
@@ -336,12 +363,14 @@ td{
 
 #Deactivate-Button {
   opacity: 0.75;
-  position: relative;
+  position: fixed;
   width: 148px;
   background: #ff0101;
   border: 1px solid #ff0000;
   box-sizing: border-box;
   border-radius: 30px;
+  top: 10px;
+  right: 188px;
 }
 
 #Promote-Button {
@@ -364,14 +393,12 @@ td{
   border-radius: 30px;
 }
 
-
 .deactivate {
-  position: absolute;
-width: 175px;
-height: 34px;
-left: 47%;
-bottom: 15px;
-
+  position: relative;
+  width: 175px;
+  height: 34px;
+  left: 47%;
+  bottom: 5px;
 }
 
 #Upload-CSV-Button {
@@ -417,11 +444,6 @@ tbody > tr:nth-child(2n) {
   backdrop-filter: blur(100px);
 }
 
-table {
-  border-radius: 30px;
-  overflow: hidden;
-}
-
 .Remove-Button {
   opacity: 0.75;
   position: relative;
@@ -459,7 +481,7 @@ table {
 
 #Submit-Button {
   opacity: 0.75;
-  position: relative;
+  position: absolute;
   width: 86px;
   background: #0275d8;
   border: 1px solid #0275d8;
@@ -490,11 +512,7 @@ caption {
 td {
   width: 100%;
 }
-#MoveTheFuckOver {
-  position: relative;
-  right: 0px;
-  width: 100%;
-}
+
 #Dropdown-Button {
   width: 175px;
   color: rgba(21, 60, 83, 1);
