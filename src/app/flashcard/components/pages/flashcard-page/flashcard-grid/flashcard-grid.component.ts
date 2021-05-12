@@ -85,9 +85,9 @@ export class FlashcardGridComponent implements OnInit {
   setModeToDifficulty(): void {
     this.mode = Mode.DIFFICULTY;
     this.modeChoices = [
-      {input: 1, displayString: 'Easy'},
-      {input: 2, displayString: 'Medium'},
-      {input: 3, displayString: 'Hard'}];
+      {input: 0, displayString: 'Easy'},
+      {input: 1, displayString: 'Medium'},
+      {input: 2, displayString: 'Hard'}];
     this.setInput(this.modeChoices[0].input);
     }
 
@@ -125,13 +125,13 @@ export class FlashcardGridComponent implements OnInit {
       case false:
         this.filterDisplay = 'Not Resolved';
         break;
-      case 1:
+      case 0:
         this.filterDisplay = 'Easy';
         break;
-      case 2:
+      case 1:
         this.filterDisplay = 'Medium';
         break;
-      case 3:
+      case 2:
         this.filterDisplay = 'Hard';
         break;
       default:

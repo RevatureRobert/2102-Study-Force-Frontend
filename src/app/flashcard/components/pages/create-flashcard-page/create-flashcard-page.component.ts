@@ -18,6 +18,7 @@ export class CreateFlashcardPageComponent implements OnInit {
   subscription: Subscription;
   anonymous = false;
 
+
   form: any = {
     userId: null,
     topicId: {},
@@ -34,7 +35,9 @@ export class CreateFlashcardPageComponent implements OnInit {
 
   ngOnInit(): void {
     let u:User = JSON.parse(localStorage.getItem('loggedInUser')!);
-    this.form.userId = u.userId;
+    //TODO: SWITCH THESE
+    // this.form.userId = u.userId;
+    this.form.userId = 2;
   }
 
   onSubmit(): void {
