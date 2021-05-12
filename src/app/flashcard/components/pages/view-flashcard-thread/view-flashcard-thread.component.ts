@@ -40,10 +40,10 @@ export class ViewFlashcardThreadComponent implements OnInit {
       this.searchText = message;
       this.searchAnswers(this.searchText);
     });
-    // let u:User = JSON.parse(localStorage.getItem('loggedInUser')!);
-    // if(!this.subscriptionService.hasSubscription(u.userId)){
-    //     this.subscriptionService.requestSubscription()
-    // }
+    let u:User = JSON.parse(localStorage.getItem('loggedInUser')!);
+    if(!this.subscriptionService.hasSubscription(u.userId)){
+        this.subscriptionService.requestSubscription()
+    }
 
   }
 
