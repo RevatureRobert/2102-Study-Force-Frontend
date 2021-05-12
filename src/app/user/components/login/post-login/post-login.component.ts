@@ -41,7 +41,7 @@ export class PostLoginComponent implements OnInit {
 
   async ngOnInit()  {
     await this.getUserLoggedIn();
-    await this.redirect();
+    this.redirect();
   }
 
   /**
