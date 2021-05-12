@@ -16,7 +16,7 @@ export class TechnologyService {
 
   // Set the headers
   httpHeaders: HttpHeaders = new HttpHeaders({
-    'Content-Type': 'application/json', //,
+    'Content-Type': 'application/json'
   });
 
   // Append the service endpoint to the base url

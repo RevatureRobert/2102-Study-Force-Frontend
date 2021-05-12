@@ -7,7 +7,7 @@ import { VoteComponent } from './global-components/vote/vote.component';
 import { TableComponent } from './global-components/table/table.component';
 import { DiologueCardComponent } from './global-components/diologue-card/diologue-card.component';
 import { DropdownComponent } from './global-components/dropdown/dropdown.component';
-import {FlashcardAnswerStyleComponent} from './global-components/flashcard-answer-style/flashcard-answer-style.component';
+import { FlashcardAnswerStyleComponent } from './global-components/flashcard-answer-style/flashcard-answer-style.component';
 import { FlashcardQuestionStyleComponent } from './global-components/flashcard-question-style/flashcard-question-style.component';
 import { GenericCardWideComponent } from './global-components/generic-card-wide/generic-card-wide.component';
 import { GenericCardComponent } from './global-components/generic-card/generic-card.component';
@@ -17,7 +17,7 @@ import { PaginationComponent } from './global-components/pagination/pagination.c
 import { ReplyCardComponent } from './global-components/reply-card/reply-card.component';
 import { SubmitContentCardComponent } from './global-components/submit-content-card/submit-content-card.component';
 import {FormsModule} from '@angular/forms';
-import {RouterModule} from '@angular/router'
+import {RouterModule} from '@angular/router';
 
 
 
