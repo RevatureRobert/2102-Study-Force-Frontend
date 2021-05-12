@@ -73,7 +73,7 @@ export class NewStacktraceComponent implements OnInit {
    * On form submission, routes the user back to the list of all stacktraces.
    */
   gotoStacktraceList() {
-    this.router.navigate(['stacktraces']);
+    this.router.navigate(['/stacktraces']);
   }
 
   /**
