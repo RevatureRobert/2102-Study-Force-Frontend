@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SubscriptionServiceService } from 'src/app/flashcard/service/subscriptionservice.service';
 import { User } from 'src/app/user/models/user';
 import { UserService } from 'src/app/user/services/user.service';
 
@@ -26,8 +25,7 @@ export class PostLoginComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private userService: UserService,
-    private subscriptionService:SubscriptionServiceService
+    private userService: UserService
   ) {
     const fragment = route.snapshot.fragment;
     const [a] = fragment.split('&');
@@ -47,8 +45,8 @@ export class PostLoginComponent implements OnInit {
   /**
    * Redirects to the homepage
    */
-   redirect() {
-      this.router.navigate(['/flashcards']);
+  redirect() {
+    this.router.navigate(['/flashcards']);
   }
 
   /**
@@ -59,9 +57,6 @@ export class PostLoginComponent implements OnInit {
       let u: User = res;
       let userString = JSON.stringify(u);
       localStorage.setItem('loggedInUser', userString);
-      if(!this.subscriptionService.hasSubscription(u.userId)){
-          this.subscriptionService.requestSubscription()
-      }
     });
   }
 }
