@@ -8,6 +8,7 @@ import { Subscription } from 'rxjs';
 import { SearchContentService } from '../../../../global-components/search-content.service';
 import { SwPush } from '@angular/service-worker';
 import { SubscriptionServiceService } from 'src/app/flashcard/service/subscriptionservice.service';
+import { User } from 'src/app/user/models/user';
 
 @Component({
   selector: 'app-view-flashcard-thread',
@@ -39,7 +40,10 @@ export class ViewFlashcardThreadComponent implements OnInit {
       this.searchText = message;
       this.searchAnswers(this.searchText);
     });
-    // if(this.subscriptionService.hasSubscription())
+    // let u:User = JSON.parse(localStorage.getItem('loggedInUser')!);
+    // if(!this.subscriptionService.hasSubscription(u.userId)){
+    //     this.subscriptionService.requestSubscription()
+    // }
 
   }
 
