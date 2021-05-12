@@ -124,13 +124,13 @@
         id="Dropdown-List"
       >
         <li *ngIf="userVisible">
-          <a class="dropdown-item" (click)="setUserAuthority('USER')">USER</a>
+          <a class="dropdown-item" (click)="setUserAuthority('ROLE_USER')">USER</a>
         </li>
         <li *ngIf="adminVisible">
-          <a class="dropdown-item" (click)="setUserAuthority('ADMIN')">ADMIN</a>
+          <a class="dropdown-item" (click)="setUserAuthority('ROLE_ADMIN')">ADMIN</a>
         </li>
         <li *ngIf="superAdminVisible">
-          <a class="dropdown-item" (click)="setUserAuthority('SUPER_ADMIN')"
+          <a class="dropdown-item" (click)="setUserAuthority('ROLE_SUPER_ADMIN')"
             >SUPER ADMIN</a
           >
         </li>

@@ -10,7 +10,7 @@ export class StackGuardGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean{
-    return (JSON.parse(localStorage.getItem('loggedInUser') || '{}').authority === 'ADMIN');
+    return (JSON.parse(localStorage.getItem('loggedInUser') || '{}' ).authority === 'ROLE_ADMIN' || JSON.parse(localStorage.getItem('loggedInUser') || '{}' ).authority === 'ROLE_SUPER_ADMIN' );
   }
 
 }
