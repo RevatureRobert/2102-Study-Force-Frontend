@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { StacktraceService } from '../../services/stacktrace.service'
-import { Stacktrace } from '../../models/stacktrace'
+import { StacktraceService } from '../../services/stacktrace.service';
+import { Stacktrace } from '../../models/stacktrace';
 import { Solution } from '../../models/solution';
 import { SolutionService } from '../../services/solution.service';
 import { User } from '../../models/user';
-
 
 /**
  * A component that displays a single Stacktrace object in full, with nested solutions below it.
@@ -13,14 +12,14 @@ import { User } from '../../models/user';
 @Component({
   selector: 'app-stacktrace',
   templateUrl: './stacktrace.component.html',
-  styleUrls: ['./stacktrace.component.css']
+  styleUrls: ['./stacktrace.component.css'],
 })
 export class StacktraceComponent implements OnInit {
   isAdmin = false;
   isCreator = false;
   LoggedUser: any;
-  stacktraceId?: number;// added these to get rid of error from notifications
-  userId?: number;// added these to get rid of error from notifications
+  stacktraceId?: number; // added these to get rid of error from notifications
+  userId?: number; // added these to get rid of error from notifications
 
   currentStacktrace!: Stacktrace;
 
@@ -33,7 +32,7 @@ export class StacktraceComponent implements OnInit {
     private stacktraceService: StacktraceService,
     private route: ActivatedRoute,
     private router: Router
-    ) { }
+  ) {}
 
   ngOnInit(): void {
     this.LoggedUser = JSON.parse(localStorage.getItem('loggedInUser') || '{}');
@@ -44,11 +43,14 @@ export class StacktraceComponent implements OnInit {
    * Accesses the priviledges [sic] of the currently-logged-in user and sets isAdmin and isCreator appropriately.
    */
   getUserPriviledges(): void {
-    if (this.LoggedUser.authority === 'ADMIN'){
+    if (
+      this.LoggedUser.authority === 'ADMIN' ||
+      this.LoggedUser.authority === 'SUPER_ADMIN'
+    ) {
       this.isAdmin = true;
     }
     console.log(this.currentStacktrace.userId);
-    if (this.LoggedUser.userId === this.currentStacktrace.userId){
+    if (this.LoggedUser.userId === this.currentStacktrace.userId) {
       this.isCreator = true;
     }
     console.log(this.isCreator, this.isAdmin);
@@ -58,25 +60,27 @@ export class StacktraceComponent implements OnInit {
    * Retrieves the given Stacktrace object from the backend using the service's getStacktrace() method.
    */
   getStacktrace(stacktraceId: string): void {
-    this.stacktraceService.getStacktrace(stacktraceId)
-      .subscribe(
-        data => {
-          this.currentStacktrace = data;
-          console.log(data);
-          this.getUserPriviledges();
-        },
-        error => {
-          console.log(error);
-        });
+    this.stacktraceService.getStacktrace(stacktraceId).subscribe(
+      (data) => {
+        this.currentStacktrace = data;
+        console.log(data);
+        this.getUserPriviledges();
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
   /**
    * Deletes the given Stacktrace object from the backend using the service's deleteStacktrace() method.
    */
   deleteStacktrace(): void {
-    this.stacktraceService.deleteStacktrace(this.route.snapshot.params.stacktraceId).subscribe(result => {
-      this.gotoStacktraceList();
-    });
+    this.stacktraceService
+      .deleteStacktrace(this.route.snapshot.params.stacktraceId)
+      .subscribe((result) => {
+        this.gotoStacktraceList();
+      });
   }
 
   /**

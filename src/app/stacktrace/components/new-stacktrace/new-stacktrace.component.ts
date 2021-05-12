@@ -6,14 +6,13 @@ import { Technology } from '../../models/technology';
 import { User } from '../../models/user';
 import { TechnologyService } from '../../services/technology.service';
 
-
 /**
  * Handles the logic of the form that creates new Stacktrace objects.
  */
 @Component({
   selector: 'app-new-stacktrace',
   templateUrl: './new-stacktrace.component.html',
-  styleUrls: ['./new-stacktrace.component.css']
+  styleUrls: ['./new-stacktrace.component.css'],
 })
 export class NewStacktraceComponent implements OnInit {
   technologyId: number = 1;
@@ -22,14 +21,14 @@ export class NewStacktraceComponent implements OnInit {
 
   // a blank Stacktrace object, ready to be populated from the form imput
   stacktrace: Stacktrace = {
-    title : '',
-    body : '',
+    title: '',
+    body: '',
     stacktraceId: 0,
-    userId : 0,
-    userName: "",
-    creationTime: "",
-    technologyId :0,
-    technologyName:"",
+    userId: 0,
+    userName: '',
+    creationTime: '',
+    technologyId: 0,
+    technologyName: '',
   };
 
   /**
@@ -38,27 +37,15 @@ export class NewStacktraceComponent implements OnInit {
    * @param router provides for routing to other components
    * @param technologyService the service used to send Technology-related requests to the backend
    */
-  constructor(private route: ActivatedRoute, private stacktraceService: StacktraceService, private router: Router, private technologyService: TechnologyService) {
-    //this.stacktrace = new Stacktrace();
-        // //TODO remove this placeholder user
-        // let u:User = {
-        //   userId:2,
-        //     email:"jomama@hotmail.gov",
-        //     name:"John Doe",
-        //     active:false,
-        //     subscribedStacktrace:true,
-        //     subscribedFlashcard:true,
-        //     authority:"ADMIN",
-        //     registrationTime:new Date(1620310931740),
-        //     lastLogin:new Date(1620310931740)
-        //   };
-        // //TODO remove this placeholder user in local storage
-        // localStorage.setItem('loggedInUser', JSON.stringify(u));
-        // console.log(localStorage.getItem("loggedInUser"));
-  }
+  constructor(
+    private route: ActivatedRoute,
+    private stacktraceService: StacktraceService,
+    private router: Router,
+    private technologyService: TechnologyService
+  ) {}
 
   ngOnInit(): void {
-    this.LoggedUser = JSON.parse(localStorage.getItem("loggedInUser") || "{}");
+    this.LoggedUser = JSON.parse(localStorage.getItem('loggedInUser') || '{}');
     this.getAllTechnology();
   }
 
@@ -77,7 +64,9 @@ export class NewStacktraceComponent implements OnInit {
     this.stacktrace.userId = this.LoggedUser.userId;
     this.stacktrace.technologyId = this.technologyId;
     console.log(this.stacktrace);
-    this.stacktraceService.save(this.stacktrace).subscribe(result => this.gotoStacktraceList());
+    this.stacktraceService
+      .save(this.stacktrace)
+      .subscribe((result) => this.gotoStacktraceList());
   }
 
   /**
@@ -91,12 +80,10 @@ export class NewStacktraceComponent implements OnInit {
    * Retrieves all technologies from the backend for display in the dropdown menu.
    */
   getAllTechnology() {
-    this.technologyService.getAllTechnology().then(
-      (      data: Technology[]) =>{
-        this.technology = data;
-        this.technologyId = this.technology[0].technologyId || 1;
-      }
-    )
+    this.technologyService.getAllTechnology().then((data: Technology[]) => {
+      this.technology = data;
+      this.technologyId = this.technology[0].technologyId || 1;
+    });
   }
 
   // Flag representing whether or not the dropdown button has been clicked
@@ -125,5 +112,4 @@ export class NewStacktraceComponent implements OnInit {
   setFalse() {
     this.yes = false;
   }
-
 }

@@ -6,14 +6,13 @@ import { UserService } from 'src/app/user/services/user.service';
 @Component({
   selector: 'app-post-login',
   templateUrl: './post-login.component.html',
-  styleUrls: ['./post-login.component.css']
+  styleUrls: ['./post-login.component.css'],
 })
 /**
  * Component is used to grab token and store in localStorage, and then uses the stored token to grab the user who just logged in
  * @author Steven Ceglarek
  */
 export class PostLoginComponent implements OnInit {
-
   // This class just takes the hash parameters from the authentication route and splits them, and then split the access_token and places it into localSotrage.
 
   /**
@@ -23,10 +22,14 @@ export class PostLoginComponent implements OnInit {
    * @param router used to redirect to homepage after this component is done
    * @param userService to grab the user who just logged in
    */
-  constructor(private route: ActivatedRoute, private router: Router, private userService: UserService) {
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private userService: UserService
+  ) {
     const fragment = route.snapshot.fragment;
-    const [a] = fragment.split("&");
-    const [key, value] = a.split("=");
+    const [a] = fragment.split('&');
+    const [key, value] = a.split('=');
     localStorage.setItem(key, value);
   }
 
@@ -43,18 +46,17 @@ export class PostLoginComponent implements OnInit {
    * Redirects to the homepage
    */
   redirect() {
-    this.router.navigate(["/flashcards"]);
+    this.router.navigate(['/flashcards']);
   }
 
   /**
    * Grabs the logged in user using the access_token and places that user into localStorge as a JSON string
    */
   async getUserLoggedIn() {
-    const user: Promise<User> = this.userService.getLoggedInUser();
-
-    let userString = JSON.stringify(user);
-
-    localStorage.setItem("loggedInUser", userString);
+    await this.userService.getLoggedInUser().then((res) => {
+      let u: User = res;
+      let userString = JSON.stringify(u);
+      localStorage.setItem('loggedInUser', userString);
+    });
   }
-
 }

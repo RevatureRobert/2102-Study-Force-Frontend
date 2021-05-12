@@ -12,14 +12,14 @@ import { User } from '../../models/user';
 @Component({
   selector: 'app-stacktrace-home',
   templateUrl: './stacktrace-home.component.html',
-  styleUrls: ['./stacktrace-home.component.css']
+  styleUrls: ['./stacktrace-home.component.css'],
 })
 export class StacktraceHomeComponent implements OnInit {
-  stacktraces : Stacktrace[] = [];
+  stacktraces: Stacktrace[] = [];
   currentStacktrace?: Stacktrace;
   technologyId: number = 1;
   technology: Technology[] = [];
-  currentIndex=-1;
+  currentIndex = -1;
   title = '';
   isAdmin = false;
   count = 0;
@@ -28,46 +28,44 @@ export class StacktraceHomeComponent implements OnInit {
   LoggedUser: any;
   searchTitleOnly: boolean = true;
   page: number = 0;
-  totalPages:number = 0;
+  totalPages: number = 0;
 
-  constructor(private stacktraceService:StacktraceService, private technologyService: TechnologyService, private router: Router) {
-    let u:User = {
-      userId:2,
-        email:"jomama@hotmail.gov",
-        name:"John Doe",
-        active:false,
-        subscribedStacktrace:true,
-        subscribedFlashcard:true,
-        authority:"ADMIN",
-        registrationTime:new Date(1620310931740),
-        lastLogin:new Date(1620310931740)
-      };
-    //TODO remove this placeholder user in local storage
-    localStorage.setItem('loggedInUser', JSON.stringify(u));
-   }
+  constructor(
+    private stacktraceService: StacktraceService,
+    private technologyService: TechnologyService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.retrieveStacktraces();
     this.getAllTechnology();
-    this.LoggedUser = JSON.parse(localStorage.getItem("loggedInUser") || "{}");
+    this.LoggedUser = JSON.parse(localStorage.getItem('loggedInUser') || '{}');
     this.getUserPriviledges();
   }
 
-/**
- * Gets the authority of the currently active user
- */
+  /**
+   * Gets the authority of the currently active user
+   */
 
   getUserPriviledges(): void {
-    if( this.LoggedUser.authority === 'ADMIN'){
+    if (
+      this.LoggedUser.authority === 'ADMIN' ||
+      this.LoggedUser.authority === 'SUPER_ADMIN'
+    ) {
       this.isAdmin = true;
-    };
+    }
   }
 
-/**
- * Converts variables into http request params
- */
+  /**
+   * Converts variables into http request params
+   */
 
-  getRequestParams(searchTitle: string, page: number, pageSize: number, searchTechnologyId?: number): any {
+  getRequestParams(
+    searchTitle: string,
+    page: number,
+    pageSize: number,
+    searchTechnologyId?: number
+  ): any {
     // tslint:disable-next-line:prefer-const
     let params: any = {};
 
@@ -90,83 +88,86 @@ export class StacktraceHomeComponent implements OnInit {
     return params;
   }
 
-/**
- * Retrieves a list of all technology from the database
- */
+  /**
+   * Retrieves a list of all technology from the database
+   */
 
-  getAllTechnology(){
-    this.technologyService.getAllTechnology().then(
-      data =>{
-        this.technology = data;
-        this.technologyId = this.technology[0].technologyId || 1;
-      }
-    )
+  getAllTechnology() {
+    this.technologyService.getAllTechnology().then((data) => {
+      this.technology = data;
+      this.technologyId = this.technology[0].technologyId || 1;
+    });
   }
 
-/**
- * Retrieves a list of stack traces with the given title and technology Id
- */
+  /**
+   * Retrieves a list of stack traces with the given title and technology Id
+   */
 
   retrieveStacktracesByTechnology(technologyId: number): void {
     this.searchTitleOnly = false;
     this.technologyId = technologyId;
-    const params = this.getRequestParams(this.title, this.page, this.pageSize, this.technologyId);
-    this.stacktraceService.findByTitleAndOrTechnology(params)
-    .subscribe(
-      response => {
+    const params = this.getRequestParams(
+      this.title,
+      this.page,
+      this.pageSize,
+      this.technologyId
+    );
+    this.stacktraceService.findByTitleAndOrTechnology(params).subscribe(
+      (response) => {
         this.stacktraces = response.content;
         this.totalPages = response.totalPages;
       },
-      error => {
+      (error) => {
         console.log(error);
-      });
+      }
+    );
   }
 
-/**
- * Retrieves all stack traces
- */
+  /**
+   * Retrieves all stack traces
+   */
 
   retrieveStacktraces(): void {
     const params = this.getRequestParams(this.title, this.page, this.pageSize);
-    this.stacktraceService.findAll(params)
-    .subscribe(
-      response => {
+    this.stacktraceService.findAll(params).subscribe(
+      (response) => {
         this.stacktraces = response.content;
         this.totalPages = response.totalPages;
       },
-      error => {
+      (error) => {
         console.log(error);
-      });
+      }
+    );
   }
 
-/**
- * Retrieves a list of stack traces with the given title
- */
+  /**
+   * Retrieves a list of stack traces with the given title
+   */
 
   retrieveStacktracesByTitle(): void {
-  const params = this.getRequestParams(this.title, this.page, this.pageSize);
-   this.stacktraceService.findByTitleAndOrTechnology(params)
-      .subscribe(
-        response => {
-          const { stacktraces, totalItems } = response;
-          this.stacktraces = response.content;
-          this.count = totalItems;
-        },
-        error => {
-          console.log(error);
-        });
+    const params = this.getRequestParams(this.title, this.page, this.pageSize);
+    this.stacktraceService.findByTitleAndOrTechnology(params).subscribe(
+      (response) => {
+        const { stacktraces, totalItems } = response;
+        this.stacktraces = response.content;
+        this.count = totalItems;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
-/**
- * Handles the search button
- */
+  /**
+   * Handles the search button
+   */
 
   onSearchButtonPress(): void {
     if (this.searchTitleOnly) {
       this.retrieveStacktracesByTitle();
     } else {
       this.retrieveStacktracesByTechnology(this.technologyId);
-        }
+    }
   }
 
   yes: boolean = false;
@@ -199,18 +200,36 @@ export class StacktraceHomeComponent implements OnInit {
    * Handles pagination
    */
 
-  prevPage(): void{
+  prevPage(): void {
     this.page--;
     if (this.title === '' && this.searchTitleOnly) {
-      const params = this.getRequestParams(this.title, this.page, this.pageSize);
-      this.stacktraceService.findAll(params).subscribe(data => this.stacktraces = data.content)
-    }
-    else if (this.searchTitleOnly) {
-      const params = this.getRequestParams(this.title, this.page, this.pageSize);
-      this.stacktraceService.findByTitleAndOrTechnology(params).subscribe(data => this.stacktraces = data.content);
+      const params = this.getRequestParams(
+        this.title,
+        this.page,
+        this.pageSize
+      );
+      this.stacktraceService
+        .findAll(params)
+        .subscribe((data) => (this.stacktraces = data.content));
+    } else if (this.searchTitleOnly) {
+      const params = this.getRequestParams(
+        this.title,
+        this.page,
+        this.pageSize
+      );
+      this.stacktraceService
+        .findByTitleAndOrTechnology(params)
+        .subscribe((data) => (this.stacktraces = data.content));
     } else {
-      const params = this.getRequestParams(this.title, this.page, this.pageSize, this.technologyId);
-      this.stacktraceService.findByTitleAndOrTechnology(params).subscribe(data => this.stacktraces = data.content);
+      const params = this.getRequestParams(
+        this.title,
+        this.page,
+        this.pageSize,
+        this.technologyId
+      );
+      this.stacktraceService
+        .findByTitleAndOrTechnology(params)
+        .subscribe((data) => (this.stacktraces = data.content));
     }
   }
 
@@ -218,19 +237,37 @@ export class StacktraceHomeComponent implements OnInit {
    * Handles pagination
    */
 
-  nextPage(): void{
+  nextPage(): void {
     this.page++;
     console.log(this.page);
     if (this.title === '' && this.searchTitleOnly) {
-      const params = this.getRequestParams(this.title, this.page, this.pageSize);
-      this.stacktraceService.findAll(params).subscribe( data => this.stacktraces = data.content);
-    }
-    else if (this.searchTitleOnly) {
-      const params = this.getRequestParams(this.title, this.page, this.pageSize);
-      this.stacktraceService.findByTitleAndOrTechnology(params).subscribe(data => this.stacktraces = data.content);
+      const params = this.getRequestParams(
+        this.title,
+        this.page,
+        this.pageSize
+      );
+      this.stacktraceService
+        .findAll(params)
+        .subscribe((data) => (this.stacktraces = data.content));
+    } else if (this.searchTitleOnly) {
+      const params = this.getRequestParams(
+        this.title,
+        this.page,
+        this.pageSize
+      );
+      this.stacktraceService
+        .findByTitleAndOrTechnology(params)
+        .subscribe((data) => (this.stacktraces = data.content));
     } else {
-      const params = this.getRequestParams(this.title, this.page, this.pageSize, this.technologyId);
-      this.stacktraceService.findByTitleAndOrTechnology(params).subscribe(data => this.stacktraces = data.content);
+      const params = this.getRequestParams(
+        this.title,
+        this.page,
+        this.pageSize,
+        this.technologyId
+      );
+      this.stacktraceService
+        .findByTitleAndOrTechnology(params)
+        .subscribe((data) => (this.stacktraces = data.content));
     }
   }
 }
