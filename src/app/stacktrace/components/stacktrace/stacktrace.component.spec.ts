@@ -52,23 +52,23 @@ fdescribe('StacktraceComponent', () => {
     fixture.detectChanges();
   });
 
-// Check if the component is created successfully
-  it('should create the component', () => {
-    expect(component).toBeTruthy();
-    console.log(component);
-  });
+// // Check if the component is created successfully
+//   it('should create the component', () => {
+//     expect(component).toBeTruthy();
+//     console.log(component);
+//   });
 
 
-  // Check initial values of properties
-  it('should contain a stacktrace object initially undefined"', () => {
-    expect(component.stacktrace).toBe(undefined);
-  });
+//   // Check initial values of properties
+//   it('should contain a stacktrace object initially undefined"', () => {
+//     expect(component.stacktraceId).toBe(undefined);
+//   });
 
 
-  // Check your DOM
-  it('should have an h2 tag of `Get Stacktrace`', () => {
-    expect(de.query(By.css('h2')).nativeElement.innerText).toBe('Get StackTrace');
-  });
+//   // Check your DOM
+//   it('should have an h2 tag of `Get Stacktrace`', () => {
+//     expect(de.query(By.css('h2')).nativeElement.innerText).toBe('Get StackTrace');
+//   });
 
   // it('should display stacktrace data', () =>{
   //   component.stacktrace = {
