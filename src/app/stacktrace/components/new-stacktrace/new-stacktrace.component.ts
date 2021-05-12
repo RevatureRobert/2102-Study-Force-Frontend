@@ -39,22 +39,6 @@ export class NewStacktraceComponent implements OnInit {
    * @param technologyService the service used to send Technology-related requests to the backend
    */
   constructor(private route: ActivatedRoute, private stacktraceService: StacktraceService, private router: Router, private technologyService: TechnologyService) {
-    this.stacktrace = new Stacktrace();
-        // //TODO remove this placeholder user
-        // let u:User = {
-        //   userId:2,
-        //     email:"jomama@hotmail.gov",
-        //     name:"John Doe",
-        //     active:false,
-        //     subscribedStacktrace:true,
-        //     subscribedFlashcard:true,
-        //     authority:"ADMIN",
-        //     registrationTime:new Date(1620310931740),
-        //     lastLogin:new Date(1620310931740)
-        //   };
-        // //TODO remove this placeholder user in local storage
-        // localStorage.setItem('loggedInUser', JSON.stringify(u));
-        // console.log(localStorage.getItem("loggedInUser"));
   }
 
   ngOnInit(): void {
