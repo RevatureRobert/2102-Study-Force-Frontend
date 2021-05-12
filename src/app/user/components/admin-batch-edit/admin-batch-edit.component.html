@@ -1,4 +1,4 @@
-<div>
+<div class="container">
   <div *ngIf="!loaded" id="glass-pane" class="glass-pane">
     <div class="card-header" id="Card-Header" style="text-align: center">
       <p style="font-size: 18pt; top: -0.7rem">Batch Detail</p>
@@ -40,7 +40,7 @@
           class="btn btn-danger"
           type="button"
           id="Deactivate-Batch-Button"
-          style="left: 920px"
+          style="position: relative; left: 230%"
           (click)="warningForDeactivate()"
         >
           Deactivate Batch
@@ -50,7 +50,7 @@
           class="btn btn-danger"
           type="button"
           id="Deactivate-Button"
-          style="left: 950px"
+          style="position: relative; left: 155%"
           (click)="warningForDelete()"
         >
           Delete
@@ -102,7 +102,7 @@
         </table>
       </div>
     </div>
-    <div class="row">
+    <div class="row" >
       <div class="wrapper col-8 mt-5 mx-auto" id="wrapper">
         <div class="table-responsive">
           <table class="table table-striped table-borderless">

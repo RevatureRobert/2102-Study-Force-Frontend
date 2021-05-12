@@ -29,7 +29,13 @@ label {
 #container2{
   position: relative;
   left: 50%;
-  top: -48px;
+  top: 0px;
+}
+
+#container3{
+  position: relative;
+  left: 33%;
+  top:50px;
 }
 .center-text{
   position: absolute;
@@ -83,14 +89,23 @@ label {
 
 }
 #wrapper {
+  top: -30px;
   overflow:auto;
-  height:400px;
+  position: relative;
+  height: 320px;
+
+
+}
+
+.table-responsive{
+  border-radius: 30px 30px 0px 0px ;
+  overflow: hidden ;
 }
 
 .glass-pane {
   position: absolute;
   width: 75%;
-  height: 75%;
+
   left: 50%;
   top: 100px;
   transform: translateX(-50%);
@@ -100,6 +115,7 @@ label {
   backdrop-filter: blur(100px);
   -webkit-backdrop-filter: blur(100px);
   border-radius: 30px;
+  
 }
 
 .card {
@@ -182,7 +198,7 @@ backdrop-filter: blur(100px);
 }
 
 table {
-  border-radius: 30px;
+  /* border-radius: 30px; */
   overflow: hidden;
 
   table-layout: fixed;
@@ -417,10 +433,6 @@ tbody > tr:nth-child(2n) {
   backdrop-filter: blur(100px);
 }
 
-table {
-  border-radius: 30px;
-  overflow: hidden;
-}
 
 .Remove-Button {
   opacity: 0.75;
