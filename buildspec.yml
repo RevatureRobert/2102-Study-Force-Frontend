@@ -1,20 +1,18 @@
 version: 0.2
 phases:
   install:
-    commands:
-      - apt-get update
-#    runtime-versions:
-#      nodejs: 14
+   runtime-versions:
+     nodejs: 14
   pre_build:
     commands:
-      - npm install
-#      - echo installing dependencies...
-#      - npm i -g @angular/cli
-#      - npm install
+#       - npm install
+     - echo installing dependencies...
+     - npm i -g @angular/cli
+     - npm install
   build:
     commands:
-      - npm run build --prod
-     # - ng build --prod
+#       - npm run build --prod
+     - ng build --prod
 
 artifacts:
   files:
