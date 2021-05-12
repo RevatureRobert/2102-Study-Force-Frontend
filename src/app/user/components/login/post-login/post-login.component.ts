@@ -37,8 +37,8 @@ export class PostLoginComponent implements OnInit {
    * These are ngOnInIt so that they get ran when this component is loaded up
    */
 
-  ngOnInit(): void {
-    this.getUserLoggedIn();
+  async ngOnInit()  {
+    await this.getUserLoggedIn();
     this.redirect();
   }
 

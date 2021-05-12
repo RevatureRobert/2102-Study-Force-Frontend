@@ -6,6 +6,8 @@ import { AnswerService } from 'src/app/flashcard/service/answer.service';
 import { FlashcardService } from 'src/app/flashcard/service/flashcard.service';
 import { Subscription } from 'rxjs';
 import { SearchContentService } from '../../../../global-components/search-content.service';
+import { SwPush } from '@angular/service-worker';
+import { SubscriptionServiceService } from 'src/app/flashcard/service/subscriptionservice.service';
 
 @Component({
   selector: 'app-view-flashcard-thread',
@@ -24,7 +26,8 @@ export class ViewFlashcardThreadComponent implements OnInit {
   constructor(
     private flashcardService: FlashcardService,
     private answerService: AnswerService,
-    private searchBar: SearchContentService
+    private searchBar: SearchContentService,
+    private subscriptionService:SubscriptionServiceService
   ) {}
 
   ngOnInit(): void {
@@ -36,6 +39,8 @@ export class ViewFlashcardThreadComponent implements OnInit {
       this.searchText = message;
       this.searchAnswers(this.searchText);
     });
+    // if(this.subscriptionService.hasSubscription())
+
   }
 
   getSelectedFlashcard(): void {

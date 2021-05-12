@@ -32,7 +32,7 @@ export class UserService {
 
     return this.http
       .get<any>(
-        this.apiUrl.concat(`/user/all?offset=${pageSize}&page=${pageNumber}`),
+        this.apiUrl.concat(`/users/all?offset=${pageSize}&page=${pageNumber}`),
         requestOptions
       )
       .toPromise();
@@ -56,7 +56,7 @@ export class UserService {
     };
 
     return this.http
-      .get<any>(this.apiUrl.concat('/user/me'), requestOptions)
+      .get<any>(this.apiUrl.concat('/users/me'), requestOptions)
       .toPromise();
   }
 

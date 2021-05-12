@@ -12,6 +12,8 @@ import { NotificationModule } from './notification/notification.module';
 import { SharedModule } from './shared.module';
 import { HomeComponent } from './home-component/home/home.component';
 import { HttpRequestInterceptor } from './httpHandler/http-request.interceptor';
+import { ServiceWorkerModule, SwPush } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -28,7 +30,13 @@ import { HttpRequestInterceptor } from './httpHandler/http-request.interceptor';
     FlashcardModule,
     StacktraceModule,
     NotificationModule,
-    UserModule
+    UserModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   providers: [
     {
@@ -39,4 +47,15 @@ import { HttpRequestInterceptor } from './httpHandler/http-request.interceptor';
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+  /**
+   * This is where the application to for push notifications and then display them
+   * @param push the SWPush module
+   */
+  constructor(push:SwPush){
+    push.notificationClicks.subscribe();
+
+  }
+}
+
+
