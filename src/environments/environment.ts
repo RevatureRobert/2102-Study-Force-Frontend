@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://52.91.175.61'
+  // apiUrl: 'http://52.91.175.61'
+  apiUrl: 'https://api.studyforce.it/'
 };
 
 /*

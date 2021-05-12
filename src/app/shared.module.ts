@@ -17,6 +17,7 @@ import { PaginationComponent } from './global-components/pagination/pagination.c
 import { ReplyCardComponent } from './global-components/reply-card/reply-card.component';
 import { SubmitContentCardComponent } from './global-components/submit-content-card/submit-content-card.component';
 import {FormsModule} from '@angular/forms';
+import {RouterModule} from '@angular/router'
 
 
 
@@ -41,7 +42,8 @@ import {FormsModule} from '@angular/forms';
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    RouterModule
   ],
   exports: [
     BasePageComponent,

@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FlashcardQuestionStyleComponent } from './flashcard-question.component';
+import { FlashcardQuestionStyleComponent } from './flashcard-question-style.component';
 
 describe('FlashcardComponent', () => {
   let component: FlashcardQuestionStyleComponent;
