@@ -63,7 +63,7 @@ export class NewStacktraceComponent implements OnInit {
   onSubmit() {
     this.stacktrace.userId = this.LoggedUser.userId;
     this.stacktrace.technologyId = this.technologyId;
-    console.log(this.stacktrace);
+
     this.stacktraceService
       .save(this.stacktrace)
       .subscribe((result) => this.gotoStacktraceList());

@@ -49,11 +49,9 @@ export class StacktraceComponent implements OnInit {
     ) {
       this.isAdmin = true;
     }
-    console.log(this.currentStacktrace.userId);
     if (this.LoggedUser.userId === this.currentStacktrace.userId) {
       this.isCreator = true;
     }
-    console.log(this.isCreator, this.isAdmin);
   }
 
   /**
@@ -63,11 +61,9 @@ export class StacktraceComponent implements OnInit {
     this.stacktraceService.getStacktrace(stacktraceId).subscribe(
       (data) => {
         this.currentStacktrace = data;
-        console.log(data);
         this.getUserPriviledges();
       },
       (error) => {
-        console.log(error);
       }
     );
   }

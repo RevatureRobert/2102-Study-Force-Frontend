@@ -16,16 +16,15 @@ import { Input } from '@angular/core';
 @Component({
   selector: 'app-admin-batch-edit',
   templateUrl: './admin-batch-edit.component.html',
-  styleUrls: ['./admin-batch-edit.component.css']
+  styleUrls: ['./admin-batch-edit.component.css'],
 })
 export class AdminBatchEditComponent implements OnInit {
-
-  users: string[] = [];  // String array that holds all the emails of all users in the batch.
-  instructors: string[] = [];  // String array that holds all the emails of all instructors in the batch.
-  creationTime = '';  // Creating time for the batch as a String.
-  name = '';  // Name of the batch.
-  loaded = false;  // To confirm view did load.
-  id = '';  // ID of the batch to be used for batch service method.
+  users: string[] = []; // String array that holds all the emails of all users in the batch.
+  instructors: string[] = []; // String array that holds all the emails of all instructors in the batch.
+  creationTime = ''; // Creating time for the batch as a String.
+  name = ''; // Name of the batch.
+  loaded = false; // To confirm view did load.
+  id = ''; // ID of the batch to be used for batch service method.
 
   userCurrentEmail = ''; // This is the place holder for the user email field in the form.
   instructorCurrentEmail = ''; // This is the place holder for the instructor email field in the form.
@@ -43,11 +42,10 @@ export class AdminBatchEditComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router
   ) {
-    this.route.params.subscribe(params => {
+    this.route.params.subscribe((params) => {
       this.id = params.id;
-
     });
-   }
+  }
 
   ngOnInit(): void {
     this.setUp();
@@ -60,19 +58,17 @@ export class AdminBatchEditComponent implements OnInit {
    * which only hold the emails of users/instructors instead of the actual user object.
    */
   setUp(): void {
-    this.batchService.getBatchById(this.id)
-    .subscribe(batch => {
-
-      for (const x in (batch.users)) {
+    this.batchService.getBatchById(this.id).subscribe((batch) => {
+      for (const x in batch.users) {
         this.users.push(batch.users[x].email);
       }
-      for (const index in (batch.instructors)) {
+      for (const index in batch.instructors) {
         this.instructors.push(batch.instructors[index].email);
       }
 
       const date = new Date(batch.creationTime);
       this.creationTime =
-      ((date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear());
+        date.getMonth() + 1 + '/' + date.getDate() + '/' + date.getFullYear();
       this.name = batch.name;
 
       this.loaded = true;
@@ -84,12 +80,13 @@ export class AdminBatchEditComponent implements OnInit {
    * If the user select yes thenit will execute the submit function.
    */
   async warningForSubmit() {
-
-    const answer = confirm(`Confirm the changes your have made on batch: ${this.name}.`);
-    if (answer == true){
-        this.loaded = false;
-        await this.submit();
-        this.redirect();
+    const answer = confirm(
+      `Confirm the changes your have made on batch: ${this.name}.`
+    );
+    if (answer == true) {
+      this.loaded = false;
+      await this.submit();
+      this.redirect();
     }
   }
 
@@ -98,8 +95,10 @@ export class AdminBatchEditComponent implements OnInit {
    * If the user select yes thenit will execute the delete function.
    */
   async warningForDelete() {
-    const answer = confirm(`Are you sure you want to delete batch: ${this.name}?`);
-    if (answer == true){
+    const answer = confirm(
+      `Are you sure you want to delete batch: ${this.name}?`
+    );
+    if (answer == true) {
       this.loaded = false;
       await this.delete();
       this.redirect();
@@ -111,8 +110,10 @@ export class AdminBatchEditComponent implements OnInit {
    * If the user select yes thenit will execute the deactivate function.
    */
   async warningForDeactivate() {
-    const answer = confirm(`Are you sure you want to deactivate batch: ${this.name}? \nAll users will be deactivated and the batch will be deleted.`);
-    if (answer == true){
+    const answer = confirm(
+      `Are you sure you want to deactivate batch: ${this.name}? \nAll users will be deactivated and the batch will be deleted.`
+    );
+    if (answer == true) {
       this.loaded = false;
       await this.deactivate();
       this.redirect();
@@ -123,13 +124,13 @@ export class AdminBatchEditComponent implements OnInit {
    * This is to redirect the admin back to the view batch details page.
    */
   redirect(): void {
-    this.router.navigateByUrl(`adminBatchDetails/${this.id}`) ;
+    this.router.navigateByUrl(`adminBatchDetails/${this.id}`);
   }
 
   /**
    * This is to refresh the page whenever a redirect is caleld.
    */
-  refreshPage(){
+  refreshPage() {
     window.location.reload();
   }
 
@@ -138,18 +139,23 @@ export class AdminBatchEditComponent implements OnInit {
    * Then this function use the updateBatch in batchService to perform the update function.
    * If a user tries to add in a user that doesn't exist in the database, it will alert the user about it.
    */
-  async submit(){
-
-    await this.batchService.updateBatch(this.id, this.name, this.instructors, this.users).
-    catch(error => alert(error.message.concat(` At least one of the user doesn't exist in the database.`)));
-
+  async submit() {
+    await this.batchService
+      .updateBatch(this.id, this.name, this.instructors, this.users)
+      .catch((error) =>
+        alert(
+          error.message.concat(
+            ` At least one of the user doesn't exist in the database.`
+          )
+        )
+      );
   }
 
   /**
    * This function delete the batch.
    */
 
-  async delete(){
+  async delete() {
     await this.batchService.deleteBatch(this.id);
   }
 
@@ -165,83 +171,81 @@ export class AdminBatchEditComponent implements OnInit {
    * @param email The email that is being checked against the regex
    */
 
-   isEmail(email: string): boolean {
-    let  isEmailVaild: boolean;
+  isEmail(email: string): boolean {
+    let isEmailVaild: boolean;
 
-    const regexp = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+    const regexp = new RegExp(
+      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
     isEmailVaild = regexp.test(email);
 
     return isEmailVaild;
-}
+  }
 
-/**
- * It checks the email to see if it is valid, if it is then it gets pushed to the array of emails
- * of users, if not then we alert the user to check the email format.
- * This method takes in email(user) that is already in the system.
- * @param formEmp This is where the method takes in the email from the user input
- * @returns
- */
- onAddUser(formEmp: NgForm) {
-  const checkedEmail = formEmp.value.email;
+  /**
+   * It checks the email to see if it is valid, if it is then it gets pushed to the array of emails
+   * of users, if not then we alert the user to check the email format.
+   * This method takes in email(user) that is already in the system.
+   * @param formEmp This is where the method takes in the email from the user input
+   * @returns
+   */
+  onAddUser(formEmp: NgForm) {
+    const checkedEmail = formEmp.value.email;
 
-  if (!this.isEmail(checkedEmail)) {
+    if (!this.isEmail(checkedEmail)) {
       alert('Please check emails and try and submit again');
       return;
+    }
+    const email = (this.userCurrentEmail = checkedEmail);
+
+    this.users.push(email);
+
+    return this.users;
   }
-  const email = this.userCurrentEmail = checkedEmail;
 
-  this.users.push(email);
+  /**
+   * It checks the email to see if it is valid, if it is then it gets pushed to the array of emails
+   * of instructors, if not then we alert the user to check the email format.
+   * This method takes in email(instructor) that is already in the system.
+   * @param formEmp2 This is where the method takes in the email from the user input
+   * @returns
+   */
+  onAddInstructor(formEmp2: NgForm) {
+    const checkedEmail = formEmp2.value.email;
 
-  return this.users;
-}
-
-/**
- * It checks the email to see if it is valid, if it is then it gets pushed to the array of emails
- * of instructors, if not then we alert the user to check the email format.
- * This method takes in email(instructor) that is already in the system.
- * @param formEmp2 This is where the method takes in the email from the user input
- * @returns
- */
- onAddInstructor(formEmp2: NgForm) {
-  const checkedEmail = formEmp2.value.email;
-
-  if (!this.isEmail(checkedEmail)) {
+    if (!this.isEmail(checkedEmail)) {
       alert('Please check emails and try and submit again');
       return;
+    }
+    const email = (this.instructorCurrentEmail = checkedEmail);
+
+    this.instructors.push(email);
+
+    return this.instructors;
   }
-  const email = this.instructorCurrentEmail = checkedEmail;
 
-  this.instructors.push(email);
+  /**
+   * Removing a specific user from the array of users on the display
+   * @param user the user that will be removed from the array
+   */
 
-  return this.instructors;
-}
+  onDeleteUser(user: string) {
+    this.users.forEach((value, index) => {
+      if (value == user) {
+        this.users.splice(index, 1);
+      }
+    });
+  }
 
-/**
- * Removing a specific user from the array of users on the display
- * @param user the user that will be removed from the array
- */
-
-onDeleteUser(user: string) {
-  this.users.forEach((value, index) => {
-    if (value == user) {
-      this.users.splice(index, 1);
-    }
-  });
-  console.log(this.users);
-}
-
-/**
- * Removing a specific instructor from the array of instructors on the display
- * @param user the user that will be removed from the array
- */
-onDeleteInstructor(user: string) {
-  this.instructors.forEach((value, index) => {
-    if (value == user) {
-      this.instructors.splice(index, 1);
-    }
-  });
-  console.log(this.instructors);
-}
-
-
+  /**
+   * Removing a specific instructor from the array of instructors on the display
+   * @param user the user that will be removed from the array
+   */
+  onDeleteInstructor(user: string) {
+    this.instructors.forEach((value, index) => {
+      if (value == user) {
+        this.instructors.splice(index, 1);
+      }
+    });
+  }
 }

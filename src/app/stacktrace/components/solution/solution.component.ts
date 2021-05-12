@@ -134,12 +134,12 @@ export class SolutionComponent implements OnInit {
   postSolution(): void {
     if (this.body === '') {
       alert('Please type solution before submitting');
-      console.log(this.createSolution);
+
       return;
     }
     this.createSolution.body = this.body;
     this.createSolution.userId = this.LoggedUser.userId;
-    console.log(this.createSolution);
+
     this.solutionService.postSolution(this.createSolution).then((data) => {
       window.location.reload();
     });

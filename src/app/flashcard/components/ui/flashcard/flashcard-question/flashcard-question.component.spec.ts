@@ -12,8 +12,7 @@ describe('FlashcardQuestionComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ FlashcardQuestionComponent, FlashcardDeleteComponent ]
-      // imports: [ HttpClientModule ],
-      // providers: [ FlashcardComponent ]
+
     })
     .compileComponents();
   });
@@ -24,7 +23,4 @@ describe('FlashcardQuestionComponent', () => {
     fixture.detectChanges();
   });
 
-  // it('should create', () => {
-  //   expect(component).toBeTruthy();
-  // });
 });

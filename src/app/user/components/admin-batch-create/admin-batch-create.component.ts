@@ -13,19 +13,18 @@ import { UserService } from '../../services/user.service';
 @Component({
   selector: 'app-admin-batch-create',
   templateUrl: './admin-batch-create.component.html',
-  styleUrls: ['./admin-batch-create.component.css']
+  styleUrls: ['./admin-batch-create.component.css'],
 })
 export class AdminBatchCreateComponent implements OnInit {
+  users: string[] = []; //String array that holds all the emails of all users in the batch.
+  instructors: string[] = []; //String array that holds all the emails of all instructors in the batch.
+  creationTime: string = ''; //Creating time for the batch as a String.
+  name: string = ''; //Name of the batch.
+  loaded: boolean = false; //To confirm view did load.
+  id: string = ''; //ID of the batch to be used for batch service method.
 
-  users: string[] = [];  //String array that holds all the emails of all users in the batch.
-  instructors: string[] = [];  //String array that holds all the emails of all instructors in the batch.
-  creationTime: string = '';  //Creating time for the batch as a String.
-  name: string = '';  //Name of the batch.
-  loaded:boolean = false;  //To confirm view did load.
-  id: string = "";  //ID of the batch to be used for batch service method.
-
-  userCurrentEmail:string = "";  //This is the place holder for the user email field in the form.
-  instructorCurrentEmail:string = "";  //This is the place holder for the instructor email field in the form.
+  userCurrentEmail: string = ''; //This is the place holder for the user email field in the form.
+  instructorCurrentEmail: string = ''; //This is the place holder for the instructor email field in the form.
 
   /**
    *
@@ -34,12 +33,10 @@ export class AdminBatchCreateComponent implements OnInit {
    * @param router The router this componet use to route back to the adminBatchDetails page.
    */
   constructor(
-    private batchService:BatchService,
-    private userService:UserService,
+    private batchService: BatchService,
+    private userService: UserService,
     private router: Router
-  ) {
-
-   }
+  ) {}
 
   ngOnInit(): void {
     this.setUp();
@@ -54,7 +51,7 @@ export class AdminBatchCreateComponent implements OnInit {
   setUp(): void {
     this.users = [];
     this.instructors = [];
-    this.name = "";
+    this.name = '';
     this.loaded = true;
   }
 
@@ -63,35 +60,37 @@ export class AdminBatchCreateComponent implements OnInit {
    * If the user select yes thenit will execute the submit function.
    */
   async warningForSubmit() {
-
-    let answer = confirm(`Confirm the changes your have made on batch: ${this.name}.`);
-    if (answer == true){
-        this.loaded = false;
-        await this.submit();
-        console.log(`adminBatchDetails/${this.id}`);
-        this.redirect();
+    let answer = confirm(
+      `Confirm the changes your have made on batch: ${this.name}.`
+    );
+    if (answer == true) {
+      this.loaded = false;
+      await this.submit();
+      this.redirect();
     }
   }
-
 
   /**
    * This is to redirect the admin back to the view batch details page.
    */
   redirect(): void {
-    console.log(`adminBatchDetails/${this.id}`);
-    this.router.navigateByUrl(`adminBatchDetails/${this.id}`) ;
+    this.router.navigateByUrl(`adminBatchDetails/${this.id}`);
   }
-
-
 
   /**
    * This is the submit button that create a batch base on the state of the batch object when the submit button is pressed.
    * Then this function use the updateBatch in batchService to perform the update function.
    */
-  async submit(){
+  async submit() {
     this.id =
-    (await this.batchService.createBatch("0",this.name, this.instructors, this.users)).batchId + "";
-    console.log(this.id);
+      (
+        await this.batchService.createBatch(
+          '0',
+          this.name,
+          this.instructors,
+          this.users
+        )
+      ).batchId + '';
   }
 
   /**
@@ -99,98 +98,98 @@ export class AdminBatchCreateComponent implements OnInit {
    * @param email The email that is being checked against the regex
    */
 
-  isEmail(email:string):boolean {
-    let  isEmailVaild:boolean;
+  isEmail(email: string): boolean {
+    let isEmailVaild: boolean;
 
-    let regexp = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+    let regexp = new RegExp(
+      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
     isEmailVaild = regexp.test(email);
 
     return isEmailVaild;
-}
-
-/**
- * It checks the email to see if it is valid, if it is then it gets pushed to the array of emails
- * of users, if not then we alert the user to check the email format.
- * This method takes in email(user) that is already in the system.
- * @param formEmp This is where the method takes in the email from the user input
- * @returns
- */
-onAddUser(formEmp: NgForm) {
-  let checkedEmail = formEmp.value.email;
-
-  if (!this.isEmail(checkedEmail)) {
-      alert("Please check emails and try and submit again");
-      return;
   }
-  const email = this.userCurrentEmail = checkedEmail;
 
-  this.users.push(email);
+  /**
+   * It checks the email to see if it is valid, if it is then it gets pushed to the array of emails
+   * of users, if not then we alert the user to check the email format.
+   * This method takes in email(user) that is already in the system.
+   * @param formEmp This is where the method takes in the email from the user input
+   * @returns
+   */
+  onAddUser(formEmp: NgForm) {
+    let checkedEmail = formEmp.value.email;
 
-  return this.users;
-}
-
-/**
- * Removing a specific user from the array of users on the display
- * @param user the user that will be removed from the array
- */
-
-onDeleteUser(user: string) {
-  this.users.forEach((value,index)=>{
-    if(value==user) {
-      this.users.splice(index,1);
-    }
-  });
-  console.log(this.users);
-}
-
-/**
- * Removing a specific instructor from the array of instructors on the display
- * @param user the user that will be removed from the array
- */
-onDeleteInstructor(user: string) {
-  this.instructors.forEach((value,index)=>{
-    if(value==user) {
-      this.instructors.splice(index,1);
-    }
-  });
-  console.log(this.instructors);
-}
-/**
- * It checks the email to see if it is valid, if it is then it gets pushed to the array of emails
- * of instructors, if not then we alert the user to check the email format.
- * This method takes in email(instructor) that is already in the system.
- * @param formEmp This is where the method takes in the email from the user input
- * @returns
- */
-onAddInstructor(formEmp2: NgForm) {
-  let checkedEmail = formEmp2.value.email;
-
-  if (!this.isEmail(checkedEmail)) {
-      alert("Please check emails and try and submit again");
+    if (!this.isEmail(checkedEmail)) {
+      alert('Please check emails and try and submit again');
       return;
+    }
+    const email = (this.userCurrentEmail = checkedEmail);
+
+    this.users.push(email);
+
+    return this.users;
   }
-  const email = this.instructorCurrentEmail = checkedEmail;
 
-  this.instructors.push(email);
+  /**
+   * Removing a specific user from the array of users on the display
+   * @param user the user that will be removed from the array
+   */
 
-  return this.instructors;
-}
+  onDeleteUser(user: string) {
+    this.users.forEach((value, index) => {
+      if (value == user) {
+        this.users.splice(index, 1);
+      }
+    });
+  }
+
+  /**
+   * Removing a specific instructor from the array of instructors on the display
+   * @param user the user that will be removed from the array
+   */
+  onDeleteInstructor(user: string) {
+    this.instructors.forEach((value, index) => {
+      if (value == user) {
+        this.instructors.splice(index, 1);
+      }
+    });
+  }
+  /**
+   * It checks the email to see if it is valid, if it is then it gets pushed to the array of emails
+   * of instructors, if not then we alert the user to check the email format.
+   * This method takes in email(instructor) that is already in the system.
+   * @param formEmp This is where the method takes in the email from the user input
+   * @returns
+   */
+  onAddInstructor(formEmp2: NgForm) {
+    let checkedEmail = formEmp2.value.email;
+
+    if (!this.isEmail(checkedEmail)) {
+      alert('Please check emails and try and submit again');
+      return;
+    }
+    const email = (this.instructorCurrentEmail = checkedEmail);
+
+    this.instructors.push(email);
+
+    return this.instructors;
+  }
 
   /**
    * Grabs the CSV and puts it into a FileReader and then reads through the CSV and splits them on commas and calls another function and
    * pushes it into an array
    * @param files the CSV file that is uploaded containing all the user emails that will be added to the user Array
    */
-    public changeListener(files: FileList){
-    if(files && files.length > 0) {
-      let file : File | null = files.item(0);
+  public changeListener(files: FileList) {
+    if (files && files.length > 0) {
+      let file: File | null = files.item(0);
       let reader: FileReader = new FileReader();
       reader.readAsText(file || new Blob());
       reader.onload = (e) => {
         let csv: string = reader.result as string;
-        this.addInformationIntoArray(csv.split(",\r\n"));
-        }
-      }
+        this.addInformationIntoArray(csv.split(',\r\n'));
+      };
+    }
   }
 
   /**
@@ -201,7 +200,9 @@ onAddInstructor(formEmp2: NgForm) {
   addInformationIntoArray(arrayString: Array<string>) {
     for (let i of arrayString) {
       if (!this.isEmail(i)) {
-        alert("There is an invalid email in CSV, please check CSV and resubmit")
+        alert(
+          'There is an invalid email in CSV, please check CSV and resubmit'
+        );
         return;
       }
     }
@@ -210,5 +211,4 @@ onAddInstructor(formEmp2: NgForm) {
       this.users.push(newUser);
     }
   }
-
 }

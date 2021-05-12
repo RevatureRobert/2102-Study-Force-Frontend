@@ -1,6 +1,6 @@
 .batchCard {
   background: #ffffff;
-  opacity: .5;
+  opacity: 0.5;
   border: 1px solid #e5e5e5;
   border-radius: 30px;
   position: absolute;
@@ -17,7 +17,7 @@ label {
   top: -12px;
   right: -20px;
 }
-#container{
+#container {
   position: relative;
 
   top: 38px;
@@ -26,26 +26,25 @@ label {
   min-width: 10%;
 }
 
-#container2{
+#container2 {
   position: relative;
   left: 50%;
   top: -48px;
 }
-.center-text{
+.center-text {
   position: absolute;
   top: 13px;
   left: 38px;
-  color:black;
+  color: black;
   font-family: Roboto;
   font-style: normal;
-
 }
 
-.center-text2{
+.center-text2 {
   position: absolute;
   top: 50px;
   left: -90px;
-  color:black;
+  color: black;
   font-family: Roboto;
   font-style: normal;
 }
@@ -57,7 +56,6 @@ label {
   border-radius: 30px;
   width: 148px;
   height: 49px;
-
 }
 
 .instructors {
@@ -80,11 +78,10 @@ label {
   opacity: 0.95;
   width: 50%;
   max-height: 400px;
-
 }
 #wrapper {
-  overflow:auto;
-  height:400px;
+  overflow: auto;
+  height: 400px;
 }
 
 .glass-pane {
@@ -168,17 +165,24 @@ th {
   background: white;
 }
 
-.table-striped > tbody > tr:nth-child(2n+1) {
-  background: linear-gradient(90.34deg, rgba(255, 255, 255, 0.81) 0%, rgba(255, 255, 255, 0.72) 100%);
-mix-blend-mode: normal;
-backdrop-filter: blur(100px);
+.table-striped > tbody > tr:nth-child(2n + 1) {
+  background: linear-gradient(
+    90.34deg,
+    rgba(255, 255, 255, 0.81) 0%,
+    rgba(255, 255, 255, 0.72) 100%
+  );
+  mix-blend-mode: normal;
+  backdrop-filter: blur(100px);
 }
 
-
-.table-striped > tbody > tr:nth-child(2n){
-  background: linear-gradient(90.34deg, rgba(255, 255, 255, 0.56) 0%, rgba(255, 255, 255, 0.42) 100%);
-mix-blend-mode: normal;
-backdrop-filter: blur(100px);
+.table-striped > tbody > tr:nth-child(2n) {
+  background: linear-gradient(
+    90.34deg,
+    rgba(255, 255, 255, 0.56) 0%,
+    rgba(255, 255, 255, 0.42) 100%
+  );
+  mix-blend-mode: normal;
+  backdrop-filter: blur(100px);
 }
 
 table {
@@ -190,16 +194,18 @@ table {
 
 th {
   padding: 13px;
-  font-weight: bold; color: #153C53; font-family: Roboto; font-style: normal;
-
+  font-weight: bold;
+  color: #153c53;
+  font-family: Roboto;
+  font-style: normal;
 }
 
-td{
+td {
   padding: 13px;
-  font-family: Roboto; font-style: normal;
+  font-family: Roboto;
+  font-style: normal;
   line-height: 41px;
 }
-
 
 #Login-Button {
   opacity: 0.75;
@@ -364,14 +370,12 @@ td{
   border-radius: 30px;
 }
 
-
 .deactivate {
   position: absolute;
-width: 175px;
-height: 34px;
-left: 47%;
-bottom: 15px;
-
+  width: 175px;
+  height: 34px;
+  left: 47%;
+  bottom: 15px;
 }
 
 #Upload-CSV-Button {
@@ -490,11 +494,7 @@ caption {
 td {
   width: 100%;
 }
-#MoveTheFuckOver {
-  position: relative;
-  right: 0px;
-  width: 100%;
-}
+
 #Dropdown-Button {
   width: 175px;
   color: rgba(21, 60, 83, 1);

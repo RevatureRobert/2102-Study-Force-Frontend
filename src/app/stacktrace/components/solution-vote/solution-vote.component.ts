@@ -38,11 +38,6 @@ export class SolutionVoteComponent implements OnInit {
     this.initializeVote();
   }
 
-  isErrorTrue(): void {
-    if (this.error === 'You have already voted on that solution.')
-      this.isError = true;
-  }
-
   /**
    * This method is used to load the values to be passed for the creation of a solution vote.
    */

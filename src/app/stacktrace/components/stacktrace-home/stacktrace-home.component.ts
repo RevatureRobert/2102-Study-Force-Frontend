@@ -66,7 +66,6 @@ export class StacktraceHomeComponent implements OnInit {
     pageSize: number,
     searchTechnologyId?: number
   ): any {
-    // tslint:disable-next-line:prefer-const
     let params: any = {};
 
     if (searchTechnologyId) {
@@ -117,9 +116,7 @@ export class StacktraceHomeComponent implements OnInit {
         this.stacktraces = response.content;
         this.totalPages = response.totalPages;
       },
-      (error) => {
-        console.log(error);
-      }
+      (error) => {}
     );
   }
 
@@ -134,9 +131,7 @@ export class StacktraceHomeComponent implements OnInit {
         this.stacktraces = response.content;
         this.totalPages = response.totalPages;
       },
-      (error) => {
-        console.log(error);
-      }
+      (error) => {}
     );
   }
 
@@ -152,9 +147,7 @@ export class StacktraceHomeComponent implements OnInit {
         this.stacktraces = response.content;
         this.count = totalItems;
       },
-      (error) => {
-        console.log(error);
-      }
+      (error) => {}
     );
   }
 
@@ -239,7 +232,6 @@ export class StacktraceHomeComponent implements OnInit {
 
   nextPage(): void {
     this.page++;
-    console.log(this.page);
     if (this.title === '' && this.searchTitleOnly) {
       const params = this.getRequestParams(
         this.title,
