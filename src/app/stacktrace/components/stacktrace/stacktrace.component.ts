@@ -44,8 +44,8 @@ export class StacktraceComponent implements OnInit {
    */
   getUserPriviledges(): void {
     if (
-      this.LoggedUser.authority === 'ADMIN' ||
-      this.LoggedUser.authority === 'SUPER_ADMIN'
+      this.LoggedUser.authority === 'ROLE_ADMIN' ||
+      this.LoggedUser.authority === 'ROLE_SUPER_ADMIN'
     ) {
       this.isAdmin = true;
     }

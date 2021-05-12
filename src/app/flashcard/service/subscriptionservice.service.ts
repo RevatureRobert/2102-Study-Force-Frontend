@@ -28,7 +28,6 @@ export class SubscriptionServiceService {
     userId : 8
 
   }
-  console.log(body);
   const headers= new HttpHeaders()
   .set('content-type', 'application/json')
   .set('Access-Control-Allow-Origin', '*');

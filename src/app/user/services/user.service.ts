@@ -208,9 +208,9 @@ export class UserService {
    */
   updateUserAuthority(authority: string, userId: number): Promise<any> {
     if (
-      authority !== 'USER' &&
-      authority !== 'ADMIN' &&
-      authority !== 'SUPER_ADMIN'
+      authority !== 'ROLE_USER' &&
+      authority !== 'ROLE_ADMIN' &&
+      authority !== 'ROLE_SUPER_ADMIN'
     ) {
       throw new TypeError();
     }

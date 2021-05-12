@@ -49,7 +49,7 @@ export class UserProfileComponent implements OnInit {
     let u: User = JSON.parse(localStorage.getItem('loggedInUser')!);
 
     this.isAdmin =
-      (u.authority === 'ADMIN' || u.authority === 'SUPER_ADMIN') && !this.isMe;
+      (u.authority === 'ROLE_ADMIN' || u.authority === 'ROLE_SUPER_ADMIN') && !this.isMe;
 
     this.isLoading = false;
   }

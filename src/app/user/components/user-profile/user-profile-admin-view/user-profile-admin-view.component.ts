@@ -38,12 +38,12 @@ export class UserProfileAdminViewComponent implements OnInit {
   ngOnInit(): void {
     let u: User = JSON.parse(localStorage.getItem('loggedInUser')!);
 
-    if (u.authority == 'ADMIN') {
+    if (u.authority == 'ROLE_ADMIN') {
       this.userVisible = true;
       this.adminVisible = true;
       this.superAdminVisible = false;
       this.activateVisible = true;
-    } else if (u.authority == 'SUPER_ADMIN') {
+    } else if (u.authority == 'ROLE_SUPER_ADMIN') {
       this.userVisible = true;
       this.adminVisible = true;
       this.superAdminVisible = true;
@@ -51,10 +51,10 @@ export class UserProfileAdminViewComponent implements OnInit {
     }
 
     if (
-      (u.authority == 'ADMIN' &&
-        (this.user?.authority == 'ADMIN' ||
-          this.user?.authority == 'SUPER_ADMIN')) ||
-      (u.authority == 'SUPER_ADMIN' && this.user?.authority == 'SUPER_ADMIN')
+      (u.authority == 'ROLE_ADMIN' &&
+        (this.user?.authority == 'ROLE_ADMIN' ||
+          this.user?.authority == 'ROLE_SUPER_ADMIN')) ||
+      (u.authority == 'ROLE_SUPER_ADMIN' && this.user?.authority == 'ROLE_SUPER_ADMIN')
     ) {
       this.userVisible = false;
       this.adminVisible = false;
