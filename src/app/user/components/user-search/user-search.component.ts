@@ -125,7 +125,6 @@ export class UserSearchComponent implements OnInit, AfterViewInit {
       parent.style.setProperty('background-color', '');
 
       this.prevIndex = i;
-      // this.currentIndex = i * this.pageSize;
 
       let parent2 = document.querySelectorAll<HTMLElement>('.page-link')[i + 1];
       parent2.style.setProperty('background-color', 'blue');

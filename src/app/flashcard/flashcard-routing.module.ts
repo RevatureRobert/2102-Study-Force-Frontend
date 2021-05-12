@@ -6,20 +6,17 @@ import { SubmitAnswerPageComponent } from './components/pages/submit-answer-page
 import { ViewFlashcardThreadComponent } from './components/pages/view-flashcard-thread/view-flashcard-thread.component';
 import { FlashcardTopicComponent } from './components/ui/flashcard/flashcard-topic/flashcard-topic.component';
 
-
 const routes: Routes = [
-  { path: '', redirectTo: '/view-flashcards', pathMatch: 'full'},
+  { path: '', redirectTo: '/view-flashcards', pathMatch: 'full' },
   { path: 'create-question', component: CreateFlashcardPageComponent },
   { path: 'submit-answer', component: SubmitAnswerPageComponent },
-  { path: 'view-thread', component: ViewFlashcardThreadComponent},
-  { path: 'view-flashcards', component: FlashcardPageComponent},
-  { path: 'view-topics', component: FlashcardTopicComponent} //require admin auth guard, please add in the future
+  { path: 'view-thread', component: ViewFlashcardThreadComponent },
+  { path: 'view-flashcards', component: FlashcardPageComponent },
+  { path: 'view-topics', component: FlashcardTopicComponent },
 ];
 
 @NgModule({
-
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
-
+  exports: [RouterModule],
 })
-export class FlashcardRoutingModule { }
+export class FlashcardRoutingModule {}

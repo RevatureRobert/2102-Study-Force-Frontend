@@ -47,7 +47,6 @@ export class NotificationComponent implements OnInit {
   Deleting a specific Notification from notificationService
   Author: Ronald Lopez
    */
-  // tslint:disable-next-line:typedef
   deleteNotification(notification: Notification) {
     this.notificationService.deleteByNotificationId(notification.id).subscribe();
   }

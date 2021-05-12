@@ -11,7 +11,7 @@ import { environment } from '../../../environments/environment';
  */
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 /**
  * Service used for all CRUD operations related to batches
@@ -19,31 +19,27 @@ import { environment } from '../../../environments/environment';
  * @author Lok Kan Kung
  */
 export class BatchService {
-
   private apiUrl = environment.apiUrl;
 
   batches = 'batches'; // Specific endpoint to hit batches.
   deactivate = 'deactivateBatch'; // Specific endpoint to hit deactivateBatch.
   update = 'update'; // Specific endpoint to hit update.
 
-/**
- * This Model send only what is needed to create/update a batch, instead of the full Batch Object.
- */
+  /**
+   * This Model send only what is needed to create/update a batch, instead of the full Batch Object.
+   */
   body: CreateUpdateBatch = {
     batchId: 0,
     name: '',
     instructors: [],
-    users: []
+    users: [],
   };
-
 
   /**
    *
    * @param http The client for handling HTTP requests for this service.
    */
-  constructor(
-    private http: HttpClient
-  ) { }
+  constructor(private http: HttpClient) {}
 
   /**
    * GETs request to the backend.
@@ -51,7 +47,6 @@ export class BatchService {
    * @returns Observable Batch object which the correct ID.
    */
   getBatchById(id: string): Observable<Batch> {
-
     const url = `${this.apiUrl}/${this.batches}/${id}`;
     return this.http.get<Batch>(url);
   }
@@ -64,26 +59,29 @@ export class BatchService {
    * @param usersEmail emails for all the users.
    * @returns a Promise<any>
    */
-  updateBatch(id: string, name: string, instructorsEmail: string[], usersEmail: string[]): Promise<any>{
-
+  updateBatch(
+    id: string,
+    name: string,
+    instructorsEmail: string[],
+    usersEmail: string[]
+  ): Promise<any> {
     const headerInfo = {
       'Content-Type': 'application/json',
       Accept: 'application/json',
     };
 
     const requestOptions = {
-      headers: new HttpHeaders(headerInfo)
+      headers: new HttpHeaders(headerInfo),
     };
 
-    const body = this.body = {
-        batchId: parseInt(id, 10),
-        name,
-        instructors: instructorsEmail,
-        users: usersEmail
-      };
+    const body = (this.body = {
+      batchId: parseInt(id, 10),
+      name,
+      instructors: instructorsEmail,
+      users: usersEmail,
+    });
 
     const url = `${this.apiUrl}/${this.batches}`;
-    console.log(body);
     return this.http.put<any>(url, body, requestOptions).toPromise();
   }
 
@@ -95,25 +93,29 @@ export class BatchService {
    * @param usersEmail emails for all the users.
    * @returns a Promise<Batch>
    */
-  createBatch(id: string, name: string, instructorsEmail: string[], usersEmail: string[]): Promise<Batch>{
+  createBatch(
+    id: string,
+    name: string,
+    instructorsEmail: string[],
+    usersEmail: string[]
+  ): Promise<Batch> {
     const headerInfo = {
       'Content-Type': 'application/json',
       Accept: 'application/json',
     };
 
     const requestOptions = {
-      headers: new HttpHeaders(headerInfo)
+      headers: new HttpHeaders(headerInfo),
     };
 
-    const body = this.body = {
+    const body = (this.body = {
       batchId: parseInt(id, 10),
       name,
       instructors: instructorsEmail,
-      users: usersEmail
-    };
+      users: usersEmail,
+    });
 
     const url = `${this.apiUrl}/${this.batches}`;
-    console.log(body);
     return this.http.post<Batch>(url, body, requestOptions).toPromise();
   }
 
@@ -122,8 +124,7 @@ export class BatchService {
    * @param id The ID for the batch to be deleted
    * @returns Promise Batch Object
    */
-  deleteBatch(id: string): Promise<any>{
-
+  deleteBatch(id: string): Promise<any> {
     const url = `${this.apiUrl}/${this.batches}/${id}`;
     return this.http.delete<any>(url).toPromise();
   }
@@ -133,8 +134,7 @@ export class BatchService {
    * @param id The ID for the batch to be deactivated
    * @returns Promise Batch Object
    */
-  deactivateBatch(id: string): Promise<any>{
-
+  deactivateBatch(id: string): Promise<any> {
     const url = `${this.apiUrl}/${this.batches}/${this.deactivate}/${id}`;
     return this.http.put<any>(url, '').toPromise();
   }
@@ -144,7 +144,8 @@ export class BatchService {
    * @param userId The userId by which batches will be retrieved
    */
   getBatchesByMemberId(userId: number): Promise<any> {
-    return this.http.get<any>(this.apiUrl.concat(`/batches/userid/${userId}`)).toPromise();
+    return this.http
+      .get<any>(this.apiUrl.concat(`/batches/userid/${userId}`))
+      .toPromise();
   }
-
 }

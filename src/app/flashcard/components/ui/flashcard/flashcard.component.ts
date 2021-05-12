@@ -22,7 +22,6 @@ export class FlashcardComponent implements OnInit {
   subscribed = false;
   bellStyle = '../../../assets/bell.svg';
 
-  // TODO: GET CURRENT USER FROM STORAGE
   userId!:number;
 
   public deleteId?: number;

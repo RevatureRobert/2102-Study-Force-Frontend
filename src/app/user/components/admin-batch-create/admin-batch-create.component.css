@@ -1,6 +1,6 @@
 .batchCard {
   background: #ffffff;
-  opacity: 0.5;
+  opacity: .5;
   border: 1px solid #e5e5e5;
   border-radius: 30px;
   position: absolute;
@@ -17,10 +17,7 @@ label {
   top: -12px;
   right: -20px;
 }
-.row {
-  margin-bottom: 10px;
-}
-#container {
+#container{
   position: relative;
 
   top: 38px;
@@ -29,31 +26,26 @@ label {
   min-width: 10%;
 }
 
-#container2 {
+#container2{
   position: relative;
   left: 50%;
-  top: 0px;
+  top: -48px;
 }
-
-#container3 {
-  position: relative;
-  left: 33%;
-  top: 50px;
-}
-.center-text {
+.center-text{
   position: absolute;
   top: 13px;
   left: 38px;
-  color: black;
+  color:black;
   font-family: Roboto;
   font-style: normal;
+
 }
 
-.center-text2 {
+.center-text2{
   position: absolute;
   top: 50px;
   left: -90px;
-  color: black;
+  color:black;
   font-family: Roboto;
   font-style: normal;
 }
@@ -65,6 +57,7 @@ label {
   border-radius: 30px;
   width: 148px;
   height: 49px;
+
 }
 
 .instructors {
@@ -73,10 +66,10 @@ label {
   transform: translateX(-50%);
   /* top: 117px; */
   opacity: 0.95;
-  /* max-height: 200px; */
+  max-height: 200px;
   max-width: 35%;
   min-width: 28%;
-  /* overflow: auto; */
+  overflow: auto;
 }
 
 .users {
@@ -87,26 +80,19 @@ label {
   opacity: 0.95;
   width: 50%;
   max-height: 400px;
+
 }
 #wrapper {
-  top: -30px;
-  /* overflow: auto; */
-  position: relative;
-  height: 320px;
-}
-
-.table-responsive {
-  border-radius: 30px 30px 0px 0px;
-  /* overflow: hidden; */
+  overflow:auto;
+  height:400px;
 }
 
 .glass-pane {
   position: absolute;
   width: 75%;
+  height: 75%;
   left: 50%;
-  overflow: auto;
-  top: 10%;
-  bottom: 10px;
+  top: 100px;
   transform: translateX(-50%);
   box-shadow: 0 8px 15px 0 rgba(31, 38, 135, 0.37);
 
@@ -182,53 +168,100 @@ th {
   background: white;
 }
 
-.table-striped > tbody > tr:nth-child(2n + 1) {
-  background: linear-gradient(
-    90.34deg,
-    rgba(255, 255, 255, 0.81) 0%,
-    rgba(255, 255, 255, 0.72) 100%
-  );
-  mix-blend-mode: normal;
-  backdrop-filter: blur(100px);
+.table-striped > tbody > tr:nth-child(2n+1) {
+  background: linear-gradient(90.34deg, rgba(255, 255, 255, 0.81) 0%, rgba(255, 255, 255, 0.72) 100%);
+mix-blend-mode: normal;
+backdrop-filter: blur(100px);
 }
 
-.table-striped > tbody > tr:nth-child(2n) {
-  background: linear-gradient(
-    90.34deg,
-    rgba(255, 255, 255, 0.56) 0%,
-    rgba(255, 255, 255, 0.42) 100%
-  );
-  mix-blend-mode: normal;
-  backdrop-filter: blur(100px);
+
+.table-striped > tbody > tr:nth-child(2n){
+  background: linear-gradient(90.34deg, rgba(255, 255, 255, 0.56) 0%, rgba(255, 255, 255, 0.42) 100%);
+mix-blend-mode: normal;
+backdrop-filter: blur(100px);
+}
+
+table {
+  border-radius: 30px;
+  overflow: hidden;
+
+  table-layout: fixed;
 }
 
 th {
   padding: 13px;
-  font-weight: bold;
-  color: #153c53;
-  font-family: Roboto;
-  font-style: normal;
+  font-weight: bold; color: #153C53; font-family: Roboto; font-style: normal;
+
 }
 
-td {
+td{
   padding: 13px;
-  font-family: Roboto;
-  font-style: normal;
+  font-family: Roboto; font-style: normal;
   line-height: 41px;
+}
+
+
+#Login-Button {
+  opacity: 0.75;
+  position: relative;
+  width: 84px;
+  background: #0275d8;
+  border: 1px solid #0275d8;
+  box-sizing: border-box;
+  border-radius: 30px;
+}
+
+#View-More-Button {
+  color: #153c53;
+  position: relative;
+  background: linear-gradient(
+    99.35deg,
+    rgba(255, 255, 255, 0.7) 0%,
+    rgba(255, 255, 255, 0.35) 99.96%
+  );
+  border: none;
+  backdrop-filter: blur(50px);
+  border-radius: 10px;
 }
 
 #Submit-Button {
   opacity: 0.75;
+  position: relative;
   width: 86px;
   background: #0275d8;
   border: 1px solid #0275d8;
   box-sizing: border-box;
   border-radius: 30px;
-  position: absolute;
-  margin: 10px;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
+}
+
+#Register-Button {
+  opacity: 0.75;
+  position: relative;
+  width: 86px;
+  background: #0275d8;
+  border: 1px solid #0275d8;
+  box-sizing: border-box;
+  border-radius: 30px;
+}
+
+#Signup-Button {
+  opacity: 0.75;
+  position: relative;
+  width: 86px;
+  background: #0275d8;
+  border: 1px solid #0275d8;
+  box-sizing: border-box;
+  border-radius: 30px;
+}
+
+#Back-Button {
+  opacity: 0.75;
+  position: relative;
+  width: 86px;
+  background: #0275d8;
+  border: 1px solid #0275d8;
+  box-sizing: border-box;
+  border-radius: 30px;
 }
 
 #Upload-CSV-Button {
@@ -239,7 +272,36 @@ td {
   border: 1px solid #0275d8;
   box-sizing: border-box;
   border-radius: 30px;
-  margin: 10px;
+}
+
+#Edit-Button {
+  opacity: 0.75;
+  position: relative;
+  width: 148px;
+  background: #0275d8;
+  border: 1px solid #0275d8;
+  box-sizing: border-box;
+  border-radius: 30px;
+}
+
+#Add-Button {
+  opacity: 0.75;
+  position: relative;
+  width: 148px;
+  background: #00d600;
+  border: 1px solid #80b366;
+  box-sizing: border-box;
+  border-radius: 30px;
+}
+
+#Cancel-Button {
+  opacity: 0.75;
+  position: relative;
+  width: 148px;
+  background: #00d600;
+  border: 1px solid #80b366;
+  box-sizing: border-box;
+  border-radius: 30px;
 }
 
 #Remove-Button {
@@ -252,14 +314,64 @@ td {
   border-radius: 30px;
 }
 
-.deactivate {
-  margin: 10px;
-  position: fixed;
-  right: 50%;
-  bottom: 0;
+#Deactivate-Batch-Button {
+  opacity: 0.75;
+  position: relative;
+  width: 175px;
+  background: #ff0101;
+  border: 1px solid #ff0000;
+  box-sizing: border-box;
+  border-radius: 30px;
 }
-table {
-  padding: 10px;
+
+#Activate-Button {
+  opacity: 0.75;
+  position: relative;
+  width: 148px;
+  background: #ff0101;
+  border: 1px solid #ff0000;
+  box-sizing: border-box;
+  border-radius: 30px;
+}
+
+#Deactivate-Button {
+  opacity: 0.75;
+  position: relative;
+  width: 148px;
+  background: #ff0101;
+  border: 1px solid #ff0000;
+  box-sizing: border-box;
+  border-radius: 30px;
+}
+
+#Promote-Button {
+  opacity: 0.75;
+  position: relative;
+  width: 148px;
+  background: #ff0101;
+  border: 1px solid #ff0000;
+  box-sizing: border-box;
+  border-radius: 30px;
+}
+
+#Demote-Button {
+  opacity: 0.75;
+  position: relative;
+  width: 148px;
+  background: #ff0101;
+  border: 1px solid #ff0000;
+  box-sizing: border-box;
+  border-radius: 30px;
+}
+
+
+.deactivate {
+  position: absolute;
+width: 175px;
+height: 34px;
+left: 47%;
+bottom: 15px;
+
 }
 
 #Upload-CSV-Button {
@@ -279,7 +391,7 @@ th {
 .my-custom-scrollbar {
   position: relative;
   height: 200px;
-  /* overflow: auto; */
+  overflow: auto;
 }
 .table-wrapper-scroll-y {
   display: block;
@@ -303,6 +415,11 @@ tbody > tr:nth-child(2n) {
   );
   mix-blend-mode: normal;
   backdrop-filter: blur(100px);
+}
+
+table {
+  border-radius: 30px;
+  overflow: hidden;
 }
 
 .Remove-Button {
@@ -340,6 +457,16 @@ tbody > tr:nth-child(2n) {
   border-radius: 30px;
 }
 
+#Submit-Button {
+  opacity: 0.75;
+  position: relative;
+  width: 86px;
+  background: #0275d8;
+  border: 1px solid #0275d8;
+  box-sizing: border-box;
+  border-radius: 30px;
+}
+
 .upload-btn-wrapper input[type="file"] {
   font-size: 100px;
   position: absolute;
@@ -350,6 +477,7 @@ tbody > tr:nth-child(2n) {
 
 .upload-btn-wrapper {
   position: relative;
+  overflow: hidden;
   display: inline-block;
 }
 
@@ -361,4 +489,61 @@ caption {
 
 td {
   width: 100%;
+}
+
+#Dropdown-Button {
+  width: 175px;
+  color: rgba(21, 60, 83, 1);
+  background: #ffffff;
+  box-shadow: 0px -1px 0px #eceeef;
+  position: relative;
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: none;
+}
+
+#Dropdown-Button:not(:focus) {
+  border-radius: 10px !important;
+}
+
+#Dropdown-List {
+  position: absolute;
+  top: -2px !important;
+  background: none;
+  width: 175px;
+  box-sizing: border-box;
+  border: none;
+  padding: 0px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+#Dropdown-List li:nth-child(2n-1) {
+  background: linear-gradient(
+    90.34deg,
+    rgba(255, 255, 255, 0.81) 0%,
+    rgba(255, 255, 255, 0.72) 100%
+  );
+  mix-blend-mode: normal;
+  backdrop-filter: blur(100px);
+}
+
+#Dropdown-List li:nth-child(2n) {
+  background: linear-gradient(
+    90.34deg,
+    rgba(255, 255, 255, 0.56) 0%,
+    rgba(255, 255, 255, 0.42) 100%
+  );
+  mix-blend-mode: normal;
+  backdrop-filter: blur(100px);
+}
+#Dropdown-List li:last-child {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+#Dropdown:hover li:last-child a {
+  box-sizing: border-box;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }

@@ -26,12 +26,6 @@ label {
   min-width: 10%;
 }
 
-p > input {
-  border-radius: 30px;
-  text-align: center;
-  border: none;
-}
-
 #container2 {
   position: relative;
   left: 50%;
@@ -76,7 +70,7 @@ p > input {
   overflow: auto;
 }
 
-#users {
+.users {
   position: relative;
   left: 50%;
   transform: translateX(-50%);
@@ -86,17 +80,14 @@ p > input {
   max-height: 400px;
 }
 #wrapper {
-  top: -49px;
   overflow: auto;
-  position: relative;
-
-  border-radius: 30px;
+  height: 400px;
 }
 
 .glass-pane {
   position: absolute;
   width: 75%;
-  min-height: 800px;
+  height: 75%;
   left: 50%;
   top: 100px;
   transform: translateX(-50%);
@@ -106,8 +97,6 @@ p > input {
   backdrop-filter: blur(100px);
   -webkit-backdrop-filter: blur(100px);
   border-radius: 30px;
-  bottom: 0;
-  overflow: auto;
 }
 
 .card {
@@ -176,11 +165,6 @@ th {
   background: white;
 }
 
-tbody {
-  max-height: 300px !important;
-  overflow: auto;
-}
-
 .table-striped > tbody > tr:nth-child(2n + 1) {
   background: linear-gradient(
     90.34deg,
@@ -189,11 +173,6 @@ tbody {
   );
   mix-blend-mode: normal;
   backdrop-filter: blur(100px);
-}
-
-.table-responsive {
-  border-radius: 30px 30px 0px 0px;
-  overflow: hidden;
 }
 
 .table-striped > tbody > tr:nth-child(2n) {
@@ -207,6 +186,9 @@ tbody {
 }
 
 table {
+  border-radius: 30px;
+  overflow: hidden;
+
   table-layout: fixed;
 }
 
@@ -256,7 +238,6 @@ td {
   border: 1px solid #0275d8;
   box-sizing: border-box;
   border-radius: 30px;
-  bottom: 0;
 }
 
 #Register-Button {
@@ -341,14 +322,12 @@ td {
 
 #Deactivate-Batch-Button {
   opacity: 0.75;
-  position: fixed;
+  position: relative;
   width: 175px;
   background: #ff0101;
   border: 1px solid #ff0000;
   box-sizing: border-box;
   border-radius: 30px;
-  top: 10px;
-  right: 10px;
 }
 
 #Activate-Button {
@@ -363,14 +342,12 @@ td {
 
 #Deactivate-Button {
   opacity: 0.75;
-  position: fixed;
+  position: relative;
   width: 148px;
   background: #ff0101;
   border: 1px solid #ff0000;
   box-sizing: border-box;
   border-radius: 30px;
-  top: 10px;
-  right: 188px;
 }
 
 #Promote-Button {
@@ -394,11 +371,11 @@ td {
 }
 
 .deactivate {
-  position: relative;
+  position: absolute;
   width: 175px;
   height: 34px;
   left: 47%;
-  bottom: 5px;
+  bottom: 15px;
 }
 
 #Upload-CSV-Button {
@@ -444,6 +421,11 @@ tbody > tr:nth-child(2n) {
   backdrop-filter: blur(100px);
 }
 
+table {
+  border-radius: 30px;
+  overflow: hidden;
+}
+
 .Remove-Button {
   opacity: 0.75;
   position: relative;
@@ -481,7 +463,7 @@ tbody > tr:nth-child(2n) {
 
 #Submit-Button {
   opacity: 0.75;
-  position: absolute;
+  position: relative;
   width: 86px;
   background: #0275d8;
   border: 1px solid #0275d8;

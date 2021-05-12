@@ -8,9 +8,8 @@ describe('FlashcardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FlashcardComponent ]
-    })
-    .compileComponents();
+      declarations: [FlashcardComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -18,8 +17,4 @@ describe('FlashcardComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-
-  // it('should create', () => {
-  //   expect(component).toBeTruthy();
-  // });
 });

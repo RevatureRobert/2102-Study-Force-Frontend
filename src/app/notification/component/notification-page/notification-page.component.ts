@@ -1,15 +1,14 @@
-import {Component, OnInit} from '@angular/core';
-import {NotificationService} from '../../service/notification.service';
-import {Notification} from '../../model/notification';
-import {ActivatedRoute} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { NotificationService } from '../../service/notification.service';
+import { Notification } from '../../model/notification';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-notification-page',
   templateUrl: './notification-page.component.html',
-  styleUrls: ['./notification-page.component.css']
+  styleUrls: ['./notification-page.component.css'],
 })
 export class NotificationPageComponent implements OnInit {
-
   notifications: Notification[] = [];
 
   /*
@@ -19,8 +18,8 @@ export class NotificationPageComponent implements OnInit {
    */
   constructor(
     private notificationService: NotificationService,
-    private route: ActivatedRoute) {
-  }
+    private route: ActivatedRoute
+  ) {}
 
   /*
   Initial routing
@@ -37,8 +36,9 @@ export class NotificationPageComponent implements OnInit {
   Author: Ronald Lopez
    */
   getAllNotificationsInPage(): void {
-    this.notificationService.getAllNotifications().subscribe(
-      (response: any) => {
+    this.notificationService
+      .getAllNotifications()
+      .subscribe((response: any) => {
         this.notifications = response.content;
       });
   }
@@ -47,9 +47,10 @@ export class NotificationPageComponent implements OnInit {
   Deleting a specific Notification from notificationService
   Author: Ronald Lopez
    */
-  // tslint:disable-next-line:typedef
   deleteNotification(notification: Notification) {
-    this.notificationService.deleteByNotificationId(notification.id).subscribe();
+    this.notificationService
+      .deleteByNotificationId(notification.id)
+      .subscribe();
   }
 
   /*
@@ -67,5 +68,4 @@ export class NotificationPageComponent implements OnInit {
   pageRefresh(): void {
     window.location.reload();
   }
-
 }

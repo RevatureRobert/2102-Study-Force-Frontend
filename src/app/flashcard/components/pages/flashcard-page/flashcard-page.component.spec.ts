@@ -8,9 +8,8 @@ describe('FlashcardPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FlashcardPageComponent ]
-    })
-    .compileComponents();
+      declarations: [FlashcardPageComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -18,8 +17,4 @@ describe('FlashcardPageComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-
-  // it('should create', () => {
-  //   expect(component).toBeTruthy();
-  // });
 });
