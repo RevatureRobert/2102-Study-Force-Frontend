@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { User } from 'src/app/user/models/user';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  userId:number;
+  constructor(private router:Router) {
+    let u:User = JSON.parse(localStorage.getItem('loggedInUser')!);
+    this.userId = u.userId;
+   }
 
   ngOnInit(): void {
   }
 
+  goToMyDetails(){
+      this.router.navigate([`/profile/${this.userId}`])
+  }
+
 }
+
+
+
+
