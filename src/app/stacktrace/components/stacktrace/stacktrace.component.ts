@@ -35,8 +35,10 @@ export class StacktraceComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.LoggedUser = JSON.parse(localStorage.getItem('loggedInUser') || '{}');
-    this.getStacktrace(this.route.snapshot.params.stacktraceId);
+    this.retrieveStacktraces();
+    this.getAllTechnology();
+    this.LoggedUser = JSON.parse(localStorage.getItem("loggedInUser") || "{}");
+    this.getUserPriviledges();
   }
 
   /**
