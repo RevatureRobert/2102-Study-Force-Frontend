@@ -3,7 +3,8 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor
+  HttpInterceptor,
+  HttpHeaders
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -18,9 +19,11 @@ export class HttpRequestInterceptor implements HttpInterceptor {
     if (request.headers.get('skip')) {
       return next.handle(request);
     }
-    request = request.clone(
-      {setHeaders: {Authorization: `Bearer ${tk}`}
-      });
+
+    request = request.clone({
+      headers: request.headers.set('Authorization', `Bearer ${tk}`)
+      .set('Access-Control-Allow-Origin', '*')
+    });
 
     return next.handle(request);
   }
