@@ -1,7 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { SwPush } from '@angular/service-worker';
-import { User } from 'src/app/user/models/user';
 import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
@@ -20,14 +19,13 @@ export class SubscriptionServiceService {
  postSubscriptionDetails(sub : any){
   const url = environment.apiUrl + "subscriptions";
 
-  let u:User = JSON.parse(localStorage.getItem('loggedInUser')!);
 
   const body = {
     id:11,
     endpoint: sub.endpoint,
     key : sub.toJSON().keys.p256dh ,
     auth : sub.toJSON().keys.auth ,
-    userId : u.userId
+    userId : 8
 
   }
   const headers= new HttpHeaders()
