@@ -55,7 +55,10 @@ export class NewTechnologyComponent implements OnInit {
       this.isAdd = true;
       this.technologyService
         .addTechnology(this.technology)
-        .subscribe((result) => this.gotoStacktraceList());
+        .subscribe(result => {this.gotoStacktraceList()},
+      errorMessage => {
+      this.error = errorMessage;
+    });
     }
 
     if (this.result === 'edit') {
