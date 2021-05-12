@@ -31,7 +31,7 @@ export class PostLoginComponent implements OnInit {
   }
 
   /**
-   * These are ngOnInIt so that they get ran when this component is loaded up 
+   * These are ngOnInIt so that they get ran when this component is loaded up
    */
 
   ngOnInit(): void {
@@ -43,7 +43,7 @@ export class PostLoginComponent implements OnInit {
    * Redirects to the homepage
    */
   redirect() {
-    this.router.navigate(["/"]);
+    this.router.navigate(["/flashcards"]);
   }
 
   /**
@@ -53,7 +53,7 @@ export class PostLoginComponent implements OnInit {
     const user: Promise<User> = this.userService.getLoggedInUser();
 
     let userString = JSON.stringify(user);
-    
+
     localStorage.setItem("loggedInUser", userString);
   }
 
