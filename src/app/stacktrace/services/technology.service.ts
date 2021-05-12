@@ -44,7 +44,10 @@ export class TechnologyService {
    */
   addTechnology(technology : Technology): Observable<Technology>{
     console.log(JSON.stringify(technology))
-    return this.http.post<Technology>(this.technologyURL, technology);
+    return this.http.post<Technology>(this.technologyURL, technology).pipe(catchError(errorRes =>{
+      let errorMessage = 'You need to enter a Technology.';
+      return throwError(errorMessage);
+  }));
   }
   /**
    * DELETEs the given Technology object from the backend.

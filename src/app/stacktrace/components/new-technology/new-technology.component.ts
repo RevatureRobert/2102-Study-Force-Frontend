@@ -55,7 +55,10 @@ export class NewTechnologyComponent implements OnInit {
     console.log(this.result)
     if(this.result === 'add'){
       this.isAdd = true;
-      this.technologyService.addTechnology(this.technology).subscribe(result =>  this.gotoStacktraceList());
+      this.technologyService.addTechnology(this.technology).subscribe(result => {this.gotoStacktraceList()},
+      errorMessage => {
+      this.error = errorMessage;
+    });
     }
 
     if(this.result === 'edit'){
@@ -71,8 +74,6 @@ export class NewTechnologyComponent implements OnInit {
       errorMessage => {
       this.error = errorMessage;
       setTimeout(() => { window.location.href = window.location.href; }, 2750);
-      // setTimeout(location.reload.bind(location), 2750);
-      
     });
     }
   }
