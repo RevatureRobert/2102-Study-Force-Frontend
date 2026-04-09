@@ -1,45 +1,63 @@
-# 2102-Study-Force-Frontend
+# StudyForce — Developer Learning & Debugging Platform (Frontend)
 
 ## Project Description
 
-The frontend for the Batch 2102 capstone project, Study Force.
+StudyForce is a full-stack learning platform designed to help developers study technical concepts and debug applications during training. The frontend provides an interactive user interface for managing study content, answering questions, and navigating debugging tools.
 
-## Technologies Used
+This repository contains the frontend application built using Angular, which communicates with a Spring Boot backend through RESTful APIs.
 
-* Tech 1 - version 1.0
-* Tech 2 - version 2.0
-* Tech 3 - version 3.0
+---
 
 ## Features
 
-List of features ready and TODOs for future development
-* Awesome feature 1
-* Awesome feature 2
-* Awesome feature 3
+- Interactive flashcard-based study system  
+- User-friendly interface for answering and reviewing questions  
+- Difficulty rating system for study content  
+- Integration with backend REST APIs for data retrieval and persistence  
+- Authentication flow integrated with AWS Cognito  
+- Responsive UI design using Angular and Bootstrap  
+- Pagination and data display for structured learning content  
 
-To-do list:
-* Wow improvement to be done 1
-* Wow improvement to be done 2
+---
+
+## Tech Stack
+
+### Frontend
+- Angular  
+- TypeScript  
+- HTML5  
+- CSS3  
+- Bootstrap  
+
+### Testing
+- Karma  
+- Jasmine  
+- Protractor  
+
+### Tools
+- Node.js  
+- npm  
+- Git  
+
+---
+
+## Architecture Overview
+
+The frontend follows a component-based architecture:
+
+- Components — UI elements and views  
+- Services — Handle API communication with the backend  
+- Models — Represent application data structures  
+- Routing — Manages navigation between views  
+
+The application communicates with the backend via REST APIs and integrates with AWS Cognito for user authentication.
+
+---
 
 ## Getting Started
-   
-(include git clone command)
-(include all environment setup steps)
 
-> Be sure to include BOTH Windows and Unix command  
-> Be sure to mention if the commands only work on a specific platform (eg. AWS, GCP)
-
-- All the `code` required to get started
-- Images of what it should look like
-
-## Usage
-
-> Here, you instruct other people on how to use your project after they’ve installed it. This would also be a good place to include screenshots of your project in action.
-
-## Contributors
-
-> Here list the people who have contributed to this project. (ignore this section, if its a solo project)
-
-## License
-
-This project uses the following license: [<license_name>](<link>).
+```bash
+git clone https://github.com/[org-name]/[frontend-repo]
+cd [frontend-repo]
+npm install
+ng serve
